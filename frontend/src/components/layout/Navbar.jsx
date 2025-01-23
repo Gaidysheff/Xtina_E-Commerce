@@ -180,7 +180,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#about"
+                href="/#contacts"
                 class="block py-2 px-3 text-gray-900 rounded 
                   hover:bg-gray-200 md:hover:bg-transparent 
                   md:hover:text-blue-700 md:p-0 dark:text-white 
