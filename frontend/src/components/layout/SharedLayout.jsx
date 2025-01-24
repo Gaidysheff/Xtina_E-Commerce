@@ -1,11 +1,11 @@
 import Footer from "./Footer.jsx";
-import Navbar from "./Navbar.jsx";
+import Header from "./Header.jsx";
 import { Outlet } from "react-router";
 
 const SharedLayout = () => {
   return (
     <>
-      <Navbar />
+      <Header />
       <Outlet />
       <Footer />
       {/* <Popup orderPopup={orderPopup} 
