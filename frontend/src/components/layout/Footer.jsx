@@ -1,5 +1,3 @@
-import React from "react";
-
 const Footer = () => {
   return (
     <section className="px-3 sm:px-0">

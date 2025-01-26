@@ -4,11 +4,16 @@
 
 @layer components {
   .search-bar {
-    @apply w-0 group-hover:w-[300px] 
-		transition-all duration-300 rounded-full
-		group-hover:border group-hover:border-gray-500
-		px-3 py-1 focus:outline-none dark:border-gray-800 dark:bg-gray-900
-		group-hover:dark:bg-gray-800;
+    @apply w-0 group-hover:w-[200px] transition-all duration-300 rounded-full
+		group-hover:border group-hover:border-gray-500 px-3 py-1 
+    focus:outline-none bg-gray-200 dark:border-gray-800 dark:bg-gray-900
+		group-hover:bg-white group-hover:dark:bg-gray-800;
+  }
+  .search-bar-burger {
+    @apply w-[80%] transition-all duration-300 rounded-full border border-gray-500
+		group-hover:border group-hover:border-red-500 px-3 py-1 
+    focus:outline-none bg-white dark:border-gray-800 dark:bg-gray-900
+		group-hover:bg-white group-hover:dark:bg-gray-800;
   }
 }
 
@@ -22,9 +27,22 @@
     dark:bg-gray-800 dark:text-white px-3 py-2 mb-4 rounded-full
     /* focus:outline-none; */;
   }
-  .header a:hover,
+  /* .header a:hover,
   .header a:active,
   .header a.active {
     @apply text-red-600;
+  } */
+  .menu-item:not(.active):hover {
+    @apply text-red-600 dark:text-red-200 hover:scale-125;
+  }
+  .menu-dropdown-item:not(.active):hover {
+    @apply bg-red-200 text-red-600  dark:bg-red-200 hover:scale-105 
+    dark:hover:text-red-800;
+  }
+  .menu-item-burger:not(.active):hover {
+    @apply text-white dark:text-red-200  hover:bg-gray-500 rounded-xl;
+  }
+  .active {
+    @apply text-red-600 dark:text-red-200;
   }
 }

@@ -7,7 +7,8 @@ import Category from "./../components/category/Category.jsx";
 import Contacts from "./../components/contacts/Contacts.jsx";
 import Hero from "./../components/hero/Hero.jsx";
 import InBrief from "./../components/inBrief/InBrief.jsx";
-import Questions from "./../components/questions/Questions.jsx";
+
+// import Questions from "./../components/questions/Questions.jsx";
 
 const Home = () => {
   return (
@@ -19,11 +20,31 @@ const Home = () => {
         <BannerConsultancy />
         <Category />
         <BannerCertificate />
-        <Questions />
+        {/* <Questions /> */}
+        <br />
+        <br />
+        <br />
+        <br /> <br />
+        <br />
+        <br />
+        <br /> <br />
+        <br />
+        <br />
+        <br />
         <Banner />
         <Blogs />
         <Brands />
         <Contacts />
+        <br />
+        <br />
+        <br />
+        <br /> <br />
+        <br />
+        <br />
+        <br /> <br />
+        <br />
+        <br />
+        <br />
         {/* 
         <Popup orderPopup={orderPopup} orderPopupHandler={orderPopupHandler} /> */}
       </div>
