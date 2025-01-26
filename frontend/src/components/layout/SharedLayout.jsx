@@ -31,7 +31,7 @@ const SharedLayout = (props) => {
   });
   return (
     <main
-      className="bg-white dark:bg-gray-900 dark:text-white
+      className="w-screen bg-white dark:bg-gray-800 dark:text-white
       duration-200 overflow-hidden"
     >
       <Navbar themeHandler={themeHandler} theme={theme} />

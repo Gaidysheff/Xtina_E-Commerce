@@ -22,13 +22,13 @@ const Navbar = (props) => {
   return (
     <div
       className="bg-gray-200 dark:bg-gray-900 dark:text-white 
-            duration-200 z-40 px-5 sm:px-0 sticky top-0"
+    duration-200 z-40 px-5 sm:px-0 sticky top-0"
     >
       <div className="py-4">
         {/* ========== FULL SCALE MENU ========== */}
         <div className="container flex lg:justify-between items-center">
-          {/* Logo & Links section */}
           <div className="flex items-center gap-4">
+            {/* --------------- Logo & Links section --------------- */}
             <NavLink to="/">
               {props.theme === "light" ? (
                 <img
@@ -44,15 +44,15 @@ const Navbar = (props) => {
                 />
               )}
             </NavLink>
-
-            {/* Menu items */}
+            {/* ---------------- Main Menu section ------------------ */}
             <div className="hidden lg:block">
-              <ul className="flex items-center gap-4">
-                <li className="relative cursor-pointer group hover:scale-110">
+              <div className="flex items-center gap-4">
+                {/* ----- Dropdown Menu ----- */}
+                <div className="relative cursor-pointer group hover:scale-110">
                   <Link
                     to="#"
-                    className="flex items-center gap-[2px] 
-                          font-semibold text-gray-500 py-2"
+                    className="flex items-center gap-[2px] font-semibold 
+                    text-brandDarkGray dark:text-brandLightGray py-2"
                   >
                     Каталог
                     <span>
@@ -63,20 +63,21 @@ const Navbar = (props) => {
                     </span>
                   </Link>
 
-                  {/* --- Dropdown Links --- */}
+                  {/* ----- Dropdown Links ----- */}
                   <div
                     className="absolute z-[999] hidden group-hover:block
-                          w-[200px] rounded-md bg-white shadow-md dark:bg-gray-900
-                          dark:text-white p-2"
+                    w-[200px] rounded-md bg-white shadow-md dark:bg-gray-900
+                    dark:text-white p-2"
                   >
                     <ul className="space-y-2">
                       {DropdownLinks.map((data, index) => (
                         <li key={index}>
                           <NavLink
                             to={data.path}
-                            className="text-gray-500 menu-dropdown-item
-                                    duration-200 p-2  hover:scale-110
-                                    inline-block w-full rounded-md font-semibold"
+                            className="inline-block w-full rounded-md f
+                            ont-semibold menu-dropdown-item duration-200 p-2 
+                            text-brandDarkGray dark:text-brandLightGray 
+                            hover:scale-110"
                           >
                             {data.label}
                           </NavLink>
@@ -84,26 +85,24 @@ const Navbar = (props) => {
                       ))}
                     </ul>
                   </div>
-                </li>
+                </div>
+                {/* ----- Main Menu items ----- */}
                 {MenuLinks.map((data, index) => (
                   <li key={index}>
                     <NavLink
                       to={data.path}
-                      className="inline-block px-4 
-                            font-semibold text-gray-500 menu-item
-                            duration-200"
+                      className="inline-block px-4 font-semibold duration-200 
+                      text-brandDarkGray dark:text-brandLightGray menu-item"
                     >
                       {data.label}
                     </NavLink>
                   </li>
                 ))}
-                {/* ----- Dropdown Menu ----- */}
-              </ul>
+              </div>
             </div>
           </div>
-          {/* ----------------------------------------------------------- */}
-          {/* Navbar Right section */}
 
+          {/* -------------------Navbar Right section--------------------- */}
           <div className="mx-auto lg:m-0 flex justify-between items-center gap-4">
             {/* Search Bar section */}
             <div className="relative group hidden lg:block">
@@ -120,10 +119,13 @@ const Navbar = (props) => {
             </div>
             {/* Order-button section */}
             <button className="relative p-3" onClick={props.orderPopupHandler}>
-              <FaCartShopping className="text-xl text-gray-600 dark:text-gray-400" />
+              <FaCartShopping
+                className="text-xl text-gray-600 
+              dark:text-gray-400"
+              />
               <div
                 className="w-4 h-4 bg-red-500 text-white rounded-full 
-                        absolute top-0 right-0 flex items-center justify-center text-xs"
+                absolute top-0 right-0 flex items-center justify-center text-xs"
               >
                 4
               </div>
@@ -131,7 +133,6 @@ const Navbar = (props) => {
             {/* Dark Mode section */}
             <div>
               <DarkMode themeHandler={props.themeHandler} theme={props.theme} />
-              {/* <DarkMode onChangeTheme={changeThemeHandler} /> */}
             </div>
           </div>
         </div>
@@ -145,7 +146,7 @@ const Navbar = (props) => {
           <span className="h-[0.4rem] w-[100%] bg-primary rounded-md"></span>
           <span className="h-[0.4rem] w-[100%] bg-primary rounded-md"></span>
         </div>
-        {/* ========== FULL SCALE MENU ========== */}
+        {/* ========== PHONE SCREEN MENU ========== */}
         <div className="container flex-col lg:hidden">
           <div className={menuOpen ? "visible" : "hidden"}>
             <div className="my-3 flex justify-center lg:hidden w-full ">
@@ -163,8 +164,8 @@ const Navbar = (props) => {
                 <NavLink
                   to={data.path}
                   className="inline-block px-4 font-semibold text-gray-600
-                          dark:text-gray-300
-                          duration-200 menu-item-burger py-2 w-full"
+                          dark:text-gray-300 py-2 w-full duration-200
+                          menu-item-burger"
                 >
                   {data.label}
                 </NavLink>

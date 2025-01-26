@@ -9,11 +9,11 @@ export default {
     extend: {
       colors: {
         primary: "#ffd10f",
-        // secondary: "#f42c37",
-        // brandYellow: "#fdc62e",
-        // brandGreen: "#2dcc6f",
-        // brandBlue: "#1376f4",
-        // brandWhite: "#eeeeee",
+        primaryDark: "#A68705",
+        primaryLight: "#FFE67B",
+        secondary: "391FB0",
+        brandLightGray: "#9ca3af",
+        brandDarkGray: "#374151",
       },
       container: {
         center: true,
