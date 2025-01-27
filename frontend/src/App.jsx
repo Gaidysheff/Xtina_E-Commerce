@@ -14,7 +14,7 @@ import SingleProduct from "./pages/products/SingleProduct.jsx";
 
 // URL settings for PRODUCT Section
 export const parentRouteSet1 = "products";
-const dynamicRouteSet1 = "productId";
+export const dynamicRouteSet1 = "productId";
 const nestedRouteSet1 = "comments";
 
 function App() {

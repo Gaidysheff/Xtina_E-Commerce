@@ -166,6 +166,7 @@ const Navbar = (props) => {
                   className="inline-block px-4 font-semibold text-gray-600
                           dark:text-gray-300 py-2 w-full duration-200
                           menu-item-burger"
+                  onClick={() => setMenuOpen(false)}
                 >
                   {data.label}
                 </NavLink>
@@ -182,6 +183,7 @@ const Navbar = (props) => {
                     className="inline-block px-4 font-semibold text-gray-600
                             dark:text-gray-300
                             duration-200 menu-item-burger py-2 w-full"
+                    onClick={() => setMenuOpen(false)}
                   >
                     {data.label}
                   </NavLink>

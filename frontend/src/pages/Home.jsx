@@ -20,16 +20,7 @@ const Home = () => {
         <BannerConsultancy />
         <Category />
         <BannerCertificate />
-        <Questions />
-        <br />
-        <br />
-        <br /> <br />
         <Accordion />
-        <br />
-        <br /> <br />
-        <br />
-        <br />
-        <br />
         <Banner />
         <Blogs />
         <Brands />

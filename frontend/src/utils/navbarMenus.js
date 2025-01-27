@@ -38,7 +38,7 @@ export const DropdownLinksBurger = [
   {
     id: 1,
     label: "Каталог: ПАРФЮМЕРИЯ",
-    path: "/contacts9",
+    path: "/products",
   },
   {
     id: 2,
