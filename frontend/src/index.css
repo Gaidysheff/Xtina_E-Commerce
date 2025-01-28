@@ -47,4 +47,8 @@
   .active {
     @apply text-primaryDark;
   }
+
+  .inside-card {
+    @apply h-[380px] md:h-[550px]  2xl:h-[600px] flex flex-col justify-between items-center text-center;
+  }
 }

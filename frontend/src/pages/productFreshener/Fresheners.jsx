@@ -1,27 +1,22 @@
 import Card from "./../../components/sharedUI/Card.jsx";
 import { Link } from "react-router";
 import { NumericFormat } from "react-number-format";
-import { dynamicRouteSet1 } from "../../App.jsx";
+import { dynamicRouteSet2 } from "../../App.jsx";
 import { perfume } from "../../utils/products.js";
 
 // import ProductItem from "./ProductItem.jsx";
-{
-  /* <div
-className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
-xl:grid-cols-4 gap-10 mx-5"
-> */
-}
-const Products = () => {
+
+const Fresheners = () => {
   return (
     <section className="container py-10">
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 
+        className="grid grid-cols-2 lg:grid-cols-3 
         xl:grid-cols-4 gap-3 mx-3 lg:gap-10 lg:mx-5"
       >
         {perfume.map((product) => (
           <Card key={product.id}>
-            <Link to={`:${dynamicRouteSet1}`}>
-              <div className="">
+            <Link to={`:${dynamicRouteSet2}`}>
+              <div className="inside-card">
                 <img
                   src={product.image}
                   alt="product image"
@@ -29,11 +24,11 @@ const Products = () => {
                 />
 
                 <div className="p-5 pb-0">
-                  <div className="text-lg lg:text-lg text-center">
+                  <div className="text-[0.8rem] md:text-[0.9rem] lg:text-lg">
                     {product.brand}
                   </div>
 
-                  <div className="text-lg lg:text-xl font-semibold text-center">
+                  <div className="text-[0.9rem] md:text-[1rem] lg:text-xl font-semibold">
                     {product.name}
                   </div>
                 </div>
@@ -57,4 +52,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Fresheners;

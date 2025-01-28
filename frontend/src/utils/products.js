@@ -13,8 +13,8 @@ export const perfume = [
   {
     id: 2,
     image: Image1,
-    name: "Baccarat Rouge 540",
-    brand: "Maison Francis Kurkjian",
+    name: "Baccarat Rouge 540 Baccarat Rouge 540",
+    brand: "Maison Francis Kurkjian Maison Francis Kurkjian",
     price: 1999,
     description:
       "Парфюмерная вода Baccarat Rouge 540 родилась благодаря сотрудничеству между Maison Francis Kurkdjian и Baccarat в честь празднования 250-й годовщины производителя хрусталя.",
@@ -22,8 +22,8 @@ export const perfume = [
   {
     id: 3,
     image: Image1,
-    name: "Baccarat Rouge 540",
-    brand: "Maison Francis Kurkjian",
+    name: "Kilian Apple Brandy on the rocks",
+    brand: "",
     price: 5999,
     description:
       "Парфюмерная вода Baccarat Rouge 540 родилась благодаря сотрудничеству между Maison Francis Kurkdjian и Baccarat в честь празднования 250-й годовщины производителя хрусталя.",

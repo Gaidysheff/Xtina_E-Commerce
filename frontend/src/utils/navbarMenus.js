@@ -25,7 +25,7 @@ export const DropdownLinks = [
   {
     id: 2,
     label: "Ароматизаторы",
-    path: "/delivery8",
+    path: "/fresheners",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ export const DropdownLinksBurger = [
   {
     id: 2,
     label: "Каталог: АРОМАТИЗАТОРЫ",
-    path: "/delivery8",
+    path: "/fresheners",
   },
   {
     id: 3,
