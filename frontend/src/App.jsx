@@ -3,23 +3,23 @@ import { Route, Routes } from "react-router";
 import About from "./pages/About.jsx";
 import Cart from "./pages/cart/Cart.jsx";
 import CommentsOnFreshener from "./components/comments/CommentsOnFreshener.jsx";
-import CommentsOnProduct from "./components/comments/CommentsOnProduct.jsx";
+import CommentsOnPerfume from "./components/comments/CommentsOnProduct.jsx";
 import Delivery from "./pages/Delivery.jsx";
 import Error from "./pages/Error.jsx";
 import Fresheners from "./pages/productFreshener/Fresheners.jsx";
 import Home from "./pages/Home.jsx";
-import Products from "./pages/products/Products.jsx";
+import Perfumes from "./pages/productPerfumes/Perfumes.jsx";
 import SharedFreshenersLayout from "./pages/productFreshener/SharedFreshenersLayout.jsx";
 import SharedLayout from "./components/layout/SharedLayout.jsx";
-import SharedProductsLayout from "./pages/products/SharedProductsLayout.jsx";
+import SharedPerfumesLayout from "./pages/productPerfumes/SharedPerfumesLayout.jsx";
 import SharedSingleFreshenerLayout from "./pages/productFreshener/SharedSingleFreshenerLayout.jsx";
-import SharedSingleProductLayout from "./pages/products/SharedSingleProductLayout.jsx";
+import SharedSinglePerfumeLayout from "./pages/productPerfumes/SharedSinglePerfumeLayout.jsx";
 import SingleFreshener from "./pages/productFreshener/SingleFreshener.jsx";
-import SingleProduct from "./pages/products/SingleProduct.jsx";
+import SinglePerfume from "./pages/productPerfumes/SinglePerfume.jsx";
 
-// URL settings for PRODUCT Section
-export const parentRouteSet1 = "products";
-export const dynamicRouteSet1 = "productId";
+// URL settings for PERFUMES Section
+export const parentRouteSet1 = "perfumes";
+export const dynamicRouteSet1 = "perfumeId";
 const nestedRouteSet1 = "comments";
 // URL settings for FRESHENERS Section
 export const parentRouteSet2 = "fresheners";
@@ -37,16 +37,16 @@ function App() {
           <Route path="delivery" element={<Delivery />} />
           <Route path="*" element={<Error />} />
 
-          <Route path={`${parentRouteSet1}`} element={<SharedProductsLayout />}>
-            <Route index element={<Products />} />
+          <Route path={`${parentRouteSet1}`} element={<SharedPerfumesLayout />}>
+            <Route index element={<Perfumes />} />
             <Route
               path={`:${dynamicRouteSet1}`}
-              element={<SharedSingleProductLayout />}
+              element={<SharedSinglePerfumeLayout />}
             >
-              <Route index element={<SingleProduct />} />
+              <Route index element={<SinglePerfume />} />
               <Route
                 path={`${nestedRouteSet1}`}
-                element={<CommentsOnProduct />}
+                element={<CommentsOnPerfume />}
               />
             </Route>
           </Route>

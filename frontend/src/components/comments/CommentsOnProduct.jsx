@@ -1,4 +1,4 @@
-import SingleProduct from "./../../pages/products/SingleProduct";
+import SingleProduct from "../../pages/productPerfumes/SinglePerfume";
 
 const CommentsOnProduct = () => {
   return (

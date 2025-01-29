@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 
-const SharedSingleProductLayout = () => {
+const SharedSinglePerfumeLayout = () => {
   return (
     <div>
       <Outlet />
@@ -8,4 +8,4 @@ const SharedSingleProductLayout = () => {
   );
 };
 
-export default SharedSingleProductLayout;
+export default SharedSinglePerfumeLayout;

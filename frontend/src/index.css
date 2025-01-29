@@ -49,6 +49,66 @@
   }
 
   .inside-card {
-    @apply h-[380px] md:h-[550px]  2xl:h-[600px] flex flex-col justify-between items-center text-center;
+    @apply h-[330px] md:h-[550px]  2xl:h-[600px] 
+    flex flex-col justify-between items-center text-center;
+  }
+  /* ============= check box ============ */
+
+  /* Customize the label (the container) */
+
+  .check-container {
+    @apply block relative pl-[35px] mb-[12px] cursor-pointer text-lg select-none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    @apply absolute top-0 left-0 h-[25px] w-[25px] bg-gray-200 rounded-md 
+    border-2 border-gray-300;
+  }
+  .checkmark:hover {
+    @apply border-gray-400;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    @apply bg-gray-200 rounded-md;
+  }
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    @apply bg-primary rounded-md ring-4 ring-yellow-500;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 8px;
+    height: 14px;
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 }

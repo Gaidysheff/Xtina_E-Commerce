@@ -88,7 +88,7 @@ const Navbar = (props) => {
                 </div>
                 {/* ----- Main Menu items ----- */}
                 {MenuLinks.map((data, index) => (
-                  <li key={index}>
+                  <div key={index}>
                     <NavLink
                       to={data.path}
                       className="inline-block px-4 font-semibold duration-200 
@@ -96,7 +96,7 @@ const Navbar = (props) => {
                     >
                       {data.label}
                     </NavLink>
-                  </li>
+                  </div>
                 ))}
               </div>
             </div>
