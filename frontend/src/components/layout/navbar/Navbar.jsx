@@ -8,7 +8,7 @@ import { Link, NavLink } from "react-router";
 
 import DarkMode from "./DarkMode.jsx";
 import { IoMdSearch } from "react-icons/io";
-import Logo_short_black from "../../../assets/shared/Logo_short.svg";
+import Logo_short_black from "../../../assets/shared/Logo_short_black.svg";
 import Logo_short_primary from "../../../assets/shared/Logo_short_primary.svg";
 import { useState } from "react";
 
@@ -29,21 +29,25 @@ const Navbar = (props) => {
         <div className="container flex lg:justify-between items-center">
           <div className="flex items-center gap-4">
             {/* --------------- Logo & Links section --------------- */}
-            <NavLink to="/">
-              {props.theme === "light" ? (
-                <img
-                  src={Logo_short_black}
-                  alt="Logo"
-                  className="w-[100px] hover:scale-110"
-                />
-              ) : (
-                <img
-                  src={Logo_short_primary}
-                  alt="Logo"
-                  className="w-[100px] hover:scale-110"
-                />
-              )}
-            </NavLink>
+            <div className="tooltip">
+              <NavLink to="/">
+                {props.theme === "light" ? (
+                  <img
+                    src={Logo_short_black}
+                    alt="Logo"
+                    className="w-[100px] hover:scale-110"
+                  />
+                ) : (
+                  <img
+                    src={Logo_short_primary}
+                    alt="Logo"
+                    className="w-[100px] hover:scale-110"
+                  />
+                )}
+              </NavLink>
+
+              <span className="tooltiptext">на Главную</span>
+            </div>
             {/* ---------------- Main Menu section ------------------ */}
             <div className="hidden lg:block">
               <div className="flex items-center gap-4">

@@ -1,8 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap");
 @import "./components/accordion/Accordion.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+#root {
+  font-family: "Roboto Flex", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "slnt" 0, "wdth" 100, "GRAD" 0, "XOPQ" 96, "XTRA" 468,
+    "YOPQ" 79, "YTAS" 750, "YTDE" -203, "YTFI" 738, "YTLC" 514, "YTUC" 712;
+}
 @layer components {
   .search-bar {
     @apply w-0 group-hover:w-[200px] transition-all duration-300 rounded-full
@@ -20,8 +30,8 @@
 
 @layer utilities {
   .hero-bg-color {
-    @apply bg-gradient-to-l from-gray-400 to-gray-100 
-		dark:from-gray-900 dark:to-gray-800 dark:text-white;
+    @apply bg-gradient-to-l from-gray-400 to-gray-200 
+		dark:from-gray-900 dark:to-gray-600 dark:text-white;
   }
   .form-input {
     @apply w-full border border-gray-300 dark:border-gray-600
@@ -49,10 +59,9 @@
   }
 
   .inside-card {
-    @apply h-[330px] md:h-[550px]  2xl:h-[600px] 
-    flex flex-col justify-between items-center text-center;
+    @apply h-[380px] md:h-[450px] 2xl:h-[500px] text-center;
   }
-  /* ============= check box ============ */
+  /* ======================== check box ============================= */
 
   /* Customize the label (the container) */
 
@@ -89,14 +98,12 @@
 
   /* Create the checkmark/indicator (hidden when not checked) */
   .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+    @apply content-[''] absolute hidden;
   }
 
   /* Show the checkmark when checked */
   .container input:checked ~ .checkmark:after {
-    display: block;
+    @apply block;
   }
 
   /* Style the checkmark/indicator */
@@ -111,4 +118,26 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+}
+
+/* ===================== Tooltip in Navbar ===================== */
+
+.tooltip {
+  @apply relative inline-block;
+}
+
+.tooltip .tooltiptext {
+  @apply invisible text-xl italic font-semibold
+  w-[150px] bg-brandDarkGray dark:bg-primary text-white 
+  dark:text-brandDarkGray text-center rounded-lg p-[7px] absolute z-10 
+  top-[150%] left-[30%] ml-[-60px];
+}
+
+.tooltip .tooltiptext::after {
+  @apply content-[''] absolute bottom-[80%] left-[50%] ml-[-5px] border-8
+  border-solid border-brandDarkGray dark:border-primary rotate-45;
+}
+
+.tooltip:hover .tooltiptext {
+  @apply visible;
 }

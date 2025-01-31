@@ -1,7 +1,7 @@
 import Button from "./../../components/sharedUI/Button.jsx";
 import ButtonVolume from "./../../components/sharedUI/ButtonVolume.jsx";
 import { NumericFormat } from "react-number-format";
-import { PERFUMES } from "../../utils/products.js";
+import { PERFUMES } from "../../utils/perfumes.js";
 import { useParams } from "react-router";
 import { useState } from "react";
 
@@ -76,7 +76,7 @@ const SingleProduct = () => {
             suffix={" ₽"}
           />
 
-          <div className="my-5 flex md:block">
+          <div className="my-5 block sm:flex md:block">
             <div>
               <ButtonVolume text="3 ml" handler={volume3mlHandler} />
               <ButtonVolume text="5 ml" handler={volume5mlHandler} />
@@ -89,11 +89,14 @@ const SingleProduct = () => {
           </div>
 
           <div className="mb-7">
-            <label class="check-container ">
+            <label className="check-container ">
               Подарочный атомайзер 10 ml
-              <span className="text-brandLightGray"> (+150 ₽)</span>
+              <span className="text-brandLightGray text-sm lg:text-lg">
+                {" "}
+                (+150 ₽)
+              </span>
               <input type="checkbox" />
-              <span class="checkmark"></span>
+              <span className="checkmark"></span>
             </label>
           </div>
 
@@ -195,31 +198,31 @@ const SingleProduct = () => {
             </div>
             <div className="w-[100%]">
               <p
-                className="bg-primary w-3/2 my-2 pl-3 rounded-md 
+                className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
                 {perfume.family1}
               </p>
               <p
-                className="bg-primary/50 w-5/6 my-2 pl-3 rounded-md 
+                className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.family2}
               </p>
               <p
-                className="bg-primary/30 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.family3}
               </p>
               <p
-                className="bg-primary/10 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.family4}
               </p>
               <p
-                className="bg-primary/10 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.family5}
@@ -233,31 +236,31 @@ const SingleProduct = () => {
             </div>
             <div className="w-[100%]">
               <p
-                className="bg-primary w-3/2 my-2 pl-3 rounded-md 
+                className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
                 {perfume.note1}
               </p>
               <p
-                className="bg-primary/50 w-5/6 my-2 pl-3 rounded-md 
+                className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.note2}
               </p>
               <p
-                className="bg-primary/30 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.note3}
               </p>
               <p
-                className="bg-primary/10 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.note4}
               </p>
               <p
-                className="bg-primary/10 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.note5}
@@ -271,31 +274,31 @@ const SingleProduct = () => {
             </div>
             <div className="w-[100%]">
               <p
-                className="bg-primary w-3/2 my-2 pl-3 rounded-md 
+                className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
                 {perfume.chord1}
               </p>
               <p
-                className="bg-primary/50 w-5/6 my-2 pl-3 rounded-md 
+                className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.chord2}
               </p>
               <p
-                className="bg-primary/30 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.chord3}
               </p>
               <p
-                className="bg-primary/10 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.chord4}
               </p>
               <p
-                className="bg-primary/10 w-2/3 my-2 pl-3 rounded-md 
+                className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
                 {perfume.chord5}

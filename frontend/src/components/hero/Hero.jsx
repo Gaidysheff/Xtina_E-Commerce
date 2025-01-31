@@ -1,38 +1,8 @@
 import Button from "./../sharedUI/Button.jsx";
-import Image1 from "../../assets/hero/Dior_Sauvage.png";
-import Image2 from "../../assets/hero/AfnanCherryBouquet.png";
-import Image3 from "../../assets/hero/Juliette.png";
+import { HERO_DATA } from "./../../utils/heroData.js";
 import Slider from "react-slick";
-
-const HeroData = [
-  {
-    id: 1,
-    image: Image1,
-    title: "Dior Sauvage",
-    subtitle: "Eau De Parfum",
-    aroma1: "Свежий пряный",
-    aroma2: "Цитрусовый",
-    aroma3: "Амбровый",
-  },
-  {
-    id: 2,
-    image: Image2,
-    title: "Cherry Bouquet",
-    subtitle: "Afnan",
-    aroma1: "Вишневый",
-    aroma2: "Фруктовый",
-    aroma3: "Сладкий",
-  },
-  {
-    id: 3,
-    image: Image3,
-    title: "Juliette has a gun",
-    subtitle: " Ex Vetiver",
-    aroma1: "Цитрусовый",
-    aroma2: "Фужерный",
-    aroma3: "Амбровый",
-  },
-];
+import { parentRouteSet1 } from "../../App.jsx";
+import { useNavigate } from "react-router";
 
 const Hero = (props) => {
   const settings = {
@@ -49,6 +19,12 @@ const Hero = (props) => {
     draggable: true,
     cssEase: "ease-in-out",
   };
+
+  const navigate = useNavigate();
+  const routeChange = () => {
+    let path = `${parentRouteSet1}`;
+    navigate(path);
+  };
   return (
     <div className="my-3">
       {/* <div className="rounded-3xl bg-brandGreen/50 px-4 py-2">
@@ -60,7 +36,7 @@ const Hero = (props) => {
       >
         <div className="container sm:pb-0">
           <Slider {...settings}>
-            {HeroData.map((slide) => (
+            {HERO_DATA.map((slide) => (
               <div key={slide.id}>
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   {/* text content section */}
@@ -75,7 +51,8 @@ const Hero = (props) => {
                         data-aos-duration="500"
                         data-aos-once="true"
                         className="text-2xl md:text-3xl lg:text-4xl italic 
-                        text-red-900/50 drop-shadow-[10px_10px_6px_rgba(0,0,0,.9)]"
+                        text-primaryDark/60 dark:text-primary/80 font-['Pacifico']
+                        drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)] my-3"
                       >
                         {slide.aroma1}
                       </h1>
@@ -84,8 +61,9 @@ const Hero = (props) => {
                         data-aos-duration="500"
                         data-aos-once="true"
                         className="text-2xl md:text-3xl lg:text-4xl italic 
-                        text-red-900/50 drop-shadow-[10px_10px_6px_rgba(0,0,0,.9)]
-                        sm:text-center"
+                        text-primaryDark/60 dark:text-primary/80 font-['Pacifico']
+                        drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]
+                        sm:text-center my-3"
                       >
                         {slide.aroma2}
                       </h1>
@@ -94,8 +72,9 @@ const Hero = (props) => {
                         data-aos-duration="500"
                         data-aos-once="true"
                         className="text-2xl md:text-3xl lg:text-4xl italic 
-                        text-red-900/50 drop-shadow-[10px_10px_6px_rgba(0,0,0,.9)]
-                        sm:text-right"
+                        text-primaryDark/60 dark:text-primary/80 font-['Pacifico']
+                        drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]
+                        sm:text-right my-3"
                       >
                         {slide.aroma3}
                       </h1>
@@ -105,7 +84,8 @@ const Hero = (props) => {
                       data-aos-duration="500"
                       data-aos-once="true"
                       className="text-7xl sm:text-[40px] md:text-[50px] 
-                      xl:text-[100px] text-white dark:text-white/5 font-bold 
+                      xl:text-[100px] text-white dark:text-brandLightGray 
+                      font-bold dark:drop-shadow-[10px_10px_6px_rgba(120,120,120,.9)]
                       uppercase drop-shadow-[10px_10px_6px_rgba(0,0,0,.6)]"
                     >
                       {slide.title}
@@ -115,8 +95,10 @@ const Hero = (props) => {
                       data-aos-duration="500"
                       data-aos-once="true"
                       className="text-2xl md:text-3xl lg:text-4xl font-bold 
-                      text-white dark:text-white/5 uppercase 
-                      drop-shadow-[10px_10px_6px_rgba(0,0,0,.4)]"
+                      text-white dark:text-brandLightGray uppercase 
+                      drop-shadow-[10px_10px_6px_rgba(0,0,0,.9)]
+                      dark:drop-shadow-[5px_5px_6px_rgba(200,200,200,.9)]
+                      font-['Rubik_Scribble']"
                     >
                       {slide.subtitle}
                     </h1>
@@ -126,13 +108,14 @@ const Hero = (props) => {
                       data-aos-offset="0"
                       data-aos-duration="500"
                       data-aos-delay="300"
-                      className="my-[30px] drop-shadow-[10px_10px_6px_rgba(200,20,0,.4)]"
+                      className="my-[30px] drop-shadow-[10px_10px_6px_rgba(0,0,0,.4)]
+                      dark:drop-shadow-[10px_10px_6px_rgba(120,120,120,.9)]]"
                     >
                       <Button
-                        text="перейти в Категорию"
+                        text="перейти в Каталог"
                         bgColor="bg-primary"
-                        textColor="text-white"
-                        handler={props.orderPopupHandler}
+                        textColor="text-primaryDark font-semibold italic text-lg"
+                        handler={routeChange}
                       />
                     </div>
                   </div>
@@ -148,8 +131,9 @@ const Hero = (props) => {
                         alt=""
                         className="w-[150px]
 											sm:w-[200px] sm:scale-105 lg:scale-110
-											object-contain mx-auto
-											drop-shadow-[10px_10px_6px_rgba(0,0,0,.4)] relative z-40"
+											object-contain mx-auto relative z-40
+											drop-shadow-[10px_10px_6px_rgba(0,0,0,.4)]
+                      dark:drop-shadow-[10px_10px_6px_rgba(120,120,120,.9)]"
                       />
                     </div>
                   </div>

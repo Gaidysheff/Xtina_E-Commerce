@@ -7,15 +7,14 @@ import Brands from "./../components/brands/Brands.jsx";
 import Category from "./../components/category/Category.jsx";
 import Contacts from "./../components/contacts/Contacts.jsx";
 import Hero from "./../components/hero/Hero.jsx";
-import InBrief from "./../components/inBrief/InBrief.jsx";
+import Introduction from "./../components/introduction/Introduction.jsx";
 import Questions from "./../components/questions/Questions.jsx";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <section className="px-3 sm:px-0 my-5">
       <div className="container py-2">
-        <h2 className="text-md font-bold">Главная страница</h2>
-        <InBrief />
+        <Introduction themeHandler={props.themeHandler} theme={props.theme} />
         <Hero />
         <BannerConsultancy />
         <Category />

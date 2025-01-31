@@ -3,7 +3,7 @@ const ButtonVolume = ({ text, handler = () => {} }) => {
     <button
       onClick={handler}
       className="cursor-pointer hover:scale-110 z-10 w-[5.8rem] md:w-[6rem]
-			relative inline-flex items-center justify-center p-0.5 mb-2 me-2 
+			relative inline-flex items-center justify-center p-0.5 mb-2 me-1 
 			overflow-hidden text-lg md:text-xl font-medium text-gray-900 rounded-lg 
       group bg-gradient-to-br from-primaryLight via-primary to-primaryDark 
 			group-hover:from-primaryLight group-hover:via-primary 

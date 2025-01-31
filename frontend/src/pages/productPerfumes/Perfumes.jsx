@@ -1,8 +1,7 @@
 import Card from "../../components/sharedUI/Card.jsx";
 import { Link } from "react-router";
 import { NumericFormat } from "react-number-format";
-import { PERFUMES } from "../../utils/products.js";
-import { dynamicRouteSet1 } from "../../App.jsx";
+import { PERFUMES } from "../../utils/perfumes.js";
 
 const Perfumes = () => {
   return (
@@ -14,30 +13,34 @@ const Perfumes = () => {
         {PERFUMES.map((product) => (
           <Card key={product.id}>
             <Link to={`${product.id}`}>
-              <div className="inside-card">
-                <img
-                  src={product.image}
-                  alt="product image"
-                  className=" bg-white dark:bg-brandLightGray rounded-t-xl 
-                  w-full"
-                />
+              <div className="inside-card flex flex-col justify-between">
+                <div
+                  className="x-full bg-white dark:bg-brandLightGray
+                  rounded-t-xl flex justify-center"
+                >
+                  <img
+                    src={product.image}
+                    alt="product image"
+                    className="w-[75%] bg-white dark:bg-brandLightGray"
+                  />
+                </div>
 
-                <div className="p-3 pb-0">
-                  <div className="text-[0.7rem] md:text-[0.8rem] lg:text-lg">
+                <div className="p-2 pb-0">
+                  <div className="text-[0.7rem] md:text-[0.9rem] lg:text-lg">
                     {product.brand}
                   </div>
 
                   <div
-                    className="text-[0.8rem] md:text-[0.9rem] lg:text-xl 
-                  font-semibold"
+                    className="text-[0.8rem] md:text-[1.1rem] lg:text-xl 
+                    font-semibold"
                   >
                     {product.name}
                   </div>
                 </div>
-                <div className="">
+                <div className="justify-self-end">
                   <NumericFormat
                     className="flex justify-center text-2xl text-primaryDark
-                      dark:text-primaryLight pb-2"
+                        dark:text-primaryLight pb-2"
                     value={product.price3}
                     displayType={"text"}
                     decimalSeparator=","

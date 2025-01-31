@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import { useEffect, useState } from "react";
 
 import About from "./pages/About.jsx";
 import Cart from "./pages/cart/Cart.jsx";
@@ -26,12 +27,42 @@ export const parentRouteSet2 = "fresheners";
 export const dynamicRouteSet2 = "freshenerId";
 const nestedRouteSet2 = "comments";
 
-function App() {
+function App(props) {
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  const themeHandler = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+    // props.onChangeTheme(theme);
+  };
+
+  // Access to html element
+  const element = document.documentElement;
+  // console.log(element);
+
+  // set theme to localStorage and html-element
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    if (theme === "dark") {
+      element.classList.add("dark");
+      element.classList.add("dark");
+    } else {
+      element.classList.remove("light");
+      element.classList.remove("dark");
+    }
+  });
   return (
     <>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
+        <Route
+          path="/"
+          element={<SharedLayout themeHandler={themeHandler} theme={theme} />}
+        >
+          <Route
+            index
+            element={<Home themeHandler={themeHandler} theme={theme} />}
+          />
           <Route path="cart" element={<Cart />} />
           <Route path="about" element={<About />} />
           <Route path="delivery" element={<Delivery />} />
