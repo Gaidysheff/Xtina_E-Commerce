@@ -16,10 +16,9 @@ const Home = (props) => {
       <div className="container py-2">
         <Introduction themeHandler={props.themeHandler} theme={props.theme} />
         <Hero />
-        <BannerConsultancy />
-        <Category />
         <BannerCertificate />
         <Accordion />
+        <BannerConsultancy />
         <Banner />
         <Blogs />
         <Brands />

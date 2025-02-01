@@ -104,10 +104,12 @@ const SingleProduct = () => {
             <Button
               text="Добавить в корзину"
               bgColor="
-              group bg-gradient-to-br from-primaryLight/50 via-primary to-primaryDark/70 
-			group-hover:from-primaryLight group-hover:via-primary 
-			group-hover:to-primaryDark ring-4 ring-primary"
+              group bg-gradient-to-br from-primaryLight/50 via-primary 
+              to-primaryDark/70 group-hover:from-primaryLight 
+              group-hover:via-primary group-hover:to-primaryDark 
+              ring-4 ring-primary"
               textColor="text-white text-xl"
+              paddings="py-4 px-10"
               // handler={props.orderPopupHandler}
             />
           </div>

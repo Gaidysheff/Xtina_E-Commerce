@@ -198,6 +198,7 @@ const SingleFreshener = () => {
               group-hover:via-primary group-hover:to-primaryDark 
               ring-4 ring-primary"
               textColor="text-white text-xl"
+              paddings="py-4 px-10"
               // handler={props.orderPopupHandler}
             />
           </div>

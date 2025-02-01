@@ -113,8 +113,12 @@ const Hero = (props) => {
                     >
                       <Button
                         text="перейти в Каталог"
-                        bgColor="bg-primary"
-                        textColor="text-primaryDark font-semibold italic text-lg"
+                        bgColor="
+              group bg-gradient-to-br from-primaryLight via-primary 
+              to-primaryDark/70 
+              ring-4 ring-primary"
+                        textColor="text-brandDarkGray font-semibold italic text-lg"
+                        paddings="py-4 px-10"
                         handler={routeChange}
                       />
                     </div>
