@@ -4,7 +4,7 @@ import { useRef } from "react";
 const AccordionItem = (props) => {
   const contentHeight = useRef();
   return (
-    <div className="wrapper">
+    <div className="wrapper-blocks">
       <button
         className={`question-container ${props.isOpen ? "active" : ""}`}
         onClick={props.onClick}

@@ -11,7 +11,7 @@ const Accordion = () => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
   return (
-    <div className="">
+    <section className="container py-2">
       {accordionData.map((item, index) => (
         <AccordionItem
           key={index}
@@ -27,7 +27,7 @@ const Accordion = () => {
           onClick={() => handleItemClick(index)}
         />
       ))}
-    </div>
+    </section>
   );
 };
 

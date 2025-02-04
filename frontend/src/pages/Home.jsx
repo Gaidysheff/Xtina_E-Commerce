@@ -9,33 +9,30 @@ import Contacts from "./../components/contacts/Contacts.jsx";
 import Hero from "./../components/hero/Hero.jsx";
 import Introduction from "./../components/introduction/Introduction.jsx";
 import Questions from "./../components/questions/Questions.jsx";
+import YandexMap from "./../components/map/YandexMap.jsx";
 
 const Home = (props) => {
   return (
     <section className="px-3 sm:px-0 my-5">
-      <div className="container py-2">
-        <Introduction themeHandler={props.themeHandler} theme={props.theme} />
-        <Hero />
-        <BannerCertificate />
-        <Accordion />
-        <BannerConsultancy />
-        <Banner />
-        <Blogs />
-        <Brands />
-        <Contacts />
-        <br />
-        <br />
-        <br />
-        <br /> <br />
-        <br />
-        <br />
-        <br /> <br />
-        <br />
-        <br />
-        <br />
-        {/* 
+      {/* <div className="container py-2"> */}
+      <Introduction themeHandler={props.themeHandler} theme={props.theme} />
+      <Hero />
+      <BannerCertificate
+        themeHandler={props.themeHandler}
+        theme={props.theme}
+      />
+      <Accordion />
+      <BannerConsultancy />
+      <Banner />
+      <Blogs />
+      <Brands />
+      <Contacts />
+      <YandexMap />
+      <br />
+
+      {/* 
         <Popup orderPopup={orderPopup} orderPopupHandler={orderPopupHandler} /> */}
-      </div>
+      {/* </div> */}
     </section>
   );
 };

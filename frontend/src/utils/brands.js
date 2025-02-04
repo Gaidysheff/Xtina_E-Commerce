@@ -1,0 +1,147 @@
+import brand01 from "../assets/brands/logo01.png";
+import brand02 from "../assets/brands/logo02.png";
+import brand03 from "../assets/brands/logo03.png";
+import brand04 from "../assets/brands/logo04.png";
+import brand05 from "../assets/brands/logo05.png";
+import brand06 from "../assets/brands/logo06.png";
+import brand07 from "../assets/brands/logo07.png";
+import brand08 from "../assets/brands/logo08.png";
+import brand09 from "../assets/brands/logo09.png";
+import brand10 from "../assets/brands/logo10.png";
+import brand11 from "../assets/brands/logo11.png";
+import brand12 from "../assets/brands/logo12.png";
+import brand13 from "../assets/brands/logo13.png";
+import brand14 from "../assets/brands/logo14.png";
+import brand15 from "../assets/brands/logo15.png";
+import brand16 from "../assets/brands/logo16.png";
+import brand17 from "../assets/brands/logo17.png";
+import brand18 from "../assets/brands/logo18.png";
+import brand19 from "../assets/brands/logo19.png";
+import brand20 from "../assets/brands/logo20.png";
+import brand21 from "../assets/brands/logo21.png";
+import brand22 from "../assets/brands/logo22.png";
+import brand23 from "../assets/brands/logo23.png";
+import brand24 from "../assets/brands/logo24.png";
+import brand25 from "../assets/brands/logo25.png";
+import brand26 from "../assets/brands/logo26.png";
+import brand27 from "../assets/brands/logo27.png";
+import brand28 from "../assets/brands/logo28.png";
+import brand29 from "../assets/brands/logo29.png";
+import brand30 from "../assets/brands/logo30.png";
+import brand31 from "../assets/brands/logo31.png";
+import brand32 from "../assets/brands/logo32.png";
+import brand33 from "../assets/brands/logo33.png";
+import brand34 from "../assets/brands/logo34.png";
+import brand35 from "../assets/brands/logo35.png";
+import brand36 from "../assets/brands/logo36.png";
+import brand37 from "../assets/brands/logo37.png";
+import brand38 from "../assets/brands/logo38.png";
+import brand39 from "../assets/brands/logo39.png";
+import brand40 from "../assets/brands/logo40.png";
+import brand41 from "../assets/brands/logo41.png";
+import brand42 from "../assets/brands/logo42.png";
+import brand43 from "../assets/brands/logo43.png";
+import brand44 from "../assets/brands/logo44.png";
+import brand45 from "../assets/brands/logo45.png";
+import brand46 from "../assets/brands/logo46.png";
+import brand47 from "../assets/brands/logo47.png";
+import brand48 from "../assets/brands/logo48.png";
+import brand49 from "../assets/brands/logo49.png";
+import brand50 from "../assets/brands/logo50.png";
+import brand51 from "../assets/brands/logo51.png";
+import brand52 from "../assets/brands/logo52.png";
+import brand53 from "../assets/brands/logo53.png";
+import brand54 from "../assets/brands/logo54.png";
+import brand55 from "../assets/brands/logo55.png";
+import brand56 from "../assets/brands/logo56.png";
+import brand57 from "../assets/brands/logo57.png";
+import brand58 from "../assets/brands/logo58.png";
+import brand59 from "../assets/brands/logo59.png";
+import brand60 from "../assets/brands/logo60.png";
+import brand61 from "../assets/brands/logo61.png";
+import brand62 from "../assets/brands/logo62.png";
+import brand63 from "../assets/brands/logo63.png";
+import brand64 from "../assets/brands/logo64.png";
+import brand65 from "../assets/brands/logo65.png";
+import brand66 from "../assets/brands/logo66.png";
+import brand67 from "../assets/brands/logo67.png";
+import brand68 from "../assets/brands/logo68.png";
+import brand69 from "../assets/brands/logo69.png";
+import brand70 from "../assets/brands/logo70.png";
+import brand71 from "../assets/brands/logo71.png";
+import brand72 from "../assets/brands/logo72.png";
+
+export const BRANDS = [
+  { image: brand01 },
+  { image: brand02 },
+  { image: brand03 },
+  { image: brand04 },
+  { image: brand05 },
+  { image: brand06 },
+  { image: brand07 },
+  { image: brand08 },
+  { image: brand09 },
+  { image: brand10 },
+  { image: brand11 },
+  { image: brand12 },
+  { image: brand13 },
+  { image: brand14 },
+  { image: brand15 },
+  { image: brand16 },
+  { image: brand17 },
+  { image: brand18 },
+  { image: brand19 },
+  { image: brand20 },
+  { image: brand21 },
+  { image: brand22 },
+  { image: brand23 },
+  { image: brand24 },
+  { image: brand25 },
+  { image: brand26 },
+  { image: brand27 },
+  { image: brand28 },
+  { image: brand29 },
+  { image: brand30 },
+  { image: brand31 },
+  { image: brand32 },
+  { image: brand33 },
+  { image: brand34 },
+  { image: brand35 },
+  { image: brand36 },
+  { image: brand37 },
+  { image: brand38 },
+  { image: brand39 },
+  { image: brand40 },
+  { image: brand41 },
+  { image: brand42 },
+  { image: brand43 },
+  { image: brand44 },
+  { image: brand45 },
+  { image: brand46 },
+  { image: brand47 },
+  { image: brand48 },
+  { image: brand49 },
+  { image: brand50 },
+  { image: brand51 },
+  { image: brand52 },
+  { image: brand53 },
+  { image: brand54 },
+  { image: brand55 },
+  { image: brand56 },
+  { image: brand57 },
+  { image: brand58 },
+  { image: brand59 },
+  { image: brand60 },
+  { image: brand61 },
+  { image: brand62 },
+  { image: brand63 },
+  { image: brand64 },
+  { image: brand65 },
+  { image: brand66 },
+  { image: brand67 },
+  { image: brand68 },
+  { image: brand69 },
+  { image: brand70 },
+  { image: brand71 },
+  { image: brand72 },
+];
