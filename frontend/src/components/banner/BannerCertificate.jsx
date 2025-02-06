@@ -10,7 +10,7 @@ const BannerCertificate = (props) => {
           className="min-h-[550px] md:min-h-[320px] lg:min-h-[450px] 
         xl:min-h-[550px] flex justify-center items-center"
         >
-          <div className="">
+          <div className="w-full">
             <div
               className="bg-primary grid grid-cols-1 md:grid-cols-3 gap-6 items-center
             text-white rounded-3xl"

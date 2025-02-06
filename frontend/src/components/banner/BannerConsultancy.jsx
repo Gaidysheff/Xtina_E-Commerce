@@ -6,7 +6,7 @@ const BannerConsultancy = () => {
     <section className="container py-2">
       <div className="my-3">
         <div className="min-h-[550px] md:min-h-[350px] lg:min-h-[550px] flex justify-center items-center">
-          <div className="">
+          <div className="w-full">
             <div
               className="bg-primary grid grid-cols-1 md:grid-cols-3 gap-6 items-center
             text-white rounded-3xl"

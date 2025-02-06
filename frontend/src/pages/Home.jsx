@@ -1,5 +1,6 @@
 import Accordion from "./../components/accordion/Accordion.jsx";
 import Banner from "./../components/banner/Banner.jsx";
+import BannerBottles from "./../components/banner/BannerBottles.jsx";
 import BannerCertificate from "./../components/banner/BannerCertificate.jsx";
 import BannerConsultancy from "./../components/banner/BannerConsultancy.jsx";
 import Blogs from "./../components/blogs/Blogs.jsx";
@@ -17,14 +18,14 @@ const Home = (props) => {
       {/* <div className="container py-2"> */}
       <Introduction themeHandler={props.themeHandler} theme={props.theme} />
       <Hero />
+      <Accordion />
+      <BannerConsultancy />
+      <Blogs />
+      <BannerBottles />
       <BannerCertificate
         themeHandler={props.themeHandler}
         theme={props.theme}
       />
-      <Accordion />
-      <BannerConsultancy />
-      <Banner />
-      <Blogs />
       <Brands />
       <Contacts />
       <YandexMap />
