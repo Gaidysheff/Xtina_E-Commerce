@@ -1,54 +1,73 @@
+import { useContext, useState } from "react";
+
 import Button from "./../../components/sharedUI/Button.jsx";
 import ButtonVolume from "./../../components/sharedUI/ButtonVolume.jsx";
+import CartContext from "./../../store/cart-context.js";
+import MealItemForm from "./MealItemForm/MealItemForm.jsx";
 import { NumericFormat } from "react-number-format";
 import { PERFUMES } from "../../utils/perfumes.js";
 import { useParams } from "react-router";
-import { useState } from "react";
 
 const SingleProduct = () => {
   const params = useParams();
   const perfume = PERFUMES.find((perfume) => perfume.id === params.perfumeId);
 
+  const cartContext = useContext(CartContext);
+
   const [volume, setVolume] = useState("3ml");
 
-  const [selectedPrice, setSelectedPrice] = useState(perfume.price3);
+  const [price, setPrice] = useState(perfume.price3);
+
+  const [gift, setGift] = useState(false);
 
   const volume3mlHandler = () => {
     setVolume("3ml");
-    setSelectedPrice(perfume.price3);
+    setPrice(perfume.price3);
   };
   const volume5mlHandler = () => {
     setVolume("5ml");
-    setSelectedPrice(perfume.price5);
+    setPrice(perfume.price5);
   };
   const volume10mlHandler = () => {
     setVolume("10ml");
-    setSelectedPrice(perfume.price10);
+    setPrice(perfume.price10);
   };
   const volume20mlHandler = () => {
     setVolume("20ml");
-    setSelectedPrice(perfume.price20);
+    setPrice(perfume.price20);
   };
   const volume30mlHandler = () => {
     setVolume("30ml");
-    setSelectedPrice(perfume.price30);
+    setPrice(perfume.price30);
   };
 
-  // let selectedPrice = perfume.price3;
+  const giftHandler = () => {
+    setGift(!gift);
+  };
 
-  // if (volume === "3ml") {
-  //   selectedPrice = perfume.price3;
-  // } else if (volume === "5ml") {
-  //   selectedPrice = perfume.price5;
-  // } else if (volume === "10ml") {
-  //   selectedPrice = perfume.price10;
-  // } else if (volume === "20ml") {
-  //   selectedPrice = perfume.price20;
-  // } else {
-  //   selectedPrice = perfume.price30;
-  // }
+  const addItemToCartHandler = (event) => {
+    event.preventDefault();
 
-  // console.log(selectedPrice);
+    cartContext.addItem({
+      id: perfume.id,
+      name: perfume.name,
+      image: perfume.image,
+      amount: 1,
+      price: price,
+      volume: volume,
+      gift: gift,
+    });
+
+    if (gift) {
+      cartContext.addItem({
+        name: "Подарочный сертификат",
+        amount: 1,
+        price: 150,
+      });
+    }
+
+    console.log(volume, price, gift);
+  };
 
   return (
     <section className="container py-5 my-5">
@@ -60,16 +79,10 @@ const SingleProduct = () => {
             {perfume.brand}
           </div>
 
-          {/* {volume === "3ml" && perfume.price3}
-          {volume === "5ml" && perfume.price5}
-          {volume === "10ml" && perfume.price10}
-          {volume === "20ml" && perfume.price20}
-          {volume === "30ml" && perfume.price30} */}
-
           <NumericFormat
-            className="flex justify-start text-5xl text-primaryDark
-                      dark:text-primary pb-2"
-            value={selectedPrice}
+            className="flex justify-start text-5xl text-primaryDark 
+            dark:text-primary pb-2"
+            value={price}
             displayType={"text"}
             decimalSeparator=","
             thousandSeparator="."
@@ -95,7 +108,7 @@ const SingleProduct = () => {
                 {" "}
                 (+150 ₽)
               </span>
-              <input type="checkbox" />
+              <input type="checkbox" onChange={giftHandler} />
               <span className="checkmark"></span>
             </label>
           </div>
@@ -110,7 +123,7 @@ const SingleProduct = () => {
               ring-4 ring-primary"
               textColor="text-white text-xl"
               paddings="py-4 px-10"
-              // handler={props.orderPopupHandler}
+              handler={addItemToCartHandler}
             />
           </div>
 

@@ -6,14 +6,25 @@ import {
 import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
 import { Link, NavLink } from "react-router";
 
+import CartContext from "./../../../store/cart-context.js";
 import DarkMode from "./DarkMode.jsx";
 import { IoMdSearch } from "react-icons/io";
 import Logo_short_black from "../../../assets/shared/Logo_short_black.svg";
 import Logo_short_primary from "../../../assets/shared/Logo_short_primary.svg";
+import { useContext } from "react";
 import { useState } from "react";
 
 const Navbar = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const cartContext = useContext(CartContext);
+
+  // const cartItemsNumber = cartContext.items.length;
+
+  const cartItemsNumber = cartContext.items.reduce((accumulated, item) => {
+    // return accumulated + 1;
+    return accumulated + item.amount;
+  }, 0);
 
   const humburgerHandler = () => {
     setMenuOpen(!menuOpen);
@@ -122,7 +133,7 @@ const Navbar = (props) => {
               />
             </div>
             {/* Order-button section */}
-            <button className="relative p-3" onClick={props.orderPopupHandler}>
+            <button className="relative p-3" onClick={props.onShowCart}>
               <FaCartShopping
                 className="text-xl text-gray-600 
               dark:text-gray-400"
@@ -131,7 +142,7 @@ const Navbar = (props) => {
                 className="w-4 h-4 bg-red-500 text-white rounded-full 
                 absolute top-0 right-0 flex items-center justify-center text-xs"
               >
-                4
+                {cartItemsNumber}
               </div>
             </button>
             {/* Dark Mode section */}
