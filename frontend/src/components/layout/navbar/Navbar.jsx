@@ -133,14 +133,18 @@ const Navbar = (props) => {
               />
             </div>
             {/* Order-button section */}
-            <button className="relative p-3" onClick={props.onShowCart}>
+            <button
+              className="relative p-3 group hover:scale-125"
+              onClick={props.onShowCart}
+            >
               <FaCartShopping
-                className="text-xl text-gray-600 
-              dark:text-gray-400"
+                className="text-xl text-gray-600
+              dark:text-gray-400 group-hover:text-primaryDark"
               />
               <div
                 className="w-4 h-4 bg-red-500 text-white rounded-full 
-                absolute top-0 right-0 flex items-center justify-center text-xs"
+                absolute top-0 right-0 flex items-center justify-center text-xs
+                group-hover:bg-primaryDark"
               >
                 {cartItemsNumber}
               </div>

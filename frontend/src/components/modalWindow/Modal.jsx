@@ -15,11 +15,11 @@ const Backdrop = (props) => {
 const ModalWindow = (props) => {
   return (
     <div
-      className="fixed top-[20vh] left-[5%] w-[90%] bg-white p-5 rounded-xl
+      className="fixed top-[20vh] left-[5%] w-[90%] bg-white p-3 sm:p-5 rounded-xl
 		z-30 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] animation-mine
-		md:w-[40rem] md:left-[calc(50%-20rem)]"
+		md:w-[40rem] md:left-[calc(50%-20rem)] dark:bg-gray-300"
     >
-      <div className="">{props.children}</div>
+      <div>{props.children}</div>
     </div>
   );
 };

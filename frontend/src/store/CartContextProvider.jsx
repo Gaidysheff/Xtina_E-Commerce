@@ -54,28 +54,19 @@ const cartReducer = (state, action) => {
 
     let updatedItems;
 
-    // if (existingCartItem.amount === 1) {
-    //   updatedItems = state.items.filter(
-    //     (item) => (item.id != action.id) & (item.volume != action.volume)
-    //   );
-    // } else {
-    //   const updatedItem = {
-    //     ...existingCartItem,
-    //     amount: existingCartItem.amount - 1,
-    //   };
+    if (existingCartItem.amount === 1) {
+      updatedItems = state.items.filter(
+        (item) => (item.id != action.id) | (item.volume != action.volume)
+      );
+    } else {
+      const updatedItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount - 1,
+      };
 
-    //   updatedItems = [...state.items];
-    //   updatedItems[existingCartItemIndex] = updatedItem;
-    // }
-    const updatedItem = {
-      ...existingCartItem,
-      amount: existingCartItem.amount - 1,
-    };
-
-    updatedItems = [...state.items];
-    updatedItems[existingCartItemIndex] = updatedItem;
-
-    console.log("updatedItems=", updatedItems);
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    }
 
     return {
       items: updatedItems,

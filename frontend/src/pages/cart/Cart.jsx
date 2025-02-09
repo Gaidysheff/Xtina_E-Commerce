@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 
 import CartContext from "./../../store/cart-context.js";
-import CartItem from "./CartItem/CartItem.jsx";
+import CartItem from "./CartItem.jsx";
 import Modal from "./../../components/modalWindow/Modal.jsx";
+import { NumericFormat } from "react-number-format";
 
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
@@ -21,12 +22,16 @@ const Cart = (props) => {
   };
 
   const cartPerfumes = (
-    <ul className="list-none m-0 p-0 max-h-[20rem] overflow-auto">
+    <ul
+      className="list-none m-0 p-0 overflow-auto max-h-[400px] 
+      sm:max-h-[550px]"
+    >
       {cartContext.items.map((item, index) => (
         <CartItem
           key={index}
           id={item.id}
           name={item.name}
+          image={item.image}
           amount={item.amount}
           price={item.price}
           volume={item.volume}
@@ -38,42 +43,61 @@ const Cart = (props) => {
   );
   return (
     <Modal onHideCart={props.onHideCart}>
-      <section className="px-5 sm:px-0">
-        <div className="container">
-          {cartPerfumes}
-          <div
-            className="flex justify-between items-center font-semibold my-[1rem]
-          text-xl"
-          >
-            <span>Итого:</span>
-            <span>{totalAmount}</span>
-          </div>
-          <div className="text-end">
-            <button
-              onClick={props.onHideCart}
-              className="cursor-pointer bg-transparent border-2 
-            border-red-500 py-2 px-4 rounded-xl ml-2 hover:bg-primary
-            hover:text-black hover:ring hover:ring-blue-500 active:bg-primary
-            active:text-black active:ring active:ring-blue-500 focus:bg-primary
-            focus:text-black focus:ring focus:ring-blue-500"
-            >
-              Закрыть
-            </button>
-
-            {hasItems && (
-              <button
-                className="cursor-pointer bg-transparent border-2 
-            border-red-500 py-2 px-4 rounded-xl ml-2 hover:bg-primary
-            hover:text-black hover:ring hover:ring-blue-500 active:bg-primary
-            active:text-black active:ring active:ring-blue-500 focus:bg-primary
-            focus:text-black focus:ring focus:ring-blue-500"
-              >
-                Заказать
-              </button>
-            )}
-          </div>
+      <div className="flex flex-col">
+        <div
+          onClick={props.onHideCart}
+          class="self-end w-8 h-8 text-3xl text-primaryDark rounded-md
+        flex justify-center items-center border-2 cursor-pointer
+        border-primaryDark 
+                hover:bg-gradient-to-br hover:from-primaryLight 
+                hover:to-primaryDark hover:text-white hover:ring 
+                hover:border-white hover:ring-primaryDark/70"
+        >
+          <div className="pb-1">&times;</div>
         </div>
-      </section>
+        {!hasItems && (
+          <p
+            className="text-2xl sm:text-4xl italic text-center my-5
+            text-primaryDark/80 font-['Pacifico']
+            drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]"
+          >
+            Ваша корзина пуста.
+          </p>
+        )}
+        <section>
+          <div className="container">
+            {cartPerfumes}
+            <div
+              className="flex justify-between items-center font-semibold my-[1rem]
+            text-xl"
+            >
+              <p className="text-gray-400">Итого:</p>
+              <NumericFormat
+                className="flex justify-start text-3xl sm:text-5xl pb-2
+                text-primaryDark"
+                value={totalAmount}
+                displayType={"text"}
+                decimalSeparator=","
+                thousandSeparator="."
+                suffix={" ₽"}
+              />
+            </div>
+            <div className="text-end">
+              {hasItems && (
+                <button
+                  className="cursor-pointer bg-transparent text-primaryDark ml-2
+                font-semibold border-2 border-primaryDark py-2 px-4 rounded-xl 
+                hover:bg-gradient-to-br hover:from-primaryLight 
+                hover:to-primaryDark hover:text-white hover:ring 
+                hover:border-white hover:ring-primaryDark/70"
+                >
+                  Заказать
+                </button>
+              )}
+            </div>
+          </div>
+        </section>
+      </div>
     </Modal>
   );
 };
