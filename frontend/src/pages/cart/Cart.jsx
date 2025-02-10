@@ -9,7 +9,6 @@ const Cart = (props) => {
   const cartContext = useContext(CartContext);
 
   const totalAmount = `${Math.abs(cartContext.totalAmount).toFixed(0)} ₽`;
-  // const totalAmount = `$${cartContext.totalAmount.toFixed(2)}`;
 
   const hasItems = cartContext.items.length > 0;
 
@@ -46,12 +45,12 @@ const Cart = (props) => {
       <div className="flex flex-col">
         <div
           onClick={props.onHideCart}
-          class="self-end w-8 h-8 text-3xl text-primaryDark rounded-md
+          className="self-end w-8 h-8 text-3xl text-primaryDark rounded-md
         flex justify-center items-center border-2 cursor-pointer
         border-primaryDark 
-                hover:bg-gradient-to-br hover:from-primaryLight 
-                hover:to-primaryDark hover:text-white hover:ring 
-                hover:border-white hover:ring-primaryDark/70"
+        hover:bg-gradient-to-br hover:from-primaryLight 
+        hover:to-primaryDark hover:text-white hover:ring 
+        hover:border-white hover:ring-primaryDark/70"
         >
           <div className="pb-1">&times;</div>
         </div>
@@ -74,7 +73,8 @@ const Cart = (props) => {
               <p className="text-gray-400">Итого:</p>
               <NumericFormat
                 className="flex justify-start text-3xl sm:text-5xl pb-2
-                text-primaryDark"
+              text-transparent bg-clip-text bg-gradient-to-r 
+              from-primary to-primaryDark"
                 value={totalAmount}
                 displayType={"text"}
                 decimalSeparator=","

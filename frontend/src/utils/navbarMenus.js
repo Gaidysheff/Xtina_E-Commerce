@@ -30,7 +30,7 @@ export const DropdownLinks = [
   {
     id: 3,
     label: "Расходники",
-    path: "/about8",
+    path: "/consumables",
   },
 ];
 
@@ -48,6 +48,6 @@ export const DropdownLinksBurger = [
   {
     id: 3,
     label: "Каталог: РАСХОДНИКИ",
-    path: "/about8",
+    path: "/consumables",
   },
 ];

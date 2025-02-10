@@ -3,28 +3,18 @@ import {
   DropdownLinksBurger,
   MenuLinks,
 } from "../../../utils/navbarMenus.js";
-import { FaCaretDown, FaCartShopping } from "react-icons/fa6";
 import { Link, NavLink } from "react-router";
 
-import CartContext from "./../../../store/cart-context.js";
 import DarkMode from "./DarkMode.jsx";
+import { FaCaretDown } from "react-icons/fa6";
 import { IoMdSearch } from "react-icons/io";
 import Logo_short_black from "../../../assets/shared/Logo_short_black.svg";
 import Logo_short_primary from "../../../assets/shared/Logo_short_primary.svg";
-import { useContext } from "react";
+import NavbarCartButton from "./NavbarCartButton/NavbarCartButton.jsx";
 import { useState } from "react";
 
 const Navbar = (props) => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const cartContext = useContext(CartContext);
-
-  // const cartItemsNumber = cartContext.items.length;
-
-  const cartItemsNumber = cartContext.items.reduce((accumulated, item) => {
-    // return accumulated + 1;
-    return accumulated + item.amount;
-  }, 0);
 
   const humburgerHandler = () => {
     setMenuOpen(!menuOpen);
@@ -132,23 +122,10 @@ const Navbar = (props) => {
                         group-hover:text-primary duration-200"
               />
             </div>
+            {/* ------------- */}
             {/* Order-button section */}
-            <button
-              className="relative p-3 group hover:scale-125"
-              onClick={props.onShowCart}
-            >
-              <FaCartShopping
-                className="text-xl text-gray-600
-              dark:text-gray-400 group-hover:text-primaryDark"
-              />
-              <div
-                className="w-4 h-4 bg-red-500 text-white rounded-full 
-                absolute top-0 right-0 flex items-center justify-center text-xs
-                group-hover:bg-primaryDark"
-              >
-                {cartItemsNumber}
-              </div>
-            </button>
+            <NavbarCartButton onClick={props.onShowCart} />
+            {/* ------------- */}
             {/* Dark Mode section */}
             <div>
               <DarkMode themeHandler={props.themeHandler} theme={props.theme} />
@@ -161,9 +138,18 @@ const Navbar = (props) => {
                       justify-between w-[2.25rem] h-[2rem] flex lg:hidden"
           onClick={humburgerHandler}
         >
-          <span className="h-[0.4rem] w-[100%] bg-primary rounded-md"></span>
-          <span className="h-[0.4rem] w-[100%] bg-primary rounded-md"></span>
-          <span className="h-[0.4rem] w-[100%] bg-primary rounded-md"></span>
+          <span
+            className="h-[0.4rem] w-[100%] bg-gradient-to-r 
+          from-primaryLight via-primary to-primaryDark rounded-md"
+          ></span>
+          <span
+            className="h-[0.4rem] w-[100%] bg-gradient-to-r 
+          from-primaryLight via-primary to-primaryDark rounded-md"
+          ></span>
+          <span
+            className="h-[0.4rem] w-[100%] bg-gradient-to-r 
+          from-primaryLight via-primary to-primaryDark rounded-md"
+          ></span>
         </div>
         {/* ========== PHONE SCREEN MENU ========== */}
         <div className="container flex-col lg:hidden">

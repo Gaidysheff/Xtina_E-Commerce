@@ -65,8 +65,6 @@ const SingleProduct = () => {
         price: 150,
       });
     }
-
-    console.log(volume, price, gift);
   };
 
   return (

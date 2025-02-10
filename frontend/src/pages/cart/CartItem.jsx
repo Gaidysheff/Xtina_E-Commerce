@@ -1,8 +1,6 @@
 import { NumericFormat } from "react-number-format";
 
 const CartItem = (props) => {
-  // const price = `${props.price.toFixed(0)} R`;
-
   const price = (
     <NumericFormat
       value={props.price}
@@ -14,31 +12,41 @@ const CartItem = (props) => {
   );
 
   return (
-    <li
-      className="pb-2 mb-2 sm:pb-4 sm:mb-4 border-b-2 sm:border-b-4 
-      border-primaryDark"
-    >
-      <div className="flex items-end mb-2 sm:mb-5">
-        <div className="w-[50px] h-[50px]">
-          <img className="w-full" src={props.image} alt="" />
+    <li className="">
+      <div className="flex items-end justify-between mb-2 sm:mb-5">
+        <div className="flex justify-start items-end">
+          <div className="w-[50px] h-[50px] mr-2">
+            <img className="w-full" src={props.image} alt="" />
+          </div>
+          <div className="text-lg leading-5 sm:text-2xl justify-self-start">
+            {props.name}
+          </div>
         </div>
-        <div className="text-lg leading-5 sm:text-2xl">{props.name}</div>
+        <div>
+          {props.volume && (
+            <div className="inline-flex">
+              <p className="hidden sm:block text-md sm:text-xl text-gray-400">
+                Объём:
+              </p>
+              <p
+                className="text-lg sm:text-xl sm:mx-2 text-transparent 
+                  bg-clip-text bg-gradient-to-r from-primary to-primaryDark"
+              >
+                {props.volume}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
       <div className="flex justify-between items-center ">
         <div className="w-full flex justify-between items-center">
           <div className="inline-flex">
-            <p className="hidden sm:block text-md sm:text-xl text-gray-400">
-              Объём:
-            </p>
-            <p className="text-md sm:text-xl sm:mx-2 sm:text-primaryDark">
-              {props.volume}
-            </p>
-          </div>
-          <div className="inline-flex">
-            <p className="hidden sm:block text-md sm:text-xl text-gray-400">
-              Цена:
-            </p>
-            <p className="text-md sm:text-xl sm:mx-2 font-bold text-primaryDark">
+            <p className="text-md sm:text-xl mr-2 text-gray-400">Цена:</p>
+            <p
+              className="text-md sm:text-xl sm:mx-2 font-bold
+              text-transparent bg-clip-text bg-gradient-to-r 
+              from-primary to-primaryDark"
+            >
               {price}
             </p>
           </div>
@@ -47,9 +55,9 @@ const CartItem = (props) => {
               Кол-во:
             </p>
             <div
-              className=" bg-primaryDark text-white text-md sm:text-xl 
-              w-10 h-8 sm:w-14 sm:h-10 mx-2
-              rounded-lg sm:rounded-xl flex justify-center items-center"
+              className="text-md sm:text-xl w-10 h-8 sm:w-14 sm:h-10 text-white
+              rounded-lg sm:rounded-xl flex justify-center items-center mx-2
+              bg-gradient-to-br from-primaryLight to-primaryDark"
             >
               <p> x {props.amount}</p>
             </div>
@@ -82,6 +90,10 @@ const CartItem = (props) => {
           </button>
         </div>
       </div>
+      <div
+        className="h-[2px] sm:h-[4px] w-full my-2 sm:my-4
+      bg-gradient-to-r from-primaryLight to-primaryDark"
+      ></div>
     </li>
   );
 };

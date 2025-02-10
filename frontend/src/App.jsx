@@ -3,18 +3,23 @@ import { useEffect, useState } from "react";
 
 import About from "./pages/About.jsx";
 import Cart from "./pages/cart/Cart.jsx";
+import CommentsOnConsumable from "./components/comments/CommentsOnConsumable.jsx";
 import CommentsOnFreshener from "./components/comments/CommentsOnFreshener.jsx";
-import CommentsOnPerfume from "./components/comments/CommentsOnProduct.jsx";
+import CommentsOnPerfume from "./components/comments/CommentsOnPerfume.jsx";
+import Consumables from "./pages/productConsumables/Consumables.jsx";
 import Delivery from "./pages/Delivery.jsx";
 import Error from "./pages/Error.jsx";
 import Fresheners from "./pages/productFreshener/Fresheners.jsx";
 import Home from "./pages/Home.jsx";
 import Perfumes from "./pages/productPerfumes/Perfumes.jsx";
+import SharedConsumablesLayout from "./pages/productConsumables/SharedConsumablesLayout.jsx";
 import SharedFreshenersLayout from "./pages/productFreshener/SharedFreshenersLayout.jsx";
 import SharedLayout from "./components/layout/SharedLayout.jsx";
 import SharedPerfumesLayout from "./pages/productPerfumes/SharedPerfumesLayout.jsx";
+import SharedSingleConsumableLayout from "./pages/productConsumables/SharedSingleConsumableLayout.jsx";
 import SharedSingleFreshenerLayout from "./pages/productFreshener/SharedSingleFreshenerLayout.jsx";
 import SharedSinglePerfumeLayout from "./pages/productPerfumes/SharedSinglePerfumeLayout.jsx";
+import SingleConsumable from "./pages/productConsumables/SingleConsumable.jsx";
 import SingleFreshener from "./pages/productFreshener/SingleFreshener.jsx";
 import SinglePerfume from "./pages/productPerfumes/SinglePerfume.jsx";
 
@@ -26,6 +31,10 @@ const nestedRouteSet1 = "comments";
 export const parentRouteSet2 = "fresheners";
 export const dynamicRouteSet2 = "freshenerId";
 const nestedRouteSet2 = "comments";
+// URL settings for CONSUMABLES Section
+export const parentRouteSet3 = "consumables";
+export const dynamicRouteSet3 = "consumableId";
+const nestedRouteSet3 = "comments";
 
 function App(props) {
   const [theme, setTheme] = useState(
@@ -94,6 +103,22 @@ function App(props) {
               <Route
                 path={`${nestedRouteSet2}`}
                 element={<CommentsOnFreshener />}
+              />
+            </Route>
+          </Route>
+          <Route
+            path={`${parentRouteSet3}`}
+            element={<SharedConsumablesLayout />}
+          >
+            <Route index element={<Consumables />} />
+            <Route
+              path={`:${dynamicRouteSet3}`}
+              element={<SharedSingleConsumableLayout />}
+            >
+              <Route index element={<SingleConsumable />} />
+              <Route
+                path={`${nestedRouteSet3}`}
+                element={<CommentsOnConsumable />}
               />
             </Route>
           </Route>

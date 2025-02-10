@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
 
-import Button from "./../../components/sharedUI/Button.jsx";
-import CartContext from "./../../store/cart-context.js";
-import { FRESHENERS } from "../../utils/fresheners.js";
+import Button from "../../components/sharedUI/Button.jsx";
+import { CONSUMABLES } from "../../utils/consumables.js";
+import CartContext from "../../store/cart-context.js";
 import { NumericFormat } from "react-number-format";
 import { useParams } from "react-router";
 
-const SingleFreshener = () => {
+const SingleConsumable = () => {
   const params = useParams();
-  const freshener = FRESHENERS.find(
-    (freshener) => freshener.id === params.freshenerId
+  const consumable = CONSUMABLES.find(
+    (consumable) => consumable.id === params.consumableId
   );
 
   const cartContext = useContext(CartContext);
@@ -18,11 +18,11 @@ const SingleFreshener = () => {
     event.preventDefault();
 
     cartContext.addItem({
-      id: freshener.id,
-      name: freshener.title,
-      image: freshener.image,
+      id: consumable.id,
+      name: consumable.title,
+      image: consumable.image,
       amount: 1,
-      price: freshener.price,
+      price: consumable.price,
     });
   };
 
@@ -30,20 +30,20 @@ const SingleFreshener = () => {
     <section className="container py-5 my-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         <div className="px-7 md:px-0 md:pr-5 mb-10 md:mb-0 md:mt-20">
-          <img src={freshener.image} alt="freshener image" />
+          <img src={consumable.image} alt="consumable image" />
         </div>
         <div className="mx-5 md:mx-2">
           {/* --------------- Категория и Название ----------------- */}
           <p className="mb-3 text-xl lg:text-3xl font-semibold">
-            {freshener.category}
+            {consumable.category}
           </p>
-          <p className="text-2xl font-semibold">{freshener.title}</p>
-          <p className="text-2xl">{freshener.subtitle}</p>
+          <p className="text-2xl font-semibold">{consumable.title}</p>
+          <p className="text-2xl">{consumable.subtitle}</p>
 
           <NumericFormat
             className="flex justify-start text-5xl text-primaryDark
                       dark:text-primary my-10"
-            value={freshener.price}
+            value={consumable.price}
             displayType={"text"}
             decimalSeparator=","
             thousandSeparator="."
@@ -60,31 +60,31 @@ const SingleFreshener = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma1}
+                {consumable.aroma1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma2}
+                {consumable.aroma2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma3}
+                {consumable.aroma3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma4}
+                {consumable.aroma4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma5}
+                {consumable.aroma5}
               </p>
             </div>
           </div>
@@ -98,31 +98,31 @@ const SingleFreshener = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {freshener.top_note1}
+                {consumable.top_note1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.top_note2}
+                {consumable.top_note2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.top_note3}
+                {consumable.top_note3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.top_note4}
+                {consumable.top_note4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.top_note5}
+                {consumable.top_note5}
               </p>
             </div>
           </div>
@@ -136,31 +136,31 @@ const SingleFreshener = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {freshener.middle_note1}
+                {consumable.middle_note1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.middle_note2}
+                {consumable.middle_note2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.middle_note3}
+                {consumable.middle_note3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.middle_note4}
+                {consumable.middle_note4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.middle_note5}
+                {consumable.middle_note5}
               </p>
             </div>
           </div>
@@ -174,36 +174,36 @@ const SingleFreshener = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {freshener.base_note1}
+                {consumable.base_note1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.base_note2}
+                {consumable.base_note2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.base_note3}
+                {consumable.base_note3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.base_note4}
+                {consumable.base_note4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.base_note5}
+                {consumable.base_note5}
               </p>
             </div>
           </div>
           {/* ------------------------------------------------------- */}
-          <div>{freshener.description}</div>
+          <div>{consumable.description}</div>
 
           <div className="my-10">
             <Button
@@ -224,4 +224,4 @@ const SingleFreshener = () => {
   );
 };
 
-export default SingleFreshener;
+export default SingleConsumable;
