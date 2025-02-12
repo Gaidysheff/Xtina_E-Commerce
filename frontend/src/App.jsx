@@ -37,6 +37,8 @@ export const dynamicRouteSet3 = "consumableId";
 const nestedRouteSet3 = "comments";
 
 function App(props) {
+  // ================= THEMES =========================
+
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -61,6 +63,7 @@ function App(props) {
       element.classList.remove("dark");
     }
   });
+
   return (
     <>
       <Routes>

@@ -16,7 +16,7 @@ const CartItem = (props) => {
       <div className="flex items-end justify-between mb-2 sm:mb-5">
         <div className="flex justify-start items-end">
           <div className="w-[50px] h-[50px] mr-2">
-            <img className="w-full" src={props.image} alt="" />
+            <img className="h-full" src={props.image} alt="" />
           </div>
           <div className="text-lg leading-5 sm:text-2xl justify-self-start">
             {props.name}

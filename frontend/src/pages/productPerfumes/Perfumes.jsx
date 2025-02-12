@@ -1,16 +1,18 @@
 import Card from "../../components/sharedUI/Card.jsx";
 import { Link } from "react-router";
 import { NumericFormat } from "react-number-format";
-import { PERFUMES } from "../../utils/perfumes.js";
+import PerfumeContext from "./../../store/perfume-context.js";
+import { useContext } from "react";
 
-const Perfumes = () => {
+const Perfumes = (props) => {
+  const perfumes = useContext(PerfumeContext);
   return (
     <section className="container py-10">
       <div
         className="grid grid-cols-2 lg:grid-cols-3 
         xl:grid-cols-4 gap-3 mx-3 lg:gap-10 lg:mx-5"
       >
-        {PERFUMES.map((product) => (
+        {perfumes.map((product) => (
           <Card key={product.id}>
             <Link to={`${product.id}`}>
               <div className="inside-card flex flex-col justify-between">

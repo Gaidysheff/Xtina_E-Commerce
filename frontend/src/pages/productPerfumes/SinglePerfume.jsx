@@ -3,14 +3,18 @@ import { useContext, useState } from "react";
 import Button from "./../../components/sharedUI/Button.jsx";
 import ButtonVolume from "./../../components/sharedUI/ButtonVolume.jsx";
 import CartContext from "./../../store/cart-context.js";
-import MealItemForm from "./MealItemForm/MealItemForm.jsx";
 import { NumericFormat } from "react-number-format";
-import { PERFUMES } from "../../utils/perfumes.js";
+import { PRESENT } from "../../utils/gift.js";
+import PerfumeContext from "../../store/perfume-context.js";
 import { useParams } from "react-router";
 
-const SingleProduct = () => {
+const SingleProduct = (props) => {
+  const perfumes = useContext(PerfumeContext);
   const params = useParams();
-  const perfume = PERFUMES.find((perfume) => perfume.id === params.perfumeId);
+
+  const perfume = perfumes.find((perfume) => perfume.id === params.perfumeId);
+
+  const present = PRESENT[0];
 
   const cartContext = useContext(CartContext);
 
@@ -55,14 +59,15 @@ const SingleProduct = () => {
       amount: 1,
       price: price,
       volume: volume,
-      gift: gift,
     });
 
     if (gift) {
       cartContext.addItem({
-        name: "Подарочный сертификат",
+        name: present.title,
+        image: present.image,
         amount: 1,
-        price: 150,
+        price: present.price,
+        volume: present.volume,
       });
     }
   };
@@ -101,10 +106,10 @@ const SingleProduct = () => {
 
           <div className="mb-7">
             <label className="check-container ">
-              Подарочный атомайзер 10 ml
+              <span className="">{present.title}</span>
+              <span className="mx-2">{present.volume}</span>
               <span className="text-brandLightGray text-sm lg:text-lg">
-                {" "}
-                (+150 ₽)
+                (+{present.price} ₽)
               </span>
               <input type="checkbox" onChange={giftHandler} />
               <span className="checkmark"></span>
