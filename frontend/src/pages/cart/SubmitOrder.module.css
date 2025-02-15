@@ -1,0 +1,125 @@
+@tailwind components;
+
+@layer components {
+  .form {
+    @apply my-4 overflow-auto;
+  }
+
+  .control {
+    @apply mb-2 w-full;
+  }
+
+  .control label {
+    @apply mb-1 sm:mb-2 block text-sm sm:text-lg;
+  }
+
+  .control input {
+    @apply text-inherit border-2 border-brandLightGray rounded-lg 
+    w-full px-2;
+  }
+
+  .actions {
+    @apply flex justify-end gap-6;
+  }
+
+  .actions button {
+    @apply text-inherit cursor-pointer bg-transparent text-primaryDark
+    border-2 border-primaryDark rounded-lg py-2 px-8
+    hover:bg-primaryLight active:bg-primaryLight;
+  }
+
+  .actions .submit {
+    @apply border-2 border-primary text-white bg-primary
+    hover:bg-primaryDark hover:border-primaryDark hover:text-brandLightGray
+    active:bg-primaryDark active:border-primaryDark active:text-brandLightGray;
+  }
+
+  .invalid label {
+    @apply text-red-500;
+  }
+
+  .invalid input {
+    @apply border-2 border-red-500 bg-red-200;
+  }
+
+  /* ---------------------- Delivery section --------------------------- */
+
+  .input-control {
+    @apply inline-flex items-center w-full p-3 sm:p-5 
+		text-gray-500 bg-white border-2 border-gray-200 rounded-lg 
+		cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 
+		active:border-primaryDark;
+  }
+
+  .selected {
+    @apply border-2 border-primaryDark;
+  }
+}
+
+/* ============================== */
+
+/* .form {
+  margin: 1rem 0;
+  height: 15rem;
+  overflow: auto;
+}
+
+.control {
+  margin-bottom: 0.5rem;
+}
+
+.control label {
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.control input {
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.actions button {
+  font: inherit;
+  color: #6b068a;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #6b068a;
+  border-radius: 25px;
+  padding: 0.5rem 2rem;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #ccc;
+}
+
+.actions .submit {
+  border: 1px solid #6b068a;
+  background-color: #6b068a;
+  color: white;
+}
+
+.actions .submit:hover,
+.actions .submit:active {
+  background-color: #47035d;
+  border-color: #47035d;
+  color: white;
+}
+
+.invalid label {
+  color: red;
+}
+
+.invalid input {
+  border-color: red;
+  background-color: #dccccc;
+} */

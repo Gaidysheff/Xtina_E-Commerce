@@ -22,7 +22,7 @@ const Cart = (props) => {
 
   const cartPerfumes = (
     <ul
-      className="list-none m-0 p-0 overflow-auto max-h-[400px] 
+      className="list-none my-3 p-0 overflow-auto max-h-[400px] 
       sm:max-h-[550px]"
     >
       {cartContext.items.map((item, index) => (
@@ -90,8 +90,9 @@ const Cart = (props) => {
                 hover:bg-gradient-to-br hover:from-primaryLight 
                 hover:to-primaryDark hover:text-white hover:ring 
                 hover:border-white hover:ring-primaryDark/70"
+                  onClick={props.onShowSubmitForm}
                 >
-                  Заказать
+                  Оформить заказ
                 </button>
               )}
             </div>

@@ -5,12 +5,22 @@ import PerfumeContext from "./perfume-context.js";
 
 const PerfumeContextProvider = (props) => {
   const [perfumes, setPerfumes] = useState([]);
+  const [isLoadPerfumes, setIsLoadPerfumes] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
 
   useEffect(() => {
     const fetchPerfumes = async () => {
+      setIsLoadPerfumes(true);
+
       const response = await fetch(
         "https://perfume-a7057-default-rtdb.firebaseio.com/PERFUMES.json"
       );
+
+      if (!response.ok) {
+        throw new Error(
+          "Что-то пошло не так, попробуйте перезагрузить страницу."
+        );
+      }
 
       const responseData = await response.json();
 
@@ -56,10 +66,30 @@ const PerfumeContextProvider = (props) => {
       }
 
       setPerfumes(loadedPerfumes);
+      setIsLoadPerfumes(false);
     };
 
-    fetchPerfumes();
+    fetchPerfumes().catch((error) => {
+      setIsLoadPerfumes(false);
+      setHttpErrorMessage(error.message);
+    });
   }, []);
+
+  if (isLoadPerfumes) {
+    return (
+      <section className="text-red-600 text-xl mt-[100px] text-center">
+        <p>Загрузка данных с сервера...</p>
+      </section>
+    );
+  }
+
+  if (httpErrorMessage) {
+    return (
+      <section className="text-red-600 text-xl text-center">
+        <p>{httpErrorMessage}</p>
+      </section>
+    );
+  }
 
   return (
     // <PerfumeContext.Provider value={perfumes}>
