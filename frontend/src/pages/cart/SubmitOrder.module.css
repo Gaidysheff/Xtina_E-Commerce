@@ -15,7 +15,7 @@
 
   .control input {
     @apply text-inherit border-2 border-brandLightGray rounded-lg 
-    w-full px-2;
+    w-full px-2 focus:outline-primaryDark;
   }
 
   .actions {

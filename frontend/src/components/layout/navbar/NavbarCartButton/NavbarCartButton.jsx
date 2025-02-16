@@ -33,7 +33,11 @@ const NavbarCartButton = (props) => {
   }, [cartContext.items]);
 
   return (
-    <button className={buttonClasses} onClick={props.onClick}>
+    <button
+      className={buttonClasses}
+      onClick={props.onClick}
+      disabled={props.cartButtonIsDisabled}
+    >
       <div className="relative p-3 group hover:scale-125">
         <FaCartShopping
           className="text-xl text-gray-600

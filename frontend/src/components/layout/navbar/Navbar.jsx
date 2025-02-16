@@ -124,7 +124,10 @@ const Navbar = (props) => {
             </div>
             {/* ------------- */}
             {/* Order-button section */}
-            <NavbarCartButton onClick={props.onShowCart} />
+            <NavbarCartButton
+              onClick={props.onShowCart}
+              cartButtonIsDisabled={props.cartButtonIsDisabled}
+            />
             {/* ------------- */}
             {/* Dark Mode section */}
             <div>

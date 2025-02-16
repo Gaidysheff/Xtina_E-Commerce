@@ -10,14 +10,17 @@ import { useState } from "react";
 const SharedLayout = (props) => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
   const [submitFormIsVisible, setSubmitFormIsVisible] = useState(false);
+  const [cartButtonIsDisabled, setCartButtonIsDisabled] = useState(false);
 
   const showCartHandler = () => {
     setCartIsVisible(true);
+    setCartButtonIsDisabled(true);
   };
 
   const hideCartHandler = () => {
     setCartIsVisible(false);
     setSubmitFormIsVisible(false);
+    setCartButtonIsDisabled(false);
   };
 
   const showSubmitFormHandler = () => {
@@ -44,6 +47,7 @@ const SharedLayout = (props) => {
             themeHandler={props.themeHandler}
             theme={props.theme}
             onShowCart={showCartHandler}
+            cartButtonIsDisabled={cartButtonIsDisabled}
           />
           <Outlet themeHandler={props.themeHandler} theme={props.theme} />
           <Footer />
