@@ -7,6 +7,11 @@ import { useForm } from "react-hook-form";
 
 // import { useRef } from "react";
 
+// import { useEffect } from "react";
+
+const isInputValid = (inputValue) => inputValue.trim() !== "";
+const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
+
 export default forwardRef((props, ref) => {
   const { register, handleSubmit } = useForm({
     defaultValues: { telephone: "+7" },
@@ -14,9 +19,38 @@ export default forwardRef((props, ref) => {
 
   const [formData, setFormData] = useState([]);
 
+  // -------------- Validation ----------------
+
   // const nameInputRef = useRef();
   // const telephoneInputRef = useRef();
-  // const addressInputRef = useRef();
+  // const connectionInputRef = useRef();
+
+  const [formValidity, setFormValidity] = useState({
+    name: true,
+    telephone: true,
+    connection: true,
+  });
+
+  // const [nameError, setNameError] = useState(false);
+  // const [phoneError, setPhoneError] = useState(false);
+
+  // useEffect(() => {
+  //   nameInputRef.current.addEventListener("input", () => {
+  //     setNameError(!isInputValid(nameInputRef.current.value));
+  //   });
+  //   telephoneInputRef.current.addEventListener("input", () => {
+  //     setPhoneError(!isPhoneValid(telephoneInputRef.current.value));
+  //   });
+  //   connectionInputRef.current.addEventListener("input", () => {
+  //     setNameError(!isInputValid(connectionInputRef.current.value));
+  //   });
+
+  //   return () => {
+  //     nameInputRef.current.removeEventListener("input");
+  //     telephoneInputRef.current.removeEventListener("input");
+  //     connectionInputRef.current.removeEventListener("input");
+  //   };
+  // }, []);
 
   // --------------Delivery options ----------------
 
@@ -98,17 +132,54 @@ export default forwardRef((props, ref) => {
     deliveryFive ? style.selected : ""
   }`;
 
-  // -------------------------------------
-  const onSubmit = (d) => {
-    setFormData([...formData, d]);
+  // ==================================================
+
+  const onSubmit = (data) => {
+    console.log("data=", data);
+
+    const enteredName = data.name;
+    const enteredTelephone = data.telephone;
+    const enteredConnection = data.connection;
+
+    // const enteredName = nameInputRef.current.value;
+    // const enteredTelephone = telephoneInputRef.current.value;
+    // const enteredConnection = connectionInputRef.current.value;
+
+    const isEnteredNameValid = isInputValid(enteredName);
+    const isEnteredTelephoneValid = isPhoneValid(enteredTelephone);
+    const isEnteredConnectionValid = isInputValid(enteredConnection);
+
+    setFormValidity({
+      name: isEnteredNameValid,
+      telephone: isEnteredTelephoneValid,
+      connection: isEnteredConnectionValid,
+    });
+
+    const isFormValid =
+      isEnteredNameValid && isEnteredTelephoneValid && isEnteredConnectionValid;
+
+    if (!isFormValid) {
+      return;
+    }
+    setFormData([...formData, data]);
   };
 
-  // console.log(formData[0]);
+  // ==================================================
+
+  console.log("formData2=", formData);
+
   // if (formData[0]) {
   //   console.log(formData[0].name);
   //   console.log(formData[0].telephone);
-  //   console.log(formData[0].address);
+  //   console.log(formData[0].connection);
+  //   console.log(formData[0].deliveryOne);
+  //   console.log(formData[0].deliveryTwo);
+  //   console.log(formData[0].deliveryThree);
+  //   console.log(formData[0].deliveryFour);
+  //   console.log(formData[0].deliveryFive);
   // }
+
+  // console.log("selfPickup=", selfPickup);
 
   const onError = (e) => {
     console.error(e);
@@ -123,19 +194,20 @@ export default forwardRef((props, ref) => {
 
   // ==========================================================
 
-  const nameInputClasses = `${style.control}`;
-  const cityInputClasses = `${style.control}`;
+  // const nameInputClasses = `${style.control}`;
+  // const telephoneInputClasses = `${style.control}`;
+  // const connectionInputClasses = `${style.control}`;
   const addressInputClasses = `${style.control}`;
 
-  // const nameInputClasses = `${style.control} ${
-  //   formValidity.name ? "" : style.invalid
-  // }`;
-  // const cityInputClasses = `${style.control} ${
-  //   formValidity.city ? "" : style.invalid
-  // }`;
-  // const addressInputClasses = `${style.control} ${
-  //   formValidity.address ? "" : style.invalid
-  // }`;
+  const nameInputClasses = `${style.control} ${
+    formValidity.name ? "" : style.invalid
+  }`;
+  const telephoneInputClasses = `${style.control} ${
+    formValidity.telephone ? "" : style.invalid
+  }`;
+  const connectionInputClasses = `${style.control} ${
+    formValidity.connection ? "" : style.invalid
+  }`;
 
   return (
     <form
@@ -150,39 +222,54 @@ export default forwardRef((props, ref) => {
           name="name"
           placeholder="Полное ФИО необходимо для транспортной компании"
           className="placeholder:italic placeholder:text-[0.7rem] placeholder:text-md"
-          {...register("name", { required: true })}
           // ref={nameInputRef}
+          {...register("name")}
+          // {...register("name", { required: true })}
         />
-        {/* {!formValidity.name && <p>Необходимо ввести имя</p>} */}
+        {!formValidity.name && (
+          <p className="text-[0.7rem] sm:text-sm text-red-600 italic">
+            Необходимо ввести имя
+          </p>
+        )}
       </div>
-      <div className={cityInputClasses}>
+      <div className={telephoneInputClasses}>
         <label htmlFor="telephone">Телефон</label>
         <input
           type="text"
           id="telephone"
           name="telephone"
-          {...register("telephone", { required: true })}
           // ref={telephoneInputRef}
+          {...register("telephone")}
+          // {...register("telephone", { required: true })}
         />
-        {/* {!formValidity.city && <p>Необходимо ввести город</p>} */}
+        {!formValidity.telephone && (
+          <p className="text-[0.7rem] sm:text-sm text-red-600 italic">
+            Необходимо ввести номер телефона
+          </p>
+        )}
       </div>
-      <div className={addressInputClasses}>
-        <label htmlFor="address">
+      <div className={connectionInputClasses}>
+        <label htmlFor="connection">
           Способ связи{" "}
           <span className="text-[0.7rem] sm:text-lg italic text-brandLightGray">
-            (Укажите, как Вам удобно связаться)
+            (Укажите, как с Вами удобно связаться)
           </span>
         </label>
         <input
           type="text"
-          id="address"
-          name="address"
+          id="connection"
+          name="connection"
           placeholder="Звонок, WhatsApp или Telegram (укажите ник)"
           className="placeholder:italic placeholder:text-[0.7rem] placeholder:text-md"
-          {...register("address")}
-          // ref={addressInputRef}
+          // ref={connectionInputRef}
+          {...register("connection")}
+          // {...register("connection", { required: true })}
         />
-        {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
+        {!formValidity.connection && (
+          <p className="text-[0.7rem] sm:text-sm text-red-600 italic">
+            Необходимо ввести способ связи
+          </p>
+        )}
       </div>
 
       {/* ================= Delivery ==================== */}
@@ -212,10 +299,19 @@ export default forwardRef((props, ref) => {
                   Самовывоз
                 </div>
               </div>
+              {/* <input
+                type="text"
+                id="selfPickup"
+                name="selfPickup"
+                value=""
+                {...register("selfPickup")}
+                className="hidden"
+              /> */}
             </div>
           </label>
         </li>
-        {/* ------------------ Delivery Two ------------------- */}
+
+        {/* ------------------ Delivery One ------------------- */}
         <li className="my-2 sm:my-5">
           <input
             type="checkbox"

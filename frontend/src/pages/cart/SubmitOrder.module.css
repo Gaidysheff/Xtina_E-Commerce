@@ -34,9 +34,9 @@
     active:bg-primaryDark active:border-primaryDark active:text-brandLightGray;
   }
 
-  .invalid label {
+  /* .invalid label {
     @apply text-red-500;
-  }
+  } */
 
   .invalid input {
     @apply border-2 border-red-500 bg-red-200;
