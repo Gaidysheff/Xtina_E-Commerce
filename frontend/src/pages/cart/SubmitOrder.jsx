@@ -27,6 +27,9 @@ const SubmitOrder = (props) => {
 							hover:bg-gradient-to-br hover:from-primaryLight 
 							hover:to-primaryDark hover:text-white hover:ring 
 							hover:border-white hover:ring-primaryDark/70"
+          data-aos="zoom-in"
+          data-aos-delay="2000"
+          data-aos-duration="2000"
         >
           <div className="pb-1">&times;</div>
         </div>
@@ -49,6 +52,9 @@ const SubmitOrder = (props) => {
 											hover:to-primaryDark hover:text-white hover:ring 
 											hover:border-white hover:ring-primaryDark/70"
                 onClick={submitChildForm}
+                data-aos="zoom-in"
+                data-aos-delay="500"
+                data-aos-duration="2000"
               >
                 Подтвердить
               </button>

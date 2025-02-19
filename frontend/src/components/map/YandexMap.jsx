@@ -2,11 +2,13 @@ import "./map.css";
 
 import { Map, Placemark, YMaps } from "@pbe/react-yandex-maps";
 
+import office from "../../assets/contacts/officeOZON.png";
+
 const YandexMap = () => {
   return (
     <>
-      <section className="container">
-        <div className="border-4 border-primaryLight">
+      <section className="container" data-aos="flip-up" id="contacts">
+        <div className="border-4 border-primaryLight w-[80%] mx-auto">
           <YMaps>
             <Map
               state={{
@@ -58,11 +60,14 @@ const YandexMap = () => {
           </YMaps>
         </div>
       </section>
-      <section className="bg-gray-300 md:mt-[-150px] py-20">
-        <br />
-        <br />
-        <br />
-        <br />
+      <section className="bg-gray-300 mt-[-100px] md:mt-[-170px]">
+        <div className="w-full">
+          <img
+            src={office}
+            alt=""
+            className="w-full lg:max-h-[500px] 2xl:max-h-[600px]"
+          />
+        </div>
       </section>
     </>
   );

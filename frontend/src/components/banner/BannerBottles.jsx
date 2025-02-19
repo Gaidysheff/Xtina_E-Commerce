@@ -24,8 +24,9 @@ const BannerBottles = () => {
                     <div
                       className="m-1 w-[80px] h-[80px]
                     md:w-[60px] md:h-[60px] lg:w-[85px] lg:h-[85px] 
-                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]
-                    "
+                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]"
+                      data-aos="flip-up"
+                      data-aos-duration="500"
                     >
                       <div
                         className="w-full h-full p-[5px] md:p-[3px] lg:p-[5px]
@@ -52,8 +53,9 @@ const BannerBottles = () => {
                     <div
                       className="m-1 w-[80px] h-[80px]
                     md:w-[60px] md:h-[60px] lg:w-[85px] lg:h-[85px] 
-                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]
-                    "
+                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]"
+                      data-aos="flip-up"
+                      data-aos-duration="500"
                     >
                       <div
                         className="w-full h-full p-[5px] md:p-[3px] lg:p-[5px]
@@ -82,8 +84,9 @@ const BannerBottles = () => {
                     <div
                       className="m-1 w-[80px] h-[80px]
                     md:w-[60px] md:h-[60px] lg:w-[85px] lg:h-[85px] 
-                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]
-                    "
+                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]"
+                      data-aos="flip-up"
+                      data-aos-duration="500"
                     >
                       <div
                         className="w-full h-full p-[5px] md:p-[3px] lg:p-[5px]
@@ -110,8 +113,9 @@ const BannerBottles = () => {
                     <div
                       className="m-1 w-[80px] h-[80px]
                     md:w-[60px] md:h-[60px] lg:w-[85px] lg:h-[85px] 
-                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]
-                    "
+                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]"
+                      data-aos="flip-up"
+                      data-aos-duration="500"
                     >
                       <div
                         className="w-full h-full p-[5px] md:p-[3px] lg:p-[5px]
@@ -138,8 +142,9 @@ const BannerBottles = () => {
                     <div
                       className="m-1 w-[80px] h-[80px]
                     md:w-[60px] md:h-[60px] lg:w-[85px] lg:h-[85px] 
-                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]
-                    "
+                    xl:w-[115px] xl:h-[115px] 2xl:w-[143px] 2xl:h-[143px]"
+                      data-aos="flip-up"
+                      data-aos-duration="500"
                     >
                       <div
                         className="w-full h-full p-[5px] md:p-[3px] lg:p-[5px]
@@ -196,7 +201,7 @@ const BannerBottles = () => {
               </div>
               {/* third column */}
               <div className="w-full p-8 flex items-center justify-center">
-                <div data-aos="fade-up" data-aos-offset="0" className="">
+                <div data-aos="flip-left" data-aos-duration="1000" className="">
                   <img
                     src={Bottles}
                     alt="Подарочный сертификат"

@@ -5,12 +5,10 @@ import SelfPickup from "../../assets/cart/self-pickup.png";
 import style from "./SubmitOrder.module.css";
 import { useForm } from "react-hook-form";
 
-// import { useRef } from "react";
-
-// import { useEffect } from "react";
-
 const isInputValid = (inputValue) => inputValue.trim() !== "";
-const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
+// const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
+const isPhoneValid = (phoneValue) =>
+  (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
 
 export default forwardRef((props, ref) => {
   const { register, handleSubmit } = useForm({
@@ -21,40 +19,15 @@ export default forwardRef((props, ref) => {
 
   // -------------- Validation ----------------
 
-  // const nameInputRef = useRef();
-  // const telephoneInputRef = useRef();
-  // const connectionInputRef = useRef();
-
   const [formValidity, setFormValidity] = useState({
     name: true,
     telephone: true,
     connection: true,
   });
 
-  // const [nameError, setNameError] = useState(false);
-  // const [phoneError, setPhoneError] = useState(false);
-
-  // useEffect(() => {
-  //   nameInputRef.current.addEventListener("input", () => {
-  //     setNameError(!isInputValid(nameInputRef.current.value));
-  //   });
-  //   telephoneInputRef.current.addEventListener("input", () => {
-  //     setPhoneError(!isPhoneValid(telephoneInputRef.current.value));
-  //   });
-  //   connectionInputRef.current.addEventListener("input", () => {
-  //     setNameError(!isInputValid(connectionInputRef.current.value));
-  //   });
-
-  //   return () => {
-  //     nameInputRef.current.removeEventListener("input");
-  //     telephoneInputRef.current.removeEventListener("input");
-  //     connectionInputRef.current.removeEventListener("input");
-  //   };
-  // }, []);
-
   // --------------Delivery options ----------------
 
-  const [selfPickup, setSelfPickup] = useState(false);
+  const [selfPickup, setSelfPickup] = useState(true);
   const [deliveryOne, setDeliveryOne] = useState(false);
   const [deliveryTwo, setDeliveryTwo] = useState(false);
   const [deliveryThree, setDeliveryThree] = useState(false);
@@ -141,10 +114,6 @@ export default forwardRef((props, ref) => {
     const enteredTelephone = data.telephone;
     const enteredConnection = data.connection;
 
-    // const enteredName = nameInputRef.current.value;
-    // const enteredTelephone = telephoneInputRef.current.value;
-    // const enteredConnection = connectionInputRef.current.value;
-
     const isEnteredNameValid = isInputValid(enteredName);
     const isEnteredTelephoneValid = isPhoneValid(enteredTelephone);
     const isEnteredConnectionValid = isInputValid(enteredConnection);
@@ -166,7 +135,7 @@ export default forwardRef((props, ref) => {
 
   // ==================================================
 
-  console.log("formData2=", formData);
+  console.log("formData=", formData);
 
   // if (formData[0]) {
   //   console.log(formData[0].name);
@@ -194,9 +163,6 @@ export default forwardRef((props, ref) => {
 
   // ==========================================================
 
-  // const nameInputClasses = `${style.control}`;
-  // const telephoneInputClasses = `${style.control}`;
-  // const connectionInputClasses = `${style.control}`;
   const addressInputClasses = `${style.control}`;
 
   const nameInputClasses = `${style.control} ${
@@ -210,46 +176,53 @@ export default forwardRef((props, ref) => {
   }`;
 
   return (
-    <form
-      className={style.form}
-      // onSubmit={confirmOrderHandler}
-    >
+    <form className={style.form}>
       <div className={nameInputClasses}>
-        <label htmlFor="name">ФИО</label>
+        <label htmlFor="name" data-aos="slide-right">
+          ФИО
+        </label>
         <input
           type="text"
           id="name"
           name="name"
           placeholder="Полное ФИО необходимо для транспортной компании"
           className="placeholder:italic placeholder:text-[0.7rem] placeholder:text-md"
-          // ref={nameInputRef}
           {...register("name")}
+          data-aos="slide-left"
           // {...register("name", { required: true })}
         />
         {!formValidity.name && (
-          <p className="text-[0.7rem] sm:text-sm text-red-600 italic">
-            Необходимо ввести имя
+          <p
+            className="text-[0.7rem] sm:text-sm text-red-600 italic"
+            data-aos="slide-down"
+          >
+            Необходимо ввести ФИО
           </p>
         )}
       </div>
       <div className={telephoneInputClasses}>
-        <label htmlFor="telephone">Телефон</label>
+        <label htmlFor="telephone" data-aos="slide-right">
+          Телефон
+        </label>
         <input
           type="text"
           id="telephone"
           name="telephone"
-          // ref={telephoneInputRef}
           {...register("telephone")}
+          data-aos="slide-left"
           // {...register("telephone", { required: true })}
         />
         {!formValidity.telephone && (
-          <p className="text-[0.7rem] sm:text-sm text-red-600 italic">
-            Необходимо ввести номер телефона
+          <p
+            className="text-[0.7rem] sm:text-sm text-red-600 italic"
+            data-aos="slide-down"
+          >
+            Необходимо ввести номер телефона (10 цифр после кода страны)
           </p>
         )}
       </div>
       <div className={connectionInputClasses}>
-        <label htmlFor="connection">
+        <label htmlFor="connection" data-aos="slide-right">
           Способ связи{" "}
           <span className="text-[0.7rem] sm:text-lg italic text-brandLightGray">
             (Укажите, как с Вами удобно связаться)
@@ -261,19 +234,25 @@ export default forwardRef((props, ref) => {
           name="connection"
           placeholder="Звонок, WhatsApp или Telegram (укажите ник)"
           className="placeholder:italic placeholder:text-[0.7rem] placeholder:text-md"
-          // ref={connectionInputRef}
           {...register("connection")}
+          data-aos="slide-left"
           // {...register("connection", { required: true })}
         />
         {!formValidity.connection && (
-          <p className="text-[0.7rem] sm:text-sm text-red-600 italic">
+          <p
+            className="text-[0.7rem] sm:text-sm text-red-600 italic"
+            data-aos="slide-down"
+          >
             Необходимо ввести способ связи
           </p>
         )}
       </div>
 
       {/* ================= Delivery ==================== */}
-      <h3 className="sm:mb-5 text-lg font-medium text-gray-900 dark:text-white">
+      <h3
+        className="sm:mb-5 text-lg font-medium text-gray-900 dark:text-white"
+        data-aos="slide-right"
+      >
         Доставка:
       </h3>
       <ul className="flex-col">
@@ -303,7 +282,7 @@ export default forwardRef((props, ref) => {
                 type="text"
                 id="selfPickup"
                 name="selfPickup"
-                value=""
+                value={selfPickup}
                 {...register("selfPickup")}
                 className="hidden"
               /> */}
@@ -551,11 +530,10 @@ export default forwardRef((props, ref) => {
           </label>
         </li>
       </ul>
-      {/* =============================================== */}
-      <div className={style.actions}>
+      {/* ============= JSON data checkout ================= */}
+      {/* <div className={style.actions}>
         {formData.length > 0 && JSON.stringify(formData)}
-        {/* <button className={style.submit}>Подтвердить заказ</button> */}
-      </div>
+      </div> */}
     </form>
   );
 });

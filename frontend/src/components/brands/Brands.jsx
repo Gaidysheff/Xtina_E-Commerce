@@ -5,7 +5,11 @@ const Brands = () => {
   return (
     <section>
       <div className="container">
-        <h1 className="text-4xl md:text-5xl text-bold text-center my-5">
+        <h1
+          className="text-4xl md:text-5xl text-bold text-center my-5"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
           Бренды, с которыми мы работаем
         </h1>
       </div>
@@ -26,6 +30,7 @@ const Brands = () => {
                     src={brand.image}
                     alt="Brand logo"
                     className="h-full w-auto grayscale"
+                    data-aos="zoom-in"
                   />
                 </li>
               ))}

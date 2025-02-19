@@ -12,9 +12,9 @@ const CartItem = (props) => {
   );
 
   return (
-    <li className="">
+    <li>
       <div className="flex items-end justify-between mb-2 sm:mb-5">
-        <div className="flex justify-start items-end">
+        <div className="flex justify-start items-end" data-aos="slide-right">
           <div className="w-[50px] h-[50px] mr-2">
             <img className="h-full" src={props.image} alt="" />
           </div>
@@ -24,7 +24,7 @@ const CartItem = (props) => {
         </div>
         <div>
           {props.volume && (
-            <div className="inline-flex">
+            <div className="inline-flex" data-aos="slide-left">
               <p className="hidden sm:block text-md sm:text-xl text-gray-400">
                 Объём:
               </p>
@@ -40,7 +40,7 @@ const CartItem = (props) => {
       </div>
       <div className="flex justify-between items-center ">
         <div className="w-full flex justify-between items-center">
-          <div className="inline-flex">
+          <div className="inline-flex" data-aos="slide-right">
             <p className="text-md sm:text-xl mr-2 text-gray-400">Цена:</p>
             <p
               className="text-md sm:text-xl sm:mx-2 font-bold
@@ -50,7 +50,7 @@ const CartItem = (props) => {
               {price}
             </p>
           </div>
-          <div className="inline-flex items-center">
+          <div className="inline-flex items-center" data-aos="slide-left">
             <p className="hidden sm:block text-md sm:text-xl text-gray-400">
               Кол-во:
             </p>
@@ -63,7 +63,7 @@ const CartItem = (props) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center" data-aos="slide-left">
           <button
             className="text-xl sm:text-2xl w-6 h-6 sm:w-8 sm:h-8 
             rounded-lg sm:rounded-xl pb-1 flex items-center justify-center

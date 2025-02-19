@@ -3,16 +3,19 @@ export const MenuLinks = [
     id: 1,
     label: "О нас",
     path: "/about",
+    aosDelay: "1500",
   },
   {
     id: 2,
     label: "Контакты",
     path: "/contacts",
+    aosDelay: "2000",
   },
   {
     id: 3,
     label: "Доставка",
     path: "/delivery",
+    aosDelay: "2500",
   },
 ];
 
@@ -21,16 +24,19 @@ export const DropdownLinks = [
     id: 1,
     label: "Парфюмерия",
     path: "/perfumes",
+    aosDelay: "1500",
   },
   {
     id: 2,
     label: "Ароматизаторы",
     path: "/fresheners",
+    aosDelay: "2000",
   },
   {
     id: 3,
     label: "Расходники",
     path: "/consumables",
+    aosDelay: "2500",
   },
 ];
 

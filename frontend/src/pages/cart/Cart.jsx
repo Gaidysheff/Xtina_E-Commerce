@@ -51,6 +51,9 @@ const Cart = (props) => {
         hover:bg-gradient-to-br hover:from-primaryLight 
         hover:to-primaryDark hover:text-white hover:ring 
         hover:border-white hover:ring-primaryDark/70"
+          data-aos="zoom-in"
+          data-aos-delay="2000"
+          data-aos-duration="2000"
         >
           <div className="pb-1">&times;</div>
         </div>
@@ -59,6 +62,8 @@ const Cart = (props) => {
             className="text-2xl sm:text-4xl italic text-center my-5
             text-primaryDark/80 font-['Pacifico']
             drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]"
+            data-aos="fade-in"
+            data-aos-duration="1000"
           >
             Ваша корзина пуста.
           </p>
@@ -80,6 +85,9 @@ const Cart = (props) => {
                 decimalSeparator=","
                 thousandSeparator="."
                 suffix={" ₽"}
+                data-aos="fade-in"
+                data-aos-delay="500"
+                data-aos-duration="2000"
               />
             </div>
             <div className="text-end">
@@ -91,6 +99,9 @@ const Cart = (props) => {
                 hover:to-primaryDark hover:text-white hover:ring 
                 hover:border-white hover:ring-primaryDark/70"
                   onClick={props.onShowSubmitForm}
+                  data-aos="zoom-in"
+                  data-aos-delay="500"
+                  data-aos-duration="2000"
                 >
                   Оформить заказ
                 </button>

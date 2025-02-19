@@ -50,7 +50,6 @@ const Hero = (props) => {
                         <h1
                           data-aos="zoom-out"
                           data-aos-duration="500"
-                          data-aos-once="true"
                           className="text-2xl md:text-3xl lg:text-4xl italic 
                           text-primaryDark/60 dark:text-primary/80 font-['Pacifico']
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)] my-1 md:my-3"
@@ -60,7 +59,6 @@ const Hero = (props) => {
                         <h1
                           data-aos="zoom-out"
                           data-aos-duration="500"
-                          data-aos-once="true"
                           className="text-2xl md:text-3xl lg:text-4xl italic 
                           text-primaryDark/60 dark:text-primary/80 font-['Pacifico']
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]
@@ -71,7 +69,6 @@ const Hero = (props) => {
                         <h1
                           data-aos="zoom-out"
                           data-aos-duration="500"
-                          data-aos-once="true"
                           className="text-2xl md:text-3xl lg:text-4xl italic 
                           text-primaryDark/60 dark:text-primary/80 font-['Pacifico']
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]
@@ -83,7 +80,6 @@ const Hero = (props) => {
                       <h1
                         data-aos="zoom-out"
                         data-aos-duration="500"
-                        data-aos-once="true"
                         className="text-5xl md:text-7xl sm:text-[40px] md:text-[50px] 
                         xl:text-[100px] text-white dark:text-brandLightGray 
                         font-bold dark:drop-shadow-[10px_10px_6px_rgba(120,120,120,.9)]
@@ -94,7 +90,6 @@ const Hero = (props) => {
                       <h1
                         data-aos="zoom-out"
                         data-aos-duration="500"
-                        data-aos-once="true"
                         className="text-2xl md:text-3xl lg:text-4xl font-bold 
                         text-white dark:text-brandLightGray uppercase 
                         drop-shadow-[10px_10px_6px_rgba(0,0,0,.9)]
@@ -130,7 +125,6 @@ const Hero = (props) => {
                     >
                       <div
                         data-aos="zoom-in"
-                        data-aos-once="true"
                         className="relative z-10 flex items-center"
                       >
                         <img

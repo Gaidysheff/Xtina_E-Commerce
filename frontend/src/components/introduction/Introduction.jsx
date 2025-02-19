@@ -34,37 +34,55 @@ const Introduction = (props) => {
             className="flex flex-col text-[11px] sm:text-xl md:text-2xl
   				lg:text-4xl xl:text-5xl 2xl:text-6xl"
           >
-            <div className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7">
+            <div
+              className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7"
+              data-aos="slide-right"
+            >
               <span>
                 <GiCheckMark />
               </span>
               <p className="ml-1">Только ОРИГИНАЛЬНАЯ парфюмерия</p>
             </div>
-            <div className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7">
+            <div
+              className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7"
+              data-aos="slide-right"
+            >
               <span>
                 <GiCheckMark />
               </span>
               <p className="ml-1">Распив 3, 5, 10, 20, 30 ml</p>
             </div>
-            <div className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7">
+            <div
+              className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7"
+              data-aos="slide-right"
+            >
               <span>
                 <GiCheckMark />
               </span>
               <p className="ml-1">Подбор аромата от Аромастилиста</p>
             </div>
-            <div className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7">
+            <div
+              className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7"
+              data-aos="slide-right"
+            >
               <span>
                 <GiCheckMark />
               </span>
               <p className="ml-1">Полноразмерные флаконы под заказ</p>
             </div>
-            <div className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7">
+            <div
+              className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7"
+              data-aos="slide-right"
+            >
               <span>
                 <GiCheckMark />
               </span>
               <p className="ml-1">Приятные цены</p>
             </div>
-            <div className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7">
+            <div
+              className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7"
+              data-aos="slide-right"
+            >
               <span>
                 <GiCheckMark />
               </span>
@@ -72,7 +90,7 @@ const Introduction = (props) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center" data-aos="flip-right">
           <img src={Xtina} alt="" />
         </div>
       </div>

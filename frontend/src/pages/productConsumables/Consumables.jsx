@@ -17,6 +17,7 @@ const Consumables = () => {
                 <div
                   className="x-full p-5 bg-white dark:bg-brandLightGray
                   rounded-t-xl flex justify-center"
+                  data-aos="zoom-in"
                 >
                   <img
                     src={product.image}
@@ -26,13 +27,17 @@ const Consumables = () => {
                 </div>
 
                 <div className="p-2 pb-0">
-                  <div className="text-[0.7rem] md:text-[0.9rem] lg:text-lg">
+                  <div
+                    className="text-[0.7rem] md:text-[0.9rem] lg:text-lg"
+                    data-aos="flip-left"
+                  >
                     {product.title}
                   </div>
 
                   <div
                     className="text-[0.8rem] md:text-[1.1rem] lg:text-xl 
                     font-semibold"
+                    data-aos="flip-left"
                   >
                     {product.subtitle}
                   </div>
@@ -46,6 +51,8 @@ const Consumables = () => {
                     decimalSeparator=","
                     thousandSeparator="."
                     suffix={" ₽"}
+                    data-aos="zoom-in"
+                    data-aos-delay="1000"
                   />
                 </div>
               </div>

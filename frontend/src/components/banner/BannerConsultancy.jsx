@@ -55,7 +55,7 @@ const BannerConsultancy = () => {
               >
                 <div>
                   <p
-                    data-aos="fade-up"
+                    data-aos="zoom-out"
                     className="text-xl md:text-md lg:text-xl xl:text-3xl 2xl:text-5xl 
                     leading-5 text-gray-500 font-semibold italic text-center 
                     md:text-end md:mb-6 md:text-white"
@@ -64,7 +64,7 @@ const BannerConsultancy = () => {
                   </p>
 
                   <p
-                    data-aos="fade-up"
+                    data-aos="slide-left"
                     className="text-xl md:text-md xl:text-3xl 2xl:text-4xl 
                     leading-5 text-gray-500 font-semibold italic text-center 
                     md:text-end xl:mb-5"

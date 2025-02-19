@@ -75,16 +75,30 @@ const SingleProduct = (props) => {
   return (
     <section className="container py-5 my-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        <img src={perfume.image} alt="Perfume image" />
+        <img src={perfume.image} alt="Perfume image" data-aos="zoom-in" />
         <div className="mx-5 md:mx-2">
-          <div className="text-4xl">{perfume.name}</div>
-          <div className="text-xl my-3 text-brandLightGray italic">
+          <div
+            className="text-4xl"
+            data-aos="fade-in"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            {perfume.name}
+          </div>
+          <div
+            className="text-xl my-3 text-brandLightGray italic"
+            data-aos="fade-in"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
             {perfume.brand}
           </div>
 
           <NumericFormat
             className="flex justify-start text-5xl text-primaryDark 
             dark:text-primary pb-2"
+            data-aos="slide-left"
+            data-aos-delay="300"
             value={price}
             displayType={"text"}
             decimalSeparator=","
@@ -93,11 +107,19 @@ const SingleProduct = (props) => {
           />
 
           <div className="my-5 block sm:flex md:block">
-            <div>
+            <div
+              data-aos="flip-up"
+              data-aos-delay="300"
+              data-aos-delay-duration="1000"
+            >
               <ButtonVolume text="3 ml" handler={volume3mlHandler} />
               <ButtonVolume text="5 ml" handler={volume5mlHandler} />
             </div>
-            <div>
+            <div
+              data-aos="flip-up"
+              data-aos-delay="400"
+              data-aos-delay-duration="1000"
+            >
               <ButtonVolume text="10 ml" handler={volume10mlHandler} />
               <ButtonVolume text="20 ml" handler={volume20mlHandler} />
               <ButtonVolume text="30 ml" handler={volume30mlHandler} />
@@ -106,8 +128,10 @@ const SingleProduct = (props) => {
 
           <div className="mb-7">
             <label className="check-container ">
-              <span className="">{present.title}</span>
-              <span className="mx-2">{present.volume}</span>
+              <span className="text-[1.1rem] sm:text-lg">{present.title}</span>
+              <span className="text-[1.1rem] sm:text-lg mx-2">
+                {present.volume}
+              </span>
               <span className="text-brandLightGray text-sm lg:text-lg">
                 (+{present.price} ₽)
               </span>
@@ -116,7 +140,12 @@ const SingleProduct = (props) => {
             </label>
           </div>
 
-          <div className="my-10">
+          <div
+            className="my-10"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+            data-aos-delay-duration="1000"
+          >
             <Button
               text="Добавить в корзину"
               bgColor="
@@ -135,7 +164,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Бренд:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="500"
+            >
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
                 {perfume.brand}
               </p>
@@ -146,7 +179,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Парфюмер:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="550"
+            >
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
                 {perfume.perfumer}
               </p>
@@ -157,7 +194,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Страна:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="600"
+            >
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
                 {perfume.country}
               </p>
@@ -168,7 +209,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Год создания:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="650"
+            >
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
                 {perfume.year}
               </p>
@@ -180,7 +225,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Пол:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="700"
+            >
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
                 {perfume.sex}
               </p>
@@ -191,7 +240,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Состав:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="700"
+            >
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
                 {perfume.compound1}
               </p>
@@ -214,7 +267,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Семейство:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="750"
+            >
               <p
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
@@ -252,7 +309,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Основные ноты:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="800"
+            >
               <p
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
@@ -290,7 +351,11 @@ const SingleProduct = (props) => {
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Аккорды:
             </div>
-            <div className="w-[100%]">
+            <div
+              className="w-[100%]"
+              data-aos="slide-left"
+              data-aos-delay="900"
+            >
               <p
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
@@ -329,7 +394,11 @@ const SingleProduct = (props) => {
               <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
                 Отзывы:
               </div>
-              <div className="w-[100%]">
+              <div
+                className="w-[100%]"
+                data-aos="slide-left"
+                data-aos-delay="950"
+              >
                 <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
                   {perfume.feedback}
                 </p>
@@ -337,7 +406,9 @@ const SingleProduct = (props) => {
             </div>
           )}
           {/* ------------------------------------------------------- */}
-          <div>{perfume.description}</div>
+          <div data-aos="slide-left" data-aos-delay="1000">
+            {perfume.description}
+          </div>
         </div>
       </div>
     </section>
