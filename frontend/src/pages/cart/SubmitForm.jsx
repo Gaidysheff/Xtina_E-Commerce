@@ -1,18 +1,30 @@
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 
 import { DELIVERY } from "../../utils/delivery";
+import OrderContext from "./../../store/order-context.js";
 import SelfPickup from "../../assets/cart/self-pickup.png";
 import style from "./SubmitOrder.module.css";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
 const isInputValid = (inputValue) => inputValue.trim() !== "";
-// const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
-const isPhoneValid = (phoneValue) =>
-  (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
+const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
+// const isPhoneValid = (phoneValue) =>
+//   (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
 
 export default forwardRef((props, ref) => {
-  const { register, handleSubmit } = useForm({
+  // -----------------------------------------
+  const orderContext = useContext(OrderContext);
+
+  const { register, handleSubmit, resetField, setValue } = useForm({
     defaultValues: { telephone: "+7" },
+    // mode: "onChange",
   });
 
   const [formData, setFormData] = useState([]);
@@ -67,7 +79,7 @@ export default forwardRef((props, ref) => {
     setDeliveryTwo(false);
     setDeliveryFour(false);
     setDeliveryFive(false);
-    setDeliveryThree(!selfPickup);
+    setDeliveryThree(!deliveryThree);
   };
   const deliveryFourHandler = () => {
     setSelfPickup(false);
@@ -75,7 +87,7 @@ export default forwardRef((props, ref) => {
     setDeliveryTwo(false);
     setDeliveryThree(false);
     setDeliveryFive(false);
-    setDeliveryFour(!selfPickup);
+    setDeliveryFour(!deliveryFour);
   };
   const deliveryFiveHandler = () => {
     setSelfPickup(false);
@@ -83,7 +95,7 @@ export default forwardRef((props, ref) => {
     setDeliveryTwo(false);
     setDeliveryThree(false);
     setDeliveryFour(false);
-    setDeliveryFive(!selfPickup);
+    setDeliveryFive(!deliveryFive);
   };
 
   const selfPickupClasses = `${style["input-control"]} ${
@@ -130,25 +142,17 @@ export default forwardRef((props, ref) => {
     if (!isFormValid) {
       return;
     }
+
     setFormData([...formData, data]);
+
+    orderContext.addOrder(data);
   };
 
   // ==================================================
 
   console.log("formData=", formData);
 
-  // if (formData[0]) {
-  //   console.log(formData[0].name);
-  //   console.log(formData[0].telephone);
-  //   console.log(formData[0].connection);
-  //   console.log(formData[0].deliveryOne);
-  //   console.log(formData[0].deliveryTwo);
-  //   console.log(formData[0].deliveryThree);
-  //   console.log(formData[0].deliveryFour);
-  //   console.log(formData[0].deliveryFive);
-  // }
-
-  // console.log("selfPickup=", selfPickup);
+  // ==================================================
 
   const onError = (e) => {
     console.error(e);
@@ -174,6 +178,39 @@ export default forwardRef((props, ref) => {
   const connectionInputClasses = `${style.control} ${
     formValidity.connection ? "" : style.invalid
   }`;
+
+  // ------- Reset fields if any single one is typed in ------------
+
+  const addressOneHandler = () => {
+    resetField("deliveryTwo");
+    resetField("deliveryThree");
+    resetField("deliveryFour");
+    resetField("deliveryFive");
+  };
+  const addressTwoHandler = () => {
+    resetField("deliveryOne");
+    resetField("deliveryThree");
+    resetField("deliveryFour");
+    resetField("deliveryFive");
+  };
+  const addressThreeHandler = () => {
+    resetField("deliveryOne");
+    resetField("deliveryTwo");
+    resetField("deliveryFour");
+    resetField("deliveryFive");
+  };
+  const addressFourHandler = () => {
+    resetField("deliveryOne");
+    resetField("deliveryTwo");
+    resetField("deliveryThree");
+    resetField("deliveryFive");
+  };
+  const addressFiveHandler = () => {
+    resetField("deliveryOne");
+    resetField("deliveryTwo");
+    resetField("deliveryThree");
+    resetField("deliveryFour");
+  };
 
   return (
     <form className={style.form}>
@@ -208,7 +245,12 @@ export default forwardRef((props, ref) => {
           type="text"
           id="telephone"
           name="telephone"
-          {...register("telephone")}
+          {...register("telephone", {
+            // pattern: { value: /^+7(0-9)\d{10}$/ },
+            // message: "Неверный формат номера телефона",
+          })}
+          // placeholder="+7__________"
+          className="placeholder:italic placeholder:text-[0.7rem] placeholder:text-md"
           data-aos="slide-left"
           // {...register("telephone", { required: true })}
         />
@@ -329,7 +371,7 @@ export default forwardRef((props, ref) => {
                     id="deliveryOne"
                     name="deliveryOne"
                     {...register("deliveryOne")}
-                    // ref={addressInputRef}
+                    onChange={addressOneHandler}
                   />
                   {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
@@ -377,7 +419,7 @@ export default forwardRef((props, ref) => {
                     id="deliveryTwo"
                     name="deliveryTwo"
                     {...register("deliveryTwo")}
-                    // ref={addressInputRef}
+                    onChange={addressTwoHandler}
                   />
                   {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
@@ -425,7 +467,8 @@ export default forwardRef((props, ref) => {
                     id="deliveryThree"
                     name="deliveryThree"
                     {...register("deliveryThree")}
-                    // ref={addressInputRef}
+                    // ref={addressThree}
+                    onChange={addressThreeHandler}
                   />
                   {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
@@ -473,7 +516,8 @@ export default forwardRef((props, ref) => {
                     id="deliveryFour"
                     name="deliveryFour"
                     {...register("deliveryFour")}
-                    // ref={addressInputRef}
+                    // ref={addressFour}
+                    onChange={addressFourHandler}
                   />
                   {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
@@ -521,7 +565,8 @@ export default forwardRef((props, ref) => {
                     id="deliveryFive"
                     name="deliveryFive"
                     {...register("deliveryFive")}
-                    // ref={addressInputRef}
+                    // ref={addressFive}
+                    onChange={addressFiveHandler}
                   />
                   {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
