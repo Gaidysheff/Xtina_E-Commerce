@@ -3,7 +3,7 @@ import React from "react";
 const OrderContext = React.createContext({
   shipping: [],
   addOrder: (order) => {},
-  // clearOrder: () => {},
+  clearOrder: () => {},
 });
 
 export default OrderContext;

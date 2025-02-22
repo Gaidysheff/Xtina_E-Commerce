@@ -22,8 +22,28 @@ export default forwardRef((props, ref) => {
   // -----------------------------------------
   const orderContext = useContext(OrderContext);
 
+  // const dataInserted = orderContext.shipping;
+
+  // const phoneInserted = "+7";
+
+  // if (dataInserted[0]) {
+  //   console.log("dataInserted=", dataInserted);
+  //   console.log("formData=", formData[0]);
+  //   const phoneInserted = dataInserted[0].telephone;
+  //   return phoneInserted;
+  // }
+
+  // console.log("dataInserted=", dataInserted);
+  // console.log("telephone=", dataInserted[0].telephone);
+
   const { register, handleSubmit, resetField, setValue } = useForm({
-    defaultValues: { telephone: "+7" },
+    defaultValues: {
+      telephone: "+7",
+      // telephone: `${phoneInserted}`,
+      // name: `${phoneInserted}`,
+      // connection: `${phoneInserted}`,
+    },
+    // defaultValues: { telephone: "+7" },
     // mode: "onChange",
   });
 
@@ -120,7 +140,7 @@ export default forwardRef((props, ref) => {
   // ==================================================
 
   const onSubmit = (data) => {
-    console.log("data=", data);
+    // console.log("data=", data);
 
     const enteredName = data.name;
     const enteredTelephone = data.telephone;
@@ -150,7 +170,7 @@ export default forwardRef((props, ref) => {
 
   // ==================================================
 
-  console.log("formData=", formData);
+  // console.log("formData=", formData);
 
   // ==================================================
 

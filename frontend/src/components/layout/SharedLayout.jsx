@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import Cart from "./../../pages/cart/Cart.jsx";
 import CartContextProvider from "./../../store/CartContextProvider.jsx";
+import Confirm from "./../../pages/cart/Confirm.jsx";
 import Footer from "./Footer.jsx";
 import Navbar from "./navbar/Navbar.jsx";
 import OrderContextProvider from "./../../store/OrderContextProvider.jsx";
@@ -16,6 +17,7 @@ const SharedLayout = (props) => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
   const [submitFormIsVisible, setSubmitFormIsVisible] = useState(false);
   const [cartButtonIsDisabled, setCartButtonIsDisabled] = useState(false);
+  const [confirmIsVisible, setConfirmIsVisible] = useState(false);
 
   const showCartHandler = () => {
     setCartIsVisible(true);
@@ -26,11 +28,18 @@ const SharedLayout = (props) => {
     setCartIsVisible(false);
     setSubmitFormIsVisible(false);
     setCartButtonIsDisabled(false);
+    setConfirmIsVisible(false);
   };
 
   const showSubmitFormHandler = () => {
     setCartIsVisible(false);
     setSubmitFormIsVisible(true);
+  };
+
+  const showConfirmHandler = () => {
+    setCartIsVisible(false);
+    setSubmitFormIsVisible(false);
+    setConfirmIsVisible(true);
   };
 
   // ==================== Animation =======================
@@ -60,8 +69,13 @@ const SharedLayout = (props) => {
               />
             )}
             {submitFormIsVisible && (
-              <SubmitOrder onHideCart={hideCartHandler} />
+              <SubmitOrder
+                onHideCart={hideCartHandler}
+                // onShowConfirm={showConfirmHandler}
+                onOpenConfirm={showConfirmHandler}
+              />
             )}
+            {confirmIsVisible && <Confirm onHideConfirm={hideCartHandler} />}
 
             <Navbar
               themeHandler={props.themeHandler}
