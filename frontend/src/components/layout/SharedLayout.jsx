@@ -10,6 +10,7 @@ import Footer from "./Footer.jsx";
 import Navbar from "./navbar/Navbar.jsx";
 import OrderContextProvider from "./../../store/OrderContextProvider.jsx";
 import { Outlet } from "react-router";
+import Payment from "./../../pages/cart/Payment.jsx";
 import PerfumeContextProvider from "./../../store/PerfumeContextProvider.jsx";
 import SubmitOrder from "./../../pages/cart/SubmitOrder.jsx";
 
@@ -18,6 +19,9 @@ const SharedLayout = (props) => {
   const [submitFormIsVisible, setSubmitFormIsVisible] = useState(false);
   const [cartButtonIsDisabled, setCartButtonIsDisabled] = useState(false);
   const [confirmIsVisible, setConfirmIsVisible] = useState(false);
+  const [paymentIsVisible, setPaymentIsVisible] = useState(false);
+  const [delivery, setDelivery] = useState([]);
+  const [totalToBePaid, setTotalToBePaid] = useState(0);
 
   const showCartHandler = () => {
     setCartIsVisible(true);
@@ -29,6 +33,7 @@ const SharedLayout = (props) => {
     setSubmitFormIsVisible(false);
     setCartButtonIsDisabled(false);
     setConfirmIsVisible(false);
+    setPaymentIsVisible(false);
   };
 
   const showSubmitFormHandler = () => {
@@ -37,9 +42,24 @@ const SharedLayout = (props) => {
   };
 
   const showConfirmHandler = () => {
-    setCartIsVisible(false);
+    // setCartIsVisible(false);
     setSubmitFormIsVisible(false);
     setConfirmIsVisible(true);
+  };
+
+  const showPaymentHandler = () => {
+    // setCartIsVisible(false);
+    // setSubmitFormIsVisible(false);
+    setConfirmIsVisible(false);
+    setPaymentIsVisible(true);
+  };
+
+  const setDeliveryOptionHandler = (data) => {
+    setDelivery(data);
+  };
+
+  const totalToBePaidHandler = (toBePaid) => {
+    setTotalToBePaid(toBePaid);
   };
 
   // ==================== Animation =======================
@@ -73,9 +93,25 @@ const SharedLayout = (props) => {
                 onHideCart={hideCartHandler}
                 // onShowConfirm={showConfirmHandler}
                 onOpenConfirm={showConfirmHandler}
+                onSetDeliveryOption={setDeliveryOptionHandler}
               />
             )}
-            {confirmIsVisible && <Confirm onHideConfirm={hideCartHandler} />}
+
+            {confirmIsVisible && (
+              <Confirm
+                onHideConfirm={hideCartHandler}
+                delivery={delivery}
+                // onShowPayment={showPaymentHandler}
+                onOpenPayment={showPaymentHandler}
+                onConfirm={totalToBePaidHandler}
+              />
+            )}
+            {paymentIsVisible && (
+              <Payment
+                onHideConfirm={hideCartHandler}
+                totalToBePaid={totalToBePaid}
+              />
+            )}
 
             <Navbar
               themeHandler={props.themeHandler}

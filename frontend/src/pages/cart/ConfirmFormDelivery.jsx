@@ -199,7 +199,7 @@ const ConfirmFormDelivery = (props) => {
             </div>
           </div>
           <div className="w-[4rem] text-end text-[0.9rem] sm:text-[1rem]">
-            0<span className="text-brandLightGray sm:text-[0.9rem]">₽</span>
+            0<span className="text-brandLightGray sm:text-[0.9rem]"> ₽</span>
           </div>
         </div>
       )}

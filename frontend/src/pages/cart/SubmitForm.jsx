@@ -36,7 +36,7 @@ export default forwardRef((props, ref) => {
   // console.log("dataInserted=", dataInserted);
   // console.log("telephone=", dataInserted[0].telephone);
 
-  const { register, handleSubmit, resetField, setValue } = useForm({
+  const { register, handleSubmit, resetField } = useForm({
     defaultValues: {
       telephone: "+7",
       // telephone: `${phoneInserted}`,
@@ -166,6 +166,8 @@ export default forwardRef((props, ref) => {
     setFormData([...formData, data]);
 
     orderContext.addOrder(data);
+
+    props.onSetDeliveryOption(data);
   };
 
   // ==================================================

@@ -39,7 +39,10 @@ const SubmitOrder = (props) => {
               className="list-none my-3 p-0 overflow-auto max-h-[400px] 
               sm:max-h-[550px]"
             >
-              <SubmitForm ref={editFormRef} />
+              <SubmitForm
+                ref={editFormRef}
+                onSetDeliveryOption={props.onSetDeliveryOption}
+              />
             </div>
 
             <div className="text-end">
