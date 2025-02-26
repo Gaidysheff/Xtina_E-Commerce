@@ -15,6 +15,7 @@ import { Outlet } from "react-router";
 import Payment from "./../../pages/cart/Payment.jsx";
 import PerfumeContextProvider from "./../../store/PerfumeContextProvider.jsx";
 import SubmitOrder from "./../../pages/cart/SubmitOrder.jsx";
+import { ToastContainer } from "react-toastify";
 
 const SharedLayout = (props) => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -82,6 +83,21 @@ const SharedLayout = (props) => {
         <ConsumablesContextProvider>
           <OrderContextProvider>
             <CartContextProvider>
+              {props.theme === "light" ? (
+                <ToastContainer
+                  position="top-center"
+                  theme="dark"
+                  hideProgressBar={true}
+                  autoClose={2000}
+                />
+              ) : (
+                <ToastContainer
+                  position="top-center"
+                  theme="light"
+                  hideProgressBar={true}
+                  autoClose={2000}
+                />
+              )}
               <main
                 className="w-screen bg-white dark:bg-gray-800 dark:text-white
                   duration-200 overflow-hidden"

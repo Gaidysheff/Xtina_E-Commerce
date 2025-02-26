@@ -66,8 +66,8 @@ const ConsumablesContextProvider = (props) => {
   }
 
   return (
-    // <ConsumablesContext.Provider value={CONSUMABLES}>
-    <ConsumablesContext.Provider value={consumables}>
+    // <ConsumablesContext.Provider value={consumables}>
+    <ConsumablesContext.Provider value={CONSUMABLES}>
       {props.children}
     </ConsumablesContext.Provider>
   );

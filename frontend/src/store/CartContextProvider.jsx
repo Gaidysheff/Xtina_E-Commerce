@@ -1,4 +1,5 @@
 import CartContext from "./cart-context";
+import { toast } from "react-toastify";
 import { useReducer } from "react";
 
 const defaultCartState = {

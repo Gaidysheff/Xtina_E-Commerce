@@ -2,6 +2,7 @@ import Button from "../../components/sharedUI/Button.jsx";
 import CartContext from "../../store/cart-context.js";
 import ConsumablesContext from "./../../store/consumables-context.js";
 import { NumericFormat } from "react-number-format";
+import { toast } from "react-toastify";
 import { useContext } from "react";
 import { useParams } from "react-router";
 
@@ -25,6 +26,7 @@ const SingleConsumable = () => {
       amount: 1,
       price: consumable.price,
     });
+    toast.success("Выбранный товар добавлен в корзину");
   };
 
   return (

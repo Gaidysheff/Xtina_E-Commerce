@@ -6,6 +6,7 @@ import CartContext from "./../../store/cart-context.js";
 import { NumericFormat } from "react-number-format";
 import { PRESENT } from "../../utils/gift.js";
 import PerfumeContext from "../../store/perfume-context.js";
+import { toast } from "react-toastify";
 import { useParams } from "react-router";
 
 const SingleProduct = (props) => {
@@ -70,6 +71,8 @@ const SingleProduct = (props) => {
         volume: present.volume,
       });
     }
+
+    toast.success("Выбранный товар добавлен в корзину");
   };
 
   return (
