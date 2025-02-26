@@ -1,8 +1,7 @@
 import Image from "../assets/shared/constraction.png";
-import { Link } from "react-router";
 import Loader from "./../components/sharedUI/LoaderKest.jsx";
 
-const About = () => {
+const Contacts = () => {
   return (
     <section className="section h-[62vh] m-[3rem]" id="about">
       <div className="container flex-col justify-center">
@@ -14,4 +13,5 @@ const About = () => {
     </section>
   );
 };
-export default About;
+
+export default Contacts;

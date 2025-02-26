@@ -6,7 +6,9 @@ import AOS from "aos";
 import Cart from "./../../pages/cart/Cart.jsx";
 import CartContextProvider from "./../../store/CartContextProvider.jsx";
 import Confirm from "./../../pages/cart/Confirm.jsx";
+import ConsumablesContextProvider from "./../../store/ConsumablesContextProvider.jsx";
 import Footer from "./Footer.jsx";
+import FreshenerContextProvider from "./../../store/FreshenerContextProvider.jsx";
 import Navbar from "./navbar/Navbar.jsx";
 import OrderContextProvider from "./../../store/OrderContextProvider.jsx";
 import { Outlet } from "react-router";
@@ -76,56 +78,60 @@ const SharedLayout = (props) => {
 
   return (
     <PerfumeContextProvider>
-      <OrderContextProvider>
-        <CartContextProvider>
-          <main
-            className="w-screen bg-white dark:bg-gray-800 dark:text-white
-              duration-200 overflow-hidden"
-          >
-            {cartIsVisible && (
-              <Cart
-                onHideCart={hideCartHandler}
-                onShowSubmitForm={showSubmitFormHandler}
-              />
-            )}
-            {submitFormIsVisible && (
-              <SubmitOrder
-                onHideCart={hideCartHandler}
-                // onShowConfirm={showConfirmHandler}
-                onOpenConfirm={showConfirmHandler}
-                onSetDeliveryOption={setDeliveryOptionHandler}
-              />
-            )}
+      <FreshenerContextProvider>
+        <ConsumablesContextProvider>
+          <OrderContextProvider>
+            <CartContextProvider>
+              <main
+                className="w-screen bg-white dark:bg-gray-800 dark:text-white
+                  duration-200 overflow-hidden"
+              >
+                {cartIsVisible && (
+                  <Cart
+                    onHideCart={hideCartHandler}
+                    onShowSubmitForm={showSubmitFormHandler}
+                  />
+                )}
+                {submitFormIsVisible && (
+                  <SubmitOrder
+                    onHideCart={hideCartHandler}
+                    // onShowConfirm={showConfirmHandler}
+                    onOpenConfirm={showConfirmHandler}
+                    onSetDeliveryOption={setDeliveryOptionHandler}
+                  />
+                )}
 
-            {confirmIsVisible && (
-              <Confirm
-                onHideConfirm={hideCartHandler}
-                delivery={delivery}
-                // onShowPayment={showPaymentHandler}
-                onOpenPayment={showPaymentHandler}
-                onConfirm={totalToBePaidHandler}
-              />
-            )}
-            {paymentIsVisible && (
-              <Payment
-                onHideConfirm={hideCartHandler}
-                totalToBePaid={totalToBePaid}
-              />
-            )}
+                {confirmIsVisible && (
+                  <Confirm
+                    onHideConfirm={hideCartHandler}
+                    delivery={delivery}
+                    // onShowPayment={showPaymentHandler}
+                    onOpenPayment={showPaymentHandler}
+                    onConfirm={totalToBePaidHandler}
+                  />
+                )}
+                {paymentIsVisible && (
+                  <Payment
+                    onHideConfirm={hideCartHandler}
+                    totalToBePaid={totalToBePaid}
+                  />
+                )}
 
-            <Navbar
-              themeHandler={props.themeHandler}
-              theme={props.theme}
-              onShowCart={showCartHandler}
-              cartButtonIsDisabled={cartButtonIsDisabled}
-            />
-            <Outlet themeHandler={props.themeHandler} theme={props.theme} />
-            <Footer />
-            {/* <Popup orderPopup={orderPopup} 
-              orderPopupHandler={orderPopupHandler} /> */}
-          </main>
-        </CartContextProvider>
-      </OrderContextProvider>
+                <Navbar
+                  themeHandler={props.themeHandler}
+                  theme={props.theme}
+                  onShowCart={showCartHandler}
+                  cartButtonIsDisabled={cartButtonIsDisabled}
+                />
+                <Outlet themeHandler={props.themeHandler} theme={props.theme} />
+                <Footer />
+                {/* <Popup orderPopup={orderPopup} 
+                  orderPopupHandler={orderPopupHandler} /> */}
+              </main>
+            </CartContextProvider>
+          </OrderContextProvider>
+        </ConsumablesContextProvider>
+      </FreshenerContextProvider>
     </PerfumeContextProvider>
   );
 };

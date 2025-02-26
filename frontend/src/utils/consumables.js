@@ -2,7 +2,7 @@ import Image1 from "../assets/products/Consume.png";
 
 export const CONSUMABLES = [
   {
-    id: "1",
+    id: "c1",
     image: Image1,
     category: "Расходники для Ароматизаторов",
     title: "Сменный блок для ароматизатора NIKI",
@@ -11,7 +11,7 @@ export const CONSUMABLES = [
     aroma: "Наличие ароматов уточняйте",
   },
   {
-    id: "2",
+    id: "c2",
     image: Image1,
     category: "Расходники для Ароматизаторов",
     title: "Сменный блок для ароматизатора NIKI",
@@ -20,7 +20,7 @@ export const CONSUMABLES = [
     aroma: "Наличие ароматов уточняйте",
   },
   {
-    id: "3",
+    id: "c3",
     image: Image1,
     category: "Расходники для Ароматизаторов",
     title: "Сменный блок для ароматизатора NIKI",

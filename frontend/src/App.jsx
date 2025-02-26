@@ -7,6 +7,7 @@ import CommentsOnConsumable from "./components/comments/CommentsOnConsumable.jsx
 import CommentsOnFreshener from "./components/comments/CommentsOnFreshener.jsx";
 import CommentsOnPerfume from "./components/comments/CommentsOnPerfume.jsx";
 import Consumables from "./pages/productConsumables/Consumables.jsx";
+import Contacts from "./pages/Contacts.jsx";
 import Delivery from "./pages/Delivery.jsx";
 import Error from "./pages/Error.jsx";
 import Fresheners from "./pages/productFreshener/Fresheners.jsx";
@@ -77,6 +78,7 @@ function App(props) {
           />
           <Route path="cart" element={<Cart />} />
           <Route path="about" element={<About />} />
+          <Route path="contacts" element={<Contacts />} />
           <Route path="delivery" element={<Delivery />} />
           <Route path="*" element={<Error />} />
 

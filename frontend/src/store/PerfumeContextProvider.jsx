@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Loader from "./../components/sharedUI/LoaderKest.jsx";
 import { PERFUMES } from "../utils/perfumes.js";
 import PerfumeContext from "./perfume-context.js";
 
@@ -50,8 +51,8 @@ const PerfumeContextProvider = (props) => {
           family3: responseData[key].family3,
           family4: responseData[key].family4,
           family5: responseData[key].family5,
-          note1: responseData[key].no1te,
-          note2: responseData[key].not2e,
+          note1: responseData[key].note1,
+          note2: responseData[key].note2,
           note3: responseData[key].note3,
           note4: responseData[key].note4,
           note5: responseData[key].note5,
@@ -78,7 +79,8 @@ const PerfumeContextProvider = (props) => {
   if (isLoadPerfumes) {
     return (
       <section className="text-red-600 text-xl mt-[100px] text-center">
-        <p>Загрузка данных с сервера...</p>
+        {/* <p>Загрузка данных с сервера...</p> */}
+        <Loader />
       </section>
     );
   }
@@ -93,6 +95,7 @@ const PerfumeContextProvider = (props) => {
 
   return (
     // <PerfumeContext.Provider value={perfumes}>
+
     <PerfumeContext.Provider value={PERFUMES}>
       {props.children}
     </PerfumeContext.Provider>

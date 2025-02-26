@@ -1,14 +1,15 @@
-import { useContext, useState } from "react";
-
 import Button from "../../components/sharedUI/Button.jsx";
-import { CONSUMABLES } from "../../utils/consumables.js";
 import CartContext from "../../store/cart-context.js";
+import ConsumablesContext from "./../../store/consumables-context.js";
 import { NumericFormat } from "react-number-format";
+import { useContext } from "react";
 import { useParams } from "react-router";
 
 const SingleConsumable = () => {
+  const consumables = useContext(ConsumablesContext);
+
   const params = useParams();
-  const consumable = CONSUMABLES.find(
+  const consumable = consumables.find(
     (consumable) => consumable.id === params.consumableId
   );
 

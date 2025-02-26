@@ -1,14 +1,15 @@
-import { useContext, useState } from "react";
-
 import Button from "./../../components/sharedUI/Button.jsx";
 import CartContext from "./../../store/cart-context.js";
-import { FRESHENERS } from "../../utils/fresheners.js";
+import FreshenerContext from "./../../store/freshener-context.js";
 import { NumericFormat } from "react-number-format";
+import { useContext } from "react";
 import { useParams } from "react-router";
 
 const SingleFreshener = () => {
+  const fresheners = useContext(FreshenerContext);
+
   const params = useParams();
-  const freshener = FRESHENERS.find(
+  const freshener = fresheners.find(
     (freshener) => freshener.id === params.freshenerId
   );
 
