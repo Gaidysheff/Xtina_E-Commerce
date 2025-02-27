@@ -9,13 +9,11 @@ import Category from "./../components/category/Category.jsx";
 import Contacts from "./../components/contacts/Contacts.jsx";
 import Hero from "./../components/hero/Hero.jsx";
 import Introduction from "./../components/introduction/Introduction.jsx";
-import Questions from "./../components/questions/Questions.jsx";
 import YandexMap from "./../components/map/YandexMap.jsx";
 
 const Home = (props) => {
   return (
     <section className="px-3 sm:px-0 mt-5">
-      {/* <div className="container py-2"> */}
       <Introduction themeHandler={props.themeHandler} theme={props.theme} />
       <Hero />
       <Accordion />
@@ -29,10 +27,6 @@ const Home = (props) => {
       <Brands />
       <Contacts />
       <YandexMap />
-
-      {/* 
-        <Popup orderPopup={orderPopup} orderPopupHandler={orderPopupHandler} /> */}
-      {/* </div> */}
     </section>
   );
 };

@@ -1,3 +1,4 @@
+import { FaArrowLeft } from "react-icons/fa";
 import Modal from "./../../components/modalWindow/Modal.jsx";
 import SubmitForm from "./SubmitForm.jsx";
 import { useRef } from "react";
@@ -45,17 +46,33 @@ const SubmitOrder = (props) => {
               />
             </div>
 
-            <div className="text-end">
+            <div className="flex justify-between text-sm sm:text-lg">
               <button
-                className="cursor-pointer bg-transparent text-primaryDark ml-2
-											font-semibold border-2 border-primaryDark py-2 px-4 rounded-xl 
-											hover:bg-gradient-to-br hover:from-primaryLight 
-											hover:to-primaryDark hover:text-white hover:ring 
-											hover:border-white hover:ring-primaryDark/70"
-                onClick={submitChildForm}
+                className="cursor-pointer bg-transparent text-primaryDark 
+                  ml-2 font-semibold border-2 border-primaryDark py-2 px-4 
+                  rounded-xl  hover:bg-gradient-to-br hover:from-primaryLight 
+                  hover:to-primaryDark hover:text-white hover:ring 
+                  hover:border-white hover:ring-primaryDark/70"
                 data-aos="zoom-in"
                 data-aos-delay="500"
                 data-aos-duration="2000"
+                onClick={props.onShowCart}
+              >
+                <div className="flex items-center justify-between">
+                  <FaArrowLeft />
+                  <p className="ml-2">Назад</p>
+                </div>
+              </button>
+              <button
+                className="cursor-pointer bg-transparent text-primaryDark 
+                  ml-2 font-semibold border-2 border-primaryDark py-2 px-4 
+                  rounded-xl  hover:bg-gradient-to-br hover:from-primaryLight 
+                  hover:to-primaryDark hover:text-white hover:ring 
+                  hover:border-white hover:ring-primaryDark/70"
+                data-aos="zoom-in"
+                data-aos-delay="500"
+                data-aos-duration="2000"
+                onClick={submitChildForm}
               >
                 Подтвердить
               </button>

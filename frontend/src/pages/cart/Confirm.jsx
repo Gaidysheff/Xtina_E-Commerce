@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import CartContext from "./../../store/cart-context.js";
 import ConfirmForm from "./ConfirmForm.jsx";
 import { DELIVERY } from "../../utils/delivery.js";
+import { FaArrowLeft } from "react-icons/fa";
 import Modal from "./../../components/modalWindow/Modal.jsx";
 import { NumericFormat } from "react-number-format";
 
@@ -152,11 +153,11 @@ const Confirm = (props) => {
 
               <div
                 className="flex justify-between items-center font-semibold my-[1rem]
-                          text-xl"
+                          text-sm sm:text-xl"
               >
                 <p className="text-gray-400">Итого к оплате:</p>
                 <NumericFormat
-                  className="flex justify-start text-3xl sm:text-5xl pb-2
+                  className="flex justify-start text-2xl sm:text-4xl pb-2
                             text-transparent bg-clip-text bg-gradient-to-r 
                             from-primary to-primaryDark"
                   value={toBePaid}
@@ -171,19 +172,37 @@ const Confirm = (props) => {
               </div>
 
               {/* ----------------------------- */}
-              <button
-                className="cursor-pointer bg-transparent text-primaryDark ml-2
-											font-semibold border-2 border-primaryDark py-2 px-4 rounded-xl 
-											hover:bg-gradient-to-br hover:from-primaryLight 
-											hover:to-primaryDark hover:text-white hover:ring 
-											hover:border-white hover:ring-primaryDark/70"
-                data-aos="zoom-in"
-                data-aos-delay="500"
-                data-aos-duration="2000"
-                onClick={confirmHandler}
-              >
-                Перейти к оплате
-              </button>
+              <div className="flex justify-between text-sm sm:text-lg">
+                <button
+                  className="cursor-pointer bg-transparent text-primaryDark 
+                  ml-2 font-semibold border-2 border-primaryDark py-2 px-4 
+                  rounded-xl  hover:bg-gradient-to-br hover:from-primaryLight 
+                  hover:to-primaryDark hover:text-white hover:ring 
+                  hover:border-white hover:ring-primaryDark/70"
+                  data-aos="zoom-in"
+                  data-aos-delay="500"
+                  data-aos-duration="2000"
+                  onClick={props.onShowSubmitForm}
+                >
+                  <div className="flex items-center justify-between">
+                    <FaArrowLeft />
+                    <p className="ml-2">Назад</p>
+                  </div>
+                </button>
+                <button
+                  className="cursor-pointer bg-transparent text-primaryDark 
+                  ml-2 font-semibold border-2 border-primaryDark py-2 px-4 
+                  rounded-xl  hover:bg-gradient-to-br hover:from-primaryLight 
+                  hover:to-primaryDark hover:text-white hover:ring 
+                  hover:border-white hover:ring-primaryDark/70"
+                  data-aos="zoom-in"
+                  data-aos-delay="500"
+                  data-aos-duration="2000"
+                  onClick={confirmHandler}
+                >
+                  К оплате
+                </button>
+              </div>
             </div>
           </div>
         </section>

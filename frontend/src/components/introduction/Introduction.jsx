@@ -9,8 +9,8 @@ const Introduction = (props) => {
       <div className="grid grid-cols-3 gap-2 mb-10">
         <div className="col-span-2">
           <div
-            className="inline-flex justify-between mb-[15px]
-  				sm:mb-[30px] md:mb-[50px] lg:mb-[70px] xl:mb-[90px] 2xl:mb-[100px]"
+            className="inline-flex justify-between mb-[15px] sm:mb-[30px] 
+            md:mb-[50px] lg:mb-[70px] xl:mb-[90px] 2xl:mb-[100px]"
           >
             <div className="w-[80%]">
               {props.theme === "light" ? (
@@ -24,15 +24,15 @@ const Introduction = (props) => {
               )}
             </div>
             <p
-              className="w-full text-center text-md sm:text-lg md:text-2xl lg:text-4xl 
-  					xl:text-5xl 2xl:text-6xl self-end mb-3"
+              className="w-full text-center text-md sm:text-lg md:text-2xl 
+              lg:text-4xl xl:text-5xl 2xl:text-6xl self-end mb-3"
             >
               – это
             </p>
           </div>
           <div
-            className="flex flex-col text-[11px] sm:text-xl md:text-2xl
-  				lg:text-4xl xl:text-5xl 2xl:text-6xl"
+            className="flex flex-col text-[11px] sm:text-xl md:text-2xl 
+            lg:text-4xl xl:text-5xl 2xl:text-6xl"
           >
             <div
               className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7"

@@ -29,6 +29,9 @@ const SharedLayout = (props) => {
   const showCartHandler = () => {
     setCartIsVisible(true);
     setCartButtonIsDisabled(true);
+    setSubmitFormIsVisible(false);
+    setConfirmIsVisible(false);
+    setPaymentIsVisible(false);
   };
 
   const hideCartHandler = () => {
@@ -42,17 +45,20 @@ const SharedLayout = (props) => {
   const showSubmitFormHandler = () => {
     setCartIsVisible(false);
     setSubmitFormIsVisible(true);
+    setConfirmIsVisible(false);
+    setPaymentIsVisible(false);
   };
 
   const showConfirmHandler = () => {
-    // setCartIsVisible(false);
+    setCartIsVisible(false);
     setSubmitFormIsVisible(false);
     setConfirmIsVisible(true);
+    setPaymentIsVisible(false);
   };
 
   const showPaymentHandler = () => {
-    // setCartIsVisible(false);
-    // setSubmitFormIsVisible(false);
+    setCartIsVisible(false);
+    setSubmitFormIsVisible(false);
     setConfirmIsVisible(false);
     setPaymentIsVisible(true);
   };
@@ -100,7 +106,7 @@ const SharedLayout = (props) => {
               )}
               <main
                 className="w-screen bg-white dark:bg-gray-800 dark:text-white
-                  duration-200 overflow-hidden"
+                        duration-200 overflow-hidden"
               >
                 {cartIsVisible && (
                   <Cart
@@ -111,9 +117,9 @@ const SharedLayout = (props) => {
                 {submitFormIsVisible && (
                   <SubmitOrder
                     onHideCart={hideCartHandler}
-                    // onShowConfirm={showConfirmHandler}
                     onOpenConfirm={showConfirmHandler}
                     onSetDeliveryOption={setDeliveryOptionHandler}
+                    onShowCart={showCartHandler}
                   />
                 )}
 
@@ -121,9 +127,9 @@ const SharedLayout = (props) => {
                   <Confirm
                     onHideConfirm={hideCartHandler}
                     delivery={delivery}
-                    // onShowPayment={showPaymentHandler}
                     onOpenPayment={showPaymentHandler}
                     onConfirm={totalToBePaidHandler}
+                    onShowSubmitForm={showSubmitFormHandler}
                   />
                 )}
                 {paymentIsVisible && (
@@ -141,8 +147,6 @@ const SharedLayout = (props) => {
                 />
                 <Outlet themeHandler={props.themeHandler} theme={props.theme} />
                 <Footer />
-                {/* <Popup orderPopup={orderPopup} 
-                  orderPopupHandler={orderPopupHandler} /> */}
               </main>
             </CartContextProvider>
           </OrderContextProvider>
