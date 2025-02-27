@@ -1,5 +1,6 @@
 import { FaArrowLeft } from "react-icons/fa";
 import Modal from "./../../components/modalWindow/Modal.jsx";
+import ProgressSteps from "./../../components/progressSteps/ProgressSteps.jsx";
 import SubmitForm from "./SubmitForm.jsx";
 import { useRef } from "react";
 
@@ -19,19 +20,22 @@ const SubmitOrder = (props) => {
   return (
     <Modal onHideCart={props.onHideCart}>
       <div className="flex flex-col">
-        <div
-          onClick={props.onHideCart}
-          className="self-end w-8 h-8 text-3xl text-primaryDark rounded-md
+        <div className="flex justify-between items-center">
+          <ProgressSteps step1 step2 />
+          <button
+            onClick={props.onHideCart}
+            className="self-end w-8 h-8 text-3xl text-primaryDark rounded-md
 							flex justify-center items-center border-2 cursor-pointer
 							border-primaryDark 
 							hover:bg-gradient-to-br hover:from-primaryLight 
 							hover:to-primaryDark hover:text-white hover:ring 
 							hover:border-white hover:ring-primaryDark/70"
-          data-aos="zoom-in"
-          data-aos-delay="2000"
-          data-aos-duration="2000"
-        >
-          <div className="pb-1">&times;</div>
+            data-aos="zoom-in"
+            data-aos-delay="2000"
+            data-aos-duration="2000"
+          >
+            <div className="pb-1">&times;</div>
+          </button>
         </div>
 
         <section>

@@ -6,6 +6,7 @@ import { DELIVERY } from "../../utils/delivery.js";
 import { FaArrowLeft } from "react-icons/fa";
 import Modal from "./../../components/modalWindow/Modal.jsx";
 import { NumericFormat } from "react-number-format";
+import ProgressSteps from "./../../components/progressSteps/ProgressSteps.jsx";
 
 // import OrderContext from "./../../store/order-context.js";
 
@@ -125,20 +126,23 @@ const Confirm = (props) => {
   return (
     <Modal onHideConfirm={props.onHideConfirm}>
       <div className="flex flex-col">
-        <button
-          onClick={props.onHideConfirm}
-          className="self-end w-8 h-8 text-3xl text-primaryDark rounded-md
+        <div className="flex justify-between items-center">
+          <ProgressSteps step1 step2 step3 />
+          <button
+            onClick={props.onHideConfirm}
+            className="self-end w-8 h-8 text-3xl text-primaryDark rounded-md
 							flex justify-center items-center border-2 cursor-pointer
 							border-primaryDark 
 							hover:bg-gradient-to-br hover:from-primaryLight 
 							hover:to-primaryDark hover:text-white hover:ring 
 							hover:border-white hover:ring-primaryDark/70"
-          data-aos="zoom-in"
-          data-aos-delay="2000"
-          data-aos-duration="2000"
-        >
-          <div className="pb-1">&times;</div>
-        </button>
+            data-aos="zoom-in"
+            data-aos-delay="2000"
+            data-aos-duration="2000"
+          >
+            <div className="pb-1">&times;</div>
+          </button>
+        </div>
 
         <section>
           <div className="container">
