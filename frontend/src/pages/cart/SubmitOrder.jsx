@@ -7,14 +7,11 @@ import { useRef } from "react";
 const SubmitOrder = (props) => {
   const editFormRef = useRef();
 
-  // -----------------------------------------
-
   const submitChildForm = () => {
-    // event.preventDefault();
     if (editFormRef && editFormRef.current) {
       editFormRef.current.submitForm();
     }
-    props.onOpenConfirm();
+    // props.onOpenConfirm();
   };
 
   return (
@@ -47,6 +44,7 @@ const SubmitOrder = (props) => {
               <SubmitForm
                 ref={editFormRef}
                 onSetDeliveryOption={props.onSetDeliveryOption}
+                onOpenConfirm={props.onOpenConfirm}
               />
             </div>
 

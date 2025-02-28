@@ -14,15 +14,31 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
 const isInputValid = (inputValue) => inputValue.trim() !== "";
-const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
-// const isPhoneValid = (phoneValue) =>
-//   (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
+// const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
+const isPhoneValid = (phoneValue) =>
+  (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
 
 export default forwardRef((props, ref) => {
   // -----------------------------------------
   const orderContext = useContext(OrderContext);
 
-  // const dataInserted = orderContext.shipping;
+  const dataInsertedEarlier = orderContext.shipping;
+
+  const [defaultPhone, setDefaultPhone] = useState("+7");
+
+  useEffect(() => {
+    if (dataInsertedEarlier.length !== 0) {
+      console.log("SHITTY");
+      const d = dataInsertedEarlier[0].telephone;
+      console.log("???", d);
+      setDefaultPhone(d);
+    }
+  }, [dataInsertedEarlier.length]);
+  // -----------------------------------------
+
+  // if (dataInsertedEarlier.length !== 0) {
+  //   setDefaultPhone(dataInsertedEarlier[0].telephone);
+  // }
 
   // const phoneInserted = "+7";
 
@@ -36,9 +52,15 @@ export default forwardRef((props, ref) => {
   // console.log("dataInserted=", dataInserted);
   // console.log("telephone=", dataInserted[0].telephone);
 
-  const { register, handleSubmit, resetField } = useForm({
+  // ----------------------------------------------
+
+  const [formData, setFormData] = useState([]);
+
+  // const defaultPhone = "+7";
+
+  const { register, handleSubmit, resetField, setValue } = useForm({
     defaultValues: {
-      telephone: "+7",
+      telephone: `${defaultPhone}`,
       // telephone: `${phoneInserted}`,
       // name: `${phoneInserted}`,
       // connection: `${phoneInserted}`,
@@ -46,8 +68,6 @@ export default forwardRef((props, ref) => {
     // defaultValues: { telephone: "+7" },
     // mode: "onChange",
   });
-
-  const [formData, setFormData] = useState([]);
 
   // -------------- Validation ----------------
 
@@ -164,15 +184,14 @@ export default forwardRef((props, ref) => {
     }
 
     setFormData([...formData, data]);
-
     orderContext.addOrder(data);
-
     props.onSetDeliveryOption(data);
+    props.onOpenConfirm();
   };
 
   // ==================================================
 
-  // console.log("formData=", formData);
+  // console.log("formDataEND=", formData);
 
   // ==================================================
 

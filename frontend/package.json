@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^4.1.2",
     "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^2.5.0",
     "aos": "^2.3.4",
@@ -23,7 +24,8 @@
     "react-scroll": "^1.9.2",
     "react-slick": "^0.30.3",
     "react-toastify": "^11.0.5",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
