@@ -55,9 +55,9 @@ const SubmitOrder = (props) => {
                   rounded-xl  hover:bg-gradient-to-br hover:from-primaryLight 
                   hover:to-primaryDark hover:text-white hover:ring 
                   hover:border-white hover:ring-primaryDark/70"
-                data-aos="zoom-in"
-                data-aos-delay="500"
-                data-aos-duration="2000"
+                // data-aos="zoom-in"
+                // data-aos-delay="500"
+                // data-aos-duration="2000"
                 onClick={props.onShowCart}
               >
                 <div className="flex items-center justify-between">
@@ -70,10 +70,10 @@ const SubmitOrder = (props) => {
                   ml-2 font-semibold border-2 border-primaryDark py-2 px-4 
                   rounded-xl  hover:bg-gradient-to-br hover:from-primaryLight 
                   hover:to-primaryDark hover:text-white hover:ring 
-                  hover:border-white hover:ring-primaryDark/70"
-                data-aos="zoom-in"
-                data-aos-delay="500"
-                data-aos-duration="2000"
+                  hover:border-white hover:ring-primaryDark/70 my-animation"
+                // data-aos="zoom-in"
+                // data-aos-delay="500"
+                // data-aos-duration="2000"
                 onClick={submitChildForm}
               >
                 Подтвердить

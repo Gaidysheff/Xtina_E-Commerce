@@ -46,9 +46,9 @@ const Payment = (props) => {
                 hover:bg-gradient-to-br hover:from-primaryLight 
                 hover:to-primaryDark hover:text-white hover:ring 
                 hover:border-white hover:ring-primaryDark/70"
-                data-aos="zoom-in"
-                data-aos-delay="500"
-                data-aos-duration="2000"
+                // data-aos="zoom-in"
+                // data-aos-delay="500"
+                // data-aos-duration="2000"
                 // onClick={smth}
               >
                 Оплатить

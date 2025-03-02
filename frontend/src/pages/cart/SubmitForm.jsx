@@ -1,10 +1,4 @@
-import React, {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from "react";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 
 import { DELIVERY } from "../../utils/delivery";
 import OrderContext from "./../../store/order-context.js";
@@ -19,54 +13,14 @@ const isPhoneValid = (phoneValue) =>
   (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
 
 export default forwardRef((props, ref) => {
-  // -----------------------------------------
   const orderContext = useContext(OrderContext);
-
-  const dataInsertedEarlier = orderContext.shipping;
-
-  const [defaultPhone, setDefaultPhone] = useState("+7");
-
-  useEffect(() => {
-    if (dataInsertedEarlier.length !== 0) {
-      console.log("SHITTY");
-      const d = dataInsertedEarlier[0].telephone;
-      console.log("???", d);
-      setDefaultPhone(d);
-    }
-  }, [dataInsertedEarlier.length]);
-  // -----------------------------------------
-
-  // if (dataInsertedEarlier.length !== 0) {
-  //   setDefaultPhone(dataInsertedEarlier[0].telephone);
-  // }
-
-  // const phoneInserted = "+7";
-
-  // if (dataInserted[0]) {
-  //   console.log("dataInserted=", dataInserted);
-  //   console.log("formData=", formData[0]);
-  //   const phoneInserted = dataInserted[0].telephone;
-  //   return phoneInserted;
-  // }
-
-  // console.log("dataInserted=", dataInserted);
-  // console.log("telephone=", dataInserted[0].telephone);
-
-  // ----------------------------------------------
 
   const [formData, setFormData] = useState([]);
 
-  // const defaultPhone = "+7";
-
-  const { register, handleSubmit, resetField, setValue } = useForm({
+  const { register, handleSubmit, resetField } = useForm({
     defaultValues: {
-      telephone: `${defaultPhone}`,
-      // telephone: `${phoneInserted}`,
-      // name: `${phoneInserted}`,
-      // connection: `${phoneInserted}`,
+      telephone: "+7",
     },
-    // defaultValues: { telephone: "+7" },
-    // mode: "onChange",
   });
 
   // -------------- Validation ----------------
@@ -160,8 +114,6 @@ export default forwardRef((props, ref) => {
   // ==================================================
 
   const onSubmit = (data) => {
-    // console.log("data=", data);
-
     const enteredName = data.name;
     const enteredTelephone = data.telephone;
     const enteredConnection = data.connection;
@@ -188,10 +140,6 @@ export default forwardRef((props, ref) => {
     props.onSetDeliveryOption(data);
     props.onOpenConfirm();
   };
-
-  // ==================================================
-
-  // console.log("formDataEND=", formData);
 
   // ==================================================
 
@@ -361,14 +309,6 @@ export default forwardRef((props, ref) => {
                   Самовывоз
                 </div>
               </div>
-              {/* <input
-                type="text"
-                id="selfPickup"
-                name="selfPickup"
-                value={selfPickup}
-                {...register("selfPickup")}
-                className="hidden"
-              /> */}
             </div>
           </label>
         </li>
@@ -414,7 +354,6 @@ export default forwardRef((props, ref) => {
                     {...register("deliveryOne")}
                     onChange={addressOneHandler}
                   />
-                  {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
               )}
             </div>
@@ -462,7 +401,6 @@ export default forwardRef((props, ref) => {
                     {...register("deliveryTwo")}
                     onChange={addressTwoHandler}
                   />
-                  {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
               )}
             </div>
@@ -508,10 +446,8 @@ export default forwardRef((props, ref) => {
                     id="deliveryThree"
                     name="deliveryThree"
                     {...register("deliveryThree")}
-                    // ref={addressThree}
                     onChange={addressThreeHandler}
                   />
-                  {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
               )}
             </div>
@@ -557,10 +493,8 @@ export default forwardRef((props, ref) => {
                     id="deliveryFour"
                     name="deliveryFour"
                     {...register("deliveryFour")}
-                    // ref={addressFour}
                     onChange={addressFourHandler}
                   />
-                  {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
               )}
             </div>
@@ -606,10 +540,8 @@ export default forwardRef((props, ref) => {
                     id="deliveryFive"
                     name="deliveryFive"
                     {...register("deliveryFive")}
-                    // ref={addressFive}
                     onChange={addressFiveHandler}
                   />
-                  {/* {!formValidity.address && <p>Необходимо ввести адрес</p>} */}
                 </div>
               )}
             </div>
