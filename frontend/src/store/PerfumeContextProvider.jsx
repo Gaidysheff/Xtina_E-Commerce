@@ -13,9 +13,10 @@ const PerfumeContextProvider = (props) => {
     const fetchPerfumes = async () => {
       setIsLoadPerfumes(true);
 
-      const response = await fetch(
-        "https://perfume-a7057-default-rtdb.firebaseio.com/PERFUMES.json"
-      );
+      const response = await fetch("http://127.0.0.1:8000/api/perfumes");
+      // const response = await fetch(
+      //   "https://perfume-a7057-default-rtdb.firebaseio.com/PERFUMES.json"
+      // );
 
       if (!response.ok) {
         throw new Error(
@@ -26,46 +27,47 @@ const PerfumeContextProvider = (props) => {
       const responseData = await response.json();
 
       const loadedPerfumes = [];
+
       for (const key in responseData) {
         loadedPerfumes.push({
           id: key,
           image: responseData[key].image,
           name: responseData[key].name,
           brand: responseData[key].brand,
-          price1: responseData[key].price1,
-          price2: responseData[key].price2,
           price3: responseData[key].price3,
-          price4: responseData[key].price4,
           price5: responseData[key].price5,
+          price10: responseData[key].price10,
+          price20: responseData[key].price20,
+          price30: responseData[key].price30,
           perfumer: responseData[key].perfumer,
           country: responseData[key].country,
           year: responseData[key].year,
           sex: responseData[key].sex,
-          compound1: responseData[key].compound1,
-          compound2: responseData[key].compound2,
-          compound3: responseData[key].compound3,
-          compound4: responseData[key].compound4,
-          compound5: responseData[key].compound5,
-          family1: responseData[key].family1,
-          family2: responseData[key].family2,
-          family3: responseData[key].family3,
-          family4: responseData[key].family4,
-          family5: responseData[key].family5,
-          note1: responseData[key].note1,
-          note2: responseData[key].note2,
-          note3: responseData[key].note3,
-          note4: responseData[key].note4,
-          note5: responseData[key].note5,
-          chord1: responseData[key].chord1,
-          chord2: responseData[key].chord2,
-          chord3: responseData[key].chord3,
-          chord4: responseData[key].chord4,
-          chord5: responseData[key].chord5,
+          compound1: responseData[key].compound1.name,
+          compound2: responseData[key].compound2.name,
+          compound3: responseData[key].compound3.name,
+          compound4: responseData[key].compound4.name,
+          compound5: responseData[key].compound5.name,
+          family1: responseData[key].family1.name,
+          family2: responseData[key].family2.name,
+          family3: responseData[key].family3.name,
+          family4: responseData[key].family4.name,
+          family5: responseData[key].family5.name,
+          note1: responseData[key].note1.name,
+          note2: responseData[key].note2.name,
+          note3: responseData[key].note3.name,
+          note4: responseData[key].note4.name,
+          note5: responseData[key].note5.name,
+          chord1: responseData[key].chord1.name,
+          chord2: responseData[key].chord2.name,
+          chord3: responseData[key].chord3.name,
+          chord4: responseData[key].chord4.name,
+          chord5: responseData[key].chord5.name,
           description: responseData[key].description,
           feedback: responseData[key].feedback,
         });
       }
-
+      console.log("LOADED=", loadedPerfumes);
       setPerfumes(loadedPerfumes);
       setIsLoadPerfumes(false);
     };
@@ -94,9 +96,8 @@ const PerfumeContextProvider = (props) => {
   }
 
   return (
-    // <PerfumeContext.Provider value={perfumes}>
-
-    <PerfumeContext.Provider value={PERFUMES}>
+    // <PerfumeContext.Provider value={PERFUMES}>
+    <PerfumeContext.Provider value={perfumes}>
       {props.children}
     </PerfumeContext.Provider>
   );

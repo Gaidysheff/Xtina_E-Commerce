@@ -54,7 +54,7 @@ const Hero = (props) => {
                           text-primaryDark/60 dark:text-primary/80 font-['Pacifico']
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)] my-1 md:my-3"
                         >
-                          {slide.aroma1}
+                          {slide.note1}
                         </h1>
                         <h1
                           data-aos="zoom-out"
@@ -64,7 +64,7 @@ const Hero = (props) => {
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]
                           sm:text-center my-1 md:my-3"
                         >
-                          {slide.aroma2}
+                          {slide.note2}
                         </h1>
                         <h1
                           data-aos="zoom-out"
@@ -74,7 +74,7 @@ const Hero = (props) => {
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]
                           sm:text-right my-1 md:my-3"
                         >
-                          {slide.aroma3}
+                          {slide.note3}
                         </h1>
                       </div>
                       <h1
