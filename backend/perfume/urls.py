@@ -18,4 +18,6 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+admin.site.site_header = "Панель администрирования Базы Данных магазина K.ÉST23"
+admin.site.index_title = "Разделы Базы Данных магазина K.ÉST23"
 

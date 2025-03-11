@@ -31,9 +31,10 @@ const PerfumeContextProvider = (props) => {
       for (const key in responseData) {
         loadedPerfumes.push({
           id: key,
-          image: responseData[key].image,
           name: responseData[key].name,
+          slug: responseData[key].slug,
           brand: responseData[key].brand,
+          image: responseData[key].image,
           price3: responseData[key].price3,
           price5: responseData[key].price5,
           price10: responseData[key].price10,

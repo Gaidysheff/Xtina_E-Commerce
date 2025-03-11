@@ -249,19 +249,19 @@ const SingleProduct = (props) => {
               data-aos-delay="700"
             >
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound1 !== "нет" && perfume.compound1}
+                {perfume.compound1 !== "---" && perfume.compound1}
               </p>
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound2 !== "нет" && perfume.compound2}
+                {perfume.compound2 !== "---" && perfume.compound2}
               </p>
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound3 !== "нет" && perfume.compound3}
+                {perfume.compound3 !== "---" && perfume.compound3}
               </p>
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound4 !== "нет" && perfume.compound4}
+                {perfume.compound4 !== "---" && perfume.compound4}
               </p>
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound5 !== "нет" && perfume.compound5}
+                {perfume.compound5 !== "---" && perfume.compound5}
               </p>
             </div>
           </div>
@@ -279,31 +279,31 @@ const SingleProduct = (props) => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {perfume.family1 !== "нет" && perfume.family1}
+                {perfume.family1 !== "---" && perfume.family1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.family2 !== "нет" && perfume.family2}
+                {perfume.family2 !== "---" && perfume.family2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.family3 !== "нет" && perfume.family3}
+                {perfume.family3 !== "---" && perfume.family3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.family4 !== "нет" && perfume.family4}
+                {perfume.family4 !== "---" && perfume.family4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.family5 !== "нет" && perfume.family5}
+                {perfume.family5 !== "---" && perfume.family5}
               </p>
             </div>
           </div>
@@ -321,31 +321,31 @@ const SingleProduct = (props) => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {perfume.note1 !== "нет" && perfume.note1}
+                {perfume.note1 !== "---" && perfume.note1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.note2 !== "нет" && perfume.note2}
+                {perfume.note2 !== "---" && perfume.note2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.note3 !== "нет" && perfume.note3}
+                {perfume.note3 !== "---" && perfume.note3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.note4 !== "нет" && perfume.note4}
+                {perfume.note4 !== "---" && perfume.note4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.note5 !== "нет" && perfume.note5}
+                {perfume.note5 !== "---" && perfume.note5}
               </p>
             </div>
           </div>
@@ -363,31 +363,31 @@ const SingleProduct = (props) => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {perfume.chord1 !== "нет" && perfume.chord1}
+                {perfume.chord1 !== "---" && perfume.chord1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.chord2 !== "нет" && perfume.chord2}
+                {perfume.chord2 !== "---" && perfume.chord2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.chord3 !== "нет" && perfume.chord3}
+                {perfume.chord3 !== "---" && perfume.chord3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.chord4 !== "нет" && perfume.chord4}
+                {perfume.chord4 !== "---" && perfume.chord4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.chord5 !== "нет" && perfume.chord5}
+                {perfume.chord5 !== "---" && perfume.chord5}
               </p>
             </div>
           </div>

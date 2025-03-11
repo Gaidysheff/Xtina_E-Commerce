@@ -75,6 +75,28 @@ class PerfumeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class FreshenerSerializer(serializers.ModelSerializer):
+    aroma1 = AromaSerializer()
+    aroma2 = AromaSerializer()
+    aroma3 = AromaSerializer()
+    aroma4 = AromaSerializer()
+    aroma5 = AromaSerializer()
+    aroma5 = AromaSerializer()
+    topNote1 = TopNoteSerializer()
+    topNote2 = TopNoteSerializer()
+    topNote3 = TopNoteSerializer()
+    topNote4 = TopNoteSerializer()
+    topNote5 = TopNoteSerializer()
+    middleNote1 = MiddleNoteSerializer()
+    middleNote2 = MiddleNoteSerializer()
+    middleNote3 = MiddleNoteSerializer()
+    middleNote4 = MiddleNoteSerializer()
+    middleNote5 = MiddleNoteSerializer()
+    baseNote1 = BaseNoteSerializer()
+    baseNote2 = BaseNoteSerializer()
+    baseNote3 = BaseNoteSerializer()
+    baseNote4 = BaseNoteSerializer()
+    baseNote5 = BaseNoteSerializer()
+
     class Meta:
         model = Freshener
         fields = '__all__'
