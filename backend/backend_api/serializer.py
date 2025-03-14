@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
 from .models import (
-	Compound, Family, Note, Chord, Aroma, TopNote, MiddleNote, BaseNote, Perfume, 
-	Freshener, Consumables, Delivery, Gift, HeroData
+	Compound, Family, Note, Chord, Aroma, TopNote, MiddleNote, BaseNote, 
+    Perfume, Freshener, Consumables, Delivery, Gift, HeroData
     )
 
 
@@ -70,6 +70,9 @@ class PerfumeSerializer(serializers.ModelSerializer):
     chord4 = ChordSerializer()
     chord5 = ChordSerializer()
 
+    sex = serializers.CharField(source='get_sex_display')
+    country = serializers.CharField(source='get_country_display')
+
     class Meta:
         model = Perfume
         fields = '__all__'
@@ -102,6 +105,7 @@ class FreshenerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ConsumablesSerializer(serializers.ModelSerializer):
+    aroma = AromaSerializer()
     class Meta:
         model = Consumables
         fields = '__all__'
@@ -119,6 +123,10 @@ class GiftSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HeroDataSerializer(serializers.ModelSerializer):
+    noteHero1 = NoteSerializer()
+    noteHero2 = NoteSerializer()
+    noteHero3 = NoteSerializer()
+
     class Meta:
         model = HeroData
         fields = '__all__'

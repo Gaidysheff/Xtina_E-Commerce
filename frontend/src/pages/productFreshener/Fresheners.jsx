@@ -1,11 +1,52 @@
+import { useEffect, useState } from "react";
+
+import { BASE_URL } from "../../config.js";
 import Card from "./../../components/sharedUI/Card.jsx";
-import FreshenerContext from "./../../store/freshener-context.js";
 import { Link } from "react-router";
 import { NumericFormat } from "react-number-format";
-import { useContext } from "react";
+import axios from "axios";
 
 const Fresheners = () => {
-  const fresheners = useContext(FreshenerContext);
+  const [fresheners, setFresheners] = useState([]);
+  const [isLoadFresheners, setIsLoadFresheners] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
+
+  useEffect(() => {
+    setIsLoadFresheners(true);
+    axios
+      .get(`${BASE_URL}/fresheners`)
+      // .get("http://127.0.0.1:8000/api/Fresheners")
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(
+            "Что-то пошло не так, попробуйте перезагрузить страницу."
+          );
+        }
+        setFresheners(response.data);
+      })
+      .catch((error) => {
+        console.log("error=", error);
+        setHttpErrorMessage(error.message);
+      });
+    setIsLoadFresheners(false);
+  }, []);
+
+  if (isLoadFresheners) {
+    return (
+      <section className="text-red-600 text-xl mt-[100px] text-center">
+        <Loader />
+      </section>
+    );
+  }
+
+  if (httpErrorMessage) {
+    return (
+      <section className="text-red-600 text-xl text-center">
+        <p>{httpErrorMessage}</p>
+      </section>
+    );
+  }
+
   return (
     <section className="container py-10">
       <div
@@ -14,7 +55,7 @@ const Fresheners = () => {
       >
         {fresheners.map((product) => (
           <Card key={product.id}>
-            <Link to={`${product.id}`}>
+            <Link to={`${product.slug}`}>
               <div className="inside-card flex flex-col justify-between">
                 <div
                   className="x-full p-5 bg-white dark:bg-brandLightGray

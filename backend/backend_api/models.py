@@ -14,8 +14,7 @@ class FreshenerAvailabilityManager(models.Manager):
 class ConsumablesAvailabilityManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_available=Consumables.Status.AVAILABLE)
-
-# ---------------------------------------------------------------------
+    
 
 # ========================== PERFUME ==========================
 class Compound(models.Model):
@@ -83,8 +82,6 @@ class Perfume(models.Model):
         FEMALE: 'для женщин',
         UNISEX: 'унисекс'
         }
-    # def is_upperclass(self):
-    #     return self.sex_choice in {self.MALE, self.FEMALE}
 
     class Status(models.IntegerChoices):
         OUT = 0, 'нет в наличии'
@@ -95,7 +92,7 @@ class Perfume(models.Model):
         max_length=255, unique=True, db_index=True, verbose_name='URL')
     brand = models.CharField(max_length=255, verbose_name='Бренд')
     image = models.ImageField(
-        upload_to='image_perfume', verbose_name='Загрузить фото')
+        upload_to='image_perfumes', verbose_name='Загрузить фото')
     price3 = models.IntegerField(verbose_name='Цена за 3 мл.')
     price5 = models.IntegerField(verbose_name='Цена за 5 мл.')
     price10 = models.IntegerField(verbose_name='Цена за 10 мл.')
@@ -103,7 +100,6 @@ class Perfume(models.Model):
     price30 = models.IntegerField(verbose_name='Цена за 30 мл.')
     perfumer = models.CharField(
         max_length=255, null=True, blank=True, verbose_name='Парфюмер')
-    # country = models.CharField(max_length=255, verbose_name='Страна')
     country = CountryField(null=True, blank=True, verbose_name='Страна')
     year = models.CharField(
         max_length=4, null=True, blank=True, verbose_name='Год создания')
@@ -248,7 +244,7 @@ class BaseNote(models.Model):
 
 class Freshener(models.Model):
     class Status(models.IntegerChoices):
-        OUT = 0, '--- в наличии'
+        OUT = 0, 'Нет в наличии'
         AVAILABLE = 1, 'В наличии'
 
     title = models.CharField(max_length=255, verbose_name='Название')
@@ -257,7 +253,7 @@ class Freshener(models.Model):
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
     image = models.ImageField(
-        upload_to='image_freshener', verbose_name='Загрузить фото')
+        upload_to='image_fresheners', verbose_name='Загрузить фото')
     price = models.IntegerField(verbose_name='Цена')
     aroma1 = models.ForeignKey(
         Aroma, on_delete=models.CASCADE, default="---", related_name='aroma1', 
@@ -341,7 +337,7 @@ class Freshener(models.Model):
 class Consumables(models.Model):
     
     class Status(models.IntegerChoices):
-        OUT = 0, '--- в наличии'
+        OUT = 0, 'Нет в наличии'
         AVAILABLE = 1, 'В наличии'
 
     title = models.CharField(max_length=255, verbose_name='Название')
@@ -350,7 +346,7 @@ class Consumables(models.Model):
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
     image = models.ImageField(
-        upload_to='image_freshener', verbose_name='Загрузить фото')
+        upload_to='image_consumables', verbose_name='Загрузить фото')
     price = models.IntegerField(verbose_name='Цена')
     aroma = models.ForeignKey(
         Aroma, on_delete=models.CASCADE, default="---", verbose_name='Аромат')
@@ -362,7 +358,7 @@ class Consumables(models.Model):
     available = ConsumablesAvailabilityManager()
 
     def __str__(self):
-        return self.name
+        return self.title
     
     class Meta:
         verbose_name = 'расходник для ароматизатора'
@@ -382,17 +378,20 @@ class Delivery(models.Model):
     handler = models.CharField(max_length=64, verbose_name='handler')
 
     def __str__(self):
-        return self.name
+        return self.title
     
     class Meta:
         verbose_name = 'Способы доставки'
         verbose_name_plural = 'Способы доставки'
-        # ordering = ['title',]
+        ordering = ['id',]
 
 # ========================== GIFT ==========================
 
 
 class Gift(models.Model):
+    class Status(models.IntegerChoices):
+        OUTDATED = 0, 'Неактуально'
+        ACTUAL = 1, 'Актуально'
     title = models.CharField(max_length=255, verbose_name='Название')
     image = models.ImageField(
         upload_to='image_gift', null=True, blank=True, 

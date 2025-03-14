@@ -11,7 +11,6 @@ const SubmitOrder = (props) => {
     if (editFormRef && editFormRef.current) {
       editFormRef.current.submitForm();
     }
-    // props.onOpenConfirm();
   };
 
   return (

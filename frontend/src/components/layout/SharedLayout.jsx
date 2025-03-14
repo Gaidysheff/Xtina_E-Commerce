@@ -6,16 +6,18 @@ import AOS from "aos";
 import Cart from "./../../pages/cart/Cart.jsx";
 import CartContextProvider from "./../../store/CartContextProvider.jsx";
 import Confirm from "./../../pages/cart/Confirm.jsx";
-import ConsumablesContextProvider from "./../../store/ConsumablesContextProvider.jsx";
+import DeliveryContextProvider from "./../../store/DeliveryContextProvider.jsx";
 import Footer from "./Footer.jsx";
-import FreshenerContextProvider from "./../../store/FreshenerContextProvider.jsx";
 import Navbar from "./navbar/Navbar.jsx";
 import OrderContextProvider from "./../../store/OrderContextProvider.jsx";
 import { Outlet } from "react-router";
 import Payment from "./../../pages/cart/Payment.jsx";
-import PerfumeContextProvider from "./../../store/PerfumeContextProvider.jsx";
 import SubmitOrder from "./../../pages/cart/SubmitOrder.jsx";
 import { ToastContainer } from "react-toastify";
+
+// import ConsumablesContextProvider from "./../../store/ConsumablesContextProvider.jsx";
+// import FreshenerContextProvider from "./../../store/FreshenerContextProvider.jsx";
+// import PerfumeContextProvider from "./../../store/PerfumeContextProvider.jsx";
 
 const SharedLayout = (props) => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -84,75 +86,71 @@ const SharedLayout = (props) => {
   }, []);
 
   return (
-    <PerfumeContextProvider>
-      <FreshenerContextProvider>
-        <ConsumablesContextProvider>
-          <OrderContextProvider>
-            <CartContextProvider>
-              {props.theme === "light" ? (
-                <ToastContainer
-                  position="top-center"
-                  theme="dark"
-                  hideProgressBar={true}
-                  autoClose={2000}
-                />
-              ) : (
-                <ToastContainer
-                  position="top-center"
-                  theme="light"
-                  hideProgressBar={true}
-                  autoClose={2000}
-                />
-              )}
-              <main
-                className="w-screen bg-white dark:bg-gray-800 dark:text-white
-                        duration-200 overflow-hidden"
-              >
-                {cartIsVisible && (
-                  <Cart
-                    onHideCart={hideCartHandler}
-                    onShowSubmitForm={showSubmitFormHandler}
-                  />
-                )}
-                {submitFormIsVisible && (
-                  <SubmitOrder
-                    onHideCart={hideCartHandler}
-                    onOpenConfirm={showConfirmHandler}
-                    onSetDeliveryOption={setDeliveryOptionHandler}
-                    onShowCart={showCartHandler}
-                  />
-                )}
+    <OrderContextProvider>
+      <CartContextProvider>
+        <DeliveryContextProvider>
+          {props.theme === "light" ? (
+            <ToastContainer
+              position="top-center"
+              theme="dark"
+              hideProgressBar={true}
+              autoClose={2000}
+            />
+          ) : (
+            <ToastContainer
+              position="top-center"
+              theme="light"
+              hideProgressBar={true}
+              autoClose={2000}
+            />
+          )}
+          <main
+            className="w-screen bg-white dark:bg-gray-800 dark:text-white
+                          duration-200 overflow-hidden"
+          >
+            {cartIsVisible && (
+              <Cart
+                onHideCart={hideCartHandler}
+                onShowSubmitForm={showSubmitFormHandler}
+              />
+            )}
+            {submitFormIsVisible && (
+              <SubmitOrder
+                onHideCart={hideCartHandler}
+                onOpenConfirm={showConfirmHandler}
+                onSetDeliveryOption={setDeliveryOptionHandler}
+                onShowCart={showCartHandler}
+              />
+            )}
 
-                {confirmIsVisible && (
-                  <Confirm
-                    onHideConfirm={hideCartHandler}
-                    delivery={delivery}
-                    onOpenPayment={showPaymentHandler}
-                    onConfirm={totalToBePaidHandler}
-                    onShowSubmitForm={showSubmitFormHandler}
-                  />
-                )}
-                {paymentIsVisible && (
-                  <Payment
-                    onHideConfirm={hideCartHandler}
-                    totalToBePaid={totalToBePaid}
-                  />
-                )}
+            {confirmIsVisible && (
+              <Confirm
+                onHideConfirm={hideCartHandler}
+                delivery={delivery}
+                onOpenPayment={showPaymentHandler}
+                onConfirm={totalToBePaidHandler}
+                onShowSubmitForm={showSubmitFormHandler}
+              />
+            )}
+            {paymentIsVisible && (
+              <Payment
+                onHideConfirm={hideCartHandler}
+                totalToBePaid={totalToBePaid}
+              />
+            )}
 
-                <Navbar
-                  themeHandler={props.themeHandler}
-                  theme={props.theme}
-                  onShowCart={showCartHandler}
-                  cartButtonIsDisabled={cartButtonIsDisabled}
-                />
-                <Outlet themeHandler={props.themeHandler} theme={props.theme} />
-                <Footer />
-              </main>
-            </CartContextProvider>
-          </OrderContextProvider>
-        </ConsumablesContextProvider>
-      </FreshenerContextProvider>
-    </PerfumeContextProvider>
+            <Navbar
+              themeHandler={props.themeHandler}
+              theme={props.theme}
+              onShowCart={showCartHandler}
+              cartButtonIsDisabled={cartButtonIsDisabled}
+            />
+            <Outlet themeHandler={props.themeHandler} theme={props.theme} />
+            <Footer />
+          </main>
+        </DeliveryContextProvider>
+      </CartContextProvider>
+    </OrderContextProvider>
   );
 };
 export default SharedLayout;

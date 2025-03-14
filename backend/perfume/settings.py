@@ -44,11 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'backend_api.apps.BackendApiConfig',
-	'users.apps.UsersConfig',
+	# External Packages
 	'rest_framework',
 	"corsheaders",
 	'django_countries',
+	'drf_spectacular',
+	# Internal Apps
+	'backend_api.apps.BackendApiConfig',
+	'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -157,9 +160,19 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
         'rest_framework.permissions.AllowAny'
     ],
+	'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+	
 	# 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     # 'PAGE_SIZE': 5
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'online shop KEST',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
 
 # CORS settings

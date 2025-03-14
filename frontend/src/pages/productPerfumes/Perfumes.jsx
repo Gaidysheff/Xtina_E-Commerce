@@ -1,11 +1,53 @@
+import { useEffect, useState } from "react";
+
+import { BASE_URL } from "../../config.js";
 import Card from "../../components/sharedUI/Card.jsx";
 import { Link } from "react-router";
+import Loader from "../../components/sharedUI/LoaderKest.jsx";
 import { NumericFormat } from "react-number-format";
-import PerfumeContext from "./../../store/perfume-context.js";
-import { useContext } from "react";
+import axios from "axios";
 
 const Perfumes = (props) => {
-  const perfumes = useContext(PerfumeContext);
+  const [perfumes, setPerfumes] = useState([]);
+  const [isLoadPerfumes, setIsLoadPerfumes] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
+
+  useEffect(() => {
+    setIsLoadPerfumes(true);
+    axios
+      .get(`${BASE_URL}/perfumes`)
+      // .get("http://127.0.0.1:8000/api/perfumes")
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(
+            "Что-то пошло не так, попробуйте перезагрузить страницу."
+          );
+        }
+        setPerfumes(response.data);
+      })
+      .catch((error) => {
+        console.log("error=", error);
+        setHttpErrorMessage(error.message);
+      });
+    setIsLoadPerfumes(false);
+  }, []);
+
+  if (isLoadPerfumes) {
+    return (
+      <section className="text-red-600 text-xl mt-[100px] text-center">
+        <Loader />
+      </section>
+    );
+  }
+
+  if (httpErrorMessage) {
+    return (
+      <section className="text-red-600 text-xl text-center">
+        <p>{httpErrorMessage}</p>
+      </section>
+    );
+  }
+
   return (
     <section className="container py-10">
       <div
@@ -14,7 +56,7 @@ const Perfumes = (props) => {
       >
         {perfumes.map((product) => (
           <Card key={product.id}>
-            <Link to={`${product.id}`}>
+            <Link to={`${product.slug}`}>
               <div className="inside-card flex flex-col justify-between">
                 <div
                   className="x-full bg-white dark:bg-brandLightGray

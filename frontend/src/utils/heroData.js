@@ -25,7 +25,7 @@ export const HERO_DATA = [
     id: 3,
     image: Image3,
     title: "Juliette has a gun",
-    subtitle: " Ex Vetiver",
+    subtitle: "Ex Vetiver",
     note1: "Цитрусовый",
     note2: "Фужерный",
     note3: "Амбровый",

@@ -24,7 +24,7 @@ export const DELIVERY = [
     image: image3,
     title: "по РФ Почта России",
     price: 300,
-    handler: "deliveryThreHandler",
+    handler: "deliveryThreeHandler",
   },
   {
     code: "deliveryFour",

@@ -99,3 +99,6 @@ __pypackages__/
 
 # Local Netlify folder
 .netlify
+
+.schema.yml
+

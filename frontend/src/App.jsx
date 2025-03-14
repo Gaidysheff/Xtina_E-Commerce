@@ -26,15 +26,15 @@ import SinglePerfume from "./pages/productPerfumes/SinglePerfume.jsx";
 
 // URL settings for PERFUMES Section
 export const parentRouteSet1 = "perfumes";
-export const dynamicRouteSet1 = "perfumeId";
+export const dynamicRouteSet1 = "perfumeSlug";
 const nestedRouteSet1 = "comments";
 // URL settings for FRESHENERS Section
 export const parentRouteSet2 = "fresheners";
-export const dynamicRouteSet2 = "freshenerId";
+export const dynamicRouteSet2 = "freshenerSlug";
 const nestedRouteSet2 = "comments";
 // URL settings for CONSUMABLES Section
 export const parentRouteSet3 = "consumables";
-export const dynamicRouteSet3 = "consumableId";
+export const dynamicRouteSet3 = "consumableSlug";
 const nestedRouteSet3 = "comments";
 
 function App(props) {

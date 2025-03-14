@@ -1,11 +1,51 @@
+import { useEffect, useState } from "react";
+
+import { BASE_URL } from "../../config.js";
 import Card from "./../../components/sharedUI/Card.jsx";
-import ConsumablesContext from "../../store/consumables-context.js";
 import { Link } from "react-router";
 import { NumericFormat } from "react-number-format";
-import { useContext } from "react";
+import axios from "axios";
 
 const Consumables = () => {
-  const consumables = useContext(ConsumablesContext);
+  const [consumables, setConsumables] = useState([]);
+  const [isLoadConsumables, setIsLoadConsumables] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
+
+  useEffect(() => {
+    setIsLoadConsumables(true);
+    axios
+      .get(`${BASE_URL}/consumables`)
+      // .get("http://127.0.0.1:8000/api/Consumables")
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(
+            "Что-то пошло не так, попробуйте перезагрузить страницу."
+          );
+        }
+        setConsumables(response.data);
+      })
+      .catch((error) => {
+        console.log("error=", error);
+        setHttpErrorMessage(error.message);
+      });
+    setIsLoadConsumables(false);
+  }, []);
+
+  if (isLoadConsumables) {
+    return (
+      <section className="text-red-600 text-xl mt-[100px] text-center">
+        <Loader />
+      </section>
+    );
+  }
+
+  if (httpErrorMessage) {
+    return (
+      <section className="text-red-600 text-xl text-center">
+        <p>{httpErrorMessage}</p>
+      </section>
+    );
+  }
   return (
     <section className="container py-10">
       <div
@@ -14,7 +54,7 @@ const Consumables = () => {
       >
         {consumables.map((product) => (
           <Card key={product.id}>
-            <Link to={`${product.id}`}>
+            <Link to={`${product.slug}`}>
               <div className="inside-card flex flex-col justify-between">
                 <div
                   className="x-full p-5 bg-white dark:bg-brandLightGray

@@ -1,29 +1,132 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
+import { BASE_URL } from "../../config.js";
 import Button from "./../../components/sharedUI/Button.jsx";
 import ButtonVolume from "./../../components/sharedUI/ButtonVolume.jsx";
 import CartContext from "./../../store/cart-context.js";
+import Loader from "../../components/sharedUI/LoaderKest.jsx";
 import { NumericFormat } from "react-number-format";
-import { PRESENT } from "../../utils/gift.js";
-import PerfumeContext from "../../store/perfume-context.js";
+import axios from "axios";
 import { toast } from "react-toastify";
 import { useParams } from "react-router";
 
+// import { PRESENT } from "../../utils/gift.js";
+
 const SingleProduct = (props) => {
-  const perfumes = useContext(PerfumeContext);
-  const params = useParams();
+  const [perfume, setPerfume] = useState([]);
+  const [isLoadPerfumes, setIsLoadPerfumes] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
 
-  const perfume = perfumes.find((perfume) => perfume.id === params.perfumeId);
-
-  const present = PRESENT[0];
+  const [present, setPresent] = useState([]);
+  // const present = PRESENT[0];
 
   const cartContext = useContext(CartContext);
 
   const [volume, setVolume] = useState("3ml");
-
-  const [price, setPrice] = useState(perfume.price3);
-
+  const [price, setPrice] = useState(0);
   const [gift, setGift] = useState(false);
+
+  // -----------------------------------------------
+  const [compound1, setCompound1] = useState("");
+  const [compound2, setCompound2] = useState("");
+  const [compound3, setCompound3] = useState("");
+  const [compound4, setCompound4] = useState("");
+  const [compound5, setCompound5] = useState("");
+  const [family1, setFamily1] = useState("");
+  const [family2, setFamily2] = useState("");
+  const [family3, setFamily3] = useState("");
+  const [family4, setFamily4] = useState("");
+  const [family5, setFamily5] = useState("");
+  const [note1, setNote1] = useState("");
+  const [note2, setNote2] = useState("");
+  const [note3, setNote3] = useState("");
+  const [note4, setNote4] = useState("");
+  const [note5, setNote5] = useState("");
+  const [chord1, setChord1] = useState("");
+  const [chord2, setChord2] = useState("");
+  const [chord3, setChord3] = useState("");
+  const [chord4, setChord4] = useState("");
+  const [chord5, setChord5] = useState("");
+  // -----------------------------------------------
+
+  const params = useParams();
+  const slug = params.perfumeSlug;
+
+  // =============== Loading Perfume Data =======================
+  useEffect(() => {
+    setIsLoadPerfumes(true);
+    axios
+      .get(`${BASE_URL}/perfumes/${slug}`)
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(
+            "Что-то пошло не так, попробуйте перезагрузить страницу."
+          );
+        }
+        setPerfume(response.data);
+        setPrice(response.data.price3);
+        // ---------------------------------
+        setCompound1(response.data.compound1.name);
+        setCompound2(response.data.compound2.name);
+        setCompound3(response.data.compound3.name);
+        setCompound4(response.data.compound4.name);
+        setCompound5(response.data.compound5.name);
+        setFamily1(response.data.family1.name);
+        setFamily2(response.data.family2.name);
+        setFamily3(response.data.family3.name);
+        setFamily4(response.data.family4.name);
+        setFamily5(response.data.family5.name);
+        setNote1(response.data.note1.name);
+        setNote2(response.data.note2.name);
+        setNote3(response.data.note3.name);
+        setNote4(response.data.note4.name);
+        setNote5(response.data.note5.name);
+        setChord1(response.data.chord1.name);
+        setChord2(response.data.chord2.name);
+        setChord3(response.data.chord3.name);
+        setChord4(response.data.chord4.name);
+        setChord5(response.data.chord5.name);
+      })
+      .catch((error) => {
+        console.log("error=", error);
+        setHttpErrorMessage(error.message);
+      });
+    // ----------------------------------------------
+    axios
+      .get(`${BASE_URL}/gift`)
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(
+            "Что-то пошло не так, попробуйте перезагрузить страницу."
+          );
+        }
+        setPresent(response.data[0]);
+      })
+      .catch((error) => {
+        console.log("error=", error);
+        setHttpErrorMessage(error.message);
+      });
+
+    setIsLoadPerfumes(false);
+  }, []);
+
+  if (isLoadPerfumes) {
+    return (
+      <section className="text-red-600 text-xl mt-[100px] text-center">
+        <Loader />
+      </section>
+    );
+  }
+
+  if (httpErrorMessage) {
+    return (
+      <section className="text-red-600 text-xl text-center">
+        <p>{httpErrorMessage}</p>
+      </section>
+    );
+  }
+
+  // ========================================================
 
   const volume3mlHandler = () => {
     setVolume("3ml");
@@ -249,19 +352,19 @@ const SingleProduct = (props) => {
               data-aos-delay="700"
             >
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound1 !== "---" && perfume.compound1}
+                {compound1 !== "---" && compound1}
               </p>
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound2 !== "---" && perfume.compound2}
+                {compound2 !== "---" && compound2}
               </p>
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound3 !== "---" && perfume.compound3}
+                {compound3 !== "---" && compound3}
               </p>
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound4 !== "---" && perfume.compound4}
+                {compound4 !== "---" && compound4}
               </p>
               <p className="pl-3 rounded-md md:text-md xl:text-2xl italic">
-                {perfume.compound5 !== "---" && perfume.compound5}
+                {compound5 !== "---" && compound5}
               </p>
             </div>
           </div>
@@ -279,31 +382,31 @@ const SingleProduct = (props) => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {perfume.family1 !== "---" && perfume.family1}
+                {family1 !== "---" && family1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.family2 !== "---" && perfume.family2}
+                {family2 !== "---" && family2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.family3 !== "---" && perfume.family3}
+                {family3 !== "---" && family3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.family4 !== "---" && perfume.family4}
+                {family4 !== "---" && family4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.family5 !== "---" && perfume.family5}
+                {family5 !== "---" && family5}
               </p>
             </div>
           </div>
@@ -321,31 +424,31 @@ const SingleProduct = (props) => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {perfume.note1 !== "---" && perfume.note1}
+                {note1 !== "---" && note1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.note2 !== "---" && perfume.note2}
+                {note2 !== "---" && note2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.note3 !== "---" && perfume.note3}
+                {note3 !== "---" && note3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.note4 !== "---" && perfume.note4}
+                {note4 !== "---" && note4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.note5 !== "---" && perfume.note5}
+                {note5 !== "---" && note5}
               </p>
             </div>
           </div>
@@ -363,31 +466,31 @@ const SingleProduct = (props) => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {perfume.chord1 !== "---" && perfume.chord1}
+                {chord1 !== "---" && chord1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.chord2 !== "---" && perfume.chord2}
+                {chord2 !== "---" && chord2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.chord3 !== "---" && perfume.chord3}
+                {chord3 !== "---" && chord3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.chord4 !== "---" && perfume.chord4}
+                {chord4 !== "---" && chord4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {perfume.chord5 !== "---" && perfume.chord5}
+                {chord5 !== "---" && chord5}
               </p>
             </div>
           </div>

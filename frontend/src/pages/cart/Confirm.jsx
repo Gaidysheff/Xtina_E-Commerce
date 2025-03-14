@@ -2,25 +2,20 @@ import { useContext, useEffect, useState } from "react";
 
 import CartContext from "./../../store/cart-context.js";
 import ConfirmForm from "./ConfirmForm.jsx";
-import { DELIVERY } from "../../utils/delivery.js";
+import DeliveryContext from "./../../store/delivery-context.js";
 import { FaArrowLeft } from "react-icons/fa";
 import Modal from "./../../components/modalWindow/Modal.jsx";
 import { NumericFormat } from "react-number-format";
 import ProgressSteps from "./../../components/progressSteps/ProgressSteps.jsx";
 
-// import OrderContext from "./../../store/order-context.js";
-
 const Confirm = (props) => {
-  // const [deliveryCharge, setDeliveryCharge] = useState("Самовывоз");
   const [deliveryToPay, setDeliveryToPay] = useState(0);
 
-  // const orderContext = useContext(OrderContext);
   const cartContext = useContext(CartContext);
 
-  const subTotal = cartContext.totalAmount;
-  // console.log("subTotal=", subTotal);
+  const deliveryContext = useContext(DeliveryContext);
 
-  // const [toBePaid, setToBePaid] = useState(0);
+  const subTotal = cartContext.totalAmount;
 
   // ====================================================================
   const deliveryOne = props.delivery.deliveryOne;
@@ -28,97 +23,29 @@ const Confirm = (props) => {
   const deliveryThree = props.delivery.deliveryThree;
   const deliveryFour = props.delivery.deliveryFour;
   const deliveryFive = props.delivery.deliveryFive;
+  // ==================================================================
 
   useEffect(() => {
     if (deliveryOne != undefined) {
-      // setDeliveryCharge("deliveryOne");
-      setDeliveryToPay(DELIVERY[0].price);
+      setDeliveryToPay(deliveryContext[0].price);
     }
     if (deliveryTwo != undefined) {
-      // setDeliveryCharge("deliveryTwo");
-      setDeliveryToPay(DELIVERY[1].price);
+      setDeliveryToPay(deliveryContext[1].price);
     }
     if (deliveryThree != undefined) {
-      // setDeliveryCharge("deliveryThree");
-      setDeliveryToPay(DELIVERY[2].price);
+      setDeliveryToPay(deliveryContext[2].price);
     }
     if (deliveryFour != undefined) {
-      // setDeliveryCharge("deliveryFour");
-      setDeliveryToPay(DELIVERY[3].price);
+      setDeliveryToPay(deliveryContext[3].price);
     }
     if (deliveryFive != undefined) {
-      // setDeliveryCharge("deliveryFive");
-      setDeliveryToPay(DELIVERY[4].price);
+      setDeliveryToPay(deliveryContext[4].price);
     }
-    // const sum = subTotal + deliveryToPay;
-    // setToBePaid(sum);
   });
-
-  // console.log("DELIVERY=", deliveryToPay);
-
-  // if (
-  //   deliveryOne == undefined &&
-  //   deliveryTwo == undefined &&
-  //   deliveryThree == undefined &&
-  //   deliveryFour == undefined &&
-  //   deliveryFive == undefined
-  // ) {
-  //   console.log("Самовывоз");
-  // }
-
-  // ====================================================================
-  // console.log("deliveryCharge-2", deliveryCharge);
-
-  // console.log("TELEPHONE=", props.delivery.telephone);
-  // console.log("CONNECTION=", props.delivery.connection);
-  // console.log("deliveryOne=", props.delivery.deliveryOne);
-  // console.log("deliveryTwo=", props.delivery.deliveryTwo);
-
-  // ---------------------------------
-  // const [objArr, setObjArr] = useState(orderContext.shipping);
-
-  // const result = objArr.map((obj) => {
-  //   return obj.name;
-  // });
-
-  // --------------------------------------------------
-  // console.log("result=", result);
-
-  // if (orderContext.shipping != []) {
-  //   console.log("ORDER=", orderContext.shipping);
-  // } else {
-  //   console.log("I am EMPTY");
-  // }
-
-  // const shipping = orderContext.shipping.map((item) => {
-  //   return item;
-  // });
-  // console.log(shipping[0]);
-
-  // const name = orderContext.shipping.get("name");
-  // console.log("name=", name);
-  // const telephone = shipping[0].telephone;
-  // const connection = shipping[0].connection;
-
-  // console.log("name=", shipping[0].name);
-  // console.log("telephone=", shipping[0].telephone);
-  // console.log("connection=", shipping[0].connection);
-
-  // console.log("connection=", shipping[0].deliveryOne);
-  // console.log("connection=", shipping[0].deliveryTwo);
-  // console.log("connection=", shipping[0].deliveryThree);
-  // console.log("connection=", shipping[0].deliveryFour);
-  // console.log("connection=", shipping[0].deliveryFive);
 
   const toBePaid = subTotal + deliveryToPay;
 
   const confirmHandler = () => {
-    // const totalData = {
-    //   toBePaid1: toBePaid1,
-    //   toBePaid2: toBePaid2,
-    //   toBePaid3: toBePaid3,
-    // };
-    // props.onConfirm(totalData);
     props.onConfirm(toBePaid);
     props.onOpenPayment();
   };

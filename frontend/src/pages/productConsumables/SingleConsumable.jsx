@@ -1,20 +1,67 @@
+import { useContext, useEffect, useState } from "react";
+
+import { BASE_URL } from "../../config.js";
 import Button from "../../components/sharedUI/Button.jsx";
 import CartContext from "../../store/cart-context.js";
 import ConsumablesContext from "./../../store/consumables-context.js";
 import { NumericFormat } from "react-number-format";
+import axios from "axios";
 import { toast } from "react-toastify";
-import { useContext } from "react";
 import { useParams } from "react-router";
 
 const SingleConsumable = () => {
-  const consumables = useContext(ConsumablesContext);
+  const [consumable, setConsumable] = useState([]);
+  const [isLoadConsumable, setIsLoadConsumable] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
 
   const params = useParams();
-  const consumable = consumables.find(
-    (consumable) => consumable.id === params.consumableId
-  );
+  const slug = params.consumableSlug;
 
   const cartContext = useContext(CartContext);
+  // -----------------------------------------------
+  const [aroma, setAroma] = useState("");
+
+  // ===================== Loading Consumables Data ===============
+
+  useEffect(() => {
+    setIsLoadConsumable(true);
+    axios
+      .get(`${BASE_URL}/consumables/${slug}`)
+      // .get("http://127.0.0.1:8000/api/consumables")
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(
+            "Что-то пошло не так, попробуйте перезагрузить страницу."
+          );
+        }
+        setConsumable(response.data);
+        // ---------------------------------
+        setAroma(response.data.aroma.name);
+      })
+      .catch((error) => {
+        console.log("error=", error);
+        setHttpErrorMessage(error.message);
+      });
+    setIsLoadConsumable(false);
+  }, []);
+
+  if (isLoadConsumable) {
+    return (
+      <section className="text-red-600 text-xl mt-[100px] text-center">
+        <Loader />
+      </section>
+    );
+  }
+
+  if (httpErrorMessage) {
+    return (
+      <section className="text-red-600 text-xl text-center">
+        <p>{httpErrorMessage}</p>
+      </section>
+    );
+  }
+
+  // ============================================================
 
   const addItemToCartHandler = (event) => {
     event.preventDefault();
@@ -79,7 +126,7 @@ const SingleConsumable = () => {
           />
 
           {/* -------------------- Аромат --------------------------- */}
-          <div className="flex mb-3">
+          <div className="flex mb-3 items-center">
             <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
               Аромат:
             </div>
@@ -92,160 +139,11 @@ const SingleConsumable = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {consumable.aroma1}
-              </p>
-              <p
-                className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.aroma2}
-              </p>
-              <p
-                className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.aroma3}
-              </p>
-              <p
-                className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.aroma4}
-              </p>
-              <p
-                className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.aroma5}
+                {aroma !== "---" && aroma}
               </p>
             </div>
           </div>
-          {/* ------------------ Верхние ноты ---------------------- */}
-          <div className="flex mb-3">
-            <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
-              Верхние ноты:
-            </div>
-            <div
-              className="w-[100%]"
-              data-aos="slide-left"
-              data-aos-delay="600"
-            >
-              <p
-                className="bg-primary w-[100%] my-2 pl-3 rounded-md 
-              dark:text-gray-900 md:text-md xl:text-2xl italic"
-              >
-                {consumable.top_note1}
-              </p>
-              <p
-                className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.top_note2}
-              </p>
-              <p
-                className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.top_note3}
-              </p>
-              <p
-                className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.top_note4}
-              </p>
-              <p
-                className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.top_note5}
-              </p>
-            </div>
-          </div>
-          {/* ------------------- Средние ноты ------------------------- */}
-          <div className="flex mb-3">
-            <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
-              Средние ноты:
-            </div>
-            <div
-              className="w-[100%]"
-              data-aos="slide-left"
-              data-aos-delay="700"
-            >
-              <p
-                className="bg-primary w-[100%] my-2 pl-3 rounded-md 
-              dark:text-gray-900 md:text-md xl:text-2xl italic"
-              >
-                {consumable.middle_note1}
-              </p>
-              <p
-                className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.middle_note2}
-              </p>
-              <p
-                className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.middle_note3}
-              </p>
-              <p
-                className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.middle_note4}
-              </p>
-              <p
-                className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.middle_note5}
-              </p>
-            </div>
-          </div>
-          {/* ------------------- Базовые ноты ------------------------- */}
-          <div className="flex mb-3">
-            <div className="w-[12rem] font-semibold md:text-lg xl:text-2xl">
-              Базовые ноты:
-            </div>
-            <div
-              className="w-[100%]"
-              data-aos="slide-left"
-              data-aos-delay="800"
-            >
-              <p
-                className="bg-primary w-[100%] my-2 pl-3 rounded-md 
-              dark:text-gray-900 md:text-md xl:text-2xl italic"
-              >
-                {consumable.base_note1}
-              </p>
-              <p
-                className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.base_note2}
-              </p>
-              <p
-                className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.base_note3}
-              </p>
-              <p
-                className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.base_note4}
-              </p>
-              <p
-                className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
-              md:text-md xl:text-2xl italic"
-              >
-                {consumable.base_note5}
-              </p>
-            </div>
-          </div>
+
           {/* ------------------------------------------------------- */}
           <div data-aos="fade-in" data-aos-delay="900">
             {consumable.description}

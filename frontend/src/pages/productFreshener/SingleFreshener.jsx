@@ -1,20 +1,104 @@
+import { useContext, useEffect, useState } from "react";
+
+import { BASE_URL } from "../../config.js";
 import Button from "./../../components/sharedUI/Button.jsx";
 import CartContext from "./../../store/cart-context.js";
-import FreshenerContext from "./../../store/freshener-context.js";
 import { NumericFormat } from "react-number-format";
+import axios from "axios";
 import { toast } from "react-toastify";
-import { useContext } from "react";
 import { useParams } from "react-router";
 
 const SingleFreshener = () => {
-  const fresheners = useContext(FreshenerContext);
+  const [freshener, setFreshener] = useState([]);
+  const [isLoadFreshener, setIsLoadFreshener] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
 
   const params = useParams();
-  const freshener = fresheners.find(
-    (freshener) => freshener.id === params.freshenerId
-  );
+  const slug = params.freshenerSlug;
 
   const cartContext = useContext(CartContext);
+  // -----------------------------------------------
+  const [aroma1, setAroma1] = useState("");
+  const [aroma2, setAroma2] = useState("");
+  const [aroma3, setAroma3] = useState("");
+  const [aroma4, setAroma4] = useState("");
+  const [aroma5, setAroma5] = useState("");
+  const [topNote1, setTopNote1] = useState("");
+  const [topNote2, setTopNote2] = useState("");
+  const [topNote3, setTopNote3] = useState("");
+  const [topNote4, setTopNote4] = useState("");
+  const [topNote5, setTopNote5] = useState("");
+  const [middleNote1, setMiddleNote1] = useState("");
+  const [middleNote2, setMiddleNote2] = useState("");
+  const [middleNote3, setMiddleNote3] = useState("");
+  const [middleNote4, setMiddleNote4] = useState("");
+  const [middleNote5, setMiddleNote5] = useState("");
+  const [baseNote1, setBaseNote1] = useState("");
+  const [baseNote2, setBaseNote2] = useState("");
+  const [baseNote3, setBaseNote3] = useState("");
+  const [baseNote4, setBaseNote4] = useState("");
+  const [baseNote5, setBaseNote5] = useState("");
+
+  // ===================== Loading Fresheners Data ===============
+
+  useEffect(() => {
+    setIsLoadFreshener(true);
+    axios
+      .get(`${BASE_URL}/fresheners/${slug}`)
+      // .get("http://127.0.0.1:8000/api/freshener")
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(
+            "Что-то пошло не так, попробуйте перезагрузить страницу."
+          );
+        }
+        setFreshener(response.data);
+        // ---------------------------------
+        setAroma1(response.data.aroma1.name);
+        setAroma2(response.data.aroma2.name);
+        setAroma3(response.data.aroma3.name);
+        setAroma4(response.data.aroma4.name);
+        setAroma5(response.data.aroma5.name);
+        setTopNote1(response.data.topNote1.name);
+        setTopNote2(response.data.topNote2.name);
+        setTopNote3(response.data.topNote3.name);
+        setTopNote4(response.data.topNote4.name);
+        setTopNote5(response.data.topNote5.name);
+        setMiddleNote1(response.data.middleNote1.name);
+        setMiddleNote2(response.data.middleNote2.name);
+        setMiddleNote3(response.data.middleNote3.name);
+        setMiddleNote4(response.data.middleNote4.name);
+        setMiddleNote5(response.data.middleNote5.name);
+        setBaseNote1(response.data.baseNote1.name);
+        setBaseNote2(response.data.baseNote2.name);
+        setBaseNote3(response.data.baseNote3.name);
+        setBaseNote4(response.data.baseNote4.name);
+        setBaseNote5(response.data.baseNote5.name);
+      })
+      .catch((error) => {
+        console.log("error=", error);
+        setHttpErrorMessage(error.message);
+      });
+    setIsLoadFreshener(false);
+  }, []);
+
+  if (isLoadFreshener) {
+    return (
+      <section className="text-red-600 text-xl mt-[100px] text-center">
+        <Loader />
+      </section>
+    );
+  }
+
+  if (httpErrorMessage) {
+    return (
+      <section className="text-red-600 text-xl text-center">
+        <p>{httpErrorMessage}</p>
+      </section>
+    );
+  }
+
+  // ============================================================
 
   const addItemToCartHandler = (event) => {
     event.preventDefault();
@@ -80,31 +164,31 @@ const SingleFreshener = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma1 !== "---" && freshener.aroma1}
+                {aroma1 !== "---" && aroma1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma2 !== "---" && freshener.aroma2}
+                {aroma2 !== "---" && aroma2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma3 !== "---" && freshener.aroma3}
+                {aroma3 !== "---" && aroma3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma4 !== "---" && freshener.aroma4}
+                {aroma4 !== "---" && aroma4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.aroma4 !== "---" && freshener.aroma4}
+                {aroma5 !== "---" && aroma5}
               </p>
             </div>
           </div>
@@ -122,31 +206,31 @@ const SingleFreshener = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {freshener.topNote1 !== "---" && freshener.topNote1}
+                {topNote1 !== "---" && topNote1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.topNote2 !== "---" && freshener.topNote2}
+                {topNote2 !== "---" && topNote2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.topNote3 !== "---" && freshener.topNote3}
+                {topNote3 !== "---" && topNote3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.topNote4 !== "---" && freshener.topNote4}
+                {topNote4 !== "---" && topNote4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.topNote5 !== "---" && freshener.topNote5}
+                {topNote5 !== "---" && topNote5}
               </p>
             </div>
           </div>
@@ -164,31 +248,31 @@ const SingleFreshener = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {freshener.middleNote1 !== "---" && freshener.middleNote1}
+                {middleNote1 !== "---" && middleNote1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.middleNote2 !== "---" && freshener.middleNote2}
+                {middleNote2 !== "---" && middleNote2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.middleNote3 !== "---" && freshener.middleNote3}
+                {middleNote3 !== "---" && middleNote3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.middleNote4 !== "---" && freshener.middleNote4}
+                {middleNote4 !== "---" && middleNote4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.middleNote5 !== "---" && freshener.middleNote5}
+                {middleNote5 !== "---" && middleNote5}
               </p>
             </div>
           </div>
@@ -206,31 +290,31 @@ const SingleFreshener = () => {
                 className="bg-primary w-[100%] my-2 pl-3 rounded-md 
               dark:text-gray-900 md:text-md xl:text-2xl italic"
               >
-                {freshener.baseNote1 !== "---" && freshener.baseNote1}
+                {baseNote1 !== "---" && baseNote1}
               </p>
               <p
                 className="bg-primary/50 w-[90%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.baseNote2 !== "---" && freshener.baseNote2}
+                {baseNote2 !== "---" && baseNote2}
               </p>
               <p
                 className="bg-primary/30 w-[80%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.baseNote3 !== "---" && freshener.baseNote3}
+                {baseNote3 !== "---" && baseNote3}
               </p>
               <p
                 className="bg-primary/10 w-[70%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.baseNote4 !== "---" && freshener.baseNote4}
+                {baseNote4 !== "---" && baseNote4}
               </p>
               <p
                 className="bg-primary/10 w-[60%] my-2 pl-3 rounded-md 
               md:text-md xl:text-2xl italic"
               >
-                {freshener.baseNote5 !== "---" && freshener.baseNote5}
+                {baseNote5 !== "---" && baseNote5}
               </p>
             </div>
           </div>

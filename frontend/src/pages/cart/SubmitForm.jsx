@@ -1,19 +1,23 @@
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
+import { useContext, useState } from "react";
 
-import { DELIVERY } from "../../utils/delivery";
+import DeliveryContext from "./../../store/delivery-context.js";
 import OrderContext from "./../../store/order-context.js";
 import SelfPickup from "../../assets/cart/self-pickup.png";
 import style from "./SubmitOrder.module.css";
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
 const isInputValid = (inputValue) => inputValue.trim() !== "";
+
 // const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
+
 const isPhoneValid = (phoneValue) =>
   (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
 
 export default forwardRef((props, ref) => {
   const orderContext = useContext(OrderContext);
+
+  const deliveryContext = useContext(DeliveryContext);
 
   const [formData, setFormData] = useState([]);
 
@@ -327,7 +331,7 @@ export default forwardRef((props, ref) => {
             <div className="inline-block w-full ">
               <div className="flex items-center justify-start mb-2">
                 <img
-                  src={DELIVERY[0].image}
+                  src={deliveryContext[0].image}
                   alt="icon for delivery option"
                   className="w-[2rem] h-[2rem] sm:w-[3rem] sm:h-[3rem] mr-5"
                 />
@@ -335,13 +339,13 @@ export default forwardRef((props, ref) => {
                   className="w-full text-sm sm:text-lg font-semibold 
                 sm:leading-5"
                 >
-                  {DELIVERY[0].title}
+                  {deliveryContext[0].title}
                 </div>
                 <div
                   className="w-[4rem] text-end text-sm sm:text-lg font-semibold
                 text-primaryDark"
                 >
-                  {DELIVERY[0].price} ₽
+                  {deliveryContext[0].price} ₽
                 </div>
               </div>
               {deliveryOne && (
@@ -374,7 +378,7 @@ export default forwardRef((props, ref) => {
             <div className="inline-block w-full ">
               <div className="flex items-center justify-start mb-2">
                 <img
-                  src={DELIVERY[1].image}
+                  src={deliveryContext[1].image}
                   alt="icon for delivery option"
                   className="w-[2rem] h-[2rem] sm:w-[3rem] sm:h-[3rem] mr-5"
                 />
@@ -382,13 +386,13 @@ export default forwardRef((props, ref) => {
                   className="w-full text-sm sm:text-lg font-semibold 
                 sm:leading-5"
                 >
-                  {DELIVERY[1].title}
+                  {deliveryContext[1].title}
                 </div>
                 <div
                   className="w-[4rem] text-end text-sm sm:text-lg font-semibold
                 text-primaryDark"
                 >
-                  {DELIVERY[1].price} ₽
+                  {deliveryContext[1].price} ₽
                 </div>
               </div>
               {deliveryTwo && (
@@ -421,7 +425,7 @@ export default forwardRef((props, ref) => {
             <div className="inline-block w-full ">
               <div className="flex items-center justify-start mb-2">
                 <img
-                  src={DELIVERY[2].image}
+                  src={deliveryContext[2].image}
                   alt="icon for delivery option"
                   className="w-[2rem] h-[2rem] sm:w-[3rem] sm:h-[3rem] mr-5"
                 />
@@ -429,13 +433,13 @@ export default forwardRef((props, ref) => {
                   className="w-full text-sm sm:text-lg font-semibold 
                 sm:leading-5"
                 >
-                  {DELIVERY[2].title}
+                  {deliveryContext[2].title}
                 </div>
                 <div
                   className="w-[4rem] text-end text-sm sm:text-lg font-semibold
                 text-primaryDark"
                 >
-                  {DELIVERY[2].price} ₽
+                  {deliveryContext[2].price} ₽
                 </div>
               </div>
               {deliveryThree && (
@@ -468,7 +472,7 @@ export default forwardRef((props, ref) => {
             <div className="inline-block w-full ">
               <div className="flex items-center justify-start mb-2">
                 <img
-                  src={DELIVERY[3].image}
+                  src={deliveryContext[3].image}
                   alt="icon for delivery option"
                   className="w-[2rem] h-[2rem] sm:w-[3rem] sm:h-[3rem] mr-5"
                 />
@@ -476,13 +480,13 @@ export default forwardRef((props, ref) => {
                   className="w-full text-sm sm:text-lg font-semibold 
                 sm:leading-5"
                 >
-                  {DELIVERY[3].title}
+                  {deliveryContext[3].title}
                 </div>
                 <div
                   className="w-[4rem] text-end text-sm sm:text-lg font-semibold
                 text-primaryDark"
                 >
-                  {DELIVERY[3].price} ₽
+                  {deliveryContext[3].price} ₽
                 </div>
               </div>
               {deliveryFour && (
@@ -515,7 +519,7 @@ export default forwardRef((props, ref) => {
             <div className="inline-block w-full ">
               <div className="flex items-center justify-start mb-2">
                 <img
-                  src={DELIVERY[4].image}
+                  src={deliveryContext[4].image}
                   alt="icon for delivery option"
                   className="w-[2rem] h-[2rem] sm:w-[3rem] sm:h-[3rem] mr-5"
                 />
@@ -523,13 +527,13 @@ export default forwardRef((props, ref) => {
                   className="w-full text-sm sm:text-lg font-semibold 
                 sm:leading-5"
                 >
-                  {DELIVERY[4].title}
+                  {deliveryContext[4].title}
                 </div>
                 <div
                   className="w-[4rem] text-end text-sm sm:text-lg font-semibold
                 text-primaryDark"
                 >
-                  {DELIVERY[4].price} ₽
+                  {deliveryContext[4].price} ₽
                 </div>
               </div>
               {deliveryFive && (
