@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
+
+import { BASE_URL } from "../../config.js";
 import Button from "./../sharedUI/Button.jsx";
-import { HERO_DATA } from "./../../utils/heroData.js";
 import Slider from "react-slick";
+import axios from "axios";
 import { parentRouteSet1 } from "../../App.jsx";
 import { useNavigate } from "react-router";
 
@@ -20,24 +23,63 @@ const Hero = (props) => {
     cssEase: "ease-in-out",
   };
 
+  const [hero, setHero] = useState([]);
+  const [isLoadData, setIsLoadData] = useState(false);
+  const [httpErrorMessage, setHttpErrorMessage] = useState("");
+
   const navigate = useNavigate();
   const routeChange = () => {
     let path = `${parentRouteSet1}`;
     navigate(path);
   };
+
+  // ===================== Loading Hero Data ===============
+
+  useEffect(() => {
+    setIsLoadData(true);
+    axios
+      .get(`${BASE_URL}/hero`)
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(
+            "Что-то пошло не так, попробуйте перезагрузить страницу."
+          );
+        }
+        setHero(response.data);
+      })
+      .catch((error) => {
+        console.log("error=", error);
+        setHttpErrorMessage(error.message);
+      });
+    setIsLoadData(false);
+  }, []);
+
+  if (isLoadData) {
+    return (
+      <section className="text-red-600 text-xl mt-[100px] text-center">
+        <Loader />
+      </section>
+    );
+  }
+
+  if (httpErrorMessage) {
+    return (
+      <section className="text-red-600 text-xl text-center">
+        <p>{httpErrorMessage}</p>
+      </section>
+    );
+  }
+
   return (
     <section className="container py-2">
       <div className="my-3">
-        {/* <div className="rounded-3xl bg-brandGreen/50 px-4 py-2">
-          Слайдер лучших товаров или Новинок Слайдер лучших товаров или Новинок
-        </div> */}
         <div
           className="overflow-hidden rounded-3xl min-h-[550px] sm:min-h-[350px] 
           hero-bg-color border border-gray-300"
         >
           <div className="container sm:pb-0">
             <Slider {...settings}>
-              {HERO_DATA.map((slide) => (
+              {hero.map((slide) => (
                 <div key={slide.id}>
                   <div className="grid grid-cols-1 sm:grid-cols-2">
                     {/* text content section */}
@@ -54,7 +96,7 @@ const Hero = (props) => {
                           text-primaryDark/60 dark:text-primary/80 font-['Pacifico']
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)] my-1 md:my-3"
                         >
-                          {slide.note1}
+                          {slide.noteHero1.name}
                         </h1>
                         <h1
                           data-aos="zoom-out"
@@ -64,7 +106,7 @@ const Hero = (props) => {
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]
                           sm:text-center my-1 md:my-3"
                         >
-                          {slide.note2}
+                          {slide.noteHero2.name}
                         </h1>
                         <h1
                           data-aos="zoom-out"
@@ -74,7 +116,7 @@ const Hero = (props) => {
                           drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]
                           sm:text-right my-1 md:my-3"
                         >
-                          {slide.note3}
+                          {slide.noteHero3.name}
                         </h1>
                       </div>
                       <h1

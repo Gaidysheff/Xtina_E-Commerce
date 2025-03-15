@@ -151,8 +151,7 @@ class FreshenerAdmin(admin.ModelAdmin):
 @admin.register(Consumables)
 class ConsumablesAdmin(admin.ModelAdmin):
     fields = [
-        'id', 'title', 'subtitle', 'slug', 'image', 'price', 'aroma', 
-        'is_available',
+        'title', 'subtitle', 'slug', 'image', 'price', 'aroma', 'is_available',
     ]
     prepopulated_fields = {"slug": ("title", )}
     readonly_fields = ['icon_image',]

@@ -8,11 +8,11 @@ import axios from "axios";
 
 const Fresheners = () => {
   const [fresheners, setFresheners] = useState([]);
-  const [isLoadFresheners, setIsLoadFresheners] = useState(false);
+  const [isLoadData, setIsLoadData] = useState(false);
   const [httpErrorMessage, setHttpErrorMessage] = useState("");
 
   useEffect(() => {
-    setIsLoadFresheners(true);
+    setIsLoadData(true);
     axios
       .get(`${BASE_URL}/fresheners`)
       // .get("http://127.0.0.1:8000/api/Fresheners")
@@ -28,10 +28,10 @@ const Fresheners = () => {
         console.log("error=", error);
         setHttpErrorMessage(error.message);
       });
-    setIsLoadFresheners(false);
+    setIsLoadData(false);
   }, []);
 
-  if (isLoadFresheners) {
+  if (isLoadData) {
     return (
       <section className="text-red-600 text-xl mt-[100px] text-center">
         <Loader />
