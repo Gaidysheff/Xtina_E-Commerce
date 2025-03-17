@@ -40,7 +40,7 @@ const DeliveryContextProvider = (props) => {
     };
 
     fetchDelivery().catch((error) => {
-      setIsLoadConsumables(false);
+      setIsLoadData(false);
       setHttpErrorMessage(error.message);
     });
   }, []);

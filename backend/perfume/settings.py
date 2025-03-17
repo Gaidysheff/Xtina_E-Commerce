@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['https://xtina.netlify.app', 'https://www.xtina.netlify.app']
+# ALLOWED_HOSTS = ['test.gaidysheff.ru', 'www.test.gaidysheff.ru', 'recipes.gaidysheff.ru', 'www.recipes.gaidysheff.ru', 'gaidys2d.beget.tech', 'gaidys2d.beget.tech']
 
 
 # Application definition
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	# External Packages
 	'rest_framework',
-	"corsheaders",
+	'corsheaders',
 	'django_countries',
 	'drf_spectacular',
 	# Internal Apps

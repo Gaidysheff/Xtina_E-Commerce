@@ -19,7 +19,7 @@ class ConsumablesAvailabilityManager(models.Manager):
 # ========================== PERFUME ==========================
 class Compound(models.Model):
     name = models.CharField(
-        max_length=255, unique=True, default="---", verbose_name='Название')
+        max_length=255, unique=True, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
 
@@ -33,7 +33,7 @@ class Compound(models.Model):
     
 class Family(models.Model):
     name = models.CharField(
-        max_length=255, unique=True, default="---", verbose_name='Название')
+        max_length=255, unique=True, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
 
@@ -47,7 +47,7 @@ class Family(models.Model):
 
 class Note(models.Model):
     name = models.CharField(
-        max_length=255, unique=True, default="---", verbose_name='Название')
+        max_length=255, unique=True, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
 
@@ -61,7 +61,7 @@ class Note(models.Model):
     
 class Chord(models.Model):
     name = models.CharField(
-        max_length=255, unique=True, default="---", verbose_name='Название')
+        max_length=255, unique=True, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
 
@@ -187,7 +187,7 @@ class Perfume(models.Model):
 
 class Aroma(models.Model):
     name = models.CharField(
-        max_length=255, default="---", unique=True, verbose_name='Название')
+        max_length=255, unique=True, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
 
@@ -201,7 +201,7 @@ class Aroma(models.Model):
     
 class TopNote(models.Model):
     name = models.CharField(
-        max_length=255, unique=True, default="---", verbose_name='Название')
+        max_length=255, unique=True, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
 
@@ -215,7 +215,7 @@ class TopNote(models.Model):
     
 class MiddleNote(models.Model):
     name = models.CharField(
-        max_length=255, unique=True, default="---", verbose_name='Название')
+        max_length=255, unique=True, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
 
@@ -229,7 +229,7 @@ class MiddleNote(models.Model):
     
 class BaseNote(models.Model):
     name = models.CharField(
-        max_length=255, unique=True, default="---", verbose_name='Название')
+        max_length=255, unique=True, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
 

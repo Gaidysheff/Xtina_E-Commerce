@@ -16,7 +16,7 @@ const Perfumes = (props) => {
     setIsLoadPerfumes(true);
     axios
       .get(`${BASE_URL}/perfumes`)
-      // .get("http://127.0.0.1:8000/api/perfumes")
+      // .get("weather.gaidysheff.ru/api/perfumes")
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(
