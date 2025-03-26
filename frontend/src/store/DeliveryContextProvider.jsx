@@ -23,9 +23,9 @@ const DeliveryContextProvider = (props) => {
 
       const responseData = await response.json();
 
-      const loadedConsumables = [];
+      const loadedData = [];
       for (const key in responseData) {
-        loadedConsumables.push({
+        loadedData.push({
           id: key,
           title: responseData[key].title,
           image: responseData[key].image,
@@ -35,7 +35,8 @@ const DeliveryContextProvider = (props) => {
         });
       }
 
-      setDelivery(loadedConsumables);
+      setDelivery(loadedData);
+      console.log("DELIVERY", loadedData);
       setIsLoadData(false);
     };
 

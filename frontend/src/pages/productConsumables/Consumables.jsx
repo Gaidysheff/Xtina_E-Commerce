@@ -15,7 +15,6 @@ const Consumables = () => {
     setIsLoadConsumables(true);
     axios
       .get(`${BASE_URL}/consumables`)
-      // .get("http://127.0.0.1:8000/api/Consumables")
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

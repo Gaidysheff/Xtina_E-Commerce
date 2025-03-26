@@ -80,6 +80,7 @@ function App(props) {
           <Route path="about" element={<About />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="delivery" element={<Delivery />} />
+
           <Route path="*" element={<Error />} />
 
           <Route path={`${parentRouteSet1}`} element={<SharedPerfumesLayout />}>

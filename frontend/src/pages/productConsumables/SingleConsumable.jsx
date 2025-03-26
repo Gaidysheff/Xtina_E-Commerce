@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../../config.js";
 import Button from "../../components/sharedUI/Button.jsx";
 import CartContext from "../../store/cart-context.js";
-import ConsumablesContext from "./../../store/consumables-context.js";
 import { NumericFormat } from "react-number-format";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -27,7 +26,6 @@ const SingleConsumable = () => {
     setIsLoadConsumable(true);
     axios
       .get(`${BASE_URL}/consumables/${slug}`)
-      // .get("http://127.0.0.1:8000/api/consumables")
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

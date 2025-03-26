@@ -84,15 +84,15 @@ class Perfume(models.Model):
         }
 
     class Status(models.IntegerChoices):
-        OUT = 0, 'нет в наличии'
         AVAILABLE = 1, 'в наличии'
+        OUT = 0, 'нет в наличии'
     
     name = models.CharField(max_length=255, verbose_name='Название')
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
     brand = models.CharField(max_length=255, verbose_name='Бренд')
     image = models.ImageField(
-        upload_to='image_perfumes', verbose_name='Загрузить фото')
+        upload_to='image_perfumes/%Y/%m/%d/', verbose_name='Загрузить фото')
     price3 = models.IntegerField(verbose_name='Цена за 3 мл.')
     price5 = models.IntegerField(verbose_name='Цена за 5 мл.')
     price10 = models.IntegerField(verbose_name='Цена за 10 мл.')
@@ -253,7 +253,7 @@ class Freshener(models.Model):
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
     image = models.ImageField(
-        upload_to='image_fresheners', verbose_name='Загрузить фото')
+        upload_to='image_fresheners/%Y/%m/%d/', verbose_name='Загрузить фото')
     price = models.IntegerField(verbose_name='Цена')
     aroma1 = models.ForeignKey(
         Aroma, on_delete=models.CASCADE, default="---", related_name='aroma1', 
@@ -346,7 +346,7 @@ class Consumables(models.Model):
     slug = models.SlugField(
         max_length=255, unique=True, db_index=True, verbose_name='URL')
     image = models.ImageField(
-        upload_to='image_consumables', verbose_name='Загрузить фото')
+        upload_to='image_consumables/%Y/%m/%d/', verbose_name='Загрузить фото')
     price = models.IntegerField(verbose_name='Цена')
     aroma = models.ForeignKey(
         Aroma, on_delete=models.CASCADE, default="---", verbose_name='Аромат')
@@ -414,7 +414,7 @@ class HeroData(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     subtitle = models.CharField(max_length=255, verbose_name='Подзаголовок')
     image = models.ImageField(
-        upload_to='image_heroData', verbose_name='Загрузить фото')
+        upload_to='image_heroData/%Y/%m/', verbose_name='Загрузить фото')
     noteHero1 = models.ForeignKey(
         Note, on_delete=models.CASCADE, default="---", related_name='noteHero1', 
         verbose_name='Основная нота-1')

@@ -45,7 +45,6 @@ const SingleFreshener = () => {
     setIsLoadFreshener(true);
     axios
       .get(`${BASE_URL}/fresheners/${slug}`)
-      // .get("http://127.0.0.1:8000/api/freshener")
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

@@ -16,7 +16,6 @@ const Perfumes = (props) => {
     setIsLoadPerfumes(true);
     axios
       .get(`${BASE_URL}/perfumes`)
-      // .get("weather.gaidysheff.ru/api/perfumes")
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

@@ -15,7 +15,6 @@ const Fresheners = () => {
     setIsLoadData(true);
     axios
       .get(`${BASE_URL}/fresheners`)
-      // .get("http://127.0.0.1:8000/api/Fresheners")
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

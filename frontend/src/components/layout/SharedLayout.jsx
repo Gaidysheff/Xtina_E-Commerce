@@ -15,10 +15,6 @@ import Payment from "./../../pages/cart/Payment.jsx";
 import SubmitOrder from "./../../pages/cart/SubmitOrder.jsx";
 import { ToastContainer } from "react-toastify";
 
-// import ConsumablesContextProvider from "./../../store/ConsumablesContextProvider.jsx";
-// import FreshenerContextProvider from "./../../store/FreshenerContextProvider.jsx";
-// import PerfumeContextProvider from "./../../store/PerfumeContextProvider.jsx";
-
 const SharedLayout = (props) => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
   const [submitFormIsVisible, setSubmitFormIsVisible] = useState(false);

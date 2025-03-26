@@ -39,7 +39,6 @@ const Hero = (props) => {
     setIsLoadData(true);
     axios
       .get(`${BASE_URL}/hero`)
-      // .get("https://weather.gaidysheff.ru/api/hero")
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(
@@ -47,8 +46,8 @@ const Hero = (props) => {
           );
         }
         setHero(response.data);
-        // console.log("Response=", response);
-        // console.log("Response.data=", response.data);
+        console.log("Response=", response);
+        console.log("Response.data=", response.data);
       })
       .catch((error) => {
         console.log("error=", error);
