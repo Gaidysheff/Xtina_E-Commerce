@@ -20,10 +20,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
 
-# DEBUG = False
-# ALLOWED_HOSTS = ['ecommerce.gaidysheff.ru', 'www.ecommerce.gaidysheff.ru',]
+if DEBUG:
+	ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = [
+			'ecommerce.gaidysheff.ru', 'www.ecommerce.gaidysheff.ru', 
+			'test.gaidysheff.ru', 'www.test.gaidysheff.ru',
+			'weather.gaidysheff.ru', 'www.weather.gaidysheff.ru',
+			]
 
 
 # Application definition
@@ -42,7 +47,6 @@ INSTALLED_APPS = [
 	'drf_spectacular',
 	# Internal Apps
 	'backend_api.apps.BackendApiConfig',
-	'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -107,8 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'users.User'
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -127,17 +129,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'frontend/dist/static'),
-# ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = BASE_DIR / 'media'
 
-# MEDIA_ROOT = '/novokosulino2/public_html/media'
+if DEBUG:
+	MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
+	MEDIA_ROOT = '../xtina/public_html/media'
+
 
 
 
@@ -171,11 +172,12 @@ SPECTACULAR_SETTINGS = {
 }
 
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True
+if DEBUG:
+	CORS_ALLOW_ALL_ORIGINS = True
+else:
+	CORS_ALLOWED_ORIGINS = [
+			'https://ecommerce.gaidysheff.ru', 'https://www.ecommerce.gaidysheff.ru', 
+			'https://test.gaidysheff.ru', 'https://www.test.gaidysheff.ru',
+			'https://weather.gaidysheff.ru', 'https://www.weather.gaidysheff.ru',
+			]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "https://example.com",
-#     "https://sub.example.com",
-#     "http://localhost:8000",
-#     "http://127.0.0.1:5173",
-# ]

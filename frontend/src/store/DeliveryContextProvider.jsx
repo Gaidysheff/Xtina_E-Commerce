@@ -36,7 +36,7 @@ const DeliveryContextProvider = (props) => {
       }
 
       setDelivery(loadedData);
-      console.log("DELIVERY", loadedData);
+      // console.log("DELIVERY", loadedData);
       setIsLoadData(false);
     };
 

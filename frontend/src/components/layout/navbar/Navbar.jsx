@@ -112,8 +112,15 @@ const Navbar = (props) => {
             {/* -------------------Navbar Right section--------------------- */}
             <div className="mx-auto lg:m-0 flex justify-between items-center gap-4">
               {/* Search Bar section */}
+
               <div className="relative group hidden lg:block">
-                <input
+                <IoMdSearch
+                  className="text-xl text-gray-600 dark:text-gray-400
+                          absolute top-1/2 -translate-y-1/2 right-3 
+                          group-hover:text-primary duration-200"
+                  onClick={props.onShowSearch}
+                />
+                {/* <input
                   type="text"
                   placeholder="Найти..."
                   className="search-bar"
@@ -122,8 +129,9 @@ const Navbar = (props) => {
                   className="text-xl text-gray-600 dark:text-gray-400
                           absolute top-1/2 -translate-y-1/2 right-3 
                           group-hover:text-primary duration-200"
-                />
+                /> */}
               </div>
+
               {/* ------------- */}
               {/* Order-button section */}
               <NavbarCartButton

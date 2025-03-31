@@ -1,28 +1,30 @@
 import { Route, Routes } from "react-router";
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 
-import About from "./pages/About.jsx";
-import Cart from "./pages/cart/Cart.jsx";
-import CommentsOnConsumable from "./components/comments/CommentsOnConsumable.jsx";
-import CommentsOnFreshener from "./components/comments/CommentsOnFreshener.jsx";
-import CommentsOnPerfume from "./components/comments/CommentsOnPerfume.jsx";
-import Consumables from "./pages/productConsumables/Consumables.jsx";
-import Contacts from "./pages/Contacts.jsx";
-import Delivery from "./pages/Delivery.jsx";
-import Error from "./pages/Error.jsx";
-import Fresheners from "./pages/productFreshener/Fresheners.jsx";
-import Home from "./pages/Home.jsx";
-import Perfumes from "./pages/productPerfumes/Perfumes.jsx";
-import SharedConsumablesLayout from "./pages/productConsumables/SharedConsumablesLayout.jsx";
-import SharedFreshenersLayout from "./pages/productFreshener/SharedFreshenersLayout.jsx";
 import SharedLayout from "./components/layout/SharedLayout.jsx";
-import SharedPerfumesLayout from "./pages/productPerfumes/SharedPerfumesLayout.jsx";
-import SharedSingleConsumableLayout from "./pages/productConsumables/SharedSingleConsumableLayout.jsx";
-import SharedSingleFreshenerLayout from "./pages/productFreshener/SharedSingleFreshenerLayout.jsx";
-import SharedSinglePerfumeLayout from "./pages/productPerfumes/SharedSinglePerfumeLayout.jsx";
-import SingleConsumable from "./pages/productConsumables/SingleConsumable.jsx";
-import SingleFreshener from "./pages/productFreshener/SingleFreshener.jsx";
-import SinglePerfume from "./pages/productPerfumes/SinglePerfume.jsx";
+
+// import About from "./pages/About.jsx";
+// import Cart from "./pages/cart/Cart.jsx";
+// import CommentsOnConsumable from "./components/comments/CommentsOnConsumable.jsx";
+// import CommentsOnFreshener from "./components/comments/CommentsOnFreshener.jsx";
+// import CommentsOnPerfume from "./components/comments/CommentsOnPerfume.jsx";
+// import Consumables from "./pages/productConsumables/Consumables.jsx";
+// import Contacts from "./pages/Contacts.jsx";
+// import Delivery from "./pages/Delivery.jsx";
+// import Error from "./pages/Error.jsx";
+// import Fresheners from "./pages/productFreshener/Fresheners.jsx";
+// import Home from "./pages/Home.jsx";
+// import Perfumes from "./pages/productPerfumes/Perfumes.jsx";
+// import SharedConsumablesLayout from "./pages/productConsumables/SharedConsumablesLayout.jsx";
+// import SharedFreshenersLayout from "./pages/productFreshener/SharedFreshenersLayout.jsx";
+
+// import SharedPerfumesLayout from "./pages/productPerfumes/SharedPerfumesLayout.jsx";
+// import SharedSingleConsumableLayout from "./pages/productConsumables/SharedSingleConsumableLayout.jsx";
+// import SharedSingleFreshenerLayout from "./pages/productFreshener/SharedSingleFreshenerLayout.jsx";
+// import SharedSinglePerfumeLayout from "./pages/productPerfumes/SharedSinglePerfumeLayout.jsx";
+// import SingleConsumable from "./pages/productConsumables/SingleConsumable.jsx";
+// import SingleFreshener from "./pages/productFreshener/SingleFreshener.jsx";
+// import SinglePerfume from "./pages/productPerfumes/SinglePerfume.jsx";
 
 // URL settings for PERFUMES Section
 export const parentRouteSet1 = "perfumes";
@@ -38,6 +40,58 @@ export const dynamicRouteSet3 = "consumableSlug";
 const nestedRouteSet3 = "comments";
 
 function App(props) {
+  // ============= Dynamic Imports ====================
+  const About = lazy(() => import("./pages/About.jsx"));
+
+  const Cart = lazy(() => import("./pages/cart/Cart.jsx"));
+  const CommentsOnConsumable = lazy(() =>
+    import("./components/comments/CommentsOnConsumable.jsx")
+  );
+  const CommentsOnFreshener = lazy(() =>
+    import("./components/comments/CommentsOnFreshener.jsx")
+  );
+  const CommentsOnPerfume = lazy(() =>
+    import("./components/comments/CommentsOnPerfume.jsx")
+  );
+  const Consumables = lazy(() =>
+    import("./pages/productConsumables/Consumables.jsx")
+  );
+  const Contacts = lazy(() => import("./pages/Contacts.jsx"));
+  const Delivery = lazy(() => import("./pages/Delivery.jsx"));
+  const Error = lazy(() => import("./pages/Error.jsx"));
+  const Fresheners = lazy(() =>
+    import("./pages/productFreshener/Fresheners.jsx")
+  );
+  const Home = lazy(() => import("./pages/Home.jsx"));
+  const Perfumes = lazy(() => import("./pages/productPerfumes/Perfumes.jsx"));
+  const SharedConsumablesLayout = lazy(() =>
+    import("./pages/productConsumables/SharedConsumablesLayout.jsx")
+  );
+  const SharedFreshenersLayout = lazy(() =>
+    import("./pages/productFreshener/SharedFreshenersLayout.jsx")
+  );
+  const SharedPerfumesLayout = lazy(() =>
+    import("./pages/productPerfumes/SharedPerfumesLayout.jsx")
+  );
+  const SharedSingleConsumableLayout = lazy(() =>
+    import("./pages/productConsumables/SharedSingleConsumableLayout.jsx")
+  );
+  const SharedSingleFreshenerLayout = lazy(() =>
+    import("./pages/productFreshener/SharedSingleFreshenerLayout.jsx")
+  );
+  const SharedSinglePerfumeLayout = lazy(() =>
+    import("./pages/productPerfumes/SharedSinglePerfumeLayout.jsx")
+  );
+  const SingleConsumable = lazy(() =>
+    import("./pages/productConsumables/SingleConsumable.jsx")
+  );
+  const SingleFreshener = lazy(() =>
+    import("./pages/productFreshener/SingleFreshener.jsx")
+  );
+  const SinglePerfume = lazy(() =>
+    import("./pages/productPerfumes/SinglePerfume.jsx")
+  );
+
   // ================= THEMES =========================
 
   const [theme, setTheme] = useState(
@@ -135,3 +189,9 @@ function App(props) {
 }
 
 export default App;
+
+function wait(time) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time);
+  });
+}

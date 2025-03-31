@@ -30,7 +30,10 @@ const Modal = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop onHideCart={props.onHideCart} />,
+        <Backdrop
+          onHideCart={props.onHideCart}
+          onHideSearch={props.onHideSearch}
+        />,
         portalElement
       )}
       {ReactDOM.createPortal(

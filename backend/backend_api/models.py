@@ -244,8 +244,8 @@ class BaseNote(models.Model):
 
 class Freshener(models.Model):
     class Status(models.IntegerChoices):
-        OUT = 0, 'Нет в наличии'
         AVAILABLE = 1, 'В наличии'
+        OUT = 0, 'Нет в наличии'
 
     title = models.CharField(max_length=255, verbose_name='Название')
     subtitle = models.CharField(
@@ -337,8 +337,8 @@ class Freshener(models.Model):
 class Consumables(models.Model):
     
     class Status(models.IntegerChoices):
-        OUT = 0, 'Нет в наличии'
         AVAILABLE = 1, 'В наличии'
+        OUT = 0, 'Нет в наличии'
 
     title = models.CharField(max_length=255, verbose_name='Название')
     subtitle = models.CharField(

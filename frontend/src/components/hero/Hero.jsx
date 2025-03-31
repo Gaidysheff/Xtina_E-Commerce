@@ -46,8 +46,8 @@ const Hero = (props) => {
           );
         }
         setHero(response.data);
-        console.log("Response=", response);
-        console.log("Response.data=", response.data);
+        // console.log("Response=", response);
+        // console.log("Response.data=", response.data);
       })
       .catch((error) => {
         console.log("error=", error);
