@@ -44,7 +44,7 @@ const SingleFreshener = () => {
   useEffect(() => {
     setIsLoadFreshener(true);
     axios
-      .get(`${BASE_URL}/fresheners/${slug}`)
+      .get(`${BASE_URL}/api/fresheners/${slug}`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

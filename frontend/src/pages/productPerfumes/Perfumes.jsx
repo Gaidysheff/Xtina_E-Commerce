@@ -15,7 +15,7 @@ const Perfumes = (props) => {
   useEffect(() => {
     setIsLoadPerfumes(true);
     axios
-      .get(`${BASE_URL}/perfumes`)
+      .get(`${BASE_URL}/api/perfumes`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

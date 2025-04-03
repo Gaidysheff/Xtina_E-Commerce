@@ -25,7 +25,7 @@ const SingleConsumable = () => {
   useEffect(() => {
     setIsLoadConsumable(true);
     axios
-      .get(`${BASE_URL}/consumables/${slug}`)
+      .get(`${BASE_URL}/api/consumables/${slug}`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

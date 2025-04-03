@@ -38,7 +38,7 @@ const Hero = (props) => {
   useEffect(() => {
     setIsLoadData(true);
     axios
-      .get(`${BASE_URL}/hero`)
+      .get(`${BASE_URL}/api/hero`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

@@ -1,7 +1,7 @@
 from django.urls import path, include
 from .views import (
 	PerfumeApiView, FreshenerApiView, ConsumablesApiView, DeliveryApiView,
-	GiftApiView, HeroDataApiView
+	GiftApiView, HeroDataApiView, SearchPerfumeApiView, 
 	)
 from rest_framework import routers
 
@@ -19,6 +19,9 @@ router.register(
 	'gift', GiftApiView, basename='gift')
 router.register(
 	'hero', HeroDataApiView, basename='hero')
+
+router.register(
+	'search', SearchPerfumeApiView, basename='search')
 
 urlpatterns = [
     path('', include(router.urls))

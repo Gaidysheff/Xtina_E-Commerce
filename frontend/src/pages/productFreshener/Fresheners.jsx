@@ -14,7 +14,7 @@ const Fresheners = () => {
   useEffect(() => {
     setIsLoadData(true);
     axios
-      .get(`${BASE_URL}/fresheners`)
+      .get(`${BASE_URL}/api/fresheners`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

@@ -13,7 +13,7 @@ const DeliveryContextProvider = (props) => {
     const fetchDelivery = async () => {
       setIsLoadData(true);
 
-      const response = await fetch(`${BASE_URL}/delivery`);
+      const response = await fetch(`${BASE_URL}/api/delivery`);
 
       if (!response.ok) {
         throw new Error(

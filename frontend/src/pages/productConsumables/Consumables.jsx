@@ -14,7 +14,7 @@ const Consumables = () => {
   useEffect(() => {
     setIsLoadConsumables(true);
     axios
-      .get(`${BASE_URL}/consumables`)
+      .get(`${BASE_URL}/api/consumables`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

@@ -56,7 +56,7 @@ const SingleProduct = (props) => {
   useEffect(() => {
     setIsLoadPerfumes(true);
     axios
-      .get(`${BASE_URL}/perfumes/${slug}`)
+      .get(`${BASE_URL}/api/perfumes/${slug}`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(
@@ -93,7 +93,7 @@ const SingleProduct = (props) => {
       });
     // ----------------------------------------------
     axios
-      .get(`${BASE_URL}/gift`)
+      .get(`${BASE_URL}/api/gift`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(

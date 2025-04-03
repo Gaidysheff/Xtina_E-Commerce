@@ -49,14 +49,7 @@ const SharedLayout = (props) => {
 
   // ===================== SEARCH =========================
   const [searchIsVisible, setSearchIsVisible] = useState(false);
-
-  const showSearchHandler = () => {
-    setSearchIsVisible(true);
-  };
-
-  const hideSearchHandler = () => {
-    setSearchIsVisible(false);
-  };
+  const [searchButtonIsDisabled, setSearchButtonIsDisabled] = useState(false);
 
   // ==================== CART =============================
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -67,12 +60,34 @@ const SharedLayout = (props) => {
   const [delivery, setDelivery] = useState([]);
   const [totalToBePaid, setTotalToBePaid] = useState(0);
 
+  // ===================== SEARCH =========================
+
+  const showSearchHandler = () => {
+    setSearchIsVisible(true);
+    setCartButtonIsDisabled(true);
+  };
+
+  const hideSearchHandler = () => {
+    setSearchIsVisible(false);
+    setCartButtonIsDisabled(false);
+  };
+
+  const searchChangeHandler = () => {
+    setCartButtonIsDisabled(true);
+  };
+
+  // const searchBluringHandler = () => {
+  //   setCartButtonIsDisabled(false);
+  // };
+
+  // ==================== CART =============================
   const showCartHandler = () => {
     setCartIsVisible(true);
     setCartButtonIsDisabled(true);
     setSubmitFormIsVisible(false);
     setConfirmIsVisible(false);
     setPaymentIsVisible(false);
+    setSearchButtonIsDisabled(true);
   };
 
   const hideCartHandler = () => {
@@ -83,6 +98,7 @@ const SharedLayout = (props) => {
     setPaymentIsVisible(false);
     // ------ Additional for Search Window -------
     setSearchIsVisible(false);
+    setSearchButtonIsDisabled(false);
   };
 
   const showSubmitFormHandler = () => {
@@ -193,7 +209,10 @@ const SharedLayout = (props) => {
                 theme={props.theme}
                 onShowCart={showCartHandler}
                 cartButtonIsDisabled={cartButtonIsDisabled}
+                searchButtonIsDisabled={searchButtonIsDisabled}
                 onShowSearch={showSearchHandler}
+                // onSearchChange={searchChangeHandler}
+                // onBluringSearch={searchBluringHandler}
               />
 
               <Outlet themeHandler={props.themeHandler} theme={props.theme} />

@@ -2,7 +2,8 @@ from rest_framework import viewsets
 from rest_framework import mixins
 from rest_framework.response import Response
 from rest_framework.generics import RetrieveAPIView
-
+from django.db.models import Q
+from rest_framework.views import APIView
 
 from .models import (
 	Compound, Family, Note, Chord, Aroma, TopNote, MiddleNote, BaseNote, Perfume, 
@@ -56,3 +57,19 @@ class HeroDataApiView(
     queryset = HeroData.objects.all()
     serializer_class = HeroDataSerializer
     lookup_field = 'id'
+
+# ===========================================================
+
+class SearchPerfumeApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    serializer_class = PerfumeSerializer
+
+    def get_queryset(self):
+        qs = Perfume.objects.all()
+        name = self.request.query_params.get('name')
+        if name is not None:
+            qs = qs.filter(Q(name__icontains=name) | Q(brand__icontains=name))
+        return qs
+        
+# http://localhost:5173/search?name=xxxxx        
+

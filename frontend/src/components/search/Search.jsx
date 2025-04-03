@@ -21,7 +21,7 @@ const Search = (props) => {
   useEffect(() => {
     setIsLoadPerfumes(true);
     axios
-      .get(`${BASE_URL}/perfumes`)
+      .get(`${BASE_URL}/api/perfumes`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error(
@@ -53,9 +53,9 @@ const Search = (props) => {
     );
   }
 
-  const searchResult = searchPerfumes
-    .filter((perfume) => perfume.name.toLowerCase().includes(lookup))
-    .map((perfume) => perfume.name);
+  // const searchResult = searchPerfumes
+  //   .filter((perfume) => perfume.name.toLowerCase().includes(lookup))
+  //   .map((perfume) => perfume.name);
 
   return (
     <Modal onHideCart={props.onHideCart}>
@@ -107,40 +107,48 @@ const Search = (props) => {
               </div>
             </div>
             <div className="overflow-scroll">
-              {searchPerfumes
-                .filter((perfume) =>
-                  perfume.name.toLowerCase().includes(lookup)
-                )
-                .map((perfume) =>
-                  lookup.length > 0 ? (
-                    <Card key={perfume.slug}>
-                      <Link to={`${BASE_URL}/perfumes/${perfume.slug}`}>
-                        <img
-                          src={perfume.image}
-                          alt="product image"
-                          className="w-[25%] bg-white dark:bg-brandLightGray"
-                        />
-                        <div className="p-2 pb-0">
-                          <div
-                            className="text-[0.7rem] md:text-[0.9rem] lg:text-lg"
-                            data-aos="flip-left"
-                          >
-                            Бренд: {perfume.brand}
-                          </div>
-                          <div
-                            className="text-[0.8rem] md:text-[1.1rem] lg:text-xl
-                                font-semibold"
-                            data-aos="flip-left"
-                          >
-                            Название: {perfume.name}
-                          </div>
-                        </div>
-                      </Link>
-                    </Card>
-                  ) : (
-                    ""
+              {searchPerfumes &&
+                searchPerfumes
+                  .filter((perfume) =>
+                    perfume.name.toLowerCase().includes(lookup)
                   )
-                )}
+                  .map((perfume) =>
+                    lookup.length > 0 ? (
+                      <Card key={perfume.slug}>
+                        {/* <Link
+                        to={`http://localhost:5173/perfumes/${perfume.slug}`}
+                        onClick={props.onHideSearch}
+                      > */}
+                        <Link
+                          to={`${BASE_URL}/perfumes/${perfume.slug}`}
+                          onClick={props.onHideSearch}
+                        >
+                          <img
+                            src={perfume.image}
+                            alt="product image"
+                            className="w-[25%] bg-white dark:bg-brandLightGray"
+                          />
+                          <div className="p-2 pb-0">
+                            <div
+                              className="text-[0.7rem] md:text-[0.9rem] lg:text-lg"
+                              data-aos="flip-left"
+                            >
+                              Бренд: {perfume.brand}
+                            </div>
+                            <div
+                              className="text-[0.8rem] md:text-[1.1rem] lg:text-xl
+                                font-semibold"
+                              data-aos="flip-left"
+                            >
+                              Название: {perfume.name}
+                            </div>
+                          </div>
+                        </Link>
+                      </Card>
+                    ) : (
+                      ""
+                    )
+                  )}
             </div>
           </div>
         </section>

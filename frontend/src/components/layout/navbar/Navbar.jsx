@@ -12,6 +12,7 @@ import { IoMdSearch } from "react-icons/io";
 import Logo_short_black from "../../../assets/shared/Logo_short_black.svg";
 import Logo_short_primary from "../../../assets/shared/Logo_short_primary.svg";
 import NavbarCartButton from "./NavbarCartButton/NavbarCartButton.jsx";
+import NewSearch from "../../search/NewSearch";
 import { useState } from "react";
 
 const Navbar = (props) => {
@@ -114,12 +115,16 @@ const Navbar = (props) => {
               {/* Search Bar section */}
 
               <div className="relative group hidden lg:block">
-                <IoMdSearch
-                  className="text-xl text-gray-600 dark:text-gray-400
-                          absolute top-1/2 -translate-y-1/2 right-3 
-                          group-hover:text-primary duration-200"
+                <button
                   onClick={props.onShowSearch}
-                />
+                  disabled={props.searchButtonIsDisabled}
+                >
+                  <IoMdSearch
+                    className="text-xl text-gray-600 dark:text-gray-400
+                            absolute top-1/2 -translate-y-1/2 right-3 
+                            group-hover:text-primary duration-200"
+                  />
+                </button>
                 {/* <input
                   type="text"
                   placeholder="Найти..."
@@ -170,12 +175,19 @@ const Navbar = (props) => {
           {/* ========== PHONE SCREEN MENU ========== */}
           <div className="container flex-col lg:hidden">
             <div className={menuOpen ? "visible" : "hidden"}>
-              <div className="my-3 flex justify-center lg:hidden w-full ">
-                <input
+              <div className="my-3 flex-col justify-center lg:hidden w-full ">
+                {/* -------------------------------- */}
+                {/* <input
                   type="text"
                   placeholder="Найти..."
                   className="search-bar-burger dark:bg-gray-700"
+                /> */}
+                <NewSearch
+                  menuOpen={menuOpen}
+                  // onSearchChange={props.onSearchChange}
+                  // onBluringSearch={props.onBluringSearch}
                 />
+                {/* -------------------------------- */}
               </div>
               {MenuLinks.map((data, index) => (
                 <div
