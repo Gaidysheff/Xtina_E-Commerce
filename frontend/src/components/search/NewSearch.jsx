@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 import { BASE_URL } from "../../config";
-import Card from "../sharedUI/Card";
 import { Link } from "react-router";
 import Loader from "../sharedUI/LoaderKest";
 import axios from "axios";
 import useDebounce from "../hooks/use-debounce";
+
+// import Card from "../sharedUI/Card";
 
 // import { IoMdSearch } from "react-icons/io";
 
@@ -72,16 +73,16 @@ const NewSearch = (props) => {
         <input
           type="text"
           placeholder="Найти..."
-          className="search-bar-burger dark:bg-gray-700"
+          className="search-bar-burger dark:bg-gray-700 mb-2 dark:border-gray-400"
           value={lookupText}
           onChange={lookupTextHandler}
           // onBlur={bluringSearchHandler}
         />
       </div>
-      <div>
+      <div className="flex flex-col items-center">
         {lookupText.length > 0 &&
           searchPerfumes.map((perfume) => (
-            <Card key={perfume.slug}>
+            <div key={perfume.slug} className="rounded-xl w-full md:w-[75%]">
               {/* <Link
                   to={`http://localhost:5173/perfumes/${perfume.slug}`}
                   onClick={searchLinkHandler}
@@ -90,28 +91,35 @@ const NewSearch = (props) => {
                 to={`${BASE_URL}/perfumes/${perfume.slug}`}
                 onClick={searchLinkHandler}
               >
-                <img
-                  src={perfume.image}
-                  alt="product image"
-                  className="w-[25%] bg-white dark:bg-brandLightGray"
-                />
-                <div className="p-2 pb-0">
-                  <div
-                    className="text-[0.7rem] md:text-[0.9rem] lg:text-lg"
-                    data-aos="flip-left"
-                  >
-                    Бренд: {perfume.brand}
-                  </div>
-                  <div
-                    className="text-[0.8rem] md:text-[1.1rem] lg:text-xl
-												font-semibold"
-                    data-aos="flip-left"
-                  >
-                    Название: {perfume.name}
+                <div
+                  className="flex mb-1 p-1 bg-white rounded-xl
+                hover:border-primary hover:border-2 dark:hover:border-4"
+                >
+                  <img
+                    src={perfume.image}
+                    alt="product image"
+                    className="w-[50px] lg:w-[90px]"
+                  />
+                  <div className="flex flex-col justify-center text-gray-600">
+                    <div
+                      className="flex text-[0.6rem] md:text-[0.9rem] lg:text-lg"
+                      data-aos="flip-left"
+                    >
+                      <div className="w-[50px] md:w-[60px]">Бренд:</div>
+                      <div>{perfume.brand}</div>
+                    </div>
+                    <div
+                      className="flex text-[0.7rem] md:text-[1.1rem] lg:text-xl
+                      font-semibold"
+                      data-aos="flip-left"
+                    >
+                      <div className="w-[50px] md:w-[60px]">Духи:</div>
+                      <div>{perfume.name}</div>
+                    </div>
                   </div>
                 </div>
               </Link>
-            </Card>
+            </div>
           ))}
         {searchPerfumes.length == 0 && (
           <p

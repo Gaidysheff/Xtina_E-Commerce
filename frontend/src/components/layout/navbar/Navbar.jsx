@@ -154,10 +154,11 @@ const Navbar = (props) => {
             </div>
           </div>
           {/* ========== BURGER ========== */}
-          <div
+          <button
             className="absolute top-[1.5rem] right-[2rem] flex-col hover:scale-110 
                         justify-between w-[2.25rem] h-[2rem] flex lg:hidden"
             onClick={humburgerHandler}
+            disabled={props.burgerButtonIsDisabled}
           >
             <span
               className="h-[0.4rem] w-[100%] bg-gradient-to-r 
@@ -171,7 +172,7 @@ const Navbar = (props) => {
               className="h-[0.4rem] w-[100%] bg-gradient-to-r 
             from-primaryLight via-primary to-primaryDark rounded-md"
             ></span>
-          </div>
+          </button>
           {/* ========== PHONE SCREEN MENU ========== */}
           <div className="container flex-col lg:hidden">
             <div className={menuOpen ? "visible" : "hidden"}>

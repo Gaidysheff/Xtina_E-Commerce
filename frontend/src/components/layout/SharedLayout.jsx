@@ -7,22 +7,6 @@ import Loader from "./../sharedUI/LoaderKest.jsx";
 import { Outlet } from "react-router";
 import { Suspense } from "react";
 
-// import { ToastContainer } from "react-toastify";
-
-// import CartContextProvider from "./../../store/CartContextProvider.jsx";
-// import Confirm from "./../../pages/cart/Confirm.jsx";
-// import DeliveryContextProvider from "./../../store/DeliveryContextProvider.jsx";
-// import Footer from "./Footer.jsx";
-
-// import Navbar from "./navbar/Navbar.jsx";
-// import OrderContextProvider from "./../../store/OrderContextProvider.jsx";
-
-// import Payment from "./../../pages/cart/Payment.jsx";
-// import SubmitOrder from "./../../pages/cart/SubmitOrder.jsx";
-
-// import Cart from "./../../pages/cart/Cart.jsx";
-// import Search from '../search/Search';
-
 const SharedLayout = (props) => {
   // ============= Dynamic Imports ====================
   const Cart = lazy(() => import("./../../pages/cart/Cart.jsx"));
@@ -50,6 +34,7 @@ const SharedLayout = (props) => {
   // ===================== SEARCH =========================
   const [searchIsVisible, setSearchIsVisible] = useState(false);
   const [searchButtonIsDisabled, setSearchButtonIsDisabled] = useState(false);
+  const [burgerButtonIsDisabled, setBurgerButtonIsDisabled] = useState(false);
 
   // ==================== CART =============================
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -65,16 +50,18 @@ const SharedLayout = (props) => {
   const showSearchHandler = () => {
     setSearchIsVisible(true);
     setCartButtonIsDisabled(true);
+    setBurgerButtonIsDisabled(true);
   };
 
   const hideSearchHandler = () => {
     setSearchIsVisible(false);
     setCartButtonIsDisabled(false);
+    setBurgerButtonIsDisabled(false);
   };
 
-  const searchChangeHandler = () => {
-    setCartButtonIsDisabled(true);
-  };
+  // const searchChangeHandler = () => {
+  //   setCartButtonIsDisabled(true);
+  // };
 
   // const searchBluringHandler = () => {
   //   setCartButtonIsDisabled(false);
@@ -88,6 +75,7 @@ const SharedLayout = (props) => {
     setConfirmIsVisible(false);
     setPaymentIsVisible(false);
     setSearchButtonIsDisabled(true);
+    setBurgerButtonIsDisabled(true);
   };
 
   const hideCartHandler = () => {
@@ -99,6 +87,7 @@ const SharedLayout = (props) => {
     // ------ Additional for Search Window -------
     setSearchIsVisible(false);
     setSearchButtonIsDisabled(false);
+    setBurgerButtonIsDisabled(false);
   };
 
   const showSubmitFormHandler = () => {
@@ -211,6 +200,7 @@ const SharedLayout = (props) => {
                 cartButtonIsDisabled={cartButtonIsDisabled}
                 searchButtonIsDisabled={searchButtonIsDisabled}
                 onShowSearch={showSearchHandler}
+                burgerButtonIsDisabled={burgerButtonIsDisabled}
                 // onSearchChange={searchChangeHandler}
                 // onBluringSearch={searchBluringHandler}
               />

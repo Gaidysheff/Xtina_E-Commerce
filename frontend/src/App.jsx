@@ -3,29 +3,6 @@ import { lazy, useEffect, useState } from "react";
 
 import SharedLayout from "./components/layout/SharedLayout.jsx";
 
-// import About from "./pages/About.jsx";
-// import Cart from "./pages/cart/Cart.jsx";
-// import CommentsOnConsumable from "./components/comments/CommentsOnConsumable.jsx";
-// import CommentsOnFreshener from "./components/comments/CommentsOnFreshener.jsx";
-// import CommentsOnPerfume from "./components/comments/CommentsOnPerfume.jsx";
-// import Consumables from "./pages/productConsumables/Consumables.jsx";
-// import Contacts from "./pages/Contacts.jsx";
-// import Delivery from "./pages/Delivery.jsx";
-// import Error from "./pages/Error.jsx";
-// import Fresheners from "./pages/productFreshener/Fresheners.jsx";
-// import Home from "./pages/Home.jsx";
-// import Perfumes from "./pages/productPerfumes/Perfumes.jsx";
-// import SharedConsumablesLayout from "./pages/productConsumables/SharedConsumablesLayout.jsx";
-// import SharedFreshenersLayout from "./pages/productFreshener/SharedFreshenersLayout.jsx";
-
-// import SharedPerfumesLayout from "./pages/productPerfumes/SharedPerfumesLayout.jsx";
-// import SharedSingleConsumableLayout from "./pages/productConsumables/SharedSingleConsumableLayout.jsx";
-// import SharedSingleFreshenerLayout from "./pages/productFreshener/SharedSingleFreshenerLayout.jsx";
-// import SharedSinglePerfumeLayout from "./pages/productPerfumes/SharedSinglePerfumeLayout.jsx";
-// import SingleConsumable from "./pages/productConsumables/SingleConsumable.jsx";
-// import SingleFreshener from "./pages/productFreshener/SingleFreshener.jsx";
-// import SinglePerfume from "./pages/productPerfumes/SinglePerfume.jsx";
-
 // URL settings for PERFUMES Section
 export const parentRouteSet1 = "perfumes";
 export const dynamicRouteSet1 = "perfumeSlug";
