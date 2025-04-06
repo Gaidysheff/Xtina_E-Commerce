@@ -3,14 +3,15 @@ import {
   DropdownLinksBurger,
   MenuLinks,
 } from "../../../utils/navbarMenus.js";
-import { Link, NavLink } from "react-router";
 
 import DarkMode from "./DarkMode.jsx";
 import { Element } from "react-scroll";
 import { FaCaretDown } from "react-icons/fa6";
 import { IoMdSearch } from "react-icons/io";
+import { Link } from "react-scroll";
 import Logo_short_black from "../../../assets/shared/Logo_short_black.svg";
 import Logo_short_primary from "../../../assets/shared/Logo_short_primary.svg";
+import { NavLink } from "react-router";
 import NavbarCartButton from "./NavbarCartButton/NavbarCartButton.jsx";
 import NewSearch from "../../search/NewSearch";
 import { useState } from "react";
@@ -106,6 +107,16 @@ const Navbar = (props) => {
                       </NavLink>
                     </div>
                   ))}
+
+                  <Link
+                    to="contacts"
+                    smooth={true}
+                    duration={500}
+                    className="cursor-pointer text-brandDarkGray font-semibold
+                      dark:text-brandLightGray hover:text-primary menu-item"
+                  >
+                    <NavLink to="/">Контакты</NavLink>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -206,6 +217,18 @@ const Navbar = (props) => {
                   </NavLink>
                 </div>
               ))}
+              <div className="text-center rounded-2xl w-full hover:scale-110">
+                <Link
+                  to="contacts"
+                  smooth={true}
+                  duration={500}
+                  className="cursor-pointer inline-block px-4 font-semibold 
+                  text-gray-600 dark:text-gray-300 py-2 w-full duration-200
+                  menu-item-burger"
+                >
+                  <NavLink to="/">Контакты</NavLink>
+                </Link>
+              </div>
               <div className="space-y-2">
                 {DropdownLinksBurger.map((data, index) => (
                   <div

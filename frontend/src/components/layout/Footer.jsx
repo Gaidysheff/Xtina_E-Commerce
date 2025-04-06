@@ -196,9 +196,9 @@ const Footer = () => {
             </Link>
             <div
               className="text-center text-[0.7rem] sm:text-[1rem]"
-              data-aos="flip-right"
-              data-aos-delay="800"
-              data-aos-duration="2000"
+              // data-aos="flip-right"
+              // data-aos-delay="800"
+              // data-aos-duration="2000"
             >
               <p>ИП Ревенков Александр Владимирович</p>
               <p>ИНН 667112821820</p>

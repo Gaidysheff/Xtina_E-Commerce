@@ -148,8 +148,8 @@ const Search = (props) => {
               {searchPerfumes.length == 0 && (
                 <p
                   className="text-lg sm:text-2xl italic text-center my-5 
-            text-primaryDark/80 font-['Pacifico']
-            drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]"
+                  text-primaryDark/80 font-['Pacifico']
+                  drop-shadow-[10px_10px_6px_rgba(100,100,100,.9)]"
                   data-aos="fade-in"
                   data-aos-duration="1000"
                 >

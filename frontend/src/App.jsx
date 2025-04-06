@@ -33,7 +33,7 @@ function App(props) {
   const Consumables = lazy(() =>
     import("./pages/productConsumables/Consumables.jsx")
   );
-  const Contacts = lazy(() => import("./pages/Contacts.jsx"));
+  // const Contacts = lazy(() => import("./pages/Contacts.jsx"));
   const Delivery = lazy(() => import("./pages/Delivery.jsx"));
   const Error = lazy(() => import("./pages/Error.jsx"));
   const Fresheners = lazy(() =>
@@ -109,7 +109,7 @@ function App(props) {
           />
           <Route path="cart" element={<Cart />} />
           <Route path="about" element={<About />} />
-          <Route path="contacts" element={<Contacts />} />
+          {/* <Route path="contacts" element={<Contacts />} /> */}
           <Route path="delivery" element={<Delivery />} />
 
           <Route path="*" element={<Error />} />
