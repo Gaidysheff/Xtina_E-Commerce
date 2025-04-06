@@ -1,25 +1,20 @@
-import {
-  DropdownLinks,
-  DropdownLinksBurger,
-  MenuLinks,
-} from "../../utils/navbarMenus";
+import { DropdownLinks, MenuLinks } from "../../utils/navbarMenus";
 import { FaArrowUpFromBracket, FaSquareWhatsapp } from "react-icons/fa6";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaLocationArrow,
-  FaMobileAlt,
-  FaTelegram,
-} from "react-icons/fa";
+import { FaInstagram, FaMobileAlt, FaTelegram } from "react-icons/fa";
 
 import { FaVk } from "react-icons/fa6";
-import { Link } from "react-scroll";
+import { HashLink } from "react-router-hash-link";
 import Logo_short_primary from "../../assets/shared/Logo_short_primary.svg";
 import { MdPlace } from "react-icons/md";
 import heart from "../../assets/icons/heart-icon.svg";
 
 const Footer = () => {
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = 0;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-gray-800 px-3 sm:px-0">
       <section className="container md:grid md:grid-cols-8">
@@ -183,17 +178,20 @@ const Footer = () => {
       <section className="bg-gray-950 text-brandLightGray mx-[-1rem] sm:mx-0">
         <div className="container py-5">
           <div className="flex justify-between items-center">
-            <Link
-              to="top"
-              smooth={true}
-              duration={700}
+            <HashLink
+              to="/#top"
+              scroll={(el) => scrollWithOffset(el)}
               className="cursor-pointer hover:scale-110 hover:text-primary"
             >
-              <div className="flex-col text-brandLightGray px-1 hover:text-primary">
+              <div
+                className="flex-col text-brandLightGray px-1 
+              hover:text-primary"
+              >
                 <FaArrowUpFromBracket className="justify-self-center" />
                 <p>Наверх</p>
               </div>
-            </Link>
+            </HashLink>
+
             <div
               className="text-center text-[0.7rem] sm:text-[1rem]"
               // data-aos="flip-right"

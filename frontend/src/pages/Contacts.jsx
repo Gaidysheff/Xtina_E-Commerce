@@ -1,4 +1,3 @@
-import { Element } from "react-scroll";
 import Image from "../assets/shared/constraction.png";
 import Loader from "./../components/sharedUI/LoaderKest.jsx";
 import { useForm } from "react-hook-form";
@@ -39,48 +38,46 @@ const Contacts = () => {
   };
 
   return (
-    <Element name="contacts">
-      <section className="section h-[62vh] m-[3rem]" id="about">
-        <div className="container flex-col justify-center">
-          {/* ========================================================= */}
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <input
-              className="border-2"
-              {...register("email")}
-              type="text"
-              placeholder="email"
-            />
+    <section className="section h-[62vh] m-[3rem]" id="about">
+      <div className="container flex-col justify-center">
+        {/* ========================================================= */}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            className="border-2"
+            {...register("email")}
+            type="text"
+            placeholder="email"
+          />
 
-            {errors.email && (
-              <div className="text-red-500">{errors.email.message}</div>
-            )}
+          {errors.email && (
+            <div className="text-red-500">{errors.email.message}</div>
+          )}
 
-            <input
-              {...register("password")}
-              type="password"
-              placeholder="password"
-              className="border-2"
-            />
-            {errors.password && (
-              <div className="text-red-500">{errors.password.message}</div>
-            )}
+          <input
+            {...register("password")}
+            type="password"
+            placeholder="password"
+            className="border-2"
+          />
+          {errors.password && (
+            <div className="text-red-500">{errors.password.message}</div>
+          )}
 
-            {errors.root && (
-              <div className="text-red-500">{errors.root.message}</div>
-            )}
+          {errors.root && (
+            <div className="text-red-500">{errors.root.message}</div>
+          )}
 
-            <button disabled={isSubmitting}>
-              {isSubmitting ? "Loading" : "Submit"}
-            </button>
-          </form>
-          {/* ========================================================= */}
-          <div className="justify-self-center w-[250px] mb-8">
-            <img src={Image} alt="" />
-          </div>
-          <Loader />
+          <button disabled={isSubmitting}>
+            {isSubmitting ? "Loading" : "Submit"}
+          </button>
+        </form>
+        {/* ========================================================= */}
+        <div className="justify-self-center w-[250px] mb-8">
+          <img src={Image} alt="" />
         </div>
-      </section>
-    </Element>
+        <Loader />
+      </div>
+    </section>
   );
 };
 
