@@ -3,9 +3,12 @@ import Button from "../sharedUI/Button";
 
 const BannerConsultancy = () => {
   return (
-    <section className="container py-2">
+    <section className="container">
       <div className="my-3">
-        <div className="min-h-[550px] md:min-h-[350px] lg:min-h-[550px] flex justify-center items-center">
+        <div
+          className="xsm:min-h-[500px] sm:min-h-[550px] md:min-h-[320px] lg:min-h-[430px] 
+        xl:min-h-[500px] flex justify-center items-center"
+        >
           <div className="w-full">
             <div
               className="bg-primary grid grid-cols-1 md:grid-cols-3 gap-6 items-center
@@ -19,24 +22,29 @@ const BannerConsultancy = () => {
               >
                 <h1
                   data-aos="zoom-out"
-                  className="py-3 text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl 
+                  className="pb-1 sm:py-3 text-sm sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl 
                   uppercase font-bold xl:leading-snug"
                 >
                   Индивидуальный подбор аромата
                 </h1>
-                <p
+                {/* <p
                   data-aos="slide-right"
-                  className="text-xl md:mt-5 md:text-md lg:text-2xl xl:text-3xl 
-                  2xl:text-3xl leading-5 text-gray-500"
+                  className="text-sm sm:hidden text-gray-500"
                 >
                   в парфюм-баре
                 </p>
                 <p
                   data-aos="fade-up"
-                  className="text-xl md:text-md lg:text-2xl xl:text-3xl 
-                  2xl:text-3xl leading-5 text-gray-500"
+                  className="text-sm sm:hidden text-gray-500"
                 >
                   и онлайн
+                </p> */}
+                <p
+                  data-aos="slide-right"
+                  className="text-center sm:text-xl md:mt-5 md:text-md lg:text-2xl xl:text-3xl 
+                  2xl:text-3xl sm:leading-5 text-gray-500"
+                >
+                  в парфюм-баре и онлайн
                 </p>
               </div>
               {/* second column */}
@@ -56,7 +64,7 @@ const BannerConsultancy = () => {
                 <div>
                   <p
                     data-aos="zoom-out"
-                    className="text-xl md:text-md lg:text-xl xl:text-3xl 2xl:text-5xl 
+                    className="text-base sm:text-xl md:text-md lg:text-xl xl:text-3xl 2xl:text-5xl 
                     leading-5 text-gray-500 font-semibold italic text-center 
                     md:text-end md:mb-6 md:text-white"
                   >
@@ -65,7 +73,7 @@ const BannerConsultancy = () => {
 
                   <p
                     data-aos="slide-left"
-                    className="text-xl md:text-md xl:text-3xl 2xl:text-4xl 
+                    className="text-base sm:text-xl md:text-md xl:text-3xl 2xl:text-4xl 
                     leading-5 text-gray-500 font-semibold italic text-center 
                     md:text-end xl:mb-5"
                   >
@@ -84,7 +92,7 @@ const BannerConsultancy = () => {
                     to-brandDarkGray ring-4 ring-brandDarkGray
                     group-hover:from-gray-100 group-hover:via-gray-500 
                     group-hover:to-gray-700"
-                    textColor="text-white text-lg"
+                    textColor="text-white text-xs sm:text-lg"
                     paddings="py-2 px-4"
                     // handler={props.orderPopupHandler}
                   />

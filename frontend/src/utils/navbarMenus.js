@@ -15,7 +15,7 @@ export const MenuLinks = [
     id: 3,
     label: "Доставка",
     path: "/delivery",
-    aosDelay: "2500",
+    aosDelay: "1500",
   },
 ];
 

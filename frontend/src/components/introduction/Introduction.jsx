@@ -6,7 +6,7 @@ import Xtina from "../../assets/introduction/xtina.png";
 const Introduction = (props) => {
   return (
     <section className="container py-2">
-      <div className="grid grid-cols-3 gap-2 mb-10">
+      <div className="grid grid-cols-3 gap-2 md:mb-5 lg:mb-10">
         <div className="col-span-2">
           <div
             className="inline-flex justify-between mb-[15px] sm:mb-[30px] 

@@ -123,7 +123,7 @@ const SharedLayout = (props) => {
 
   useEffect(() => {
     AOS.init({
-      offset: 100,
+      offset: 50,
       duration: 800,
       easing: "ease-in-sine",
       delay: 100,

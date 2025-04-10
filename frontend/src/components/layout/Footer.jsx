@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="md:col-span-3">
           {/* company details */}
           <div
-            className="col-span-2 py-8 pl-4 pr-2"
+            className="col-span-2 py-8 pl-4 pr-2 text-sm sm:text-base"
             data-aos="slide-right"
             data-aos-delay="200"
           >
@@ -55,10 +55,10 @@ const Footer = () => {
           </div>
         </div>
         <div className="sm:grid sm:grid-cols-2 md:col-span-5 md:grid-cols-12">
-          <div className="grid grid-cols-2 md:col-span-6 md:grid-cols-10 items-center">
+          <div className="grid grid-cols-2 md:col-span-6 md:grid-cols-10 items-start">
             <div className="md:col-span-4">
               {/* Menu links */}
-              <div className="py-8 pl-4">
+              <div className="md:py-8 pl-4">
                 <h1
                   className="text-xl font-bold sm:text-left mb-3 
                 text-brandLightGray"
@@ -86,11 +86,26 @@ const Footer = () => {
                     </li>
                   ))}
                 </ul>
+                <div
+                  className="mt-3"
+                  data-aos="zoom-in"
+                  data-aos-duration="600"
+                  data-aos-delay="2000"
+                >
+                  <HashLink
+                    to="/#contacts"
+                    scroll={(el) => scrollWithOffset(el)}
+                    className="text-brandLightGray
+                    hover:text-white hover:text-lg"
+                  >
+                    <p>Контакты</p>
+                  </HashLink>
+                </div>
               </div>
             </div>
             <div className="md:col-span-6 text-end pr-4">
               {/* Catalogue links */}
-              <div className="py-8">
+              <div className="md:py-8">
                 <h1
                   className="text-xl font-bold mb-3 
                 text-brandLightGray"
@@ -124,26 +139,29 @@ const Footer = () => {
           <div className="md:col-span-6">
             {/* Company Address */}
             <div
-              className="py-2 sm:py-8 pr-4 sm:col-span-auto md:col-span-2 
-              text-brandLightGray sm:pr-8"
+              className="pb-4 md:py-8 pl-4 sm:pl-0 md:pr-4 sm:col-span-auto 
+              md:col-span-2 text-brandLightGray"
               data-aos="slide-left"
               data-aos-delay="200"
             >
               <h1 className="text-xl font-bold mb-3  sm:text-end">Адрес</h1>
               <div>
                 <div className="flex items-center gap-2 sm:justify-end sm:text-end">
-                  <MdPlace className="text-2xl sm:text-3xl" />
-                  <div>
-                    <p>ул. Печатников д.1,</p>
-                    <p>Екатеринбург</p>
-                  </div>
+                  <MdPlace className="text-2xl sm:text-3xl order-1 sm:order-2" />
+
+                  <p className="order-2 sm:order-1">
+                    ул. Печатников д.1, Екатеринбург
+                  </p>
                 </div>
-                <div className="flex items-center gap-3 mt-6 sm:justify-end">
-                  <FaMobileAlt className="text-xl" />
-                  <p>+7(922)-038-96-44</p>
+                <div className="flex items-center gap-3 mt-2 sm:mt-6 sm:justify-end">
+                  <FaMobileAlt className="text-xl order-1 sm:order-2" />
+                  <p className="order-2 sm:order-1">+7(922)-038-96-44</p>
                 </div>
                 {/* Social links */}
-                <div className="flex items-center gap-3 mt-6 sm:justify-end">
+                <div
+                  className="flex items-center gap-3 mt-6 
+                justify-center sm:justify-end"
+                >
                   <a href="#">
                     <FaSquareWhatsapp
                       className="text-3xl hover:text-primary 
@@ -179,7 +197,7 @@ const Footer = () => {
         <div className="container py-5">
           <div className="flex justify-between items-center">
             <HashLink
-              to="/#top"
+              to="#"
               scroll={(el) => scrollWithOffset(el)}
               className="cursor-pointer hover:scale-110 hover:text-primary"
             >
