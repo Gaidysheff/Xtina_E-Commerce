@@ -104,9 +104,9 @@ const Search = (props) => {
                 searchPerfumes.map((perfume) => (
                   <div key={perfume.slug} className="rounded-xl w-full">
                     {/* <Link
-                  to={`http://localhost:5173/perfumes/${perfume.slug}`}
-                  onClick={searchLinkHandler}
-                > */}
+                      to={`http://localhost:5173/perfumes/${perfume.slug}`}
+                      onClick={searchLinkHandler}
+                    > */}
                     <Link
                       to={`${BASE_URL}/perfumes/${perfume.slug}`}
                       onClick={searchLinkHandler}

@@ -85,17 +85,19 @@ const BannerConsultancy = () => {
                   data-aos-offset="0"
                   className="self-center md:self-end"
                 >
-                  <Button
-                    text="Записаться"
-                    bgColor="group rounded-full
-                    bg-gradient-to-br from-brandLightGray via-gray-400 
-                    to-brandDarkGray ring-4 ring-brandDarkGray
-                    group-hover:from-gray-100 group-hover:via-gray-500 
-                    group-hover:to-gray-700"
-                    textColor="text-white text-xs sm:text-lg"
-                    paddings="py-2 px-4"
-                    // handler={props.orderPopupHandler}
-                  />
+                  <a href="https://wa.me/79220389644?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%8F%20%D0%B1%D1%8B%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%28%D0%B0%29%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%B4%D0%B1%D0%BE%D1%80%20%D0%B0%D1%80%D0%BE%D0%BC%D0%B0%D1%82%D0%B0">
+                    <Button
+                      text="Записаться"
+                      bgColor="group rounded-full
+                      bg-gradient-to-br from-brandLightGray via-gray-400 
+                      to-brandDarkGray ring-4 ring-brandDarkGray
+                      group-hover:from-gray-100 group-hover:via-gray-500 
+                      group-hover:to-gray-700"
+                      textColor="text-white text-xs sm:text-lg"
+                      paddings="py-2 px-4"
+                      // handler={props.orderPopupHandler}
+                    />
+                  </a>
                 </div>
               </div>
             </div>

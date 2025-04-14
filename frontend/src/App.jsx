@@ -97,71 +97,66 @@ function App(props) {
   });
 
   return (
-    <>
-      <Routes>
+    <Routes>
+      <Route
+        path="/"
+        element={<SharedLayout themeHandler={themeHandler} theme={theme} />}
+      >
         <Route
-          path="/"
-          element={<SharedLayout themeHandler={themeHandler} theme={theme} />}
-        >
-          <Route
-            index
-            element={<Home themeHandler={themeHandler} theme={theme} />}
-          />
-          <Route path="cart" element={<Cart />} />
-          <Route path="about" element={<About />} />
-          {/* <Route path="contacts" element={<Contacts />} /> */}
-          <Route path="delivery" element={<Delivery />} />
+          index
+          element={<Home themeHandler={themeHandler} theme={theme} />}
+        />
+        <Route path="cart" element={<Cart />} />
+        <Route path="about" element={<About />} />
+        {/* <Route path="contacts" element={<Contacts />} /> */}
+        <Route path="delivery" element={<Delivery />} />
 
-          <Route path="*" element={<Error />} />
+        <Route path="*" element={<Error />} />
 
-          <Route path={`${parentRouteSet1}`} element={<SharedPerfumesLayout />}>
-            <Route index element={<Perfumes />} />
-            <Route
-              path={`:${dynamicRouteSet1}`}
-              element={<SharedSinglePerfumeLayout />}
-            >
-              <Route index element={<SinglePerfume />} />
-              <Route
-                path={`${nestedRouteSet1}`}
-                element={<CommentsOnPerfume />}
-              />
-            </Route>
-          </Route>
+        <Route path={`${parentRouteSet1}`} element={<SharedPerfumesLayout />}>
+          <Route index element={<Perfumes />} />
           <Route
-            path={`${parentRouteSet2}`}
-            element={<SharedFreshenersLayout />}
+            path={`:${dynamicRouteSet1}`}
+            element={<SharedSinglePerfumeLayout />}
           >
-            <Route index element={<Fresheners />} />
+            <Route index element={<SinglePerfume />} />
             <Route
-              path={`:${dynamicRouteSet2}`}
-              element={<SharedSingleFreshenerLayout />}
-            >
-              <Route index element={<SingleFreshener />} />
-              <Route
-                path={`${nestedRouteSet2}`}
-                element={<CommentsOnFreshener />}
-              />
-            </Route>
-          </Route>
-          <Route
-            path={`${parentRouteSet3}`}
-            element={<SharedConsumablesLayout />}
-          >
-            <Route index element={<Consumables />} />
-            <Route
-              path={`:${dynamicRouteSet3}`}
-              element={<SharedSingleConsumableLayout />}
-            >
-              <Route index element={<SingleConsumable />} />
-              <Route
-                path={`${nestedRouteSet3}`}
-                element={<CommentsOnConsumable />}
-              />
-            </Route>
+              path={`${nestedRouteSet1}`}
+              element={<CommentsOnPerfume />}
+            />
           </Route>
         </Route>
-      </Routes>
-    </>
+        <Route path={`${parentRouteSet2}`} element={<SharedFreshenersLayout />}>
+          <Route index element={<Fresheners />} />
+          <Route
+            path={`:${dynamicRouteSet2}`}
+            element={<SharedSingleFreshenerLayout />}
+          >
+            <Route index element={<SingleFreshener />} />
+            <Route
+              path={`${nestedRouteSet2}`}
+              element={<CommentsOnFreshener />}
+            />
+          </Route>
+        </Route>
+        <Route
+          path={`${parentRouteSet3}`}
+          element={<SharedConsumablesLayout />}
+        >
+          <Route index element={<Consumables />} />
+          <Route
+            path={`:${dynamicRouteSet3}`}
+            element={<SharedSingleConsumableLayout />}
+          >
+            <Route index element={<SingleConsumable />} />
+            <Route
+              path={`${nestedRouteSet3}`}
+              element={<CommentsOnConsumable />}
+            />
+          </Route>
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 
