@@ -60,6 +60,12 @@ const Delivery = () => {
       </section>
     );
   }
+  // --------------------------------------
+  // const perfumesFromStorage = JSON.parse(
+  //   localStorage.getItem("perfumesObject")
+  // );
+  // console.log("PerfumesObject:", perfumesFromStorage);
+  // ------------------------------------
 
   return (
     <section className="container" id="about">

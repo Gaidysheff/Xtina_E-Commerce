@@ -1,5 +1,6 @@
-Options -MultiViews
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.html [QSA,L]
+RewriteCond %{REQUEST_URI} ^/about$ [NC]
+RewriteCond %{REQUEST_URI} ^/delivery$ [NC]
+RewriteCond %{REQUEST_URI} ^/perfumes$ [NC]
+RewriteRule (.*) index.html [L]
 

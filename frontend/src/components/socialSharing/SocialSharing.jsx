@@ -1,84 +1,117 @@
 import {
-  EmailIcon,
-  InstapaperIcon,
-  TelegramIcon,
-  VKIcon,
-  WhatsappIcon,
-} from "react-share";
-import {
   EmailShareButton,
+  FacebookShareButton,
   InstapaperShareButton,
+  MailruShareButton,
+  OKShareButton,
   TelegramShareButton,
   VKShareButton,
   WhatsappShareButton,
 } from "react-share";
-import { FaInstagram, FaTelegram } from "react-icons/fa";
+import {
+  FaFacebookSquare,
+  FaInstagram,
+  FaOdnoklassnikiSquare,
+  FaTelegram,
+} from "react-icons/fa";
 
 import { FaSquareWhatsapp } from "react-icons/fa6";
 import { FaVk } from "react-icons/fa6";
+import { ImMail } from "react-icons/im";
+import { MdOutlineAlternateEmail } from "react-icons/md";
 
 const SocialSharing = () => {
-  // const currentPageUrl = window.location.href;
+  const currentPageUrl = window.location;
   // Fetch current Url of the Page
 
-  const currentPageUrl = "https://ecommerce.gaidysheff.ru/";
   return (
     <>
-      <div
-        className="flex items-center gap-3 mt-6 justify-center sm:justify-end 
-        text-brandLightGray"
+      <WhatsappShareButton
+        url={currentPageUrl}
+        title="Привет, хочу поделиться интересной страницей"
       >
-        <a href="https://wa.me/79122413937">
-          <FaSquareWhatsapp
-            className="text-3xl hover:text-primary 
-                          hover:scale-125 duration-300"
-          />
-        </a>
-        <a href="#">
-          <FaInstagram
-            className="text-3xl hover:text-primary 
-                          hover:scale-125 duration-300"
-          />
-        </a>
-        <a href="#">
-          <FaTelegram
-            className="text-3xl hover:text-primary 
-                          hover:scale-125 duration-300"
-          />
-        </a>
-        <a href="#">
-          <FaVk
-            className="text-3xl hover:text-primary 
-                          hover:scale-125 duration-300"
-          />
-        </a>
-      </div>
-      {/* -------------------------------------------------- */}
-      <WhatsappShareButton url={currentPageUrl} title="Title of This Page">
-        <WhatsappIcon
-          size={32}
-          className="rounded-lg hover:scale-125 duration-300 hover:fill-primary"
-          iconFillColor="transparant"
-          bgStyle={{ fill: "#9ca3af" }}
+        <FaSquareWhatsapp
+          className="text-2xl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
+          md:mr-4 text-brandLightGray hover:text-primary hover:scale-125 
+          duration-300"
         />
-      </WhatsappShareButton>
-      <WhatsappShareButton url={currentPageUrl} title="Title of This Page">
-        <a href="#">
-          <FaSquareWhatsapp
-            className="text-3xl text-brandLightGray hover:text-primary 
-          hover:scale-125 duration-300"
-          />
-        </a>
       </WhatsappShareButton>
 
-      <TelegramShareButton url={currentPageUrl}>
-        <TelegramIcon
-          size={32}
-          className="rounded-lg hover:scale-125 duration-300 hover:fill-primary"
-          iconFillColor="transparant"
-          bgStyle={{ fill: "#9ca3af" }}
+      <VKShareButton
+        url={currentPageUrl}
+        title="Привет, хочу поделиться интересной страницей"
+      >
+        <FaVk
+          className="text-2xl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
+          md:mr-4 text-brandLightGray hover:text-primary hover:scale-125 
+          duration-300"
+        />
+      </VKShareButton>
+
+      <InstapaperShareButton
+        url={currentPageUrl}
+        title="Делюсь интересной страницей"
+        description="Привет, хочу поделиться интересной страницей"
+      >
+        <FaInstagram
+          className="text-2xl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
+          md:mr-4 text-brandLightGray hover:text-primary hover:scale-125 
+          duration-300"
+        />
+      </InstapaperShareButton>
+
+      <TelegramShareButton
+        url={currentPageUrl}
+        title="Привет, хочу поделиться интересной страницей"
+      >
+        <FaTelegram
+          className="text-2xl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
+          md:mr-4 text-brandLightGray hover:text-primary hover:scale-125 
+          duration-300"
         />
       </TelegramShareButton>
+
+      <OKShareButton
+        url={currentPageUrl}
+        title="Привет, хочу поделиться интересной страницей"
+      >
+        <FaOdnoklassnikiSquare
+          className="text-2xl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
+          md:mr-4 text-brandLightGray hover:text-primary hover:scale-125 
+          duration-300"
+        />
+      </OKShareButton>
+      <FacebookShareButton url={currentPageUrl} hashtag="#K.ést.23">
+        <FaFacebookSquare
+          className="text-2xl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
+          md:mr-4 text-brandLightGray hover:text-primary hover:scale-125 
+          duration-300"
+        />
+      </FacebookShareButton>
+
+      <MailruShareButton
+        url={currentPageUrl}
+        title="Делюсь интересной страницей"
+        description="Привет, хочу поделиться интересной страницей"
+      >
+        <MdOutlineAlternateEmail
+          className="text-sxl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
+          md:mr-4 text-brandLightGray hover:text-primary hover:scale-125 
+          duration-300"
+        />
+      </MailruShareButton>
+      <EmailShareButton
+        url={currentPageUrl}
+        subject="хочу поделиться интересной страницей"
+        body="Привет, хочу поделиться интересной страницей"
+        separator=" --> "
+      >
+        <ImMail
+          className="text-sxl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
+          md:mr-4 text-brandLightGray hover:text-primary hover:scale-125 
+          duration-300"
+        />
+      </EmailShareButton>
     </>
   );
 };

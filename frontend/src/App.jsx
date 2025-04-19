@@ -18,7 +18,7 @@ const nestedRouteSet3 = "comments";
 
 function App(props) {
   // ============= Dynamic Imports ====================
-  const About = lazy(() => import("./pages/About.jsx"));
+  // const About = lazy(() => import("./pages/About.jsx"));
 
   const Cart = lazy(() => import("./pages/cart/Cart.jsx"));
   const CommentsOnConsumable = lazy(() =>
@@ -107,7 +107,7 @@ function App(props) {
           element={<Home themeHandler={themeHandler} theme={theme} />}
         />
         <Route path="cart" element={<Cart />} />
-        <Route path="about" element={<About />} />
+        {/* <Route path="about" element={<About />} /> */}
         {/* <Route path="contacts" element={<Contacts />} /> */}
         <Route path="delivery" element={<Delivery />} />
 

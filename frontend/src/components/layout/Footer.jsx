@@ -6,6 +6,7 @@ import { FaVk } from "react-icons/fa6";
 import { HashLink } from "react-router-hash-link";
 import Logo_short_primary from "../../assets/shared/Logo_short_primary.svg";
 import { MdPlace } from "react-icons/md";
+import SocialSharing from "../socialSharing/SocialSharing";
 import heart from "../../assets/icons/heart-icon.svg";
 
 const Footer = () => {
@@ -16,7 +17,18 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-800 px-3 sm:px-0">
+    <footer className="bg-gray-800">
+      <section
+        className="bg-gray-700 text-brandLightGray text-[0.6rem] 
+      xsm:text-[0.8rem] sm:text-[1rem] italic px-3 sm:px-0"
+      >
+        <p className="container px-4 py-1 sm:py-2">
+          Поделиться этой страницей с друзьями
+        </p>
+        <div className="container px-4 pb-1 sm:pb-2 lg:pb-3">
+          <SocialSharing />
+        </div>
+      </section>
       <section className="container md:grid md:grid-cols-8">
         <div className="md:col-span-3">
           {/* company details */}
@@ -162,25 +174,25 @@ const Footer = () => {
                   className="flex items-center gap-3 mt-6 
                 justify-center sm:justify-end"
                 >
-                  <a href="#">
+                  <a href="https://wa.me/79220389644">
                     <FaSquareWhatsapp
                       className="text-3xl hover:text-primary 
                       hover:scale-125 duration-300"
                     />
                   </a>
-                  <a href="#">
+                  <a href="https://instagram.com/k.est.perfume/">
                     <FaInstagram
                       className="text-3xl hover:text-primary 
                       hover:scale-125 duration-300"
                     />
                   </a>
-                  <a href="#">
+                  <a href="tg://resolve?domain=Kestperfume23">
                     <FaTelegram
                       className="text-3xl hover:text-primary 
                       hover:scale-125 duration-300"
                     />
                   </a>
-                  <a href="#">
+                  <a href="https://vk.me/kestperfume">
                     <FaVk
                       className="text-3xl hover:text-primary 
                       hover:scale-125 duration-300"
@@ -193,7 +205,7 @@ const Footer = () => {
         </div>
       </section>
 
-      <section className="bg-gray-950 text-brandLightGray mx-[-1rem] sm:mx-0">
+      <section className="bg-gray-950 text-brandLightGray  px-4 mx-[-1rem] sm:mx-0">
         <div className="container py-5">
           <div className="flex justify-between items-center">
             <HashLink

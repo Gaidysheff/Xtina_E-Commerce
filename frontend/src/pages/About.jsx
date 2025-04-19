@@ -9,34 +9,72 @@ import { NumericFormat } from "react-number-format";
 import axios from "axios";
 
 const About = () => {
-  const user = {
-    name: "John",
-    age: 15,
-  };
+  // const user = [
+  //   {
+  //     name: "John",
+  //     age: 15,
+  //   },
+  //   {
+  //     name: "Ivan",
+  //     age: 22,
+  //   },
+  // ];
 
-  const [perfumes, setPerfumes] = useState([]);
+  // localStorage.setItem("userObject", JSON.stringify(user));
+  // const UserFromStorage = JSON.parse(localStorage.getItem("userObject"));
 
-  useEffect(() => {
+  // UserFromStorage.forEach((user) => {
+  //   console.log("NAME:", user.name, "AGE:", user.age);
+  // });
+
+  // --------------------------------------------------
+  // const [perfumes, setPerfumes] = useState([]);
+
+  const cashedPerfumes = localStorage.getItem("perfumesInStorage");
+
+  if (cashedPerfumes) {
+    const perfumesFromStorage = JSON.parse(cashedPerfumes);
+
+    console.log("I've found Data in MEMORY");
+    console.log(perfumesFromStorage);
+  } else {
     axios
       .get(`${BASE_URL}/api/perfumes`)
       .then((response) => {
-        setPerfumes(response.data);
+        localStorage.setItem(
+          "perfumesInStorage",
+          JSON.stringify(response.data)
+        );
+
+        const perfumesFromStorage = response.data;
+        console.log("Data Received and Stored");
+        console.log(perfumesFromStorage);
       })
       .catch((error) => {
         console.log("error=", error);
         setHttpErrorMessage(error.message);
       });
-  }, []);
+  }
 
-  localStorage.setItem("perfumesObject", JSON.stringify(perfumes));
-  const perfumesFromStorage = JSON.parse(
-    localStorage.getItem("perfumesObject")
-  );
-  console.log("PerfumesObject:", perfumesFromStorage);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${BASE_URL}/api/perfumes`)
+  //     .then((response) => {
+  //       setPerfumes(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("error=", error);
+  //       setHttpErrorMessage(error.message);
+  //     });
+  // }, []);
 
-  // localStorage.setItem("userObject", JSON.stringify(user));
-  // const UserFromStorage = JSON.parse(localStorage.getItem("userObject"));
-  // console.log("NAME:", UserFromStorage.name, "AGE:", UserFromStorage.age);
+  // localStorage.setItem("perfumesInStorage", JSON.stringify(perfumes));
+
+  // const perfumesFromStorage = JSON.parse(
+  //   localStorage.getItem("perfumesInStorage")
+  // );
+
+  // console.log("PerfumesInStorage:", perfumesFromStorage);
 
   return (
     <section className="section h-[62vh] m-[3rem]" id="about">
@@ -49,7 +87,7 @@ const About = () => {
           className="grid grid-cols-2 lg:grid-cols-3 
         xl:grid-cols-4 gap-3 mx-3 lg:gap-10 lg:mx-5"
         >
-          {perfumesFromStorage.map((product) => (
+          {/* {perfumesFromStorage.map((product) => (
             <Card key={product.id}>
               <Link to={`${product.slug}`}>
                 <div className="inside-card flex flex-col justify-between">
@@ -97,7 +135,7 @@ const About = () => {
                 </div>
               </Link>
             </Card>
-          ))}
+          ))} */}
         </div>
         {/* -------------------------------- */}
         <div className="justify-self-center w-[250px] mb-8">
