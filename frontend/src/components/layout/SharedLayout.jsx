@@ -17,12 +17,16 @@ const SharedLayout = (props) => {
   const DeliveryContextProvider = lazy(() =>
     import("./../../store/DeliveryContextProvider.jsx")
   );
+
   const Footer = lazy(() => import("./Footer.jsx"));
   const Navbar = lazy(() => import("./navbar/Navbar.jsx"));
   const OrderContextProvider = lazy(() =>
     import("./../../store/OrderContextProvider.jsx")
   );
   const Payment = lazy(() => import("./../../pages/cart/Payment.jsx"));
+  const PerfumeContextProvider = lazy(() =>
+    import("./../../store/API/PerfumeContextProvider.jsx")
+  );
   const Search = lazy(() => import("../search/Search"));
   const SubmitOrder = lazy(() => import("./../../pages/cart/SubmitOrder.jsx"));
   const ToastContainer = lazy(() =>
@@ -127,6 +131,7 @@ const SharedLayout = (props) => {
       duration: 800,
       easing: "ease-in-sine",
       delay: 100,
+      once: true,
     });
     AOS.refresh();
   }, []);
@@ -135,81 +140,83 @@ const SharedLayout = (props) => {
     <Suspense fallback={<Loader />}>
       <OrderContextProvider>
         <CartContextProvider>
-          <DeliveryContextProvider>
-            {props.theme === "light" ? (
-              <ToastContainer
-                position="top-center"
-                theme="dark"
-                hideProgressBar={true}
-                autoClose={2000}
-              />
-            ) : (
-              <ToastContainer
-                position="top-center"
-                theme="light"
-                hideProgressBar={true}
-                autoClose={2000}
-              />
-            )}
-            <main
-              className="w-screen bg-white dark:bg-gray-800 dark:text-white
-                          duration-200 overflow-hidden"
-            >
-              {cartIsVisible && (
-                <Cart
-                  onHideCart={hideCartHandler}
-                  onShowSubmitForm={showSubmitFormHandler}
+          <PerfumeContextProvider>
+            <DeliveryContextProvider>
+              {props.theme === "light" ? (
+                <ToastContainer
+                  position="top-center"
+                  theme="dark"
+                  hideProgressBar={true}
+                  autoClose={2000}
+                />
+              ) : (
+                <ToastContainer
+                  position="top-center"
+                  theme="light"
+                  hideProgressBar={true}
+                  autoClose={2000}
                 />
               )}
-              {submitFormIsVisible && (
-                <SubmitOrder
-                  onHideCart={hideCartHandler}
-                  onOpenConfirm={showConfirmHandler}
-                  onSetDeliveryOption={setDeliveryOptionHandler}
+              <main
+                className="w-screen bg-white dark:bg-gray-800 dark:text-white
+                            duration-200 overflow-hidden"
+              >
+                {cartIsVisible && (
+                  <Cart
+                    onHideCart={hideCartHandler}
+                    onShowSubmitForm={showSubmitFormHandler}
+                  />
+                )}
+                {submitFormIsVisible && (
+                  <SubmitOrder
+                    onHideCart={hideCartHandler}
+                    onOpenConfirm={showConfirmHandler}
+                    onSetDeliveryOption={setDeliveryOptionHandler}
+                    onShowCart={showCartHandler}
+                  />
+                )}
+
+                {confirmIsVisible && (
+                  <Confirm
+                    onHideConfirm={hideCartHandler}
+                    delivery={delivery}
+                    onOpenPayment={showPaymentHandler}
+                    onConfirm={totalToBePaidHandler}
+                    onShowSubmitForm={showSubmitFormHandler}
+                  />
+                )}
+                {paymentIsVisible && (
+                  <Payment
+                    onHideConfirm={hideCartHandler}
+                    totalToBePaid={totalToBePaid}
+                  />
+                )}
+
+                {searchIsVisible && (
+                  <Search
+                    onHideSearch={hideSearchHandler}
+                    onHideCart={hideCartHandler}
+                  />
+                )}
+
+                <Navbar
+                  themeHandler={props.themeHandler}
+                  theme={props.theme}
                   onShowCart={showCartHandler}
+                  cartButtonIsDisabled={cartButtonIsDisabled}
+                  searchButtonIsDisabled={searchButtonIsDisabled}
+                  onShowSearch={showSearchHandler}
+                  burgerButtonIsDisabled={burgerButtonIsDisabled}
+                  // onSearchChange={searchChangeHandler}
+                  // onBluringSearch={searchBluringHandler}
                 />
-              )}
 
-              {confirmIsVisible && (
-                <Confirm
-                  onHideConfirm={hideCartHandler}
-                  delivery={delivery}
-                  onOpenPayment={showPaymentHandler}
-                  onConfirm={totalToBePaidHandler}
-                  onShowSubmitForm={showSubmitFormHandler}
-                />
-              )}
-              {paymentIsVisible && (
-                <Payment
-                  onHideConfirm={hideCartHandler}
-                  totalToBePaid={totalToBePaid}
-                />
-              )}
+                <Outlet themeHandler={props.themeHandler} theme={props.theme} />
 
-              {searchIsVisible && (
-                <Search
-                  onHideSearch={hideSearchHandler}
-                  onHideCart={hideCartHandler}
-                />
-              )}
-
-              <Navbar
-                themeHandler={props.themeHandler}
-                theme={props.theme}
-                onShowCart={showCartHandler}
-                cartButtonIsDisabled={cartButtonIsDisabled}
-                searchButtonIsDisabled={searchButtonIsDisabled}
-                onShowSearch={showSearchHandler}
-                burgerButtonIsDisabled={burgerButtonIsDisabled}
-                // onSearchChange={searchChangeHandler}
-                // onBluringSearch={searchBluringHandler}
-              />
-
-              <Outlet themeHandler={props.themeHandler} theme={props.theme} />
-
-              <Footer />
-            </main>
-          </DeliveryContextProvider>
+                <Footer />
+              </main>
+            </DeliveryContextProvider>
+          </PerfumeContextProvider>
         </CartContextProvider>
       </OrderContextProvider>
     </Suspense>

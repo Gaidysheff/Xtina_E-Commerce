@@ -41,6 +41,9 @@ function App(props) {
   );
   const Home = lazy(() => import("./pages/Home.jsx"));
   const Perfumes = lazy(() => import("./pages/productPerfumes/Perfumes.jsx"));
+  const PerfumesFiltered = lazy(() =>
+    import("./pages/productPerfumes/PerfumesFiltered.jsx")
+  );
   const SharedConsumablesLayout = lazy(() =>
     import("./pages/productConsumables/SharedConsumablesLayout.jsx")
   );
@@ -107,6 +110,7 @@ function App(props) {
           element={<Home themeHandler={themeHandler} theme={theme} />}
         />
         <Route path="cart" element={<Cart />} />
+        <Route path="about" element={<PerfumesFiltered />} />
         {/* <Route path="about" element={<About />} /> */}
         {/* <Route path="contacts" element={<Contacts />} /> */}
         <Route path="delivery" element={<Delivery />} />

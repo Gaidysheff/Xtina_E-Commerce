@@ -1,10 +1,10 @@
 export const MenuLinks = [
-  // {
-  //   id: 1,
-  //   label: "О нас",
-  //   path: "/about",
-  //   aosDelay: "1500",
-  // },
+  {
+    id: 1,
+    label: "О нас",
+    path: "/about",
+    aosDelay: "1500",
+  },
   // {
   //   id: 2,
   //   label: "Контакты",

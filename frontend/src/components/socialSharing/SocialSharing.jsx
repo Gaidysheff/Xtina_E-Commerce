@@ -81,6 +81,7 @@ const SocialSharing = () => {
           duration-300"
         />
       </OKShareButton>
+
       <FacebookShareButton url={currentPageUrl} hashtag="#K.ést.23">
         <FaFacebookSquare
           className="text-2xl xsm:text-3xl sm:text-4xl md:text-5xl mr-2 sm:mr-3
@@ -100,6 +101,7 @@ const SocialSharing = () => {
           duration-300"
         />
       </MailruShareButton>
+
       <EmailShareButton
         url={currentPageUrl}
         subject="хочу поделиться интересной страницей"

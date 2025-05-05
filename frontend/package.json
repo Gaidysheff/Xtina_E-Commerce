@@ -13,6 +13,7 @@
     "@hookform/resolvers": "^4.1.2",
     "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^2.5.0",
+    "@tanstack/react-query": "^5.74.7",
     "aos": "^2.3.4",
     "axios": "^1.8.3",
     "react": "^18.3.1",

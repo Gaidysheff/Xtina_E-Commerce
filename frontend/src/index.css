@@ -143,3 +143,9 @@
 .tooltip:hover .tooltiptext {
   @apply visible;
 }
+
+/* =================================================== */
+
+/* select option:hover {
+  background-color: chartreuse !important;
+} */

@@ -99,17 +99,19 @@ const BannerCertificate = (props) => {
                   data-aos-offset="0"
                   className="self-center md:self-end"
                 >
-                  <Button
-                    text="Оформить"
-                    bgColor="group rounded-full
-                    bg-gradient-to-br from-brandLightGray via-gray-400 
-                    to-brandDarkGray ring-4 ring-brandDarkGray
-                    group-hover:from-gray-100 group-hover:via-gray-500 
-                    group-hover:to-gray-700"
-                    textColor="text-white text-lg"
-                    paddings="py-2 px-4 my-3 sm:mt-6"
-                    // handler={props.orderPopupHandler}
-                  />
+                  <a href="https://wa.me/79220389644?text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B5%20%D0%B2%D1%80%D0%B5%D0%BC%D1%8F%20%D1%81%D1%83%D1%82%D0%BE%D0%BA.%20%D0%AF%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D0%BF%D0%BE%D0%B4%D0%B0%D1%80%D0%BE%D1%87%D0%BD%D1%8B%D0%B9%20%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82.">
+                    <Button
+                      text="Оформить"
+                      bgColor="group rounded-full
+                      bg-gradient-to-br from-brandLightGray via-gray-400 
+                      to-brandDarkGray ring-4 ring-brandDarkGray
+                      group-hover:from-gray-100 group-hover:via-gray-500 
+                      group-hover:to-gray-700"
+                      textColor="text-white text-lg"
+                      paddings="py-2 px-4 my-3 sm:mt-6"
+                      // handler={props.orderPopupHandler}
+                    />
+                  </a>
                 </div>
               </div>
             </div>
