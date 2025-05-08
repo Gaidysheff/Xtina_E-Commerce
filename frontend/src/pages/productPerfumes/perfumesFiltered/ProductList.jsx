@@ -1,26 +1,65 @@
-import React from "react";
+import Card from "../../../components/sharedUI/Card.jsx";
+import { Link } from "react-router";
+import { NumericFormat } from "react-number-format";
 
 const ProductList = (props) => {
   return (
-    <div className="flex flex-row flex-wrap gap-4">
-      {props.products.map((product) => (
-        <div
-          key={product.id}
-          className="flex w-[250px] flex-col gap-4 rounded-md 
-        bg-grayscale-700 p-4"
-        >
-          <div className="flex flex-row justify-between">
-            <div>
-              <h2 className="text-xl font-bold">{product.name}</h2>
-              <p className="opacity-50">{product.brand}</p>
-              <h1 className="opacity-50">{product.sex}</h1>
-            </div>
-            <p className="">${product.price}</p>
-          </div>
-          <img src={product.image} alt={product.name} className="rounded-md" />
-        </div>
-      ))}
-    </div>
+    <section className="container py-10">
+      <div
+        className="grid grid-cols-2 lg:grid-cols-3 
+      xl:grid-cols-4 gap-3 mx-3 lg:gap-10 lg:mx-5"
+      >
+        {props.products.map((product) => (
+          <Card key={product.id}>
+            <Link to={`${product.slug}`}>
+              <div className="inside-card flex flex-col justify-between">
+                <div
+                  className="x-full bg-white dark:bg-brandLightGray
+                rounded-t-xl flex justify-center"
+                  data-aos="zoom-in"
+                >
+                  <img
+                    src={product.image}
+                    alt="product image"
+                    className="w-[75%] bg-white dark:bg-brandLightGray"
+                  />
+                </div>
+
+                <div className="p-2 pb-0">
+                  <div
+                    className="text-[0.7rem] md:text-[0.9rem] lg:text-lg"
+                    data-aos="flip-left"
+                  >
+                    {product.brand}
+                  </div>
+
+                  <div
+                    className="text-[0.8rem] md:text-[1.1rem] lg:text-xl 
+                  font-semibold"
+                    data-aos="flip-left"
+                  >
+                    {product.name}
+                  </div>
+                </div>
+                <div className="justify-self-end">
+                  <NumericFormat
+                    className="flex justify-center text-2xl text-primaryDark
+                      dark:text-primaryLight pb-2"
+                    value={product.price3}
+                    displayType={"text"}
+                    decimalSeparator=","
+                    thousandSeparator="."
+                    suffix={" ₽"}
+                    data-aos="zoom-in"
+                    data-aos-delay="1000"
+                  />
+                </div>
+              </div>
+            </Link>
+          </Card>
+        ))}
+      </div>
+    </section>
   );
 };
 

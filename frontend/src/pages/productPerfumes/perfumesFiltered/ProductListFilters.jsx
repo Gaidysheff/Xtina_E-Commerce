@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 
-// import { useDebounce } from "../../../hooks/useDebounce";
-
-// import { categories } from "../../api/data/products";
-
 const ProductListFilters = (props) => {
-  // const perfumes = useContext(PerfumeContext);
   const [sex, setSex] = useState();
 
   useEffect(() => {
@@ -25,10 +20,13 @@ const ProductListFilters = (props) => {
         </label>
         <select
           id="sex"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm 
-          rounded-lg focus:ring-primary focus:border-primary focus:border-2 block w-full 
-          p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
-          dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+          className="bg-gray-50 border focus:border-2 border-gray-400 
+          text-gray-900 text-sm p-2.5 block w-full rounded-lg 
+          focus:ring-primary focus:border-primary 
+          picker:ring-primary picker:border-primary 
+          dark:text-white
+          dark:bg-gray-700 dark:border-gray-400 
+          dark:focus:ring-primary dark:focus:border-primary"
           value={sex}
           onChange={(e) => setSex(e.target.value)}
         >

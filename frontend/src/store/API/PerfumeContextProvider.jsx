@@ -12,6 +12,7 @@ const PerfumeContextProvider = (props) => {
 
   useEffect(() => {
     const fetchPerfumes = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setIsLoadPerfumes(true);
 
       const response = await fetch(`${BASE_URL}/api/perfumes`);
@@ -29,6 +30,7 @@ const PerfumeContextProvider = (props) => {
       for (const key in responseData) {
         loadedPerfumes.push({
           id: key,
+          slug: responseData[key].slug,
           image: responseData[key].image,
           name: responseData[key].name,
           brand: responseData[key].brand,

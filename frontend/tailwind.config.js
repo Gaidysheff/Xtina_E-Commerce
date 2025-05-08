@@ -1,8 +1,14 @@
+const flowbiteReact = require("flowbite-react/plugin/tailwindcss");
+
 // const flowbite = require("flowbite-react/tailwind");
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    ".flowbite-react\\class-list.json"
+  ],
   // content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content()],
   darkMode: "class",
   theme: {
@@ -42,6 +48,6 @@ export default {
       // => @media (min-width: 1536px) { ... }
     },
   },
-  plugins: [],
+  plugins: [flowbiteReact],
   // plugins: [flowbite.plugin()],
 };

@@ -3,7 +3,7 @@ import "aos/dist/aos.css";
 import { lazy, useEffect, useState } from "react";
 
 import AOS from "aos";
-import Loader from "./../sharedUI/LoaderKest.jsx";
+import LoaderKest from "./../sharedUI/LoaderKest.jsx";
 import { Outlet } from "react-router";
 import { Suspense } from "react";
 
@@ -137,7 +137,7 @@ const SharedLayout = (props) => {
   }, []);
 
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<LoaderKest />}>
       <OrderContextProvider>
         <CartContextProvider>
           <PerfumeContextProvider>

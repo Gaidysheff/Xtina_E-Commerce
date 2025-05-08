@@ -40,9 +40,9 @@ function App(props) {
     import("./pages/productFreshener/Fresheners.jsx")
   );
   const Home = lazy(() => import("./pages/Home.jsx"));
-  const Perfumes = lazy(() => import("./pages/productPerfumes/Perfumes.jsx"));
-  const PerfumesFiltered = lazy(() =>
-    import("./pages/productPerfumes/PerfumesFiltered.jsx")
+  // const Perfumes = lazy(() => import("./pages/productPerfumes/Perfumes.jsx"));
+  const PerfumesFilteredWrapper = lazy(() =>
+    import("./pages/productPerfumes/PerfumesFilteredWrapper.jsx")
   );
   const SharedConsumablesLayout = lazy(() =>
     import("./pages/productConsumables/SharedConsumablesLayout.jsx")
@@ -110,7 +110,7 @@ function App(props) {
           element={<Home themeHandler={themeHandler} theme={theme} />}
         />
         <Route path="cart" element={<Cart />} />
-        <Route path="about" element={<PerfumesFiltered />} />
+
         {/* <Route path="about" element={<About />} /> */}
         {/* <Route path="contacts" element={<Contacts />} /> */}
         <Route path="delivery" element={<Delivery />} />
@@ -118,7 +118,7 @@ function App(props) {
         <Route path="*" element={<Error />} />
 
         <Route path={`${parentRouteSet1}`} element={<SharedPerfumesLayout />}>
-          <Route index element={<Perfumes />} />
+          <Route index element={<PerfumesFilteredWrapper />} />
           <Route
             path={`:${dynamicRouteSet1}`}
             element={<SharedSinglePerfumeLayout />}

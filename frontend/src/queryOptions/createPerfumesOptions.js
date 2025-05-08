@@ -1,23 +1,20 @@
-import { useContext, useState } from "react";
-
 import PerfumeContext from "../store/API/perfume-context";
 import { queryOptions } from "@tanstack/react-query";
+import { useContext } from "react";
 
-const createPerfumesOptions = () => {
+const createPerfumesOptions = (sex) => {
+  let filteredProducts = useContext(PerfumeContext);
+
   return queryOptions({
     queryKey: ["perfumes", { sex }],
-    queryFn: () => fetchPerfumes({ sex }),
+    queryFn: () => fetchPerfumes({ sex }, filteredProducts),
   });
 };
 
 export default createPerfumesOptions;
 
-const fetchPerfumes = async (options) => {
-  // const perfumes = useContext(PerfumeContext);
-  const response = await fetch(`http://localhost:8000/api/perfumes`);
-  let filteredProducts = response.json();
-
-  // let filteredProducts = perfumes;
+const fetchPerfumes = async (options, filteredProducts) => {
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
 
   if (options?.sex) {
     filteredProducts = filteredProducts.filter((product) => {
