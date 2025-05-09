@@ -73,3 +73,10 @@ class SearchPerfumeApiView(
         
 # http://localhost:5173/search?name=xxxxx        
 
+# ===========================================================
+
+class NotesApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
+    lookup_field = 'id'
