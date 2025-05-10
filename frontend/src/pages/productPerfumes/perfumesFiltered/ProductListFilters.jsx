@@ -9,6 +9,7 @@ import { LiaLayerGroupSolid } from "react-icons/lia";
 import NoteContext from "../../../store/API/note-context";
 import { SiElement } from "react-icons/si";
 import { SiInstructure } from "react-icons/si";
+import StrainerSelector from "../../../components/sharedUI/filter/StrainerSelector";
 import { VscSettings } from "react-icons/vsc";
 
 const ProductListFilters = (props) => {
@@ -21,6 +22,7 @@ const ProductListFilters = (props) => {
     props.onChange({ sex, note });
   }, [sex, note]);
 
+  // -------------- Filtering on Notes --------------
   const menuNote = notes.map((item) => {
     if (item.name !== "---") {
       return (
@@ -31,11 +33,25 @@ const ProductListFilters = (props) => {
     }
   });
 
+  const iconNote = <BsMusicNoteList />;
+
   return (
     <>
-      {/* -------------- Filtering on Notes -------------- */}
-
       <div className="max-w-sm mx-auto mt-4">
+        {/* -------------- Filtering on Notes -------------- */}
+
+        <div className="mb-6">
+          <StrainerSelector
+            filterName={"note"}
+            icon={iconNote}
+            menuSelector={menuNote}
+            title={"Выбрать основные ноты"}
+            onChange={(e) => setNote(e.target.value)}
+          />
+        </div>
+
+        {/* -------------------------------------------------------- */}
+
         <ImManWoman />
         <VscSettings />
         <SiInstructure />
@@ -45,37 +61,6 @@ const ProductListFilters = (props) => {
         <LiaLayerGroupSolid />
         <FaLayerGroup />
         <br />
-
-        <div className="flex items-center mb-2">
-          <div className="text-xl text-gray-400 mr-2">
-            <BsMusicNoteList />
-          </div>
-          <label
-            htmlFor="note"
-            className="block text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Выбрать основные ноты
-          </label>
-        </div>
-        <select
-          id="note"
-          className="bg-gray-50 border focus:border-2 border-gray-400 
-          text-gray-900 text-sm p-2.5 block w-full rounded-lg 
-          focus:ring-primary focus:border-primary 
-          picker:ring-primary picker:border-primary 
-          dark:text-white
-          dark:bg-gray-700 dark:border-gray-400 
-          dark:focus:ring-primary dark:focus:border-primary"
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-        >
-          <option defaultValue value="" className="checked:bg-primary">
-            Показать все
-          </option>
-
-          {/* --- other options ----- */}
-          {menuNote}
-        </select>
       </div>
       {/* -------------- Filtering on Sex -------------- */}
 
