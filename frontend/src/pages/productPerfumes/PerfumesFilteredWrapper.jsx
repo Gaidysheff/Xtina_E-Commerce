@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-
 import FilterDrawer from "./FilterDrawer";
 import LoaderKest from "../../components/sharedUI/LoaderKest";
 import ProductList from "./perfumesFiltered/ProductList";
 import createPerfumesOptions from "../../queryOptions/createPerfumesOptions";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 const PerfumesFilteredWrapper = (props) => {
   const [sex, setSex] = useState();
@@ -12,7 +11,7 @@ const PerfumesFilteredWrapper = (props) => {
 
   // Queries
   const { data, isFetching } = useQuery(createPerfumesOptions(sex, note));
-
+  console.log("DATA=", data);
   return (
     <>
       {/* Drawer for Filters */}
