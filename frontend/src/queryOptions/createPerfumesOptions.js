@@ -1,10 +1,10 @@
 import { BASE_URL } from "../config";
 import { queryOptions } from "@tanstack/react-query";
 
-const createPerfumesOptions = (sex, note) => {
+const createPerfumesOptions = (gender, note, chord, compound, family) => {
   return queryOptions({
-    queryKey: ["perfumes", { sex, note }],
-    queryFn: () => fetchPerfumes({ sex, note }),
+    queryKey: ["perfumes", { gender, note, chord, compound, family }],
+    queryFn: () => fetchPerfumes({ gender, note, chord, compound, family }),
   });
 };
 
@@ -17,11 +17,12 @@ const fetchPerfumes = async (options) => {
   let filteredProducts = await response.json();
   // console.log("filteredProducts==", filteredProducts);
 
-  if (options?.sex) {
+  if (options?.gender) {
     filteredProducts = filteredProducts.filter((product) => {
-      return product.sex === options.sex;
+      return product.sex === options.gender;
     });
   }
+
   if (options?.note) {
     filteredProducts = filteredProducts.filter((product) => {
       const result =
@@ -30,6 +31,41 @@ const fetchPerfumes = async (options) => {
         (product.note3.name === options.note) |
         (product.note4.name === options.note) |
         (product.note5.name === options.note);
+      return result;
+    });
+  }
+  if (options?.chord) {
+    filteredProducts = filteredProducts.filter((product) => {
+      const result =
+        (product.chord1.name === options.chord) |
+        (product.chord2.name === options.chord) |
+        (product.chord3.name === options.chord) |
+        (product.chord4.name === options.chord) |
+        (product.chord5.name === options.chord);
+      return result;
+    });
+  }
+
+  if (options?.compound) {
+    filteredProducts = filteredProducts.filter((product) => {
+      const result =
+        (product.compound1.name === options.compound) |
+        (product.compound2.name === options.compound) |
+        (product.compound3.name === options.compound) |
+        (product.compound4.name === options.compound) |
+        (product.compound5.name === options.compound);
+      return result;
+    });
+  }
+
+  if (options?.family) {
+    filteredProducts = filteredProducts.filter((product) => {
+      const result =
+        (product.family1.name === options.family) |
+        (product.family2.name === options.family) |
+        (product.family3.name === options.family) |
+        (product.family4.name === options.family) |
+        (product.family5.name === options.family);
       return result;
     });
   }

@@ -80,3 +80,26 @@ class NotesApiView(
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
     lookup_field = 'id'
+
+    
+class ChordsApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Chord.objects.all()
+    serializer_class = ChordSerializer
+    lookup_field = 'id'
+
+
+class CompoundsApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Compound.objects.all()
+    serializer_class = CompoundSerializer
+    lookup_field = 'id'
+
+
+class FamiliesApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Family.objects.all()
+    serializer_class = FamilySerializer
+    lookup_field = 'id'
+
+

@@ -6,19 +6,29 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 const PerfumesFilteredWrapper = (props) => {
-  const [sex, setSex] = useState();
+  const [gender, setGender] = useState();
   const [note, setNote] = useState();
+  const [chord, setChord] = useState();
+  const [compound, setCompound] = useState();
+  const [family, setFamily] = useState();
 
   // Queries
-  const { data, isFetching } = useQuery(createPerfumesOptions(sex, note));
-  console.log("DATA=", data);
+  const { data, isFetching } = useQuery(
+    createPerfumesOptions(gender, note, chord, compound, family)
+  );
+
+  // console.log("DATA=", data);
+
   return (
     <>
       {/* Drawer for Filters */}
       <FilterDrawer
         onChange={(filter) => {
-          setSex(filter.sex);
+          setGender(filter.gender);
           setNote(filter.note);
+          setChord(filter.chord);
+          setCompound(filter.compound);
+          setFamily(filter.family);
         }}
       />
       {isFetching && <LoaderKest />}
