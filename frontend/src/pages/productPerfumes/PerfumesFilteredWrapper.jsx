@@ -12,13 +12,20 @@ const PerfumesFilteredWrapper = (props) => {
   const [compound, setCompound] = useState();
   const [family, setFamily] = useState();
   const [maxPrice, setMaxPrice] = useState();
+  const [search, setSearch] = useState();
 
   // Queries
   const { data, isFetching } = useQuery(
-    createPerfumesOptions(gender, note, chord, compound, family, maxPrice)
+    createPerfumesOptions(
+      gender,
+      note,
+      chord,
+      compound,
+      family,
+      maxPrice,
+      search
+    )
   );
-
-  // console.log("DATA=", data);
 
   return (
     <>
@@ -31,6 +38,7 @@ const PerfumesFilteredWrapper = (props) => {
           setCompound(filter.compound);
           setFamily(filter.family);
           setMaxPrice(filter.maxPrice);
+          setSearch(filter.search);
         }}
       />
       {isFetching && <LoaderKest />}

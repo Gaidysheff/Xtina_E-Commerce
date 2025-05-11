@@ -7,12 +7,24 @@ const createPerfumesOptions = (
   chord,
   compound,
   family,
-  maxPrice
+  maxPrice,
+  search
 ) => {
   return queryOptions({
-    queryKey: ["perfumes", { gender, note, chord, compound, family, maxPrice }],
+    queryKey: [
+      "perfumes",
+      { gender, note, chord, compound, family, maxPrice, search },
+    ],
     queryFn: () =>
-      fetchPerfumes({ gender, note, chord, compound, family, maxPrice }),
+      fetchPerfumes({
+        gender,
+        note,
+        chord,
+        compound,
+        family,
+        maxPrice,
+        search,
+      }),
   });
 };
 
@@ -81,6 +93,16 @@ const fetchPerfumes = async (options) => {
   if (options?.maxPrice) {
     filteredProducts = filteredProducts.filter((product) => {
       return product.price3 <= options.maxPrice;
+    });
+  }
+
+  if (options?.search) {
+    filteredProducts = filteredProducts.filter((product) => {
+      // return product.name.toLowerCase().includes(options.search.toLowerCase());
+      const result =
+        product.name.toLowerCase().includes(options.search.toLowerCase()) |
+        product.brand.toLowerCase().includes(options.search.toLowerCase());
+      return result;
     });
   }
 
