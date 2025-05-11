@@ -1,10 +1,18 @@
 import { BASE_URL } from "../config";
 import { queryOptions } from "@tanstack/react-query";
 
-const createPerfumesOptions = (gender, note, chord, compound, family) => {
+const createPerfumesOptions = (
+  gender,
+  note,
+  chord,
+  compound,
+  family,
+  maxPrice
+) => {
   return queryOptions({
-    queryKey: ["perfumes", { gender, note, chord, compound, family }],
-    queryFn: () => fetchPerfumes({ gender, note, chord, compound, family }),
+    queryKey: ["perfumes", { gender, note, chord, compound, family, maxPrice }],
+    queryFn: () =>
+      fetchPerfumes({ gender, note, chord, compound, family, maxPrice }),
   });
 };
 
@@ -69,5 +77,12 @@ const fetchPerfumes = async (options) => {
       return result;
     });
   }
+
+  if (options?.maxPrice) {
+    filteredProducts = filteredProducts.filter((product) => {
+      return product.price3 <= options.maxPrice;
+    });
+  }
+
   return filteredProducts;
 };

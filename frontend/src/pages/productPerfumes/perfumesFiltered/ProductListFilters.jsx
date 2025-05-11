@@ -1,21 +1,16 @@
+import { GENDER, MAX_PRICE } from "../../../utils/filterMenu";
+import { HiChartPie, HiCollection } from "react-icons/hi";
 import { useContext, useEffect, useState } from "react";
 
 import { BsMusicNoteList } from "react-icons/bs";
 import ChordContext from "../../../store/API/chord-context";
 import CompoundContext from "../../../store/API/compound-context";
-import { FaLayerGroup } from "react-icons/fa";
 import FamilyContext from "../../../store/API/family-context";
-import { GENDER } from "../../../utils/filterMenu";
-import { GiGroupedDrops } from "react-icons/gi";
 import { ImManWoman } from "react-icons/im";
-import { LiaElementor } from "react-icons/lia";
-import { LiaLayerGroupSolid } from "react-icons/lia";
+import { IoIosPricetags } from "react-icons/io";
 import { MdCategory } from "react-icons/md";
 import NoteContext from "../../../store/API/note-context";
-import { SiElement } from "react-icons/si";
-import { SiInstructure } from "react-icons/si";
 import StrainerSelector from "../../../components/sharedUI/filter/StrainerSelector";
-import { VscSettings } from "react-icons/vsc";
 
 const ProductListFilters = (props) => {
   const notes = useContext(NoteContext);
@@ -28,10 +23,11 @@ const ProductListFilters = (props) => {
   const [chord, setChord] = useState();
   const [compound, setCompound] = useState();
   const [family, setFamily] = useState();
+  const [maxPrice, setMaxPrice] = useState();
 
   useEffect(() => {
-    props.onChange({ gender, note, chord, compound, family });
-  }, [gender, note, chord, compound, family]);
+    props.onChange({ gender, note, chord, compound, family, maxPrice });
+  }, [gender, note, chord, compound, family, maxPrice]);
 
   // -------------- Filtering on Notes --------------
   const menuNote = notes.map((item) => {
@@ -57,7 +53,7 @@ const ProductListFilters = (props) => {
     }
   });
 
-  const iconChord = <FaLayerGroup />;
+  const iconChord = <HiCollection />;
 
   // -------------- Filtering on Compounds --------------
   const menuCompound = compounds.map((item) => {
@@ -70,7 +66,7 @@ const ProductListFilters = (props) => {
     }
   });
 
-  const iconCompound = <SiInstructure />;
+  const iconCompound = <HiChartPie />;
 
   // -------------- Filtering on Families --------------
   const menuFamily = families.map((item) => {
@@ -95,6 +91,17 @@ const ProductListFilters = (props) => {
   });
 
   const iconGender = <ImManWoman />;
+
+  // -------------- Filtering on maxPrice --------------
+  const menuMaxPrice = MAX_PRICE.map((item, index) => {
+    return (
+      <option key={index} value={item.price} className="checked:bg-primary">
+        {item.price} ₽
+      </option>
+    );
+  });
+
+  const iconMaxPrice = <IoIosPricetags />;
 
   return (
     <>
@@ -151,15 +158,17 @@ const ProductListFilters = (props) => {
             onChange={(e) => setGender(e.target.value)}
           />
         </div>
-        {/* -------------------------------------------------------- */}
 
-        <SiElement />
-        <LiaElementor />
-        <GiGroupedDrops />
-        <LiaLayerGroupSolid />
-        <VscSettings />
-
-        <br />
+        {/* -------------- Filtering on maxPrice -------------- */}
+        <div className="mb-6">
+          <StrainerSelector
+            filterName={maxPrice}
+            icon={iconMaxPrice}
+            menuSelector={menuMaxPrice}
+            title={"Выбрать максимальную цену"}
+            onChange={(e) => setMaxPrice(e.target.value)}
+          />
+        </div>
       </div>
 
       {/* ------------------------------------------------------ */}
