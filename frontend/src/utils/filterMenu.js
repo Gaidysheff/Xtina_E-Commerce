@@ -24,3 +24,9 @@ export const MAX_PRICE = [
     price: 2500,
   },
 ];
+
+export const MAX_PRICE_FRESHENERS = [
+  {
+    price: 1000,
+  },
+];

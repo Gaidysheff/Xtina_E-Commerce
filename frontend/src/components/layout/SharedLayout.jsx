@@ -31,6 +31,19 @@ const SharedLayout = (props) => {
     import("./../../store/API/NoteContextProvider.jsx")
   );
 
+  const AromaContextProvider = lazy(() =>
+    import("./../../store/API/AromaContextProvider.jsx")
+  );
+  const BaseNoteContextProvider = lazy(() =>
+    import("./../../store/API/BaseNoteContextProvider.jsx")
+  );
+  const TopNoteContextProvider = lazy(() =>
+    import("./../../store/API/TopNoteContextProvider.jsx")
+  );
+  const MiddleNoteContextProvider = lazy(() =>
+    import("./../../store/API/MiddleNoteContextProvider.jsx")
+  );
+
   const ChordContextProvider = lazy(() =>
     import("./../../store/API/ChordContextProvider.jsx")
   );
@@ -159,84 +172,98 @@ const SharedLayout = (props) => {
               <ChordContextProvider>
                 <CompoundContextProvider>
                   <FamilyContextProvider>
-                    <DeliveryContextProvider>
-                      {props.theme === "light" ? (
-                        <ToastContainer
-                          position="top-center"
-                          theme="dark"
-                          hideProgressBar={true}
-                          autoClose={2000}
-                        />
-                      ) : (
-                        <ToastContainer
-                          position="top-center"
-                          theme="light"
-                          hideProgressBar={true}
-                          autoClose={2000}
-                        />
-                      )}
-                      <main
-                        className="w-screen bg-white dark:bg-gray-800 dark:text-white
-                                    duration-200 overflow-hidden"
-                      >
-                        {cartIsVisible && (
-                          <Cart
-                            onHideCart={hideCartHandler}
-                            onShowSubmitForm={showSubmitFormHandler}
-                          />
-                        )}
-                        {submitFormIsVisible && (
-                          <SubmitOrder
-                            onHideCart={hideCartHandler}
-                            onOpenConfirm={showConfirmHandler}
-                            onSetDeliveryOption={setDeliveryOptionHandler}
-                            onShowCart={showCartHandler}
-                          />
-                        )}
+                    <AromaContextProvider>
+                      <TopNoteContextProvider>
+                        <MiddleNoteContextProvider>
+                          <BaseNoteContextProvider>
+                            <DeliveryContextProvider>
+                              {props.theme === "light" ? (
+                                <ToastContainer
+                                  position="top-center"
+                                  theme="dark"
+                                  hideProgressBar={true}
+                                  autoClose={2000}
+                                />
+                              ) : (
+                                <ToastContainer
+                                  position="top-center"
+                                  theme="light"
+                                  hideProgressBar={true}
+                                  autoClose={2000}
+                                />
+                              )}
+                              <main
+                                className="w-screen bg-white dark:bg-gray-800 dark:text-white
+                                            duration-200 overflow-hidden"
+                              >
+                                {cartIsVisible && (
+                                  <Cart
+                                    onHideCart={hideCartHandler}
+                                    onShowSubmitForm={showSubmitFormHandler}
+                                  />
+                                )}
+                                {submitFormIsVisible && (
+                                  <SubmitOrder
+                                    onHideCart={hideCartHandler}
+                                    onOpenConfirm={showConfirmHandler}
+                                    onSetDeliveryOption={
+                                      setDeliveryOptionHandler
+                                    }
+                                    onShowCart={showCartHandler}
+                                  />
+                                )}
 
-                        {confirmIsVisible && (
-                          <Confirm
-                            onHideConfirm={hideCartHandler}
-                            delivery={delivery}
-                            onOpenPayment={showPaymentHandler}
-                            onConfirm={totalToBePaidHandler}
-                            onShowSubmitForm={showSubmitFormHandler}
-                          />
-                        )}
-                        {paymentIsVisible && (
-                          <Payment
-                            onHideConfirm={hideCartHandler}
-                            totalToBePaid={totalToBePaid}
-                          />
-                        )}
+                                {confirmIsVisible && (
+                                  <Confirm
+                                    onHideConfirm={hideCartHandler}
+                                    delivery={delivery}
+                                    onOpenPayment={showPaymentHandler}
+                                    onConfirm={totalToBePaidHandler}
+                                    onShowSubmitForm={showSubmitFormHandler}
+                                  />
+                                )}
+                                {paymentIsVisible && (
+                                  <Payment
+                                    onHideConfirm={hideCartHandler}
+                                    totalToBePaid={totalToBePaid}
+                                  />
+                                )}
 
-                        {searchIsVisible && (
-                          <Search
-                            onHideSearch={hideSearchHandler}
-                            onHideCart={hideCartHandler}
-                          />
-                        )}
+                                {searchIsVisible && (
+                                  <Search
+                                    onHideSearch={hideSearchHandler}
+                                    onHideCart={hideCartHandler}
+                                  />
+                                )}
 
-                        <Navbar
-                          themeHandler={props.themeHandler}
-                          theme={props.theme}
-                          onShowCart={showCartHandler}
-                          cartButtonIsDisabled={cartButtonIsDisabled}
-                          searchButtonIsDisabled={searchButtonIsDisabled}
-                          onShowSearch={showSearchHandler}
-                          burgerButtonIsDisabled={burgerButtonIsDisabled}
-                          // onSearchChange={searchChangeHandler}
-                          // onBluringSearch={searchBluringHandler}
-                        />
+                                <Navbar
+                                  themeHandler={props.themeHandler}
+                                  theme={props.theme}
+                                  onShowCart={showCartHandler}
+                                  cartButtonIsDisabled={cartButtonIsDisabled}
+                                  searchButtonIsDisabled={
+                                    searchButtonIsDisabled
+                                  }
+                                  onShowSearch={showSearchHandler}
+                                  burgerButtonIsDisabled={
+                                    burgerButtonIsDisabled
+                                  }
+                                  // onSearchChange={searchChangeHandler}
+                                  // onBluringSearch={searchBluringHandler}
+                                />
 
-                        <Outlet
-                          themeHandler={props.themeHandler}
-                          theme={props.theme}
-                        />
+                                <Outlet
+                                  themeHandler={props.themeHandler}
+                                  theme={props.theme}
+                                />
 
-                        <Footer />
-                      </main>
-                    </DeliveryContextProvider>
+                                <Footer />
+                              </main>
+                            </DeliveryContextProvider>
+                          </BaseNoteContextProvider>
+                        </MiddleNoteContextProvider>
+                      </TopNoteContextProvider>
+                    </AromaContextProvider>
                   </FamilyContextProvider>
                 </CompoundContextProvider>
               </ChordContextProvider>

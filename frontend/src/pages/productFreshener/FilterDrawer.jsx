@@ -2,7 +2,7 @@
 
 import { Button, Drawer, DrawerHeader, DrawerItems } from "flowbite-react";
 
-import ProductListFilters from "./perfumesFiltered/ProductListFilters";
+import ProductListFilters from "./freshenersFiltered/ProductListFilters";
 import { useState } from "react";
 
 const FilterDrawer = (props) => {

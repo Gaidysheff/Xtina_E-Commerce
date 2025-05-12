@@ -1,43 +1,41 @@
 import FilterDrawer from "./FilterDrawer";
 import LoaderKest from "../../components/sharedUI/LoaderKest";
-import ProductList from "./perfumesFiltered/ProductList";
-import createPerfumesOptions from "../../queryOptions/createPerfumesOptions";
+import ProductList from "./freshenersFiltered/ProductList";
+import createFreshenersOptions from "../../queryOptions/createFreshenersOptions";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-const PerfumesFilteredWrapper = (props) => {
-  const [gender, setGender] = useState();
-  const [note, setNote] = useState();
-  const [chord, setChord] = useState();
-  const [compound, setCompound] = useState();
-  const [family, setFamily] = useState();
+const FreshenersFilteredWrapper = (props) => {
+  const [aroma, setAroma] = useState();
+  const [topNote, setTopNote] = useState();
+  const [baseNote, setBaseNote] = useState();
+  const [middleNote, setMiddleNote] = useState();
   const [maxPrice, setMaxPrice] = useState();
   const [search, setSearch] = useState();
 
   // Queries
   const { data, isFetching } = useQuery(
-    createPerfumesOptions(
-      gender,
-      note,
-      chord,
-      compound,
-      family,
+    createFreshenersOptions(
+      aroma,
+      topNote,
+      baseNote,
+      middleNote,
       maxPrice,
       search
     )
   );
 
+  console.log("data=", data);
   return (
     <>
       {/* Drawer for Filters */}
       <FilterDrawer
         data={data}
         onChange={(filter) => {
-          setGender(filter.gender);
-          setNote(filter.note);
-          setChord(filter.chord);
-          setCompound(filter.compound);
-          setFamily(filter.family);
+          setAroma(filter.aroma);
+          setTopNote(filter.topNote);
+          setBaseNote(filter.baseNote);
+          setMiddleNote(filter.middleNote);
           setMaxPrice(filter.maxPrice);
           setSearch(filter.search);
         }}
@@ -50,4 +48,4 @@ const PerfumesFilteredWrapper = (props) => {
   );
 };
 
-export default PerfumesFilteredWrapper;
+export default FreshenersFilteredWrapper;

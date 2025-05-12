@@ -36,8 +36,8 @@ function App(props) {
   // const Contacts = lazy(() => import("./pages/Contacts.jsx"));
   const Delivery = lazy(() => import("./pages/Delivery.jsx"));
   const Error = lazy(() => import("./pages/Error.jsx"));
-  const Fresheners = lazy(() =>
-    import("./pages/productFreshener/Fresheners.jsx")
+  const FreshenersFilteredWrapper = lazy(() =>
+    import("./pages/productFreshener/FreshenersFilteredWrapper.jsx")
   );
   const Home = lazy(() => import("./pages/Home.jsx"));
   // const Perfumes = lazy(() => import("./pages/productPerfumes/Perfumes.jsx"));
@@ -131,7 +131,7 @@ function App(props) {
           </Route>
         </Route>
         <Route path={`${parentRouteSet2}`} element={<SharedFreshenersLayout />}>
-          <Route index element={<Fresheners />} />
+          <Route index element={<FreshenersFilteredWrapper />} />
           <Route
             path={`:${dynamicRouteSet2}`}
             element={<SharedSingleFreshenerLayout />}

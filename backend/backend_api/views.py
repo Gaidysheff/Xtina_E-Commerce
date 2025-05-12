@@ -1,9 +1,7 @@
 from rest_framework import viewsets
 from rest_framework import mixins
-from rest_framework.response import Response
-from rest_framework.generics import RetrieveAPIView
 from django.db.models import Q
-from rest_framework.views import APIView
+
 
 from .models import (
 	Compound, Family, Note, Chord, Aroma, TopNote, MiddleNote, BaseNote, Perfume, 
@@ -100,6 +98,34 @@ class FamiliesApiView(
     viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
+    lookup_field = 'id'
+
+
+class AromasApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = Aroma.objects.all()
+    serializer_class = AromaSerializer
+    lookup_field = 'id'
+
+
+class TopNotesApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = TopNote.objects.all()
+    serializer_class = TopNoteSerializer
+    lookup_field = 'id'
+
+
+class MiddleNotesApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = MiddleNote.objects.all()
+    serializer_class = MiddleNoteSerializer
+    lookup_field = 'id'
+
+
+class BaseNotesApiView(
+    viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
+    queryset = BaseNote.objects.all()
+    serializer_class = BaseNoteSerializer
     lookup_field = 'id'
 
 

@@ -25,27 +25,27 @@ const ProductList = (props) => {
                   />
                 </div>
 
+                <div
+                  className="text-[0.8rem] md:text-[1.1rem] lg:text-xl 
+                  font-semibold"
+                  data-aos="flip-left"
+                >
+                  {product.title}
+                </div>
+
                 <div className="p-2 pb-0">
                   <div
                     className="text-[0.7rem] md:text-[0.9rem] lg:text-lg"
                     data-aos="flip-left"
                   >
-                    {product.brand}
-                  </div>
-
-                  <div
-                    className="text-[0.8rem] md:text-[1.1rem] lg:text-xl 
-                  font-semibold"
-                    data-aos="flip-left"
-                  >
-                    {product.name}
+                    {product.subtitle}
                   </div>
                 </div>
                 <div className="justify-self-end">
                   <NumericFormat
                     className="flex justify-center text-2xl text-primaryDark
                       dark:text-primaryLight pb-2"
-                    value={product.price3}
+                    value={product.price}
                     displayType={"text"}
                     decimalSeparator=","
                     thousandSeparator="."

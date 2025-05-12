@@ -1,48 +1,47 @@
-import { GENDER, MAX_PRICE } from "../../../utils/filterMenu";
-import { HiChartPie, HiCollection } from "react-icons/hi";
 import { useContext, useEffect, useState } from "react";
 
-import { BsMusicNoteList } from "react-icons/bs";
-import ChordContext from "../../../store/API/chord-context";
-import CompoundContext from "../../../store/API/compound-context";
-import FamilyContext from "../../../store/API/family-context";
-import { ImManWoman } from "react-icons/im";
+import AromaContext from "../../../store/API/aroma-context";
+import BaseNoteContext from "../../../store/API/baseNote-context";
+import ImageAroma from "../../../assets/filters/aroma.png";
+import ImageBaseNote from "../../../assets/filters/baseNote.png";
+import ImageMiddleNote from "../../../assets/filters/middleNote.png";
+import ImageTopNote from "../../../assets/filters/topNote.png";
 import { IoIosPricetags } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
-import { MdCategory } from "react-icons/md";
-import NoteContext from "../../../store/API/note-context";
+import { MAX_PRICE_FRESHENERS } from "../../../utils/filterMenu";
+import MiddleNoteContext from "../../../store/API/middleNote-context";
 import StrainerSelector from "../../../components/sharedUI/filter/StrainerSelector";
+import TopNoteContext from "../../../store/API/topNote-context";
 import { useDebounce } from "../../../hooks/useDebounce";
 
 const ProductListFilters = (props) => {
-  const [gender, setGender] = useState();
-  const [note, setNote] = useState();
-  const [chord, setChord] = useState();
-  const [compound, setCompound] = useState();
-  const [family, setFamily] = useState();
+  const [aroma, setAroma] = useState();
+  const [topNote, setTopNote] = useState();
+  const [baseNote, setBaseNote] = useState();
+  const [middleNote, setMiddleNote] = useState();
   const [maxPrice, setMaxPrice] = useState();
   const [search, setSearch] = useState();
 
-  const notes = useContext(NoteContext);
-  const chords = useContext(ChordContext);
-  const compounds = useContext(CompoundContext);
-  const families = useContext(FamilyContext);
+  const aromas = useContext(AromaContext);
+  const topNotes = useContext(TopNoteContext);
+  const baseNotes = useContext(BaseNoteContext);
+  const middleNotes = useContext(MiddleNoteContext);
+
   const debouncedSearch = useDebounce(search);
 
   useEffect(() => {
     props.onChange({
-      gender,
-      note,
-      chord,
-      compound,
-      family,
+      aroma,
+      topNote,
+      baseNote,
+      middleNote,
       maxPrice,
       search: debouncedSearch,
     });
-  }, [gender, note, chord, compound, family, maxPrice, debouncedSearch]);
+  }, [aroma, topNote, baseNote, middleNote, maxPrice, debouncedSearch]);
 
-  // -------------- Filtering on Notes --------------
-  const menuNote = notes.map((item) => {
+  // -------------- Filtering on Aromas --------------
+  const menuAroma = aromas.map((item) => {
     if (item.name !== "---") {
       return (
         <option key={item.id} value={item.name} className="checked:bg-primary">
@@ -52,10 +51,18 @@ const ProductListFilters = (props) => {
     }
   });
 
-  const iconNote = <BsMusicNoteList />;
+  const iconAroma = (
+    <div className="h-[1.125rem] 2xsm:h-[1.25rem]">
+      <img
+        src={ImageAroma}
+        alt="aroma icon"
+        className="h-[1.125rem] 2xsm:h-[1.25rem]"
+      />
+    </div>
+  );
 
-  // -------------- Filtering on Chords --------------
-  const menuChord = chords.map((item) => {
+  // -------------- Filtering on TopNotes --------------
+  const menuTopNote = topNotes.map((item) => {
     if (item.name !== "---") {
       return (
         <option key={item.id} value={item.name} className="checked:bg-primary">
@@ -65,10 +72,18 @@ const ProductListFilters = (props) => {
     }
   });
 
-  const iconChord = <HiCollection />;
+  const iconTopNote = (
+    <div className="h-[1.125rem] 2xsm:h-[1.25rem]">
+      <img
+        src={ImageTopNote}
+        alt="aroma icon"
+        className="h-[1.125rem] 2xsm:h-[1.25rem]"
+      />
+    </div>
+  );
 
-  // -------------- Filtering on Compounds --------------
-  const menuCompound = compounds.map((item) => {
+  // -------------- Filtering on MiddleNotes --------------
+  const menuMiddleNote = middleNotes.map((item) => {
     if (item.name !== "---") {
       return (
         <option key={item.id} value={item.name} className="checked:bg-primary">
@@ -78,10 +93,18 @@ const ProductListFilters = (props) => {
     }
   });
 
-  const iconCompound = <HiChartPie />;
+  const iconMiddleNote = (
+    <div className="h-[1.125rem] 2xsm:h-[1.25rem]">
+      <img
+        src={ImageMiddleNote}
+        alt="aroma icon"
+        className="h-[1.125rem] 2xsm:h-[1.25rem]"
+      />
+    </div>
+  );
 
-  // -------------- Filtering on Families --------------
-  const menuFamily = families.map((item) => {
+  // -------------- Filtering on BaseNotes --------------
+  const menuBaseNote = baseNotes.map((item) => {
     if (item.name !== "---") {
       return (
         <option key={item.id} value={item.name} className="checked:bg-primary">
@@ -91,21 +114,18 @@ const ProductListFilters = (props) => {
     }
   });
 
-  const iconFamily = <MdCategory />;
-
-  // -------------- Filtering on Gender --------------
-  const menuGender = GENDER.map((item, index) => {
-    return (
-      <option key={index} value={item.name} className="checked:bg-primary">
-        {item.name}
-      </option>
-    );
-  });
-
-  const iconGender = <ImManWoman />;
+  const iconBaseNote = (
+    <div className="h-[1.125rem] 2xsm:h-[1.25rem]">
+      <img
+        src={ImageBaseNote}
+        alt="aroma icon"
+        className="h-[1.125rem] 2xsm:h-[1.25rem]"
+      />
+    </div>
+  );
 
   // -------------- Filtering on maxPrice --------------
-  const menuMaxPrice = MAX_PRICE.map((item, index) => {
+  const menuMaxPrice = MAX_PRICE_FRESHENERS.map((item, index) => {
     return (
       <option key={index} value={item.price} className="checked:bg-primary">
         {item.price} ₽
@@ -118,56 +138,45 @@ const ProductListFilters = (props) => {
   return (
     <>
       <div className="max-w-sm mx-auto mt-4">
-        {/* -------------- Filtering on Notes -------------- */}
+        {/* -------------- Filtering on Aromas -------------- */}
 
         <div className="mb-6">
           <StrainerSelector
-            filterName={note}
-            icon={iconNote}
-            menuSelector={menuNote}
-            title={"Выбрать основные ноты"}
-            onChange={(e) => setNote(e.target.value)}
+            filterName={aroma}
+            icon={iconAroma}
+            menuSelector={menuAroma}
+            title={"Выбрать аромат"}
+            onChange={(e) => setAroma(e.target.value)}
           />
         </div>
-        {/* -------------- Filtering on Chords -------------- */}
+        {/* -------------- Filtering on TopNotes -------------- */}
         <div className="mb-6">
           <StrainerSelector
-            filterName={chord}
-            icon={iconChord}
-            menuSelector={menuChord}
-            title={"Выбрать аккорды"}
-            onChange={(e) => setChord(e.target.value)}
+            filterName={topNote}
+            icon={iconTopNote}
+            menuSelector={menuTopNote}
+            title={"Выбрать верхнюю ноту"}
+            onChange={(e) => setTopNote(e.target.value)}
           />
         </div>
-        {/* -------------- Filtering on Compounds -------------- */}
+        {/* -------------- Filtering on MiddleNotes -------------- */}
         <div className="mb-6">
           <StrainerSelector
-            filterName={compound}
-            icon={iconCompound}
-            menuSelector={menuCompound}
-            title={"Выбрать состав"}
-            onChange={(e) => setCompound(e.target.value)}
+            filterName={middleNote}
+            icon={iconMiddleNote}
+            menuSelector={menuMiddleNote}
+            title={"Выбрать среднюю ноту"}
+            onChange={(e) => setMiddleNote(e.target.value)}
           />
         </div>
-        {/* -------------- Filtering on Families -------------- */}
+        {/* -------------- Filtering on BaseNotes -------------- */}
         <div className="mb-6">
           <StrainerSelector
-            filterName={family}
-            icon={iconFamily}
-            menuSelector={menuFamily}
-            title={"Выбрать семейство"}
-            onChange={(e) => setFamily(e.target.value)}
-          />
-        </div>
-
-        {/* -------------- Filtering on Gender -------------- */}
-        <div className="mb-6">
-          <StrainerSelector
-            filterName={gender}
-            icon={iconGender}
-            menuSelector={menuGender}
-            title={"Выбрать пол"}
-            onChange={(e) => setGender(e.target.value)}
+            filterName={baseNote}
+            icon={iconBaseNote}
+            menuSelector={menuBaseNote}
+            title={"Выбрать базовую ноту"}
+            onChange={(e) => setBaseNote(e.target.value)}
           />
         </div>
 
