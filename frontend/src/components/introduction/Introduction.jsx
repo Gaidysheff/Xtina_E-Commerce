@@ -30,7 +30,7 @@ const Introduction = (props) => {
               – это
             </p>
           </div>
-          <div
+          <blockquote
             className="flex flex-col text-[11px] sm:text-xl md:text-2xl 
             lg:text-4xl xl:text-5xl 2xl:text-6xl"
           >
@@ -41,7 +41,21 @@ const Introduction = (props) => {
               <span>
                 <GiCheckMark />
               </span>
-              <p className="ml-1">Только ОРИГИНАЛЬНАЯ парфюмерия</p>
+              <p className="ml-1">
+                Только
+                <span
+                  class="before:block before:absolute before:-inset-1 mx-2
+                  before:-skew-y-3 before:bg-primary relative inline-block"
+                >
+                  <span
+                    class="relative text-white dark:text-brandDarkGray 
+                  font-semibold"
+                  >
+                    ОРИГИНАЛЬНАЯ
+                  </span>
+                </span>
+                парфюмерия
+              </p>
             </div>
             <div
               className="inline-flex sm:mb-1 md:mb-2 lg:mb-3 xl:mb-5 2xl:mb-7"
@@ -88,7 +102,7 @@ const Introduction = (props) => {
               </span>
               <p className="ml-1">Доставка по всей России</p>
             </div>
-          </div>
+          </blockquote>
         </div>
         <div className="flex items-center" data-aos="flip-right">
           <img src={Xtina} alt="" />

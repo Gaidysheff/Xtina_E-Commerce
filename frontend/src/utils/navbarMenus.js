@@ -14,7 +14,7 @@ export const MenuLinks = [
   {
     id: 3,
     label: "Доставка",
-    path: "/delivery",
+    path: "/#/delivery",
     aosDelay: "1500",
   },
 ];
@@ -23,19 +23,19 @@ export const DropdownLinks = [
   {
     id: 1,
     label: "Парфюмерия",
-    path: "/perfumes",
+    path: "/#/perfumes",
     aosDelay: "1500",
   },
   {
     id: 2,
     label: "Ароматизаторы",
-    path: "/fresheners",
+    path: "/#/fresheners",
     aosDelay: "2000",
   },
   {
     id: 3,
     label: "Расходники",
-    path: "/consumables",
+    path: "/#/consumables",
     aosDelay: "2500",
   },
 ];

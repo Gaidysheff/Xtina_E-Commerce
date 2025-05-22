@@ -21,7 +21,7 @@ const ProductList = (props) => {
                   {!product.is_available && (
                     <div
                       className="block absolute mt-[25%] xsm:mt-[30%] 
-                      flex flex-col z-40 top-0 left-0 right-0 py-1 xsm:py-4 
+                      flex flex-col z-40 top-0 inset-x-0 py-1 xsm:py-4 
                       bg-gray-400/20 dark:bg-gray-300/20 
                       backdrop-grayscale backdrop-blur-xl"
                     >
