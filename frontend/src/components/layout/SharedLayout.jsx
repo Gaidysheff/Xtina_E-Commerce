@@ -30,7 +30,6 @@ const SharedLayout = (props) => {
   const NoteContextProvider = lazy(() =>
     import("./../../store/API/NoteContextProvider.jsx")
   );
-
   const AromaContextProvider = lazy(() =>
     import("./../../store/API/AromaContextProvider.jsx")
   );
@@ -43,7 +42,6 @@ const SharedLayout = (props) => {
   const MiddleNoteContextProvider = lazy(() =>
     import("./../../store/API/MiddleNoteContextProvider.jsx")
   );
-
   const ChordContextProvider = lazy(() =>
     import("./../../store/API/ChordContextProvider.jsx")
   );
@@ -53,7 +51,6 @@ const SharedLayout = (props) => {
   const FamilyContextProvider = lazy(() =>
     import("./../../store/API/FamilyContextProvider.jsx")
   );
-
   const Search = lazy(() => import("../search/Search"));
   const SubmitOrder = lazy(() => import("./../../pages/cart/SubmitOrder.jsx"));
   const ToastContainer = lazy(() =>

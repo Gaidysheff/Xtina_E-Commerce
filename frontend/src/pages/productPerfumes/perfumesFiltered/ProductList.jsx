@@ -14,14 +14,37 @@ const ProductList = (props) => {
             <Link to={`${product.slug}`}>
               <div className="inside-card flex flex-col justify-between">
                 <div
-                  className="x-full bg-white dark:bg-brandLightGray
-                rounded-t-xl flex justify-center"
+                  className="w-full bg-white dark:bg-brandLightGray rounded-t-xl
+                  flex justify-center relative"
                   data-aos="zoom-in"
                 >
+                  {!product.is_available && (
+                    <div
+                      className="block absolute mt-[25%] xsm:mt-[30%] 
+                      flex flex-col z-40 top-0 left-0 right-0 py-1 xsm:py-4 
+                      bg-gray-400/20 dark:bg-gray-300/20 
+                      backdrop-grayscale backdrop-blur-xl"
+                    >
+                      <span
+                        className="font-semibold italic text-primaryDark/70
+                      z-50 drop-shadow-[2px_2px_1px_rgba(255,255,255,.9)]
+                      text-base sm:text-xl"
+                      >
+                        Нет в наличии
+                      </span>
+                      <span
+                        className="font-semibold italic text-primaryDark/70
+                      z-50 drop-shadow-[2px_2px_1px_rgba(255,255,255,.9)]
+                      text-sm sm:text-xl"
+                      >
+                        Ожидаем в ближайшее время
+                      </span>
+                    </div>
+                  )}
                   <img
                     src={product.image}
                     alt="product image"
-                    className="w-[75%] bg-white dark:bg-brandLightGray"
+                    className="relative w-[75%] bg-white dark:bg-brandLightGray"
                   />
                 </div>
 

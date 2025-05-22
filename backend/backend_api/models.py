@@ -106,65 +106,65 @@ class Perfume(models.Model):
     sex = models.CharField(
         max_length=2, choices=SEX_CHOICES, default=UNISEX, verbose_name='Пол')
     compound1 = models.ForeignKey(
-        Compound, on_delete=models.CASCADE, default="---",
-        related_name='compound1', verbose_name='Состав-1')
+        Compound, on_delete=models.SET_DEFAULT, related_name='compound1',
+        default=Compound.objects.get(name="---").id, verbose_name='Состав-1')
     compound2 = models.ForeignKey(
-        Compound, on_delete=models.CASCADE, default="---",
-        related_name='compound2', verbose_name='Состав-2')
+        Compound, on_delete=models.SET_DEFAULT, related_name='compound2',
+        default=Compound.objects.get(name="---").id, verbose_name='Состав-2')
     compound3 = models.ForeignKey(
-        Compound, on_delete=models.CASCADE, default="---",
-        related_name='compound3', verbose_name='Состав-3')
+        Compound, on_delete=models.SET_DEFAULT, related_name='compound3',
+        default=Compound.objects.get(name="---").id, verbose_name='Состав-3')
     compound4 = models.ForeignKey(
-        Compound, on_delete=models.CASCADE, default="---",
-        related_name='compound4', verbose_name='Состав-4')
+        Compound, on_delete=models.SET_DEFAULT, related_name='compound4',
+        default=Compound.objects.get(name="---").id, verbose_name='Состав-4')
     compound5 = models.ForeignKey(
-        Compound, on_delete=models.CASCADE, default="---",
-        related_name='compound5', verbose_name='Состав-5')
+        Compound, on_delete=models.SET_DEFAULT, related_name='compound5',
+        default=Compound.objects.get(name="---").id, verbose_name='Состав-5')
     family1 = models.ForeignKey(
-        Family, on_delete=models.CASCADE, related_name='family1', 
-        default="---", verbose_name='Семейство-1')
+        Family, on_delete=models.SET_DEFAULT, related_name='family1', 
+        default=Family.objects.get(name="---").id, verbose_name='Семейство-1')
     family2 = models.ForeignKey(
-        Family, on_delete=models.CASCADE, related_name='family2', 
-        default="---", verbose_name='Семейство-2')
+        Family, on_delete=models.SET_DEFAULT, related_name='family2', 
+        default=Family.objects.get(name="---").id, verbose_name='Семейство-2')
     family3 = models.ForeignKey(
-        Family, on_delete=models.CASCADE, related_name='family3', 
-        default="---", verbose_name='Семейство-3')
+        Family, on_delete=models.SET_DEFAULT, related_name='family3', 
+        default=Family.objects.get(name="---").id, verbose_name='Семейство-3')
     family4 = models.ForeignKey(
-        Family, on_delete=models.CASCADE, related_name='family4', 
-        default="---", verbose_name='Семейство-4')
+        Family, on_delete=models.SET_DEFAULT, related_name='family4', 
+        default=Family.objects.get(name="---").id, verbose_name='Семейство-4')
     family5 = models.ForeignKey(
-        Family, on_delete=models.CASCADE, related_name='family5', 
-        default="---", verbose_name='Семейство-5')
+        Family, on_delete=models.SET_DEFAULT, related_name='family5', 
+        default=Family.objects.get(name="---").id, verbose_name='Семейство-5')
     note1 = models.ForeignKey(
-        Note, on_delete=models.CASCADE, related_name='note1', default="---", 
-        verbose_name='Основная нота-1')
+        Note, on_delete=models.SET_DEFAULT, related_name='note1', 
+        default=Note.objects.get(name="---").id, verbose_name='Основная нота-1')
     note2 = models.ForeignKey(
-        Note, on_delete=models.CASCADE, related_name='note2', default="---", 
-        verbose_name='Основная нота-2')
+        Note, on_delete=models.SET_DEFAULT, related_name='note2', 
+        default=Note.objects.get(name="---").id, verbose_name='Основная нота-2')
     note3 = models.ForeignKey(
-        Note, on_delete=models.CASCADE, related_name='note3', default="---", 
-        verbose_name='Основная нота-3')
+        Note, on_delete=models.SET_DEFAULT, related_name='note3', 
+        default=Note.objects.get(name="---").id, verbose_name='Основная нота-3')
     note4 = models.ForeignKey(
-        Note, on_delete=models.CASCADE, related_name='note4', default="---", 
-        verbose_name='Основная нота-4')
+        Note, on_delete=models.SET_DEFAULT, related_name='note4', 
+        default=Note.objects.get(name="---").id, verbose_name='Основная нота-4')
     note5 = models.ForeignKey(
-        Note, on_delete=models.CASCADE, related_name='note5', default="---", 
-        verbose_name='Основная нота-5')
+        Note, on_delete=models.SET_DEFAULT, related_name='note5', 
+        default=Note.objects.get(name="---").id, verbose_name='Основная нота-5')
     chord1 = models.ForeignKey(
-        Chord, on_delete=models.CASCADE, related_name='chord1', default="---", 
-        verbose_name='Аккорд-1')
+        Chord, on_delete=models.SET_DEFAULT, related_name='chord1', 
+        default=Chord.objects.get(name="---").id, verbose_name='Аккорд-1')
     chord2 = models.ForeignKey(
-        Chord, on_delete=models.CASCADE, related_name='chord2', default="---", 
-        verbose_name='Аккорд-2')
+        Chord, on_delete=models.SET_DEFAULT, related_name='chord2', 
+        default=Chord.objects.get(name="---").id, verbose_name='Аккорд-2')
     chord3 = models.ForeignKey(
-        Chord, on_delete=models.CASCADE, related_name='chord3', default="---", 
-        verbose_name='Аккорд-3')
+        Chord, on_delete=models.SET_DEFAULT, related_name='chord3', 
+        default=Chord.objects.get(name="---").id, verbose_name='Аккорд-3')
     chord4 = models.ForeignKey(
-        Chord, on_delete=models.CASCADE, related_name='chord4', default="---", 
-        verbose_name='Аккорд-4')
+        Chord, on_delete=models.SET_DEFAULT, related_name='chord4', 
+        default=Chord.objects.get(name="---").id, verbose_name='Аккорд-4')
     chord5 = models.ForeignKey(
-        Chord, on_delete=models.CASCADE, related_name='chord5', default="---", 
-        verbose_name='Аккорд-5')
+        Chord, on_delete=models.SET_DEFAULT, related_name='chord5', 
+        default=Chord.objects.get(name="---").id, verbose_name='Аккорд-5')
     description = models.TextField(
         null=True, blank=True, verbose_name='Описание')
     feedback = models.TextField(null=True, blank=True, verbose_name='Отзывы')
@@ -256,65 +256,65 @@ class Freshener(models.Model):
         upload_to='image_fresheners/%Y/%m/%d/', verbose_name='Загрузить фото')
     price = models.IntegerField(verbose_name='Цена')
     aroma1 = models.ForeignKey(
-        Aroma, on_delete=models.CASCADE, default="---", related_name='aroma1', 
-        verbose_name='Аромат-1')
+        Aroma, on_delete=models.SET_DEFAULT, related_name='aroma1', 
+        default=Aroma.objects.get(name="---").id, verbose_name='Аромат-1')
     aroma2 = models.ForeignKey(
-        Aroma, on_delete=models.CASCADE, default="---", related_name='aroma2', 
-        verbose_name='Аромат-2')
+        Aroma, on_delete=models.SET_DEFAULT, related_name='aroma2', 
+        default=Aroma.objects.get(name="---").id, verbose_name='Аромат-2')
     aroma3 = models.ForeignKey(
-        Aroma, on_delete=models.CASCADE, default="---", related_name='aroma3', 
-        verbose_name='Аромат-3')
+        Aroma, on_delete=models.SET_DEFAULT, related_name='aroma3', 
+        default=Aroma.objects.get(name="---").id, verbose_name='Аромат-3')
     aroma4 = models.ForeignKey(
-        Aroma, on_delete=models.CASCADE, default="---", related_name='aroma4', 
-        verbose_name='Аромат-4')
+        Aroma, on_delete=models.SET_DEFAULT, related_name='aroma4', 
+        default=Aroma.objects.get(name="---").id, verbose_name='Аромат-4')
     aroma5 = models.ForeignKey(
-        Aroma, on_delete=models.CASCADE, default="---", related_name='aroma5', 
-        verbose_name='Аромат-5')
+        Aroma, on_delete=models.SET_DEFAULT, related_name='aroma5', 
+        default=Aroma.objects.get(name="---").id, verbose_name='Аромат-5')
     topNote1 = models.ForeignKey(
-        TopNote, on_delete=models.CASCADE, default="---",
-        related_name='topNote1', verbose_name='Верхняя нота-1')
+        TopNote, on_delete=models.SET_DEFAULT, related_name='topNote1', 
+        default=TopNote.objects.get(name="---").id, verbose_name='Верхняя нота-1')
     topNote2 = models.ForeignKey(
-        TopNote, on_delete=models.CASCADE, default="---",
-        related_name='topNote2', verbose_name='Верхняя нота-2')
+        TopNote, on_delete=models.SET_DEFAULT, related_name='topNote2', 
+        default=TopNote.objects.get(name="---").id, verbose_name='Верхняя нота-2')
     topNote3 = models.ForeignKey(
-        TopNote, on_delete=models.CASCADE, default="---",
-        related_name='topNote3', verbose_name='Верхняя нота-3')
+        TopNote, on_delete=models.SET_DEFAULT, related_name='topNote3', 
+        default=TopNote.objects.get(name="---").id, verbose_name='Верхняя нота-3')
     topNote4 = models.ForeignKey(
-        TopNote, on_delete=models.CASCADE, default="---",
-        related_name='topNote4', verbose_name='Верхняя нота-4')
+        TopNote, on_delete=models.SET_DEFAULT, related_name='topNote4', 
+        default=TopNote.objects.get(name="---").id, verbose_name='Верхняя нота-4')
     topNote5 = models.ForeignKey(
-        TopNote, on_delete=models.CASCADE, default="---",
-        related_name='topNote5', verbose_name='Верхняя нота-5')
+        TopNote, on_delete=models.SET_DEFAULT, related_name='topNote5', 
+        default=TopNote.objects.get(name="---").id, verbose_name='Верхняя нота-5')
     middleNote1 = models.ForeignKey(
-        MiddleNote, on_delete=models.CASCADE, default="---",
-        related_name='middleNote1', verbose_name='Средняя нота-1')
+        MiddleNote, on_delete=models.SET_DEFAULT, related_name='middleNote1', 
+        default=MiddleNote.objects.get(name="---").id, verbose_name='Средняя нота-1')
     middleNote2 = models.ForeignKey(
-        MiddleNote, on_delete=models.CASCADE, default="---",
-        related_name='middleNote2', verbose_name='Средняя нота-2')
+        MiddleNote, on_delete=models.SET_DEFAULT, related_name='middleNote2', 
+        default=MiddleNote.objects.get(name="---").id, verbose_name='Средняя нота-2')
     middleNote3 = models.ForeignKey(
-        MiddleNote, on_delete=models.CASCADE, default="---",
-        related_name='middleNote3', verbose_name='Средняя нота-3')
+        MiddleNote, on_delete=models.SET_DEFAULT, related_name='middleNote3', 
+        default=MiddleNote.objects.get(name="---").id, verbose_name='Средняя нота-3')
     middleNote4 = models.ForeignKey(
-        MiddleNote, on_delete=models.CASCADE, default="---",
-        related_name='middleNote4', verbose_name='Средняя нота-4')
+        MiddleNote, on_delete=models.SET_DEFAULT, related_name='middleNote4', 
+        default=MiddleNote.objects.get(name="---").id, verbose_name='Средняя нота-4')
     middleNote5 = models.ForeignKey(
-        MiddleNote, on_delete=models.CASCADE, default="---",
-        related_name='middleNote5', verbose_name='Средняя нота-5')
+        MiddleNote, on_delete=models.SET_DEFAULT, related_name='middleNote5', 
+        default=MiddleNote.objects.get(name="---").id, verbose_name='Средняя нота-5')
     baseNote1 = models.ForeignKey(
-        BaseNote, on_delete=models.CASCADE, default="---",
-        related_name='baseNote1', verbose_name='Базовая нота-1')
+        BaseNote, on_delete=models.SET_DEFAULT, related_name='baseNote1', 
+        default=BaseNote.objects.get(name="---").id, verbose_name='Базовая нота-1')
     baseNote2 = models.ForeignKey(
-        BaseNote, on_delete=models.CASCADE, default="---",
-        related_name='baseNote2', verbose_name='Базовая нота-2')
+        BaseNote, on_delete=models.SET_DEFAULT, related_name='baseNote2', 
+        default=BaseNote.objects.get(name="---").id, verbose_name='Базовая нота-2')
     baseNote3 = models.ForeignKey(
-        BaseNote, on_delete=models.CASCADE, default="---",
-        related_name='baseNote3', verbose_name='Базовая нота-3')
+        BaseNote, on_delete=models.SET_DEFAULT, related_name='baseNote3', 
+        default=BaseNote.objects.get(name="---").id, verbose_name='Базовая нота-3')
     baseNote4 = models.ForeignKey(
-        BaseNote, on_delete=models.CASCADE, default="---",
-        related_name='baseNote4', verbose_name='Базовая нота-4')
+        BaseNote, on_delete=models.SET_DEFAULT, related_name='baseNote4', 
+        default=BaseNote.objects.get(name="---").id, verbose_name='Базовая нота-4')
     baseNote5 = models.ForeignKey(
-        BaseNote, on_delete=models.CASCADE, default="---",
-        related_name='baseNote5', verbose_name='Базовая нота-5')
+        BaseNote, on_delete=models.SET_DEFAULT, related_name='baseNote5', 
+        default=BaseNote.objects.get(name="---").id, verbose_name='Базовая нота-5')
     description = models.TextField(
         null=True, blank=True, verbose_name='Описание')
     is_available = models.BooleanField(
@@ -349,7 +349,8 @@ class Consumables(models.Model):
         upload_to='image_consumables/%Y/%m/%d/', verbose_name='Загрузить фото')
     price = models.IntegerField(verbose_name='Цена')
     aroma = models.ForeignKey(
-        Aroma, on_delete=models.CASCADE, default="---", verbose_name='Аромат')
+        Aroma, on_delete=models.SET_DEFAULT, verbose_name='Аромат', 
+        default=Aroma.objects.get(name="---").id)
     is_available = models.BooleanField(
         choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)), 
         default=Status.AVAILABLE, verbose_name="Наличие")
@@ -416,14 +417,14 @@ class HeroData(models.Model):
     image = models.ImageField(
         upload_to='image_heroData/%Y/%m/', verbose_name='Загрузить фото')
     noteHero1 = models.ForeignKey(
-        Note, on_delete=models.CASCADE, default="---", related_name='noteHero1', 
-        verbose_name='Основная нота-1')
+        Note, on_delete=models.SET_DEFAULT, related_name='noteHero1', 
+        default=Note.objects.get(name="---").id, verbose_name='Основная нота-1')
     noteHero2 = models.ForeignKey(
-        Note, on_delete=models.CASCADE, default="---", related_name='noteHero2', 
-        verbose_name='Основная нота-2')
+        Note, on_delete=models.SET_DEFAULT, related_name='noteHero2', 
+        default=Note.objects.get(name="---").id, verbose_name='Основная нота-2')
     noteHero3 = models.ForeignKey(
-        Note, on_delete=models.CASCADE, default="---", related_name='noteHero3', 
-        verbose_name='Основная нота-3')
+        Note, on_delete=models.SET_DEFAULT, related_name='noteHero3', 
+        default=Note.objects.get(name="---").id, verbose_name='Основная нота-3')
 
 
     def __str__(self):

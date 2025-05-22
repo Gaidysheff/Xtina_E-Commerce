@@ -108,7 +108,7 @@ const Search = (props) => {
                       onClick={searchLinkHandler}
                     > */}
                     <Link
-                      to={`${BASE_URL}/perfumes/${perfume.slug}`}
+                      to={`${BASE_URL}/#/perfumes/${perfume.slug}`}
                       onClick={searchLinkHandler}
                     >
                       <div
