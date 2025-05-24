@@ -1,6 +1,7 @@
 import { DropdownLinks, MenuLinks } from "../../utils/navbarMenus";
 import { FaArrowUpFromBracket, FaSquareWhatsapp } from "react-icons/fa6";
 import { FaInstagram, FaMobileAlt, FaTelegram } from "react-icons/fa";
+import { Link, NavLink } from "react-router";
 
 import { FaVk } from "react-icons/fa6";
 import { HashLink } from "react-router-hash-link";
@@ -88,13 +89,13 @@ const Footer = () => {
                       data-aos-duration="600"
                       data-aos-delay={link.aosDelay}
                     >
-                      <a
-                        href={link.path}
+                      <Link
+                        to={link.path}
                         className="text-brandLightGray
 											hover:text-white hover:text-lg duration-300"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -135,13 +136,13 @@ const Footer = () => {
                       data-aos-duration="600"
                       data-aos-delay={link.aosDelay}
                     >
-                      <a
-                        href={link.path}
+                      <Link
+                        to={link.path}
                         className="text-brandLightGray
 											hover:text-white hover:text-lg duration-300"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
