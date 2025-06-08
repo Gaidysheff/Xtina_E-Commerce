@@ -1,5 +1,6 @@
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+
 import { BASE_URL } from "../config";
-import { queryOptions } from "@tanstack/react-query";
 
 const createPerfumesOptions = (
   aroma,
@@ -16,6 +17,7 @@ const createPerfumesOptions = (
     ],
     queryFn: () =>
       fetchPerfumes({ aroma, topNote, baseNote, middleNote, maxPrice, search }),
+    placeholderData: keepPreviousData,
   });
 };
 

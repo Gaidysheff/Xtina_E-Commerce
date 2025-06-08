@@ -1,5 +1,6 @@
+import CloudPayment from "../../components/cloudPayment/CloudPayment";
 import Modal from "./../../components/modalWindow/Modal.jsx";
-import PaymentModule from "./PaymentModule.jsx";
+import PaymentCard from "./cardPayment/PaymentCard.jsx";
 import ProgressSteps from "./../../components/progressSteps/ProgressSteps.jsx";
 
 const Payment = (props) => {
@@ -29,7 +30,7 @@ const Payment = (props) => {
               className="list-none my-3 p-0 overflow-auto max-h-[400px] 
                 sm:max-h-[550px]"
             >
-              Модуль оплаты
+              {/* Модуль оплаты */}
             </div>
             <div className="text-end">
               {/* ----------------------------- */}
@@ -37,22 +38,11 @@ const Payment = (props) => {
                 className="flex justify-between items-center font-semibold 
                 my-[1rem] text-xl"
               >
-                <PaymentModule totalToBePaid={props.totalToBePaid} />
+                <PaymentCard totalToBePaid={props.totalToBePaid} />
               </div>
               {/* ----------------------------- */}
-              <button
-                className="cursor-pointer bg-transparent text-primaryDark ml-2
-                font-semibold border-2 border-primaryDark py-2 px-4 rounded-xl 
-                hover:bg-gradient-to-br hover:from-primaryLight 
-                hover:to-primaryDark hover:text-white hover:ring 
-                hover:border-white hover:ring-primaryDark/70"
-                // data-aos="zoom-in"
-                // data-aos-delay="500"
-                // data-aos-duration="2000"
-                // onClick={smth}
-              >
-                Оплатить
-              </button>
+
+              <CloudPayment totalToBePaid={props.totalToBePaid} />
             </div>
           </div>
         </section>

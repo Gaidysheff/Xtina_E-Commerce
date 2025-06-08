@@ -1,5 +1,6 @@
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+
 import { BASE_URL } from "../config";
-import { queryOptions } from "@tanstack/react-query";
 
 const createPerfumesOptions = (
   gender,
@@ -25,6 +26,7 @@ const createPerfumesOptions = (
         maxPrice,
         search,
       }),
+    placeholderData: keepPreviousData,
   });
 };
 

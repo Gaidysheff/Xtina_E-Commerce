@@ -44,11 +44,11 @@ const Introduction = (props) => {
               <p className="ml-1">
                 Только
                 <span
-                  class="before:block before:absolute before:-inset-1 mx-2
+                  className="before:block before:absolute before:-inset-1 mx-2
                   before:-skew-y-3 before:bg-primary relative inline-block"
                 >
                   <span
-                    class="relative text-white dark:text-brandDarkGray 
+                    className="relative text-white dark:text-brandDarkGray 
                   font-semibold"
                   >
                     ОРИГИНАЛЬНАЯ
