@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .valid_field {
+    @apply border-2 w-full rounded-lg p-1 pl-3 text-base italic font-normal;
+  }
+  .invalid_field {
+    @apply border-2 w-full rounded-lg p-1 pl-3 text-base italic font-normal 
+		border-red-300 bg-red-500/20;
+  }
+}
