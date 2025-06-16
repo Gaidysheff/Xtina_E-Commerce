@@ -66,7 +66,7 @@ const ProductList = (props) => {
                 </div>
                 <div className="justify-self-end">
                   <NumericFormat
-                    className="flex justify-center text-2xl text-primaryDark
+                    className="flex justify-center text-lg md:text-2xl text-primaryDark
                       dark:text-primaryLight pb-2"
                     value={product.price3}
                     displayType={"text"}

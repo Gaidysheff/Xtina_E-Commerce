@@ -85,8 +85,8 @@ const Consumables = () => {
                 </div>
                 <div className="justify-self-end">
                   <NumericFormat
-                    className="flex justify-center text-2xl text-primaryDark
-                        dark:text-primaryLight pb-2"
+                    className="flex justify-center text-lg md:text-2xl 
+                    text-primaryDark dark:text-primaryLight pb-2"
                     value={product.price}
                     displayType={"text"}
                     decimalSeparator=","

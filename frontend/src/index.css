@@ -61,7 +61,7 @@
   }
 
   .inside-card {
-    @apply h-[380px] md:h-[450px] 2xl:h-[500px] text-center;
+    @apply min-h-[200px] md:min-h-[400px] text-center;
   }
   /* ======================== check box ============================= */
 

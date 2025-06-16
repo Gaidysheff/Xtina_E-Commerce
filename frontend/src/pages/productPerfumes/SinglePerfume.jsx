@@ -4,8 +4,10 @@ import { BASE_URL } from "../../config.js";
 import Button from "./../../components/sharedUI/Button.jsx";
 import ButtonVolume from "./../../components/sharedUI/ButtonVolume.jsx";
 import CartContext from "./../../store/cart-context.js";
+import { Link } from "react-router";
 import Loader from "../../components/sharedUI/LoaderKest.jsx";
 import { NumericFormat } from "react-number-format";
+import RelatedProducts from "./RelatedProducts";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useParams } from "react-router";
@@ -48,6 +50,8 @@ const SingleProduct = (props) => {
   const [chord4, setChord4] = useState("");
   const [chord5, setChord5] = useState("");
   // -----------------------------------------------
+  const [similarProduct, setSimilarProduct] = useState([]);
+  // -----------------------------------------------
 
   const params = useParams();
   const slug = params.perfumeSlug;
@@ -86,6 +90,8 @@ const SingleProduct = (props) => {
         setChord3(response.data.chord3.name);
         setChord4(response.data.chord4.name);
         setChord5(response.data.chord5.name);
+        // ---------------------------------
+        setSimilarProduct(response.data.similar_products);
       })
       .catch((error) => {
         console.log("error=", error);
@@ -108,7 +114,7 @@ const SingleProduct = (props) => {
       });
 
     setIsLoadPerfumes(false);
-  }, []);
+  }, [slug]);
 
   if (isLoadPerfumes) {
     return (
@@ -517,6 +523,7 @@ const SingleProduct = (props) => {
           </div>
         </div>
       </div>
+      <RelatedProducts similarProduct={similarProduct} note1={note1} />
     </section>
   );
 };

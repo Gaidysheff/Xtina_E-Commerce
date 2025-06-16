@@ -47,6 +47,10 @@ class BaseNoteSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 # ===================== Main DataBase =================================   
+class AllPerfumeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Perfume
+        fields = '__all__'
 
 class PerfumeSerializer(serializers.ModelSerializer):
     compound1 = CompoundSerializer()
@@ -73,9 +77,25 @@ class PerfumeSerializer(serializers.ModelSerializer):
     sex = serializers.CharField(source='get_sex_display')
     country = serializers.CharField(source='get_country_display')
 
+    similar_products = serializers.SerializerMethodField()
+
     class Meta:
         model = Perfume
-        fields = '__all__'
+        # fields = '__all__'
+        fields = ['name', 'slug', 'brand', 'image', 'price3', 'price5',
+                  'price10', 'price20', 'price30', 'perfumer', 'country',
+                  'year', 'sex', 'compound1', 'compound2', 'compound3',
+                  'compound4', 'compound5', 'family1', 'family2', 'family3',
+                  'family4', 'family5', 'note1', 'note2', 'note3', 'note4',
+                  'note5', 'chord1', 'chord2', 'chord3', 'chord4', 'chord5',
+                  'description', 'feedback', 'is_available',
+                  'similar_products']
+        
+    def get_similar_products(self, product):
+        products = Perfume.available.filter(note1=product.note1).exclude(id=product.id)
+        # products = Perfume.objects.filter(note1=product.note1).exclude(id=product.id)
+        serializer = AllPerfumeSerializer(products, many=True)
+        return serializer.data
 
 class FreshenerSerializer(serializers.ModelSerializer):
     aroma1 = AromaSerializer()

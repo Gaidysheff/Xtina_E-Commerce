@@ -9,10 +9,10 @@ import { useForm } from "react-hook-form";
 
 const isInputValid = (inputValue) => inputValue.trim() !== "";
 
-// const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
+const isPhoneValid = (phoneValue) => phoneValue.trim() !== "+7";
 
-const isPhoneValid = (phoneValue) =>
-  (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
+// const isPhoneValid = (phoneValue) =>
+//   (phoneValue.trim() !== "+7") & (phoneValue.length == 12);
 
 export default forwardRef((props, ref) => {
   const orderContext = useContext(OrderContext);
