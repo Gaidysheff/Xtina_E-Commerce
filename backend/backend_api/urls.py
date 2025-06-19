@@ -3,9 +3,10 @@ from .views import (
 	PerfumeApiView, FreshenerApiView, ConsumablesApiView, DeliveryApiView,
 	GiftApiView, HeroDataApiView, SearchPerfumeApiView, NotesApiView, 
 	ChordsApiView, CompoundsApiView, FamiliesApiView, AromasApiView,
-	TopNotesApiView, MiddleNotesApiView, BaseNotesApiView
+	TopNotesApiView, MiddleNotesApiView, BaseNotesApiView, 
 	)
 from rest_framework import routers
+
 
 router = routers.SimpleRouter()
 router.register(
@@ -42,5 +43,5 @@ router.register(
 	'search', SearchPerfumeApiView, basename='search')
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
 ]

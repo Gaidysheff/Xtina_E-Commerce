@@ -1,6 +1,9 @@
 from rest_framework import viewsets
 from rest_framework import mixins
+from rest_framework.pagination import PageNumberPagination
 from django.db.models import Q
+# from rest_framework.decorators import api_view
+# from rest_framework.response import Response
 
 
 from .models import (
@@ -16,11 +19,28 @@ from .serializer import (
     )
 
 
+# ================= Pagination style ===================
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 12
+    page_size_query_param = 'page_size'
+    # max_page_size = 10000
+
+# @api_view(["GET"])
+# def perfume_list(request):
+#     perfumes = Perfume.objects.all()
+#     paginator = StandardResultsSetPagination()
+#     paginated_perfumes = paginator.paginate_queryset(perfumes, request)
+#     serializer = PerfumeSerializer(paginated_perfumes, many=True)
+#     return paginator.get_paginated_response(serializer.data)
+
+# ===========================================================
 class PerfumeApiView(
     viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     queryset = Perfume.objects.all()
     serializer_class = PerfumeSerializer
     lookup_field = 'slug'
+    pagination_class = StandardResultsSetPagination
+
 
 class FreshenerApiView(
     viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):

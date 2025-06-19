@@ -3,6 +3,7 @@ import { keepPreviousData, queryOptions } from "@tanstack/react-query";
 import { BASE_URL } from "../config";
 
 const createPerfumesOptions = (
+  page,
   gender,
   note,
   chord,
@@ -14,10 +15,11 @@ const createPerfumesOptions = (
   return queryOptions({
     queryKey: [
       "perfumes",
+      page,
       { gender, note, chord, compound, family, maxPrice, search },
     ],
     queryFn: () =>
-      fetchPerfumes({
+      fetchPerfumes(page, {
         gender,
         note,
         chord,
@@ -32,10 +34,11 @@ const createPerfumesOptions = (
 
 export default createPerfumesOptions;
 
-const fetchPerfumes = async (options) => {
+const fetchPerfumes = async (page = 0, options) => {
   // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const response = await fetch(`${BASE_URL}/api/perfumes`);
+  const response = await fetch(`${BASE_URL}/api/perfumes?page=${page}`);
+  // const response = await fetch(`${BASE_URL}/api/perfume_paged?page=${page}`);
   let filteredProducts = await response.json();
   // console.log("filteredProducts==", filteredProducts);
 

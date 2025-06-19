@@ -14,9 +14,13 @@ const PerfumesFilteredWrapper = (props) => {
   const [maxPrice, setMaxPrice] = useState();
   const [search, setSearch] = useState();
 
+  const [page, setPage] = useState(1);
+  const numberOfPerfumesPerPage = 12;
+
   // Queries
   const { data, isFetching } = useQuery(
     createPerfumesOptions(
+      page,
       gender,
       note,
       chord,
@@ -26,6 +30,21 @@ const PerfumesFilteredWrapper = (props) => {
       search
     )
   );
+
+  const perfumes = data?.results || [];
+  const numOfPages = Math.ceil(data?.count / numberOfPerfumesPerPage);
+
+  const handlePageSetNumber = (value) => {
+    setPage(value);
+  };
+
+  const increasePageNumberHandler = () => {
+    setPage((current) => current + 1);
+  };
+
+  const decreasePageNumberHandler = () => {
+    setPage((current) => current - 1);
+  };
 
   return (
     <>
@@ -45,7 +64,16 @@ const PerfumesFilteredWrapper = (props) => {
       {isFetching && <LoaderKest />}
 
       {/* Results of Filtering */}
-      {data && <ProductList products={data} />}
+      {data && (
+        <ProductList
+          products={perfumes}
+          numOfPages={numOfPages}
+          page={page}
+          handlePageSetNumber={handlePageSetNumber}
+          increasePageNumberHandler={increasePageNumberHandler}
+          decreasePageNumberHandler={decreasePageNumberHandler}
+        />
+      )}
     </>
   );
 };

@@ -159,8 +159,11 @@ REST_FRAMEWORK = {
 	'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 	
 	# 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+	
+    # 'DEFAULT_PAGINATION_CLASS': 'backend.backend_api.views.StandardResultsSetPagination',
+		
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    # 'PAGE_SIZE': 5
+    # 'PAGE_SIZE': 12
 }
 
 SPECTACULAR_SETTINGS = {

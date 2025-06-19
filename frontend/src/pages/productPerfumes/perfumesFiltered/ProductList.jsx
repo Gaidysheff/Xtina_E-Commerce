@@ -1,6 +1,7 @@
 import Card from "../../../components/sharedUI/Card.jsx";
 import { Link } from "react-router";
 import { NumericFormat } from "react-number-format";
+import PagePaginationShadcn from "../../../components/sharedUI/PagePaginationShadcn";
 
 const ProductList = (props) => {
   return (
@@ -10,13 +11,13 @@ const ProductList = (props) => {
       xl:grid-cols-4 gap-3 mx-3 lg:gap-10 lg:mx-5"
       >
         {props.products.map((product) => (
-          <Card key={product.id}>
+          <Card key={product.slug}>
             <Link to={`${product.slug}`}>
               <div className="inside-card flex flex-col justify-between">
                 <div
                   className="w-full bg-white dark:bg-brandLightGray rounded-t-xl
                   flex justify-center relative"
-                  data-aos="zoom-in"
+                  // data-aos="zoom-in"
                 >
                   {!product.is_available && (
                     <div
@@ -51,7 +52,7 @@ const ProductList = (props) => {
                 <div className="p-2 pb-0">
                   <div
                     className="text-[0.7rem] md:text-[0.9rem] lg:text-lg"
-                    data-aos="flip-left"
+                    // data-aos="flip-left"
                   >
                     {product.brand}
                   </div>
@@ -59,7 +60,7 @@ const ProductList = (props) => {
                   <div
                     className="text-[0.8rem] md:text-[1.1rem] lg:text-xl 
                   font-semibold"
-                    data-aos="flip-left"
+                    // data-aos="flip-left"
                   >
                     {product.name}
                   </div>
@@ -73,14 +74,23 @@ const ProductList = (props) => {
                     decimalSeparator=","
                     thousandSeparator="."
                     suffix={" ₽"}
-                    data-aos="zoom-in"
-                    data-aos-delay="1000"
+                    // data-aos="zoom-in"
+                    // data-aos-delay="1000"
                   />
                 </div>
               </div>
             </Link>
           </Card>
         ))}
+      </div>
+      <div className="pt-8">
+        <PagePaginationShadcn
+          numOfPages={props.numOfPages}
+          page={props.page}
+          handlePageSetNumber={props.handlePageSetNumber}
+          increasePageNumberHandler={props.increasePageNumberHandler}
+          decreasePageNumberHandler={props.decreasePageNumberHandler}
+        />
       </div>
     </section>
   );

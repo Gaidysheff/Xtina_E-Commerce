@@ -16,7 +16,7 @@ const ProductList = (props) => {
                 <div
                   className="w-full bg-white dark:bg-brandLightGray rounded-t-xl
                   flex justify-center relative"
-                  data-aos="zoom-in"
+                  // data-aos="zoom-in"
                 >
                   {!product.is_available && (
                     <div
@@ -47,7 +47,7 @@ const ProductList = (props) => {
                 <div
                   className="text-[0.8rem] md:text-[1.1rem] lg:text-xl 
                   font-semibold"
-                  data-aos="flip-left"
+                  // data-aos="flip-left"
                 >
                   {product.title}
                 </div>
@@ -55,7 +55,7 @@ const ProductList = (props) => {
                 <div className="p-2 pb-0">
                   <div
                     className="text-[0.7rem] md:text-[0.9rem] lg:text-lg"
-                    data-aos="flip-left"
+                    // data-aos="flip-left"
                   >
                     {product.subtitle}
                   </div>
@@ -69,8 +69,8 @@ const ProductList = (props) => {
                     decimalSeparator=","
                     thousandSeparator="."
                     suffix={" ₽"}
-                    data-aos="zoom-in"
-                    data-aos-delay="1000"
+                    // data-aos="zoom-in"
+                    // data-aos-delay="1000"
                   />
                 </div>
               </div>
